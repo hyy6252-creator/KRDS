@@ -1,0 +1,31 @@
+:root {
+  --pagination-icon: false;
+
+  --pagination-padding: .5rem .3rem;
+  --pagination-padding-sm: .25rem;
+  --pagination-padding-lg: .9375rem;
+  --pagination-size: 30px;
+  --pagination-line-height: 1;
+  --pagination-color: #36404A;
+  --pagination-bg: var(--white);
+  --pagination-border-color: transparent;
+  --pagination-hover-color: var(--white);
+  --pagination-hover-bg: var(--secondary);
+  --pagination-hover-border-color: var(--secondary);
+  --pagination-active-color: var(--white);
+  --pagination-active-bg: var(--secondary);
+  --pagination-active-border-color: var(--secondary);
+  --pagination-disabled-color: var(--gray-10);
+  --pagination-disabled-bg: var(--gray-90);
+  --pagination-disabled-border-color: var(--gray-10);
+
+  --pagination-fontsize-sm: var(--font-size-sm);
+  --pagination-fontsize-lg: var(--font-size-md);
+
+  --pagination-ease-in-out-circ: var(--ease-in-out-circ);
+
+  --transition-duration: 250ms;
+  --transition-base: all var(--transition-duration) var(--pagination-ease-in-out-circ);
+  --transition-fade: opacity 200ms ease-in-out;
+  --transition-collapse: height 350ms ease-in-out;
+}

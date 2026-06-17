@@ -1,0 +1,113 @@
+@charset "UTF-8";
+@use "variables" as *;
+
+////// 콘텐츠 하단
+.content-bottom {
+  --box-radius: 12px;
+  margin-top: 96px;
+  @include mq(1279) {margin-top: 80px;}
+  @include mq(767) {margin-top: 64px;}
+  @include mq(383) {margin-top: 56px;}
+
+  ///// 박스 공통
+  &-box {
+    padding: 40px; border-radius: var(--box-radius); background-color: var(--color-surface-gray-subtler);
+    @include mq(1279) {padding: 32px;}
+    @include mq(767) {padding: 28px;}
+    @include mq(575) {padding: 24px;}
+    @include mq(383) {padding: 20px;}
+
+    &:not(:first-child) { 
+      margin-top: 32px; 
+      @include mq(767) {margin-top: 28px;}
+      @include mq(383) {margin-top: 24px;}
+    }
+  }
+
+  ///// 만족도 조사
+  .research-wrap {
+
+    .research-inner { display:flex; flex-direction:column; }
+    
+    .research-title {
+      display: block; font-weight: 700; font-size: 19px; color: var(--color-text-bolder);
+      @include mq(767) {font-size: 18px;}
+    }
+    .research-text {
+      margin-top: 8px; font-size: 17px; color: var(--color-text-bolder); letter-spacing: normal;
+      @include mq(767) {font-size: 16px;}
+    }
+    .research-value {
+      display: flex; flex-wrap: wrap; margin-top: 20px; gap: 6px 24px; margin-bottom: 12px;
+      @include mq(575) {column-gap: 20px;}
+
+      &-check {
+        font-size: 17px;
+        input {@include blind;}
+        label {
+          display: flex; align-items: center; gap: 8px; outline-offset: 0; border-radius: 4px;
+          i { 
+            height: 20px; width: 20px; background-color: #fff; border-radius: 50%; border: 1px solid var(--color-border-gray-dark); flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+            &::before {content: ''; width: 10px; height: 10px; border-radius: 50%; opacity: 0; background-color: #CCC; transition: background-color .3s, opacity .3s;}
+          }
+          &:hover i::before {opacity: 1;}
+        }
+        input:checked ~ label i {
+          border: 1px solid var(--color-light-primary-50);
+          &::before {opacity: 1; background-color: var(--color-light-primary-50);}
+        }
+        input:focus ~ label {
+          outline: 2px solid  rgba(36,107,235,.8);
+          i::before {opacity: 1;}
+        }
+      }
+    }
+    .research-opinion {
+      display: flex; width: 100%; margin-top: 10px; gap: 8px; font-size: 17px; margin-bottom: 4px;
+      @include mq(575) {flex-direction: column;}
+      &-input { 
+        width: 1px; flex-grow: 1; height: 48px; padding: 0 16px; background-color: #FFF; border: 1px solid var(--color-input-border, #58616A); border-radius: 6px; font-weight: 400; color: var(--color-text-basic,#1E2124);
+        @include mq(575) {width: 100%;}
+      }
+      &-submit {
+        height: 48px; padding: 0 16px; border-radius: 6px; background-color: var(--color-button-primary-fill); color: #FFF; transition: background-color .3s; outline-offset: 0; font-weight: 500;
+        &:hover {background-color: var(--color-button-primary-fill-hover);}
+      }
+    }
+  }
+
+  ///// 피드백 완료 메세지
+  .content-bottom-message {
+    padding: 20px; border: 1px solid var(--color-border-success-light,#267337); border-radius: var(--box-radius); background-color: var(--color-surface-success-subtler, #D8EEDD); margin-top: 20px; display: flex; flex-direction: column; gap: 6px;
+    @include mq(767) {margin-top: 16px; padding: 16px; gap: 4px;}
+    &:not(.active) {display: none;}
+
+    .message-tit {
+      position: relative; font-size: 16px; color: var(--color-text-success,#267337); display: flex; align-items: flex-start; gap: 8px;
+      @include mq(767) {font-size: 15px;}
+
+      &::before { 
+        width: 20px; height: 20px; background: $ico-system-success no-repeat center/contain; content: ''; flex-shrink: 0; top: .75em; top: .5lh; position: relative; transform: translateY(-50%);
+      }
+    }
+    .message-txt {
+      padding-left: 28px; color: var(--color-text-basic, #1E2124); font-size: 17px; margin: 0; letter-spacing: normal;
+      @include mq(767) {font-size: 16px;}
+    }
+  }
+
+  ///// 메뉴 담당자
+  .charge-wrap {
+    display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 16px;
+    .charge-list {
+      display: flex; flex-wrap: wrap; gap: 6px 32px;
+    }
+    .charge-item {
+      display: inline-flex; font-size: 17px; gap: 6px;
+      @include mq(767) {font-size: 16px;}
+
+      dt {font-weight: 700;}
+    }
+  }
+
+}

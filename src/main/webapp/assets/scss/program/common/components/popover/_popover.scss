@@ -1,0 +1,79 @@
+
+@use 'variables' as popover-vars;
+.popover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1060;
+  display: none;
+  width:100%;
+  max-width: 276px;
+  min-width:276px;
+  padding: 1px;
+  text-align: left;
+  white-space: normal;
+  background-color: popover-vars.$popover-bg;
+  background-clip: padding-box;
+  border: popover-vars.$popover-border-width solid popover-vars.$popover-border-color;
+  border-radius: popover-vars.$popover-border-radius-lg;
+  box-shadow: popover-vars.$popover-box-shadow;
+  &.top {
+    margin-top: -10px;
+  }
+  &.right {
+    margin-left: 10px;
+  }
+  &.bottom {
+    margin-top: 10px;
+  }
+  &.left {
+    margin-left: -10px;
+  }
+  .arrow,
+  .arrow:after{position:absolute;display:block;width:0;height:0;border:solid transparent}
+  .arrow {border-width:popover-vars.$popover-arrow-width}
+  .arrow:after {content:"";border-width:popover-vars.$popover-arrow-width}
+  .popover-inner {position:relative;width:100%;}
+  .popover-title {
+    display:block;
+    margin: 0;
+    padding: popover-vars.$popover-inner-padding;
+    font-size: popover-vars.$popover-title-font-size;
+    background-color: popover-vars.$popover-title-bg;
+    border-bottom: popover-vars.$popover-inner-border-width solid popover-vars.$popover-inner-border-color;
+    border-radius: popover-vars.$popover-border-radius-lg popover-vars.$popover-border-radius-lg 0 0;
+    color:#111;
+  }
+  .popover-content {
+    padding: popover-vars.$popover-inner-padding;
+  }
+}
+// Popover Arrow Styles
+.popover {
+  &.top {
+    .arrow {
+        bottom:-11px;left:50%;margin-left:-11px;border-top-color:popover-vars.$popover-bg;border-bottom-width:0;
+        &:after{bottom:1px;margin-left:-10px;content:" ";border-top-color:popover-vars.$popover-bg;border-bottom-width:0;}
+      }
+    }
+  &.right {
+    .arrow {
+      top:50%;left:-11px;margin-top:-10px;border-right-color:popover-vars.$popover-bg;border-left-width:0;
+      &:after {bottom:-10px;left:1px;content:" ";border-right-color:popover-vars.$popover-bg;border-left-width:0}
+    }
+  }
+  &.bottom {
+    .arrow {
+      top:-10px;left:50%;margin-left:-11px;border-width:10px;border-top-width:0;border-bottom-color:popover-vars.$popover-bg;
+      &:after {top:1px;margin-left:-10px;content:" ";border-top-width:0;border-bottom-color:popover-vars.$popover-bg}
+    }
+  }
+  &.left {
+    .arrow {
+      top:50%;right:-11px;margin-top:-11px;border-right-width:0;border-left-color:popover-vars.$popover-bg;
+      &:after {
+        top:1px;margin-left:10px;content:" ";border-left-color:popover-vars.$popover-bg;border-left-width:0;
+      }
+    }
+  }
+}

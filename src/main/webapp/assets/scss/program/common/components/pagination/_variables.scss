@@ -1,0 +1,55 @@
+
+
+@use '../../../../common/abstracts' as *;
+
+
+$pagination-icon: false !default;// 아이콘 없을 경우
+// Pagination
+$pagination-padding:                .5rem .3rem!default;
+$pagination-padding-sm:             .25rem !default;
+$pagination-padding-lg:             .9375rem !default;
+$pagination-size:                30px !default;
+$pagination-line-height:              1 !default;
+$pagination-color:                     #666 !default;
+$pagination-bg:                        $white !default;
+$pagination-border-color: transparent !default;
+$pagination-hover-color:               $white !default;
+$pagination-hover-bg:                  #eef2f7 !default;
+$pagination-hover-border-color:        #eef2f7 !default;
+$pagination-active-color:              $white !default;
+$pagination-active-bg:                 #063A74 !default;
+$pagination-active-border-color:       #063A74 !default;
+$pagination-disabled-color:            map-get($gray-colors, "10") !default;
+$pagination-disabled-bg:               map-get($gray-colors, "90") !default;
+$pagination-disabled-border-color:     map-get($gray-colors, "10") !default;
+
+$pagination-fontsize-sm : $font-size-sm;
+$pagination-fontsize-lg : $font-size-md;
+
+
+// Transitions
+$transition-duration:     250ms;
+$transition-fade:         opacity 200ms ease-in-out !default;
+$transition-collapse:     height 350ms ease-in-out !default;
+$pagination-transition: all .3s ease-in-out !default;
+
+
+
+// Pagination
+@mixin pagination-size($padding, $font-size, $line-height) {
+  .page-link {
+    padding: $padding;
+    font-size: $font-size;
+    line-height: $line-height;
+  }
+  .page-item {
+    &:first-child {
+      .page-link {
+      }
+    }
+    &:last-child {
+      .page-link {
+      }
+    }
+  }
+}

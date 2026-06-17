@@ -1,0 +1,190 @@
+
+@use 'variables' as pagination-vars;
+
+
+.col-md-12{display:block;}
+.pagination {
+  clear:both;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;padding-left:0;margin-top:30px;justify-content:center;width:100%;
+  &.pa-round{
+    .page-link{
+      border-radius: 50%;
+    }
+  }
+  &.omission {
+    position: relative; font-size: 0;
+    @media (max-width: 560px) {padding: 50px 0 0 0;}
+    .page-item {
+      padding: 0 2px;
+      @media (max-width: 460px) {padding: 0 2px;}
+      &:first-child {
+        padding: 0 4px 0 0;
+        @media (max-width: 560px) {position: absolute; top: 0; left: calc(50% - 64px);}
+      }
+      &:last-child {
+        padding: 0 0 0 4px;
+        @media (max-width: 560px) {position: absolute; top: 0; right: calc(50% - 60px);}
+      }
+      &.active {
+        .page-link {
+          font-weight: 700;
+        }
+      }
+      .page-link {
+        display: flex; align-items: center; justify-content: center; min-width: 40px; min-height: 40px; max-height: 40px; margin: 0; padding: 5px; border-radius: 6px; font-size: 16px; line-height: 40px;
+        @media (max-width: 640px) {font-size: 16px;}
+        @media (max-width: 460px) {font-size: 15px; min-width: 30px; min-height: 30px; max-height: 30px; line-height: 30px;}
+
+        
+        &.link-dot {
+          background-position: center; background-repeat: no-repeat; background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15.2 20.1C15.2 19.4925 14.7075 19 14.1 19C13.4925 19 13 19.4925 13 20.1C13 20.7075 13.4925 21.2 14.1 21.2C14.7075 21.2 15.2 20.7075 15.2 20.1Z' fill='%232D2D2D'/%3E%3Cpath d='M21.3992 20.1C21.3992 19.4925 20.9067 19 20.2992 19C19.6917 19 19.1992 19.4925 19.1992 20.1C19.1992 20.7075 19.6917 21.2 20.2992 21.2C20.9067 21.2 21.3992 20.7075 21.3992 20.1Z' fill='%232D2D2D'/%3E%3Cpath d='M27.6004 20.1C27.6004 19.4925 27.1079 19 26.5004 19C25.8929 19 25.4004 19.4925 25.4004 20.1C25.4004 20.7075 25.8929 21.2 26.5004 21.2C27.1079 21.2 27.6004 20.7075 27.6004 20.1Z' fill='%232D2D2D'/%3E%3C/svg%3E%0A");
+          &:hover,
+          &:focus,
+          &:active {background-color: pagination-vars.$pagination-bg; border-color: pagination-vars.$pagination-bg;}
+        }
+        &[aria-label=Previous],
+        &[aria-label=Next] {
+          display: flex; align-items: center; background-image: none; background-color: transparent;
+          span {
+            font-size: 16px; line-height: 30px;
+            @media (max-width: 640px) {font-size: 16px;}
+            @media (max-width: 460px) {font-size: 15px;}
+          }
+          &:hover,
+          &:focus,
+          &:active {
+            background-color: pagination-vars.$pagination-hover-bg;border-color: pagination-vars.$pagination-hover-bg;
+            span {}
+          }
+        }
+        &[aria-label=Previous] {
+          padding: 0 8px 0 2px;
+          &::before {
+            display: inline-block; width: 20px; height: 20px; background-position: center; background-repeat: no-repeat; background-size: 100%; content: ''; background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12.5 5L7 10L12.5 15' stroke='%23555555' stroke-width='1.4' stroke-linecap='round'/%3E%3C/svg%3E%0A");
+          }
+          &:hover,
+          &:focus,
+          &:active {
+            &::before {
+              // background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12.5 5L7 10L12.5 15' stroke='white' stroke-width='1.4' stroke-linecap='round'/%3E%3C/svg%3E%0A");
+            }
+          }
+        }
+        &[aria-label=Next] {
+          padding: 0 2px 0 8px;
+          &::after {
+            display: inline-block; width: 20px; height: 20px; background-position: center; background-repeat: no-repeat; background-size: 100%; content: ''; background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7.5 15L13 10L7.5 5' stroke='%23555555' stroke-width='1.4' stroke-linecap='round'/%3E%3C/svg%3E%0A");
+          }
+          &:hover,
+          &:focus,
+          &:active {
+            &::after {
+              // background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7.5 15L13 10L7.5 5' stroke='white' stroke-width='1.4' stroke-linecap='round'/%3E%3C/svg%3E%0A");
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.pagination > ul{display:flex;flex-wrap:wrap;justify-content:center;}
+.page-item {
+  vertical-align: middle;
+  .page-link {
+    display:inline-block;
+    min-width: pagination-vars.$pagination-size;
+    min-height: pagination-vars.$pagination-size;
+    max-height: pagination-vars.$pagination-size;
+    /*max-width: pagination-vars.$pagination-size;*/
+    padding: pagination-vars.$pagination-padding;
+    line-height: pagination-vars.$pagination-line-height;
+    color: pagination-vars.$pagination-color;
+    background-color: transparent;
+    margin: 0 2px;
+    transition: pagination-vars.$pagination-transition;
+    border:1px solid pagination-vars.$pagination-border-color;
+    vertical-align: middle;
+    &:hover,
+    &:focus {
+      color: #666;
+      background-color: pagination-vars.$pagination-hover-bg;
+      border-color: pagination-vars.$pagination-hover-border-color;
+    }
+    @if pagination-vars.$pagination-icon == 'false' {
+      // 아이콘 없을 경우
+      &[aria-label]{
+        span{line-height:pagination-vars.$pagination-line-height;font-family:'Dotum';letter-spacing: -1px;font-size: 12px;font-weight: bold;}
+      }
+    } @else {
+      &[aria-label] span{font-size: 0;}
+      &[aria-label="first"],
+      &[aria-label="Previous"],
+      &[aria-label="Next"],
+      &[aria-label="last"]{min-width: pagination-vars.$pagination-size;min-height: pagination-vars.$pagination-size;max-height: pagination-vars.$pagination-size;/*max-width: pagination-vars.$pagination-size;*/background-color: #F9F9FA; border-radius:50%;background-position: center;background-repeat: no-repeat;vertical-align: middle;
+        &:hover,
+        &:focus,
+        &:active{
+          background-color: pagination-vars.$pagination-active-bg;
+          border-color: pagination-vars.$pagination-active-border-color;
+        }
+      }
+      &[aria-label="first"]{
+        background-image: url("data:image/svg+xml,%3Csvg width='10' height='12' viewBox='0 0 10 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 12V0H2V12H0ZM4 6L10 0V12L4 6Z' fill='%23444444'/%3E%3C/svg%3E%0A");;
+        &:hover,
+        &:focus,
+        &:active{background-image: url("data:image/svg+xml,%3Csvg width='10' height='12' viewBox='0 0 10 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 12V0H2V12H0ZM4 6L10 0V12L4 6Z' fill='white'/%3E%3C/svg%3E%0A");}
+      }
+      &[aria-label="Previous"]{
+        background-image: url("data:image/svg+xml,%3Csvg width='6' height='12' viewBox='0 0 6 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 6L6 0V12L0 6Z' fill='%23444444'/%3E%3C/svg%3E%0A");;
+        &:hover,
+        &:focus,
+        &:active{background-image: url("data:image/svg+xml,%3Csvg width='6' height='12' viewBox='0 0 6 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 6L6 0V12L0 6Z' fill='white'/%3E%3C/svg%3E%0A");}
+      }
+      &[aria-label="Next"]{
+        background-image: url("data:image/svg+xml,%3Csvg width='6' height='12' viewBox='0 0 6 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6 6L0 12V0L6 6Z' fill='%23444444'/%3E%3C/svg%3E%0A");
+        &:hover,
+        &:focus,
+        &:active{background-image: url("data:image/svg+xml,%3Csvg width='6' height='12' viewBox='0 0 6 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6 6L0 12V0L6 6Z' fill='white'/%3E%3C/svg%3E%0A");}
+      }
+      &[aria-label="last"]{
+        background-image: url("data:image/svg+xml,%3Csvg width='10' height='12' viewBox='0 0 10 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 0V12H8V0H10ZM6 6L0 12V0L6 6Z' fill='%23444444'/%3E%3C/svg%3E%0A");
+        &:hover,
+        &:focus,
+        &:active{background-image: url("data:image/svg+xml,%3Csvg width='10' height='12' viewBox='0 0 10 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 0V12H8V0H10ZM6 6L0 12V0L6 6Z' fill='white'/%3E%3C/svg%3E%0A");}
+      }
+    }
+  }
+  &.active{
+    .page-link {
+      color: pagination-vars.$pagination-active-color;
+      background-color: pagination-vars.$pagination-active-bg;
+      border-color: pagination-vars.$pagination-active-border-color;
+    }
+  }
+  &.disabled {
+    .page-link {
+      color: pagination-vars.$pagination-disabled-color;
+      background-color: pagination-vars.$pagination-disabled-bg;
+      border-color: pagination-vars.$pagination-disabled-border-color;
+    }
+  }
+}
+.pagination-lg {@include pagination-vars.pagination-size(pagination-vars.$pagination-padding-lg, pagination-vars.$pagination-fontsize-lg, pagination-vars.$pagination-line-height);}
+.pagination-sm {@include pagination-vars.pagination-size(pagination-vars.$pagination-padding-sm, pagination-vars.$pagination-fontsize-sm, pagination-vars.$pagination-line-height);}
+@media only screen and (max-width: 640px){
+  .pagination{display:block;width:100%;text-align:center;transition:all .5s;}
+  .pagination ul{text-align:center}
+  .pagination ul{width:100%;height:30px;}
+  .pagination > li, .pagination .page-item{display:inline-block;vertical-align: middle;}
+  .pagination li > a, .pagination .page-item > .page-link, .pagination .page-item > span{padding: 0;min-width:20px;height:20px;line-height:20px;min-height: 21px;font-size: 13px;}
+  .pagination .page-item [aria-label] span{display:block;}
+  .pagination .page-item .page-link[aria-label="first"] .sr-only,
+  .pagination .page-item .page-link[aria-label="last"] .sr-only{display:none;}
+}
+@media only screen and (max-width:480px){
+  .pagination li > a, .pagination .page-item > .page-link, .pagination .page-item > span{min-width:30px;height:30px;line-height:30px;}
+  .pagination .page-item [aria-label]{padding:0 8px;font-size:pagination-vars.$pagination-fontsize-sm;}
+  .pagination .page-item [aria-label] .sr-only{font-size:pagination-vars.$pagination-fontsize-sm;}
+}
+
+
+

@@ -1,0 +1,60 @@
+
+
+@use '../../../../common/abstracts' as *;
+
+
+$tooltip-opacity:             .9 !default;
+$zindex-tooltip:            1070 !default;
+
+// Tooltips
+$tooltip-max-width:           200px !default;
+$tooltip-color:               $white !default;
+$tooltip-bg:                  rgba(0,0,0,0.5) !default;
+$tooltip-opacity:             1 !default;
+$tooltip-padding:          7px 13px !default;
+$tooltip-margin:              0 !default;
+$tooltip-arrow-width:         5px !default;
+$tooltip-arrow-height:        5px !default;
+$tooltip-arrow-color:         $tooltip-bg !default;
+
+
+
+$tooltip-border-radius-xs:$border-radius-xs;
+$tooltip-border-radius-sm:$border-radius-sm;
+$tooltip-border-radius-md:$border-radius-md;
+$tooltip-border-radius-lg:$border-radius-lg;
+
+@mixin posX {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+@mixin posY {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+@mixin posXY {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+@mixin text-over($line: 1, $line-height: 1.2) {
+  overflow: hidden;
+  max-width: 100%;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+  line-height: $line-height;
+  @if $line == 1 {
+    display: inline-block;
+    white-space: nowrap;
+  } @else {
+    white-space: normal;
+    display: -webkit-box !important;
+    -webkit-line-clamp: $line;
+    -webkit-box-orient: vertical;
+    word-break: break-all;
+    word-wrap: break-word;
+  }
+}

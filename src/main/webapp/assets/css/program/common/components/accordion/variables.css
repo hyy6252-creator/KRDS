@@ -1,0 +1,20 @@
+:root {
+  --accordion-border-radius: 4px;
+  --accordion-padding-y: 20px;
+  --accordion-padding-x: 30px;
+  --accordion-color: var(--gray-80);
+  --accordion-bg: var(--white);
+  --accordion-icon-color: var(--white);
+  --accordion-border-color: #D9DAE1;
+  --accordion-hover-color: var(--gray-80);
+  --accordion-hover-bg: var(--white);
+  --accordion-hover-border-color: var(--base-main-color2);
+  --accordion-hover-icon-color: #F3F7F8;
+  --accordion-active-color: var(--base-main-color2);
+  --accordion-active-bg: var(--base-main-color2);
+  --accordion-active-border-color: var(--base-main-color2);
+  --accordion-icon-active-color: var(--base-main-color2);
+
+  /* Easings */
+  --accordion-ease-in-out: var(--ease-in-out);
+}

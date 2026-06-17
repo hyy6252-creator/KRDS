@@ -1,0 +1,23 @@
+
+
+@use '../../../../common/abstracts' as *;
+
+$accordion-border-radius: 4px;
+$accordion-padding-y: 20px;
+$accordion-padding-x: 30px;
+$accordion-color:                     map-get($gray-colors, "80") !default;
+$accordion-bg:                        $white !default;
+$accordion-icon-color:                $white !default;
+$accordion-border-color: #D9DAE1 !default;
+$accordion-hover-color:              map-get($gray-colors, "80") !default;
+$accordion-hover-bg:                  $white !default;
+$accordion-hover-border-color:        $base-main-color2 !default;
+$accordion-hover-icon-color:          #F3F7F8 !default;
+$accordion-active-color:              $base-main-color2 !default;
+$accordion-active-bg:                 $base-main-color2 !default;
+$accordion-active-border-color:       $base-main-color2 !default;
+$accordion-icon-active-color:       $base-main-color2 !default;
+
+// Easings
+$accordion-ease-in-out : $ease-in-out !default;
+

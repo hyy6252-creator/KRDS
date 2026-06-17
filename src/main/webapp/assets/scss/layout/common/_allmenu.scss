@@ -1,0 +1,250 @@
+@charset "UTF-8";
+@use "variables" as *;
+
+////////////////////////////////////////
+////// 전체메뉴 타입-공통
+#allmenu {
+  position: fixed; top: 0; z-index: 100; width: 100%; height: 100%; visibility: hidden; transition: .4s linear; opacity: 0; color: var(--color-text-basic);
+
+  ///// 백드롭
+  &::before {content: ''; position: absolute; width: 100%; height: 100%; right: 0; top: 0; background-color: rgba(0,0,0,.75); opacity: 0; transition: opacity .3s linear;}
+
+  ///// 전체메뉴 활성화 상태
+  &.is-open {
+    visibility: visible; opacity: 1;
+    &::before {opacity: 1;}
+    .allmenu-wrap {transform: translateX(0);}
+  }
+
+  ///// 전체메뉴 영역
+  .allmenu-wrap {
+    max-width: 360px; width: 100%; background-color: #fff; position: absolute; right: 0; height: 100%; top: 0; display: flex; flex-direction: column; transition: transform .3s; transform: translateX(100%);
+  }
+
+  ///// 전체메뉴 헤더
+  .allmenu-header {
+    padding: 16px 16px 24px; border-bottom: 1px solid var(--color-divider-gray-light);
+
+    //// 전체메뉴 상단 유틸
+    .top-wrap {
+      padding: 0 0 20px;
+      .top-list {justify-content: flex-start; margin-bottom: 0; padding-right: 32px; }
+    }
+
+    //// 전체메뉴 검색창
+    .search-wrap {
+      position: relative; margin-top: 16px;
+      .search-input {
+        width: 100%; border: 1px solid $color-input-border; border-radius: 6px; font-size: 17px; padding: 0 48px 0 16px; height: 48px; line-height: 46px;
+        &::placeholder {color: var(--color-text-disabled); font-weight: 400;}
+      }
+      .search-submit {
+        position: absolute; width: 24px; height: 24px; border-radius: 4px; right: 16px; top: 50%; transform: translateY(-50%); background: svg-ico($ico-search) no-repeat center/contain; transition: background-color .3s;
+        &:hover {background-color: var(--color-action-secondary-hover);}
+      }
+    }
+  }
+
+  ///// 전체메뉴 바디
+  .allmenu-body {
+    flex-grow: 1; position: relative;
+    a {
+      display: flex; align-items: center; width: 100%;
+      &[target=_blank] span {
+        display: flex; align-items: center; gap: 4px; flex-grow: 1;
+        &::after {flex-shrink: 0; content: ''; width: 20px; height: 20px; background: $ico-open-new-window no-repeat center/contain; flex-shrink: 0;}
+      }
+    }
+  }
+
+  ///// 전체메뉴 닫기 버튼
+  .allmenu-close {
+    position: absolute; right: 16px; top: 16px; width: 24px; height: 24px; border-radius: 4px; background: $ico-close no-repeat center/contain; transition: background-color .3s;
+    &:hover {background-color: var(--color-action-secondary-hover);}
+  }
+
+}
+
+
+////////////////////////////////////////
+////// 전체메뉴 타입-1
+#allmenu[data-allmenu-type=allmenu-1] .allmenu-body {
+  line-height: 1.2; overflow-y: scroll;
+  &::-webkit-scrollbar {width: 0;}
+
+  
+  ///// DEPTH-1
+  .depth1-ul {
+
+    > li {border-bottom: 1px solid var(--color-divider-gray-light);}
+
+    .depth1-btn {
+      font-size: 18px; padding: 18px 24px; position: relative; transition: color .3s; justify-content: space-between; gap: 8px;
+
+      &::after {
+        color: var(--color-divider-gray);
+        content: ''; width: 17px; height: 17px; background: linear-gradient(to right,currentColor,currentColor) no-repeat center/1px 100%, linear-gradient(to right,currentColor,currentColor) no-repeat center/100% 1px; transition: background-size .3s, transform .3s; flex-shrink: 0;
+      }
+
+      &:hover,
+      &.active {
+        color: var(--color-action-secondary-active);
+        &::after {transform: rotate(90deg);}
+      }
+      &.active::after { background-size: 1px 100%, 1px 1px;}
+      &.current {font-weight: 700; color: var(--color-action-secondary-active);}
+    }
+  }
+
+  ///// DEPTH-2
+  .depth2-ul {
+    font-size: 16px; display: none; 
+    border-top: 3px solid var(--color-divider-gray);
+
+    > li + li {border-top: 1px solid var(--color-divider-gray-light);}
+
+    .depth2-btn {
+      padding: 16px 28px; background-color: var(--color-light-gray-5); justify-content: space-between; align-items: center; gap: 4px;
+
+      &::after {content: ''; flex-shrink: 0; width: 16px; height: 16px; background: $ico-arrow-right no-repeat center/contain; transition: transform .3s;}
+
+      &.has-depth {
+        justify-content: space-between;
+        &::after {transform: rotate(90deg);}
+        &.active::after {transform: rotate(-90deg);}
+      }
+      &:hover,
+      &.active { color: var(--color-text-secondary); }
+      &.current { color: var(--color-text-secondary); font-weight: 700;}
+    }
+  }
+
+  ///// DEPTH-3
+  .depth3-ul {
+    font-size: 15px; display: none; 
+    padding: 16px 28px 16px 32px; border-top: 1px solid var(--color-divider-gray-light);
+
+    .depth3-btn {
+      padding: 6px 0; text-decoration-line: underline; text-decoration-color: transparent; text-underline-position: under; gap: 5px; transition: color .2s, text-decoration-color .2s; 
+
+      &::before {content: ''; width: 3px; height: 3px; background-color: currentColor; border-radius: 50%; margin-top: .3em; transform: translateY(-50%); flex-shrink: 0;}
+
+      &:hover { color: var(--color-text-secondary); text-decoration-color: currentColor; }
+      &.current { font-weight: 700; color: var(--color-text-secondary);text-decoration-color: currentColor;}
+    }
+  }
+}
+
+
+////////////////////////////////////////
+////// 전체메뉴 타입-2
+#allmenu[data-allmenu-type=allmenu-2] .allmenu-body {
+
+  ///// 왼쪽 버튼 넓이 변수
+  --allmenu-left-width: 100px;
+
+  ///// DEPTH-1
+  .depth1-ul {
+    background: linear-gradient(var(--color-surface-secondary-subtler), var(--color-surface-secondary-subtler)) no-repeat left/var(--allmenu-left-width) 100%; height: 100%;
+
+    > li { width: var(--allmenu-left-width); font-size: 17px; }
+
+    .depth1-btn {
+      padding: 16px 12px; display: block; text-align: center; font-weight: 700;
+      &::after {display: inline-block;}
+      &:hover {background-color: #FFF;}
+      &.active {background-color: #fff; color: var(--color-text-secondary);}
+    }
+  }
+
+  ///// DEPTH-2
+  .depth2-ul {
+    position: absolute; left: var(--allmenu-left-width); right: 0; top: 0; bottom: 0; overflow-y: scroll;
+
+    &::-webkit-scrollbar {width: 0;}
+    &:not(.active) {display: none;}
+
+    > li { 
+      padding: 16px 16px 0; 
+      &:last-child {margin-bottom: 40px;}
+    }
+
+    .depth2-btn {
+      border-bottom: 1px solid var(--color-divider-gray); padding: 4px 8px 12px; font-size: 19px; font-weight: 700; position: relative;
+      
+      &::before {position: absolute; content: ''; left: 0; bottom: -1px; width: 0; background-color: var(--color-action-secondary-active); height: 3px; transition: .3s;}
+      span {margin-right: auto;}
+
+      &.current {background-color: var(--color-action-secondary-selected); color: var(--color-text-secondary);}
+      &:hover {
+        background-color: var(--color-action-secondary-hover);
+        &::before {width: 100%;}
+      }
+    }
+  }
+
+  ///// DEPTH-3
+  .depth3-ul {
+    padding: 8px 0;
+    .depth3-btn {
+      font-size: 17px; padding: 12px 8px; border-radius: 8px;
+
+      &:hover {background-color: var(--color-action-secondary-hover);}
+      &.current {background-color: var(--color-action-secondary-hover); color: var(--color-text-secondary); font-weight: 700;}
+    }
+  }
+    
+}
+
+
+////////////////////////////////////////
+////// 전체메뉴 타입-3
+#allmenu[data-allmenu-type=allmenu-3] .allmenu-body {
+  overflow-y: scroll; padding-bottom: 40px;
+  &::-webkit-scrollbar {width: 0;}
+  
+  ///// DEPTH-1
+  .depth1-ul {
+    > li {
+      padding: 16px 16px 0;
+      &:not(:last-child) {border-bottom: 4px solid var(--color-divider-gray);}
+    }
+    .depth1-btn {
+      font-size: 19px; font-weight: 700; display: flex; align-items: center; padding: 4px 8px 12px; border-bottom: 1px solid var(--color-divider-gray); justify-content: space-between;
+      span {margin-right: auto;}
+      &::after {margin-left: 8px;}
+      &:hover {background-color: var(--color-action-secondary-hover);}
+      &:only-child {margin-bottom: 16px; padding-top: 12px; border-bottom: none;}
+    }
+  }
+
+  ///// DEPTH-2
+  .depth2-ul {
+      padding: 8px 0; font-size: 17px;
+      .depth2-btn {
+          padding: 12px 8px; border-radius: 8px;
+          &.has-depth {
+              justify-content: space-between;
+              span {margin-right: auto;}
+              &::after {content: ''; width: 20px; height: 20px; background: svg-ico($ico-arrow-down) no-repeat center/contain; margin-left: 4px; transition: transform .3s;}
+              &.active::after {transform: rotate(180deg);}
+          }
+          &:hover { background-color: var(--color-action-secondary-hover); }
+          &.active {  background-color: var(--color-action-secondary-hover); color: var(--color-text-secondary); font-weight: 700;}
+          &.current { background-color: $color-action-secondary-selected; color: var(--color-text-secondary); font-weight: 700;}
+      }
+  }
+
+  ///// DEPTH-3
+  .depth3-ul {
+      display: none; padding-top: 8px;
+      .depth3-btn {
+          padding: 10px 16px; border-radius: 6px;
+          &::before {content: '•'; margin-right: 8px; flex-shrink: 0;}
+          span {margin-right: auto;}
+          &.current {background-color: $color-action-secondary-selected; font-weight: 700; color: var(--color-text-secondary);}
+          &:hover { background-color: var(--color-action-secondary-hover); }
+      }
+  }
+
+}

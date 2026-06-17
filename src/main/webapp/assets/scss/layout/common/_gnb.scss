@@ -1,0 +1,448 @@
+@charset "UTF-8";
+@use "variables" as *;
+
+
+////////////////////////////////////////
+////// GNB 공통
+
+///// GNB 배경
+.gnb-bg {
+  width: 100%; transition: height .3s; position: absolute; top: 100%; pointer-events: none; z-index: -5; left: 0; height: 0; overflow: hidden; box-shadow: 0 15px 25px 0 rgba(0, 0, 0, 0.10); background-color: #FFF;
+  @include mq(1279) {display: none;}
+
+  ///// ▼ GNB 배경에 이미지 있을 때 레이아웃 위치에 고정용
+  .layout { height: 100%; }
+}
+
+///// GNB 백드롭
+.gnb-backdrop {
+  content: ''; width: 100%; height: 100%; position: fixed; left: 0; top: 0; background-color: rgba(0,0,0,.5); opacity: 0; transition: $transition-fade; z-index: 90; pointer-events: none;
+  @include mq(1279) {display: none;}
+  @at-root {
+    body.is-gnb-open .gnb-backdrop {opacity: 1;}
+    body.is-gnb-hover .gnb-backdrop {opacity: 1;}
+  }
+}
+
+
+////////////////////////////////////////
+////// GNB 타입-1
+.gnb[data-gnb-type="gnb-1"] {
+  align-self: stretch;
+
+  > .layout {
+    display: flex; height: 100%; align-items: center; justify-content: space-between; position: static; padding: 0;
+  }
+  
+  ///// DEPTH-1
+  .depth1-ul {
+    display: flex; font-size: 20px; height: 100%;
+
+    //// DEPTH-1-버튼
+    .depth1-btn {
+      padding: 12px 24px; display: flex; height: 100%; align-items: center; font-weight: 700; position: relative; transition: background-color .3s, color .3s; text-align: center; justify-content: center; line-height: 1.2; gap: 8px;
+
+      &::before {
+        content: ''; position: absolute; left: 0; bottom: 0; background-color: currentColor; opacity: 0; transform: scaleX(0); transition: .3s; height: 4px; width: 100%; 
+        @include mq(1279) {height: 3px;}
+      }
+      &[target=_blank]::after {
+        background: $ico-open-new-window  no-repeat center/contain; width: 20px; height: 20px; flex-shrink: 0; content: '';
+      }
+    }
+
+    //// DEPTH-1-콘텐츠
+    .depth1-content {
+      position: absolute; top: 100%; width: 100%; left: 0; visibility: hidden; transition: height .3s;
+      overflow: hidden; height: 0;
+      > .layout { 
+        display: flex; 
+        min-height: 400px; // GNB 최소 높이
+      }
+    }
+
+    //// DEPTH-1-제목
+    .depth1-header {
+      display: block; width: 21.5%; min-width: 240px; flex-shrink: 0; padding-right: 24px; padding-top: 40px;
+      .depth1-title {
+        font-size: 28px; font-weight: 700; line-height: 1.2; display: flex;
+      }
+    }
+    
+    //// DEPTH-1-hover
+    > .is-hover {
+      .depth1-btn {
+        color: var(--color-text-secondary);
+        background-color: var(--color-action-secondary-hover);
+        &::before {opacity: 1; transform: scaleX(1);}
+      }
+      .depth1-content {visibility: visible;}
+    }
+  }
+
+
+  ///// DEPTH-2
+  .depth2-ul {
+    font-size: 16px; position: relative; padding: 36px 0 36px 28px; flex-grow: 1; width: 1px; display: grid; align-content: start; background: linear-gradient(to top,var(--color-divider-gray-light),var(--color-divider-gray-light)) no-repeat left/1px 100%; grid-template-columns: repeat(4, 1fr); gap: 0 50px;
+    @include mq(1440) {padding: 32px 0 32px 24px; gap: 0 24px;}
+
+    //// DEPTH-2-LI
+    > li {
+      margin-bottom: 40px;
+      @include mq(1440) { margin-bottom: 36px;}
+    }
+
+    //// DEPTH-2-버튼
+    .depth2-btn {
+      display: flex; padding: 12px 16px; transition: border-color .3s, background-color .3s, color .3s, -webkit-text-stroke-color .3s; align-items: center; position: relative; border-radius: 8px; border: 1px solid var(--color-divider-gray-light); line-height: 1.2; justify-content: space-between; gap: 6px; -webkit-text-stroke: .018em transparent;
+
+      &::after {
+        content: ''; width: 20px; height: 20px; flex-shrink: 0; background-color: currentColor; mask: $ico-arrow-down no-repeat center/contain; transition: background-color .3s;
+      }
+      &[target=_blank] span {
+        display: flex; align-items: center; gap: 4px;
+        &::after { content: ''; width: 16px; height: 16px; flex-shrink: 0; background-color: currentColor; mask: $ico-open-new-window no-repeat center/contain; transition: background-color .3s; }
+      }
+
+      &.active {
+        background-color: var(--color-action-secondary-hover); border-color: var(--color-action-secondary-hover); color: var(--color-text-secondary);-webkit-text-stroke-color: currentColor;
+      }
+    }
+
+    //// DEPTH2-제목
+    .depth2-header { display: none; }
+
+  }
+
+
+  ///// DEPTH-3
+  .depth3-ul {
+    padding: 12px 14px; font-size: 15px;
+    @include mq(1440) {padding: 10px 6px;}
+    
+    //// DEPTH-3-버튼
+    .depth3-btn {
+      color: var(--color-text-subtle); position: relative; display: flex; align-items: flex-start; padding: 6px 0; line-height: 1.2; text-decoration-color: transparent; text-decoration-line: underline; text-underline-position: under; gap: 5px; transition: color .2s, -webkit-text-stroke-color .2s, text-decoration-color .2s; -webkit-text-stroke: .018em transparent;
+
+      &::before {content: ''; width: 3px; height: 3px; background-color: currentColor; border-radius: 50%; margin-top: .6em; transform: translateY(-50%); flex-shrink: 0;}
+
+      &[target=_blank] span {
+        display: flex; align-items: center; gap: 4px;
+        &::after { content: ''; width: 16px; height: 16px; flex-shrink: 0; background-color: currentColor; mask: $ico-open-new-window no-repeat center/contain; transition: background-color .2s; }
+      }
+
+      &:hover { color: var(--color-text-secondary); -webkit-text-stroke-color: currentColor; text-decoration-color: currentColor; }
+    }
+  }
+
+}
+
+
+////////////////////////////////////////
+////// GNB 타입-2
+.gnb[data-gnb-type="gnb-2"] {
+  align-self: stretch; flex-grow: 1; width: 1px;
+
+  > .layout {
+    display: flex; height: 100%; align-items: center; position: static; padding: 0; justify-content: center;
+  }
+  
+
+  ///// DEPTH-1
+  .depth1-ul {
+    --hover-width: 10em; // 펼쳤을 때 Depth1버튼 넓이
+    display: flex; font-size: 20px; height: 100%; width: 100%; justify-content: center; max-width: calc(var(--hover-width) * var(--depth1-length));
+
+    > li { 
+      position: relative; transition: min-width .3s; min-width: 4em; 
+      @include mq(1440) { min-width: 3.2em;}
+    }
+    
+    //// DEPTH-1-버튼
+    .depth1-btn {
+      padding: 12px 24px; display: flex; height: 100%; align-items: center; font-weight: 700; position: relative; transition: background-color .3s, color .3s; text-align: center; justify-content: center; line-height: 1.2; gap: 8px;
+
+      &::before {
+        content: ''; position: absolute; left: 0; bottom: 0; background-color: currentColor; opacity: 0; transform: scaleX(0); transition: .3s; height: 4px; width: 100%; 
+        @include mq(1279) {height: 3px;}
+      }
+      &[target=_blank]::after {
+        mask: $ico-open-new-window  no-repeat center/contain; width: 20px; height: 20px; flex-shrink: 0; content: ''; background-color: currentColor; transition: background-color .3s;
+      }
+
+    }
+
+    //// DEPTH-1-콘텐츠
+    .depth1-content {
+      --side-border: linear-gradient(var(--color-divider-gray-light),var(--color-divider-gray-light)) no-repeat;
+      position: absolute; top: 100%; width: 100%; left: 0; transition: height .3s;
+      overflow: hidden; height: 0; background-color: #fff;
+      > .layout { 
+        padding: 0; height: 100%; background: var(--side-border) left/1px 100%;
+        min-height: 400px; // GNB 최소 높이
+      }
+    }
+    > li:last-child .depth1-content > .layout { background: var(--side-border) left/1px 100%, var(--side-border) right/1px 100%; }
+
+    //// DEPTH-1-제목
+    .depth1-header { display: none; }
+    
+    //// DEPTH-1-hover
+    > .is-hover {
+      // .layout {background-color: ;}
+      .depth1-btn {
+        color: var(--color-text-secondary);
+        background-color: var(--color-action-secondary-hover);
+        &::before {opacity: 1; transform: scaleX(1);}
+      }
+      .depth1-content {visibility: visible;}
+    }
+  }
+
+
+  ///// DEPTH-2
+  .depth2-ul {
+    font-size: 17px; position: relative; padding: 12px 10px 16px;
+
+    > li { }
+
+    .depth2-btn {
+      display: flex; padding: 12px 16px; align-items: center; position: relative; color: var(--color-text-subtle); line-height: 1.2; justify-content: space-between; transition: background-color .3s, color .3s, -webkit-text-stroke-color .3s; border-radius: 8px;  gap: 6px; -webkit-text-stroke: .018em transparent;
+
+      &[target=_blank] span {
+        display: flex; align-items: center; gap: 4px;
+        &::after { content: ''; width: 20px; height: 20px; flex-shrink: 0; background-color: currentColor; mask: $ico-open-new-window no-repeat center/contain; transition: background-color .3s; }
+      }
+
+      &.active {
+        background-color: var(--color-action-secondary-hover); -webkit-text-stroke-color: currentColor; color: var(--color-text-secondary);
+      }
+    }
+
+    //// DEPTH2-제목
+    .depth2-header { display: none; }
+
+  }
+
+
+  ///// DEPTH-3
+  .depth3-ul {
+    padding: 8px 12px; font-size: 15px; background-color: var(--color-light-gray-5); margin-bottom: 12px; margin-top: 4px; border-radius: 8px;
+    
+    //// DEPTH-3-버튼
+    .depth3-btn {
+      color: var(--color-text-subtle); position: relative; display: flex; align-items: flex-start; padding: 6px 0; line-height: 1.2; text-decoration-color: transparent; text-decoration-line: underline; text-underline-position: under; gap: 5px; transition: color .2s, -webkit-text-stroke-color .2s, text-decoration-color .2s; -webkit-text-stroke: .018em transparent;
+
+      &::before {content: ''; width: 3px; height: 3px; background-color: currentColor; border-radius: 50%; margin-top: .6em; transform: translateY(-50%); flex-shrink: 0;}
+
+      &[target=_blank] span {
+        display: flex; align-items: center; gap: 4px;
+        &::after { content: ''; width: 16px; height: 16px; flex-shrink: 0; background-color: currentColor; mask: $ico-open-new-window no-repeat center/contain; transition: background-color .2s; }
+      }
+
+      &:hover { color: var(--color-text-secondary); -webkit-text-stroke-color: currentColor; text-decoration-color: currentColor; }
+    }
+  }
+
+  
+
+  ///// GNB-hover
+  &.is-hover {
+    .depth1-ul {
+      > li {min-width: calc(100% / var(--depth1-length));}
+    }
+  }
+}
+
+
+////////////////////////////////////////
+////// GNB 타입-3 (KRDS)
+.gnb[data-gnb-type="gnb-3"] {
+
+  --left-width: 300px;
+  @include mq(1023) {display: none;}
+
+  > .layout {
+    display: flex; align-items: center; justify-content: space-between; position: static; overflow-x: auto; padding: 0;
+  }
+
+  ///// DEPTH-1
+  .depth1-ul {
+    display: flex; font-size: 19px; height: 54px; gap: 16px;
+    @include mq(1440) {gap: 12px;}
+    @include mq(1279) {font-size: 17px; height: 50px;}
+    
+    .depth1-btn {
+      padding: 0 16px; display: flex; height: 100%; align-items: center; font-weight: 700; color: var(--color-text-subtle); position: relative; transition: background-color .3s, color .3s; text-align: center; justify-content: center; line-height: 1.2; gap: 8px;
+      @include mq(1279) {padding: 0 12px; gap: 6px;}
+
+      &::before {
+        content: ''; position: absolute; left: 0; bottom: 0; background-color: currentColor; opacity: 0; transform: scaleX(0); transition: .3s; height: 4px; width: 100%; 
+        @include mq(1279) {height: 3px;}
+      }
+      &::after {
+        width: 20px; height: 20px; mask: $ico-arrow-down no-repeat center/contain; flex-shrink: 0; content: ''; transition: transform .3s, background-color .3s; background-color: currentColor;
+      }
+      &[target=_blank]::after {mask-image: $ico-open-new-window; transition: 0s;}
+
+      &:hover { background-color: var(--color-action-secondary-hover); }
+      &.active {
+        color: var(--color-text-secondary);
+        &::before {opacity: 1; transform: scaleX(1);}
+        &.has-depth:not([target=_blank])::after {transform: rotate(180deg); }
+      }
+      &.current::before {opacity: 1; transform: scaleX(1);}
+    }
+
+    .depth1-content {
+      position: absolute; top: 100%; width: 100%; left: 0; background-color: #fff;
+      &:not(.active) {display: none;}
+      > .layout {
+        max-width: var(--layout-width);
+        max-height: calc(100vh - 280px); overflow-y: auto; background: linear-gradient(to right, var(--color-surface-secondary-subtler), var(--color-surface-secondary-subtler)) no-repeat left/var(--left-width) 100% content-box; padding: 0;
+      }
+    }
+
+    .depth1-header { display: none; }
+  }
+
+  ///// DEPTH-2
+  .depth2-ul {
+    font-size: 17px; position: relative; padding: 16px 0; width: 100%;
+
+    > li { width: var(--left-width); }
+
+    .depth2-btn {
+      display: flex; gap: 8px; padding: 16px 24px; transition: background-color .3s, color .3s; align-items: center; position: relative;
+
+      &::after {content: ''; width: 20px; height: 20px; background: $ico-btn-shortcut no-repeat center/contain; flex-shrink: 0;}
+      &.has-depth::after {background-image: $ico-arrow-right; margin-left: auto;}
+      &[target=_blank]::after {background-image: $ico-open-new-window;}
+
+      &:hover {background-color: #FFF;}
+      &.active {color: var(--color-text-secondary); font-weight: 700; background-color: #FFF;}
+    }
+
+    .depth2-content { 
+      left: var(--left-width); right: 0; position: absolute; top: 0; padding: 16px 40px;
+      @include mq(1279) {padding: 16px 24px;}
+
+      &:not(.active) {display: none;} 
+    }
+
+    .depth2-header {
+      margin-bottom: 16px;
+      @include mq(1279) {margin-bottom: 12px;}
+
+      .depth2-title {
+        font-size: 24px; font-weight: 700; padding: 10px 4px; display: flex; align-items: center; gap: 4px;
+        &::after {content: ''; width: 24px; height: 24px; flex-shrink: 0; background: $ico-arrow-right no-repeat center/contain; }
+      }
+    }
+  }
+
+  ///// DEPTH-3
+  .depth3-ul {
+    display: grid; grid-template-columns: repeat(3,1fr); gap: 8px 24px;
+    @include mq(1279) {gap: 6px 20px;}
+
+    .depth3-btn {
+      padding: 10px 8px; display: flex; align-items: center; transition: background-color .3s; border-radius: 6px; gap: 4px;
+
+      &::before {content: ''; width: 4px; height: 4px; border-radius: 50%; flex-shrink: 0; margin-right: 8px; background-color: var(--color-icon-gray);}
+
+      &[target=_blank]::after {content: ''; width: 20px; height: 20px; background: $ico-open-new-window no-repeat center/contain; flex-shrink: 0; }
+
+      &:hover {background-color: var(--color-action-secondary-hover);}
+    }
+  }
+
+}
+
+
+////////////////////////////////////////
+////// GNB 타입-4 (KRDS, 2차 메뉴 적을 때)
+.gnb[data-gnb-type="gnb-4"] {
+    
+  transition: background-color .3s; 
+  @include mq(1023) {display: none;}
+
+  > .layout {
+    display: flex; align-items: center; justify-content: space-between; position: static; overflow-x: auto; padding: 0;
+  }
+
+  ///// DEPTH-1
+  .depth1-ul {
+    display: flex; font-size: 19px; height: 54px; gap: 16px;
+    @include mq(1440) {gap: 12px;}
+    @include mq(1279) {font-size: 17px; height: 50px;}
+
+    //// DEPTH1-버튼
+    .depth1-btn {
+      padding: 0 16px; display: flex; height: 100%; align-items: center; color: var(--color-text-subtle); position: relative; transition: background-color .3s, color .3s, -webkit-text-stroke-color .3s; text-align: center; justify-content: center; line-height: 1.2; font-weight: 600; gap: 8px; -webkit-text-stroke: .018em transparent;
+      @include mq(1279) {padding: 0 12px; gap: 6px;}
+
+      &::before {
+        content: ''; position: absolute; left: 0; bottom: 0; background-color: var(--color-action-secondary-active); opacity: 0; transform: scaleX(0); transition: .3s; height: 4px; width: 100%; 
+        @include mq(1279) {height: 3px;}
+      }
+
+      &::after {
+        width: 1em; height: 1em; background-color: currentColor; mask: $ico-arrow-down no-repeat center/contain; flex-shrink: 0; content: ''; transition: background-color .3s, transform .3s;
+        font-size: 18px;
+        @include mq(1279) {font-size: 16px;}
+      }
+      &[target=_blank]::after {mask-image: $ico-open-new-window; }
+
+      &:hover { background-color: var(--color-action-secondary-hover); }
+      &.active {
+        color: var(--color-text-secondary); -webkit-text-stroke-color: currentColor;
+        &::before {opacity: 1; transform: scaleX(1);}
+        &::after {background-color: var(--color-icon-gray);}
+        &.has-depth:not([target=_blank])::after {transform: rotate(180deg); }
+      }
+      &.current::before {opacity: 1; transform: scaleX(1);}
+    }
+
+    //// DEPTH1-콘텐츠
+    .depth1-content {
+      position: absolute; top: 100%; width: 100%; left: 0; background-color: #fff; padding: 16px 0;
+      &:not(.active) {display: none;}
+      > .layout { 
+        max-height: calc(100vh - 280px); overflow-y: auto; display: flex; 
+        @include mq(1180) {flex-direction: column;}
+      }
+    }
+
+    //// DEPTH1-제목
+    .depth1-header {
+      display: block; width: 21.5%; min-width: 266px; flex-shrink: 0; padding-right: 24px; gap: 4px;
+      @include mq(1180) {width: 100%;}
+
+      strong {
+        font-size: 24px; font-weight: 700; padding: 10px 4px; display: flex; align-items: center; gap: 4px;
+        &::after {content: ''; width: 24px; height: 24px; flex-shrink: 0; background: $ico-arrow-right no-repeat center/contain; }
+      }
+    }
+
+  }
+
+  ///// DEPTH-2
+  .depth2-ul {
+    font-size: 17px; position: relative; padding: 8px 0; width: 100%; flex-grow: 1; display: grid; grid-template-columns: repeat(3,1fr); column-gap: 24px;
+    @include mq(1279) {column-gap: 20px;}
+
+    .depth2-btn {
+      display: flex; padding: 16px; border-radius: 8px; transition: background-color .3s, color .3s, -webkit-text-stroke .3s; align-items: center; position: relative; gap: 8px; -webkit-text-stroke: .03em transparent;
+
+      &::after {content: ''; width: 20px; height: 20px; background: $ico-arrow-right no-repeat center/contain; flex-shrink: 0; margin-left: auto;}
+      &.has-depth::after {background-image: $ico-arrow-right; margin-left: auto;}
+      &[target=_blank]::after {background-image: $ico-open-new-window;}
+
+      &:hover {background-color: var(--color-action-secondary-hover); -webkit-text-stroke-color: currentColor;}
+    }
+
+    .depth2-content { display: none; }
+  }
+
+}

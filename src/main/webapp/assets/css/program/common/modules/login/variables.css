@@ -1,0 +1,22 @@
+:root {
+  --step-background-color: #BEC0CF;
+  --step-line-color: #D9DAE1;
+  --step-color: #666;
+  --step-title-color: #1D1D1D;
+
+  --step-active-background-color: var(--primary);
+  --step-active-color: var(--primary);
+
+  --step-done-background-color: var(--secondary);
+  --step-done-line-color: var(--secondary);
+  --step-done-color: var(--secondary);
+
+  --pointTitle: var(--pointTitleColor);
+
+  --loginInputBg: #F6F7F9;
+  --loginInputPlaceholder: #444;
+
+  --result-point-color2: var(--secondary);
+  --result-point-color3: var(--danger);
+  --result-point-color4: var(--base-sub-color5);
+}

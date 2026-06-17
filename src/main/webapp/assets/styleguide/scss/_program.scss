@@ -1,0 +1,220 @@
+// @use '../../Scss/abstracts/color' as *;
+// @use '../../Scss/abstracts/variables' as *;
+// @use '../../Scss/abstracts/icon' as *;
+
+// 폰트 size
+$font-size-heading-xlarge: 40px;
+$font-size-heading-large: 32px;
+$font-size-heading-medium: 22px;
+$font-size-heading-small: 19px;
+$font-size-heading-xsmall: 17px;
+$font-size-heading-xxsmall: 15px;
+
+// 페이지네이션 컬러
+$pagination-active:#063A74;
+$pagination-hover:#eef2f7;
+$pagination-pressed:#D6E0EB;
+$pagination-disabled:#8a949e;
+
+
+// 모달
+$modal-radius:16px;
+
+// 배지
+$badge-disabled:#6D7882;
+$badge-radius:4px;
+
+// 라디오버튼, 체크박스
+$form-check-size-large:24px;
+$form-check-size-medium:20px;
+$form-check-color:#2257B4;
+$form-check-font-large:19px;
+$form-check-font-medium:17px;
+$form-check-add-text:#464c53;
+$form-check-text-disabled:#8a949e;
+$form-check-bg-disabled:#cdd1d5;
+$form-check-border-disabled:#8a949e;
+$sorting-checked:#EEF2F7;
+$sorting-hover:#EEF2F7;
+$sorting-pressed:#D6E0EB;
+
+$radio-size-large:12px;
+$radio-size-medium:10px;
+$radio-sorting-height-medium:26px;
+$radio-sorting-height-small:23px;
+// $form-chip-height-large:56px;
+// $form-chip-height-medium:48px;
+// $form-chip-bg-checked:#ecf2fe;
+// $form-chip-border-checked:#256ef4;
+// $form-chip-text-checked:#0b50d0;
+$checkbox-radius-medium:4px;
+$checkbox-size-large:16px;
+$checkbox-size-medium:12px;
+
+// 셀렉트
+$select-font-size-large:19px;
+$select-font-size-medium:17px;
+$select-font-size-small:15px;
+$select-text:#8a949e;
+
+$select-height-xlarge:56px;
+$select-height-large:48px;
+$select-height-medium:40px;
+$select-height-small:36px;
+$select-height-xsmall:32px;
+
+$select-padding-large:0 48px 0 16px;
+$select-padding-medium:0 44px 0 16px;
+$select-padding-small:0 40px 0 16px;
+$select-icon-large:24px;
+$select-icon-medium:20px;
+$select-icon-small:16px;
+$select-border-default:#58616a;
+$select-border-focus:#256ef4;
+$select-border-point:#DE3412;
+$select-border-disabled:#b1b8be;
+$select-radius-large:8px;
+$select-radius-medium:6px;
+$select-radius-small:8px;
+$select-text-complete:#464c53;
+$select-text-disabled:#6d7882;
+$select-sorting-padding-large:0 30px 0 4px;
+$select-sorting-padding-medium:4px 26px 4px 4px;
+$select-sorting-padding-small:0 22px 0 4px;
+$select-sorting-height-large:36px;
+$select-sorting-height-medium:32px;
+$select-sorting-height-small:23px;
+$select-text-info:#096AB3;
+
+
+// 태그
+$tag-bg-hover:#eef2f7;
+$tag-bg-pressed:#d6e0eb;
+$tag-border:#cdd1d5;
+$tag-size-large:40px;
+$tag-size-medium:32px;
+$tag-size-small:24px;
+$tag-padding-large:8px 12px;
+$tag-padding-medium:8px 10px;
+$tag-padding-small:8px;
+$tag-delete-size-large:16px;
+$tag-delete-size-medium:16px;
+$tag-delete-size-small:12px;
+
+// 툴팁
+
+// 테이블
+$table-thead-text:#131416;
+$table-tbody-text:#464c53;
+
+// 구조화목록
+$structured-list-border:#b1b8be;
+
+// 프로그램
+$top-title-color :#0B50D0; // primary
+$top-fouse-icon: #0B78CB; // info
+
+// 공통
+$point-color: #256EF4;
+$basic-radius: 16px;
+
+// input 기본 색상
+$input-text-color: #1E2124;
+$input-text-placeholder: #8A949E;
+$input-text-disabled: #6D7882;
+$input-text-view: #464C53;
+$input-label-color: #464C53;
+$input-point-color: $point-color;
+
+$input-border-default: #58616A;
+$input-border-focused: $point-color;
+$input-border-completed: #58616A;
+$input-border-error: #DE3412;
+$input-border-disabled: #B1B8BE;
+$input-border-view: #B1B8BE;
+
+$input-bg-default: #FFFFFF;
+$input-bg-disabled: #CDD1D5;
+$input-bg-view: #CDD1D5;
+
+$input-message-basic: #096AB3; 
+$input-message-completed: #267337;
+$input-message-error: #BD2C0F;
+
+// input 사이즈
+$input-height-xlg: 56px;
+$input-height-lg: 48px;
+$input-height-md: 40px;
+$input-height-sm: 36px;
+$input-height-xsm: 32px;
+$input-padding: 16px;
+$input-border-lg-radius: 8px;
+$input-border-radius: 6px;
+
+$input-font-lg: 19px;
+$input-font-md: 17px;
+$input-font-sm: 15px;
+
+// input 아이콘
+$input-clear-icon: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='20' width='20' height='20' rx='10' transform='rotate(90 20 0)' fill='%23CDD1D5'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M6.0649 4.93451C5.75248 4.62209 5.24595 4.62209 4.93353 4.93451C4.62111 5.24693 4.62111 5.75346 4.93353 6.06588L8.86863 10.001L4.9351 13.9345C4.62268 14.2469 4.62268 14.7535 4.9351 15.0659C5.24751 15.3783 5.75405 15.3783 6.06647 15.0659L10 11.1323L13.9335 15.0659C14.246 15.3783 14.7525 15.3783 15.0649 15.0659C15.3773 14.7535 15.3773 14.2469 15.0649 13.9345L11.1314 10.001L15.0665 6.06588C15.3789 5.75346 15.3789 5.24693 15.0665 4.93451C14.754 4.62209 14.2475 4.62209 13.9351 4.93451L10 8.86961L6.0649 4.93451Z' fill='%2333363D'/%3E%3C/svg%3E%0A");
+$input-visible-icon: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M3.63629 12.0843C4.03609 10.8283 5.08502 9.63166 6.59666 8.73858C8.10015 7.85031 10.0027 7.3002 11.9985 7.3002C16.0279 7.3002 19.3773 9.51934 20.3566 12.1209C20.359 12.1272 20.3594 12.1313 20.3594 12.1328L20.3594 12.133C19.8163 13.8467 17.4328 16.7002 11.9985 16.7002C6.62812 16.7002 4.20473 13.6043 3.63555 12.0869L3.63629 12.0843ZM11.9985 5.7002C9.71865 5.7002 7.53474 6.32599 5.7828 7.36103C4.03901 8.39127 2.66351 9.86534 2.11167 11.599C2.0057 11.9319 2.00656 12.2981 2.13461 12.6412C2.92028 14.7463 5.91647 18.3002 11.9985 18.3002C18.0562 18.3002 21.1104 15.0626 21.8852 12.6146C21.9975 12.26 21.9786 11.8883 21.854 11.5573C20.5835 8.18203 16.518 5.7002 11.9985 5.7002ZM9.79922 12.0002C9.79922 10.7852 10.7842 9.8002 11.9992 9.8002C13.2142 9.8002 14.1992 10.7852 14.1992 12.0002C14.1992 13.2152 13.2142 14.2002 11.9992 14.2002C10.7842 14.2002 9.79922 13.2152 9.79922 12.0002ZM11.9992 8.2002C9.90054 8.2002 8.19922 9.90151 8.19922 12.0002C8.19922 14.0989 9.90054 15.8002 11.9992 15.8002C14.0979 15.8002 15.7992 14.0989 15.7992 12.0002C15.7992 9.90151 14.0979 8.2002 11.9992 8.2002Z' fill='%2333363D'/%3E%3C/svg%3E%0A");
+$input-invisible-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M4.23438 5.36526L18.6344 19.7653L19.7657 18.6339L5.36575 4.23389L4.23438 5.36526ZM18.8179 16.033C18.6067 16.1789 18.3856 16.3213 18.1554 16.459L16.9833 15.2869C17.3108 15.1074 17.62 14.9158 17.9085 14.7166C18.6672 14.1925 19.2619 13.6286 19.6584 13.1144C20.0746 12.5747 20.1992 12.1864 20.1992 11.9998C20.1992 11.8132 20.0746 11.4249 19.6584 10.8852C19.2619 10.371 18.6672 9.80712 17.9085 9.28304C16.3895 8.23378 14.2951 7.3998 11.9992 7.3998C11.1076 7.3998 10.2463 7.52559 9.43738 7.74091L8.15735 6.46088C9.33192 6.05284 10.6303 5.7998 11.9992 5.7998C14.6739 5.7998 17.0795 6.76583 18.8179 7.96657C19.6878 8.56749 20.4111 9.24111 20.9255 9.90817C21.4201 10.5497 21.7992 11.2864 21.7992 11.9998C21.7992 12.7132 21.4201 13.4499 20.9255 14.0914C20.4111 14.7585 19.6878 15.4321 18.8179 16.033ZM16.1742 11.9998C16.1742 12.7141 15.9847 13.3801 15.6537 13.9572L14.4485 12.752C14.5303 12.5137 14.5742 12.2605 14.5742 11.9998C14.5742 10.6827 13.4524 9.5598 11.9992 9.5598C11.7691 9.5598 11.5474 9.58795 11.337 9.64056L10.0991 8.4026C10.6717 8.11896 11.3187 7.9598 11.9992 7.9598C14.2739 7.9598 16.1742 9.73811 16.1742 11.9998ZM13.8994 15.597L12.6614 14.359C12.4511 14.4117 12.2293 14.4398 11.9992 14.4398C10.546 14.4398 9.42422 13.3169 9.42422 11.9998C9.42422 11.7391 9.46818 11.4859 9.54998 11.2476L8.34476 10.0424C8.01375 10.6195 7.82422 11.2855 7.82422 11.9998C7.82422 14.2615 9.72452 16.0398 11.9992 16.0398C12.6797 16.0398 13.3267 15.8806 13.8994 15.597ZM6.08993 9.28304C6.37842 9.08376 6.68767 8.89225 7.0151 8.71275L5.843 7.54064C5.61282 7.67828 5.39178 7.82069 5.18059 7.96657C4.31062 8.56749 3.58732 9.24111 3.07295 9.90817C2.5783 10.5497 2.19922 11.2864 2.19922 11.9998C2.19922 12.7132 2.5783 13.4499 3.07295 14.0914C3.58732 14.7585 4.31062 15.4321 5.18059 16.033C6.91891 17.2338 9.32458 18.1998 11.9992 18.1998C13.3681 18.1998 14.6665 17.9468 15.8411 17.5387L14.5611 16.2587C13.7521 16.474 12.8909 16.5998 11.9992 16.5998C9.70329 16.5998 7.60897 15.7658 6.08993 14.7166C5.33121 14.1925 4.7365 13.6286 4.34001 13.1144C3.92381 12.5747 3.79922 12.1864 3.79922 11.9998C3.79922 11.8132 3.92381 11.4249 4.34001 10.8852C4.7365 10.371 5.33121 9.80712 6.08993 9.28304Z' fill='%232D2D2D'/%3E%3C/svg%3E");
+$message-icon-basic: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='13.3333' height='13.3333' rx='6.66667' transform='matrix(1 0 0 -1 1.33398 14.6667)' fill='%230B78CB'/%3E%3Cpath d='M7.93216 6.29409C8.37399 6.29409 8.73216 5.93592 8.73216 5.49409C8.73216 5.05226 8.37399 4.69409 7.93216 4.69409C7.49033 4.69409 7.13216 5.05226 7.13216 5.49409C7.13216 5.93592 7.49033 6.29409 7.93216 6.29409Z' fill='white'/%3E%3Cpath d='M6.99883 6.95418C6.88837 6.95418 6.79883 7.04373 6.79883 7.15418V7.55418C6.79883 7.66464 6.88837 7.75418 6.99883 7.75418H7.3332C7.44366 7.75418 7.5332 7.84373 7.5332 7.95418V10.3959H6.86602C6.75556 10.3959 6.66602 10.4855 6.66602 10.5959V10.9959C6.66602 11.1064 6.75556 11.1959 6.86602 11.1959H9.13268C9.24314 11.1959 9.33268 11.1064 9.33268 10.9959V10.5959C9.33268 10.4855 9.24314 10.3959 9.13268 10.3959H8.7332V7.15418C8.7332 7.04373 8.64366 6.95418 8.5332 6.95418H6.99883Z' fill='white'/%3E%3C/svg%3E%0A");
+$message-icon-completed: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='13.3333' height='13.3333' rx='6.66667' transform='matrix(1 0 0 -1 1.33398 14.6667)' fill='%23228738'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M10.5029 5.55984C10.746 5.72602 10.8085 6.05789 10.6423 6.30108L7.90896 10.3011C7.81943 10.4321 7.67621 10.5164 7.51822 10.5312C7.36022 10.546 7.20386 10.4896 7.09161 10.3774L5.42391 8.71076C5.21556 8.50254 5.21546 8.16485 5.42367 7.95651C5.63188 7.74816 5.96957 7.74806 6.17792 7.95627L7.39095 9.16854L9.76161 5.69928C9.92779 5.45608 10.2597 5.39365 10.5029 5.55984Z' fill='white'/%3E%3C/svg%3E%0A");
+$message-icon-error: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.33398 8.00008C1.33398 11.682 4.31875 14.6667 8.00065 14.6667C11.6826 14.6667 14.6673 11.682 14.6673 8.00008C14.6673 4.31818 11.6826 1.33341 8.00065 1.33341C4.31875 1.33341 1.33398 4.31818 1.33398 8.00008Z' fill='%23DE3412'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M6.37725 5.62301C6.16897 5.41473 5.83129 5.41473 5.62301 5.62301C5.41473 5.83129 5.41473 6.16897 5.62301 6.37725L7.2464 8.00065L5.62405 9.62301C5.41577 9.83129 5.41577 10.169 5.62405 10.3773C5.83233 10.5855 6.17002 10.5855 6.37829 10.3773L8.00065 8.7549L9.62301 10.3773C9.83129 10.5855 10.169 10.5855 10.3773 10.3773C10.5855 10.169 10.5855 9.83129 10.3773 9.62301L8.7549 8.00065L10.3783 6.37725C10.5866 6.16897 10.5866 5.83129 10.3783 5.62301C10.17 5.41473 9.83233 5.41473 9.62405 5.62301L8.00065 7.2464L6.37725 5.62301Z' fill='white'/%3E%3C/svg%3E%0A");
+$date-picker-icon: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M7.8 2C8.24183 2 8.6 2.35817 8.6 2.8V5.00005L15.3984 5.00013V2.8C15.3984 2.35817 15.7566 2 16.1984 2C16.6403 2 16.9984 2.35817 16.9984 2.8V5.00015L19.1992 5.00017C20.1933 5.00018 20.9992 5.80607 20.9992 6.80017V19.2002C20.9992 20.1943 20.1933 21.0002 19.1992 21.0002H4.8C3.80589 21.0002 3 20.1943 3 19.2002V6.8C3 5.80588 3.8059 4.99999 4.80002 5L7 5.00003V2.8C7 2.35817 7.35817 2 7.8 2ZM4.8 6.6C4.68954 6.6 4.6 6.68954 4.6 6.8V9.2002H19.3992V6.80017C19.3992 6.68972 19.3097 6.60017 19.1992 6.60017L4.8 6.6ZM4.6 19.2002V10.8002H19.3992V19.2002C19.3992 19.3106 19.3097 19.4002 19.1992 19.4002H4.8C4.68954 19.4002 4.6 19.3106 4.6 19.2002ZM7.60156 14C7.04928 14 6.60156 14.4477 6.60156 15C6.60156 15.5523 7.04928 16 7.60156 16C8.15385 16 8.60156 15.5523 8.60156 15C8.60156 14.4477 8.15385 14 7.60156 14ZM12 14C11.4477 14 11 14.4477 11 15C11 15.5523 11.4477 16 12 16C12.5523 16 13 15.5523 13 15C13 14.4477 12.5523 14 12 14ZM15.4023 15C15.4023 14.4477 15.8501 14 16.4023 14C16.9546 14 17.4023 14.4477 17.4023 15C17.4023 15.5523 16.9546 16 16.4023 16C15.8501 16 15.4023 15.5523 15.4023 15Z' fill='%2333363D'/%3E%3C/svg%3E%0A");
+$time-picker-icon: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2ZM12 3.59961C7.36081 3.59961 3.59961 7.36081 3.59961 12C3.59961 16.6391 7.36081 20.4004 12 20.4004C16.6391 20.4004 20.4004 16.6391 20.4004 12C20.4004 7.36081 16.6391 3.59961 12 3.59961ZM11.999 6.7002C12.4408 6.7002 12.7987 7.05826 12.7988 7.5V11.2002H16.5C16.9416 11.2005 17.2998 11.5593 17.2998 12.001C17.2995 12.4424 16.9414 12.8005 16.5 12.8008H11.999C11.5574 12.8007 11.1995 12.4425 11.1992 12.001V7.5C11.1993 7.05833 11.5574 6.7003 11.999 6.7002Z' fill='%2333363D'/%3E%3C/svg%3E%0A");
+
+
+// 단계표시기
+$step-text-color1: #1E2124;
+$step-text-color2: #464C53;
+$step-active-bg: $point-color;
+$step-done-bg: #6D7882;
+$step-empty-bg: #E6E8EA;
+$step-basic-bg: #CDD1D5;
+$step-done-icon: url("data:image/svg+xml,%3Csvg width='10' height='9' viewBox='0 0 10 9' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.50049 4.20595L4.49095 7.08807L8.4999 0.912109' stroke='white' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E%0A");
+
+
+// 개인정보수집동의
+$personal-info-color: #1E2124;
+$personal-info-radius: $basic-radius;
+$personal-info-border: #B1B8BE;
+$personal-check-bg: #ECF2FE;
+$personal-scroll-bg: #D6E0EB;
+$personal-arrow-left: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M15.5954 19.7354C15.2998 20.0638 14.794 20.0904 14.4656 19.7948L6.46559 12.5946C6.29703 12.4429 6.20077 12.2268 6.20077 12C6.20078 11.7732 6.29703 11.5571 6.4656 11.4054L14.4656 4.20537C14.794 3.9098 15.2998 3.93643 15.5954 4.26484C15.891 4.59324 15.8644 5.09908 15.5359 5.39464L8.19664 12L15.536 18.6056C15.8644 18.9011 15.891 19.407 15.5954 19.7354Z' fill='%2333363D'/%3E%3C/svg%3E%0A");
+$personal-arrow-right: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M8.40458 19.7354C8.70014 20.0638 9.20597 20.0904 9.53439 19.7948L17.5344 12.5951C17.703 12.4434 17.7992 12.2273 17.7992 12.0005C17.7992 11.7737 17.703 11.5576 17.5344 11.4059L9.53442 4.20539C9.20602 3.90981 8.70019 3.93642 8.40461 4.26482C8.10903 4.59321 8.13564 5.09905 8.46403 5.39462L15.8034 12.0005L8.46407 18.6056C8.13565 18.9011 8.10902 19.4069 8.40458 19.7354Z' fill='%2333363D'/%3E%3C/svg%3E%0A");
+
+
+// 달력
+$calandar-basic-color: #1E2124;
+$calandar-none-color: #8A949E;
+$calandar-disabled-color: #8A949E;
+$calandar-holiday-color: #BD2C0F;
+$calandar-basic-bg: #FFFFFF;
+$calandar-today-bg: #D8E5FD;
+$calandar-disabled-bg: #F4F5F6;
+$calandar-holiday-bg: #BD2C0F;
+$calandar-selected-border: $point-color; 
+$calandar-border: #CDD1D5;
+$calandar-radius: $basic-radius;
+$calandar-arrow-left: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M12.8748 16.1879C12.6383 16.4506 12.2336 16.4719 11.9709 16.2355L5.57091 10.4753C5.43606 10.3539 5.35906 10.181 5.35906 9.99961C5.35906 9.81818 5.43606 9.64528 5.57092 9.52391L11.9709 3.76391C12.2336 3.52745 12.6383 3.54875 12.8748 3.81148C13.1112 4.0742 13.0899 4.47887 12.8272 4.71532L6.95575 9.99962L12.8272 15.2841C13.0899 15.5205 13.1112 15.9252 12.8748 16.1879Z' fill='%2333363D'/%3E%3C/svg%3E%0A");
+$calandar-arrow-right: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M7.12523 16.1879C7.36168 16.4506 7.76634 16.4719 8.02907 16.2355L14.4291 10.4757C14.5639 10.3544 14.6409 10.1815 14.6409 10C14.6409 9.81859 14.5639 9.64569 14.4291 9.52431L8.0291 3.76392C7.76638 3.52746 7.36171 3.54874 7.12525 3.81146C6.88879 4.07418 6.91007 4.47885 7.17279 4.71531L13.0442 9.99998L7.17282 15.2841C6.91008 15.5205 6.88878 15.9252 7.12523 16.1879Z' fill='%2333363D'/%3E%3C/svg%3E%0A");
+$calandar-button-icon: url("data:image/svg+xml,%3Csvg width='21' height='20' viewBox='0 0 21 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10.1807 14.632L3.92187 7.35437C3.68955 7.08422 3.88148 6.66602 4.23779 6.66602H16.7565C17.1129 6.66602 17.3048 7.08426 17.0724 7.35439L10.8125 14.6321C10.6462 14.8254 10.3469 14.8253 10.1807 14.632Z' fill='%2333363D'/%3E%3C/svg%3E%0A");
+$calandar-color1-bg: #E85A9E;
+$calandar-color2-bg: #078BD7;
+$calandar-color3-bg: #9445D9;
+$calandar-color4-bg: #54A733;
+$calandar-color5-bg: #128A97;
+
+
+// 폼 (Form)
+$form-basic-color: #1E2124;
+$form-border-color: #B1B8BE;
+$form-border-radius: $basic-radius;
+$form-info-bg: #E7F4FE;
+$form-info-icon: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='20' height='20' rx='10' transform='matrix(1 0 0 -1 2 22)' fill='%230B78CB'/%3E%3Cpath d='M11.8992 9.44102C12.562 9.44102 13.0992 8.90376 13.0992 8.24102C13.0992 7.57827 12.562 7.04102 11.8992 7.04102C11.2365 7.04102 10.6992 7.57827 10.6992 8.24102C10.6992 8.90376 11.2365 9.44102 11.8992 9.44102Z' fill='white'/%3E%3Cpath d='M10.3992 10.4312C10.2888 10.4312 10.1992 10.5207 10.1992 10.6312V11.4312C10.1992 11.5416 10.2888 11.6312 10.3992 11.6312H11.1008C11.2112 11.6312 11.3008 11.7207 11.3008 11.8312V15.5938H10.2C10.0895 15.5938 10 15.6833 10 15.7937V16.5938C10 16.7042 10.0895 16.7937 10.2 16.7937H13.8C13.9105 16.7937 14 16.7042 14 16.5938V15.7937C14 15.6833 13.9105 15.5938 13.8 15.5938H13.1008V10.6312C13.1008 10.5207 13.0112 10.4312 12.9008 10.4312H10.3992Z' fill='white'/%3E%3C/svg%3E%0A");
+
+
+// 디지털문서
+$document-bg :#F1F6FE;

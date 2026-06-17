@@ -1,0 +1,50 @@
+
+
+@use '../../../../common/abstracts' as *;
+
+$status-font-size: $font-size-base;
+$status-font-size-base: 15px;
+$status-font-size-sm: 14px;
+$status-font-size-lg: 17px;
+$status-border-radius: 4px;
+$status-padding:5px 10px 4px;
+$status-padding-sm:1px 3px;
+$status-padding-lg:4px 14px;
+
+// 상태 색상
+$color-status1: #3180EF;
+$color-status2: #444;
+$color-status3: #DB214D;
+$color-status4: #1E2D75;
+$color-status5: #FDB913;
+$color-status6: #019E75;
+
+// 뱃지 및 상태 색상
+$status-colors: (
+  "status1": $color-status1,
+  "status2": $color-status2,
+  "status3": $color-status3,
+  "status4": $color-status4,
+  "status5": $color-status5,
+  "status6": $color-status6,
+);
+
+$badge-colors: (
+  "badge1": ( "background": #FFF, "border": #3180EF, "font": #3180EF ),
+  "badge2": ( "background": #FFF, "border": #E35276, "font": #E35276 ),
+  "badge3": ( "background": #FFF, "border": #1E2D75, "font": #1E2D75 ),
+  "badge4": ( "background": #FFF, "border": #019E75, "font": #019E75 ),
+  "badge5": ( "background": #FFF, "border": #1992BC, "font": #1992BC  ),
+  "badge6": ( "background": #FFF, "border": #E66916, "font": #E66916 ),
+  "badge7": ( "background": #FFF, "border": #A400DA, "font": #A400DA  ),
+  "badge8": ( "background": #FFF, "border": #3D4E64, "font": #3D4E64 ),
+  "badge9": ( "background": #FFF, "border": #A1760C, "font": #A1760C ),
+);
+
+@function get-color($color) {
+  @return map-get($colors, $color);
+}
+
+@function get-board-color($color) {
+  @return map-get($board-colors, $color);
+}

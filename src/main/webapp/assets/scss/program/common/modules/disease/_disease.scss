@@ -1,0 +1,364 @@
+@use '../../../../common/abstracts' as *;
+@use 'variables' as disease-vars;
+
+@keyframes diseasePoint {
+    0% {
+        width: 11px; height: 11px; opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        width: 36px; height: 36px; opacity: 0;
+    }
+}
+
+.p-title-box {
+    display: block; width: 100%; text-align: center; margin: 0 0 30px 0;
+    @media (max-width: 490px) {margin: 0 0 20px 0;}
+}
+.p-title {
+    display: block; color: disease-vars.$disease-title-color; font-family: 'title_font'; font-size: 48px; font-weight: 700; line-height: 170%; letter-spacing: -0.48px;
+    @media (max-width: 768px) {font-size: 36px;}
+    @media (max-width: 490px) {font-size: 27px;}
+    .p-title-point {color: disease-vars.$disease-point-color;}
+}
+.p-sub-title {
+    display: block; color: disease-vars.$disease-title-color; font-size: 16px; font-weight: 400; line-height: 140%; letter-spacing: -0.16px;
+}
+
+.disease-search-box {
+    display: block; width: 100%; margin: 0 0 70px 0; border: 1px solid disease-vars.$disease-border-color; border-radius: 16px; padding: 50px;
+    @media (max-width: 1280px) {padding: 30px; margin: 0 0 30px 0;}
+    @media (max-width: 490px) {padding: 20px;}
+    .ds-tab-wrap {
+        position: relative; display: block; width: 100%; padding: 0 0 0 330px;
+        @media (max-width: 1280px) {padding: 0 0 0 310px;}
+        @media (max-width: 1024px) {padding: 0 0 0 254px;}
+        @media (max-width: 768px) {padding: 0 0 0 198px;}
+        @media (max-width: 640px) {padding: 0;}
+    }
+    .ds-person {
+        position: absolute; left: 0; top: 0; display: flex; align-items: center; justify-content: center; width: 280px; height: 400px; background: linear-gradient(180deg, #019E75 80.1%, #008260 104.75%); border-radius: 16px;
+        @media (max-width: 1024px) {width: 224px; height: 320px;}
+        @media (max-width: 768px) {width: 168px; height: 240px;}
+        @media (max-width: 640px) {position: relative; left: auto; top: auto; margin: 0 auto 30px; width: 280px; height: 400px;}
+        @media (max-width: 360px) {width: 100%;}
+        &::before {
+            position: absolute; left: 50%; bottom: 0; transform: translateX(-50%); display: block; width: 280px; height: 84px; background-position: center; background-repeat: no-repeat; background-size: 100%; background-image: disease-vars.$disease-search-ground; z-index: 1; content: '';
+            @media (max-width: 1024px) {width: 224px; height: 67px;}
+            @media (max-width: 768px) {width: 168px; height: 50px;}
+            @media (max-width: 640px) {width: 280px; height: 84px;}
+        }
+        .ds-person-inner {
+            position: relative; display: flex; align-items: center; justify-content: center; width: 154px; height: 373px;
+            @media (max-width: 1024px) {width: 123px; height: 298px;}
+            @media (max-width: 768px) {width: 92px; height: 224px;}
+            @media (max-width: 640px) {width: 154px; height: 373px;}
+            img {
+                position: relative; display: block; width: 100%; height: 100%; z-index: 1;
+            }
+            .icon {
+                position: absolute; content: ''; z-index: 2; display: block; width: 11px; height: 11px; border-radius: 100%; background-color: #E35276; box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.25);
+                @media (max-width: 768px) {width: 6px; height: 6px;}
+                @media (max-width: 640px) {width: 11px; height: 11px;}
+                &::before,
+                &::after {
+                    position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); display: block; width: 36px; height: 36px; border-radius: 100%; background-color: rgba(227, 82, 118, 0.2); content: '';
+                }
+                &::before {animation: diseasePoint 3s infinite;}
+                &::after {animation: diseasePoint 3s 0.5s infinite;}
+            }
+            .ds-img-box {
+                display: block; width: 100%; height: 100%;
+            }
+            .ds-icon-box {
+                position: absolute; left: 0; top: 0; display: block; width: 100%; height: 100%;
+                &.n1 {
+                    .icon {display: none;}
+                }
+                &.n2 {
+                    .icon {
+                        &.n1 {left: 46.94%; top: 4.22%;}
+                        &.n2,
+                        &.n3,
+                        &.n4,
+                        &.n5,
+                        &.n6 {display: none;}
+                    }
+                }
+                &.n3 {
+                    .icon {
+                        &.n1 {left: 46.94%; top: 16.29%;}
+                        &.n2,
+                        &.n3,
+                        &.n4,
+                        &.n5,
+                        &.n6 {display: none;}
+                    }
+                }
+                &.n4 {
+                    .icon {
+                        &.n1 {left: 46.94%; top: 25.45%;}
+                        &.n2,
+                        &.n3,
+                        &.n4,
+                        &.n5,
+                        &.n6 {display: none;}
+                    }
+                }
+                &.n5 {
+                    .icon {
+                        &.n1 {left: 46.94%; top: 38.86%;}
+                        &.n2,
+                        &.n3,
+                        &.n4,
+                        &.n5,
+                        &.n6 {display: none;}
+                    }
+                }
+                &.n6 {
+                    .icon {
+                        &.n1 {left: 46.94%; top: 22.85%;}
+                        &.n2 {left: 46.94%; top: 34.96%;}
+                        &.n3,
+                        &.n4,
+                        &.n5,
+                        &.n6 {display: none;}
+                    }
+                }
+                &.n7 {
+                    .icon {
+                        &.n1 {left: 33.95%; top: 44.94%;}
+                        &.n2 {left: 60.11%; top: 51.25%;}
+                        &.n3,
+                        &.n4,
+                        &.n5,
+                        &.n6 {display: none;}
+                    }
+                }
+                &.n8 {
+                    .icon {
+                        &.n1 {left: 19.11%; top: 26.31%;}
+                        &.n2 {left: 80.03%; top: 39.69%;}
+                        &.n3,
+                        &.n4,
+                        &.n5,
+                        &.n6 {display: none;}
+                    }
+                }
+                &.n9 {
+                    .icon {
+                        &.n1 {left: 33.75%; top: 58.32%;}
+                        &.n2 {left: 58.87%; top: 74.92%;}
+                        &.n3,
+                        &.n4,
+                        &.n5,
+                        &.n6 {display: none;}
+                    }
+                }
+                &.n10 {
+                    .icon {
+                        &.n1 {left: 39.56%; top: 8.98%;}
+                        &.n2 {left: 58.87%; top: 25.45%;}
+                        &.n3 {left: 29.06%; top: 43%;}
+                        &.n4 {left: 80.03%; top: 49.53%;}
+                        &.n5 {left: 46.94%; top: 49.53%;}
+                        &.n6 {left: 27.36%; top: 90.12%;}
+                    }
+                }
+            }
+        }
+    }
+    .ds-category-select {
+        display: none; position: relative; border-radius: 8px; width: 100%; height: 45px; border: 2px solid disease-vars.$disease-point-color; padding: 11px 30px 11px 13px; text-align: left; font-size: 16px; font-weight: 700; letter-spacing: 0.16px; color: disease-vars.$disease-point-color;
+        @media (max-width: 490px) {display: block;}
+        &::before {
+            position: absolute; right: 13px; top: 50%; transform: translateY(-50%); display: block; width: 15px; height: 15px; background-position: center; background-repeat: no-repeat; background-size: 100%; background-image: disease-vars.$disease-select-icon; content: '';
+        }
+    }
+    .ds-category-box {
+        position: relative; display: block; width: 100%;
+        &.active {
+            .ds-category {
+                @media (max-width: 490px) {display: block;}
+            }
+            .ds-category-select {
+                &::before {
+                    transform: translateY(-50%) rotate(180deg);
+                }
+            }
+        }
+    }
+    .ds-category {
+        display: flex; align-items: center; width: 100%; border-bottom: 1px dashed #CCC;
+        @media (max-width: 1024px) {flex-wrap: wrap;}
+        @media (max-width: 490px) {position: absolute; left: 0; top: 55px; flex-direction: column; flex-wrap: nowrap; border-radius: 8px; border: 1px solid disease-vars.$disease-border-color; background-color: #FFF; box-shadow: 2px 2px 8px 0px rgba(0, 0, 0, 0.05); z-index: 10; display: none;}
+        .ds-category-button {
+            position: relative; display: flex; align-items: center; justify-content: center; width: 100%; height: 63px; color: disease-vars.$disease-font-color; font-size: 16px; font-weight: 400; line-height: 150%; letter-spacing: -0.32px; transition: all 0.3s;
+            @media (max-width: 1024px) {height: 50px;}
+            @media (max-width: 768px) {height: 40px; font-size: 15px;}
+            @media (max-width: 490px) {min-height: 45px; height: auto; justify-content: flex-start; padding: 10px 15px;}
+            &::before {
+                position: absolute; left: 50%; bottom: -1px; transform: translateX(-50%); display: block; width: 0; height: 3px; background-color: disease-vars.$disease-contents-color; z-index: 1; content: ''; transition: all 0.3s;
+                @media (max-width: 490px) {display: none;}
+            }
+        }
+        .ds-item {
+            position: relative; width: calc(100% / 10);
+            @media (max-width: 1024px) {width: calc(100% / 5);}
+            @media (max-width: 490px) {width: 100%;}
+            &::before {
+                position: absolute; left: 0; top: 50%; transform: translateY(-50%); display: none; width: 1px; height: 18px; background-color: disease-vars.$disease-border-color; z-index: 1; content: '';
+            }
+            & + .ds-item {
+                @media (max-width: 490px) {border-top: 1px solid disease-vars.$disease-border-color;}
+                &::before {
+                    display: block;
+                    @media (max-width: 490px) {display: none;}
+                }
+            }
+            &.active {
+                .ds-category-button {
+                    color: disease-vars.$disease-contents-color; font-weight: 700;
+                    @media (max-width: 490px) {color: disease-vars.$disease-point-color; font-weight: 400;}
+                    &::before {width: 100%;}
+                }
+            }
+            &.n6 {
+                &::before {
+                    @media (max-width: 1024px) {display: none;}
+                }
+            }
+        }
+    }
+    .ds-contents {
+        display: block; margin: 10px 0 0 0; border-radius: 8px; background-color: #F6F7F9; width: 100%; height: 260px; padding: 28px 19px 28px 30px;
+        @media (max-width: 1024px) {height: 208px; padding: 20px 20px 20px 10px;}
+        @media (max-width: 768px) {height: 149px;}
+        @media (max-width: 490px) {height: 235px; padding: 10px;}
+        .ds-contents-inner {
+            display: block; width: 100%; height: 100%; padding: 0 20px; overflow-y: scroll;
+            @media (max-width: 1024px) {padding: 0 20px 0 10px;}
+            @media (max-width: 490px) {padding: 0 10px 0 5px;}
+            &::-webkit-scrollbar {
+                width: 8px;
+            }
+            &::-webkit-scrollbar-thumb {
+                background-color: #3D4E64; border: 1px solid #FFF; border-radius: 10px;
+            }
+            &::-webkit-scrollbar-track {
+                background-color: rgba(61, 78, 100, 0.2); border-radius: 10px;
+            }
+        }
+    }
+    .ds-contents-ul {
+        display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: flex-start; width: calc(100% + 10px); height: calc(100% + 28px); margin: -14px -5px;
+        @media (max-width: 1024px) {height: calc(100% + 26px); margin: -13px -5px;}
+        @media (max-width: 768px) {height: calc(100% + 10px); margin: -5px;}
+        @media (max-width: 490px) {width: 100%; height: 100%; margin: 0;}
+        .ds-contents-li {
+            padding: 14px 5px; width: calc(100% / 4);
+            @media (max-width: 1024px) {padding: 13px 5px;}
+            @media (max-width: 960px) {width: calc(100% / 3);}
+            @media (max-width: 768px) {padding: 5px;}
+            @media (max-width: 560px) {width: calc(100% / 2);}
+            @media (max-width: 490px) {width: 100%; padding: 0;}
+        }
+        .checkbox-box {
+            input[type=checkbox] {
+                white-space: normal;
+                @media (max-width: 490px) {font-size: 16px;}
+                & + .chk_ball {
+                    background-size: 12px 8px; background-image: disease-vars.$disease-checkbox-icon; border-color: disease-vars.$disease-checkbox-border-color; background-position: center; background-repeat: no-repeat;
+                }
+                &:checked,
+                &:active {
+                    & + .chk_ball {
+                        background-color: disease-vars.$disease-point-color; background-image: disease-vars.$disease-checkbox-icon-active; border-color: disease-vars.$disease-point-color;
+                    }
+                }
+            }
+        }
+    }
+    .ds-button-wrap {
+        display: flex; justify-content: flex-end; width: calc(100% + 10px); margin: 10px -5px 0;
+        @media (max-width: 1024px) {justify-content: center; margin: 30px -5px 0;}
+        .ds-button-group {
+            padding: 0 5px;
+        }
+        .fe-btn {
+            height: 56px;
+        }
+    }
+}
+
+.disease-list {
+    position: relative; display: block; width: 100%;
+    .disease-item {
+        display: block; width: 100%; border: 1px solid disease-vars.$disease-border-color; border-radius: disease-vars.$disease-border-radius; overflow: hidden;
+        & + .disease-item {
+            margin: 40px 0 0 0;
+            @media (max-width: 768px) {margin: 30px 0 0 0;}
+        }
+    }
+    .di-header {
+        display: block; width: 100%; background-color: disease-vars.$disease-header-bg; padding: 25px 70px 20px;
+        @media (max-width: 1280px) {padding: 25px 30px 20px;}
+        @media (max-width: 490px) {padding: 15px 20px 10px;}
+    }
+    .di-contents {
+        display: block; width: 100%; background-color: disease-vars.$disease-contents-bg; padding: 30px 70px 40px;
+        @media (max-width: 1280px) {padding: 30px;}
+        @media (max-width: 490px) {padding: 20px 20px 30px;}
+    }
+    .di-title {
+        display: block; color: disease-vars.$disease-title-color; font-family: 'title_font'; font-size: 20px; font-weight: 700; line-height: 170%; letter-spacing: -0.2px;
+    }
+    .di-contents-item {
+        position: relative; display: block; width: 100%; padding: 0 0 0 120px;
+        @media (max-width: 768px) {padding: 0 0 0 90px;}
+        @media (max-width: 490px) {padding: 0;}
+        & + .di-contents-item {
+            margin: 10px 0 0 0;
+            @media (max-width: 490px) {margin: 20px 0 0 0;}
+        }
+    }
+    .di-contents-title {
+        position: absolute; left: 0; top: 0; display: block;
+        color: disease-vars.$disease-contents-color; font-family: 'title_font'; font-size: 16px; font-weight: 700; line-height: 170%;
+        @media (max-width: 490px) {position: relative; left: auto; top: auto;}
+    }
+    .di-contents-group {
+        font-size: 0; padding: 3px 20px 3px 0;
+        &:last-child {
+            padding-right: 0;
+        }
+        .badge {
+            margin: 0 5px 0 0;
+        }
+        .di-detail-text {line-height: 22px;}
+    }
+    .di-detail-text {
+        display: inline-block; color: disease-vars.$disease-title-color; font-size: 16px; font-weight: 400; line-height: 170%;
+        @media (max-width: 490px) {word-break: break-word;}
+    }
+    .di-detail-button {
+        display: none; width: 100%; border-radius: 4px; border: 1px solid disease-vars.$disease-border-color; background-color: #FFF; font-size: 16px; font-weight: 400; line-height: 28px; letter-spacing: 0.48px; text-align: center; margin: 10px 0 0 0;
+        @media (max-width: 360px) {display: block;}
+    }
+    .di-contents-box {
+        display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-start;
+        @media (max-width: 490px) {margin: 10px 0 0 0;}
+        &.contents-detail {
+            .di-detail-text {
+                @media (max-width: 360px) {max-height: 165px; display: -webkit-box; -webkit-line-clamp: 6; -webkit-box-orient: vertical; text-overflow: ellipsis; overflow: hidden; transition: all 0.5s ease-in-out;}
+            }
+            &.active {
+                .di-detail-text {
+                    max-height: 100vh; -webkit-line-clamp: none;
+                }
+            }
+        }
+    }
+}

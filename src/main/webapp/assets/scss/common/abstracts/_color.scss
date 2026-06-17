@@ -1,0 +1,707 @@
+@charset "UTF-8";
+$white: #fff !default;
+$black: #000 !default;
+$gray: #666666 !default;
+$textColor: #36404A !default;
+$pointTitleColor: #222222;
+
+// 주요 색상
+$primary: #2257B4 !default;
+$secondary: #123F72 !default;
+$sub: #159774 !default;
+$success: #019E75 !default;
+$information: #2768FF !default;
+$default: #D9DAE1 !default;
+$accnet: #D63D4A !default;
+$point: #D64210 !default;
+$danger: #DB214D !default;
+$warning: /*#FDB913*/#D56F13 !default;
+$ghost: #FFFFFF !default;
+$ghostHover: #3180EF !default;
+$ghostIcon: #B8B8B8 !default;
+$light: #767676 !default;
+$naver: #07A139 !default;
+$kakao: #FFE016 !default;
+$kakaoText: #1D1D1D !default;
+$kakaoLogo: #040000 !default;
+$google: #EA4335 !default;
+$dark: #3D4E64 !default;
+$darkHover: #343E4E !default;
+
+$default-10: #CAFCFD !default;
+$default-20: #97F3FB !default;
+$default-30: #62DFF5 !default;
+$default-40: #3BC5EC !default;
+$default-60: #007CC0 !default;
+$default-70: #005DA1 !default;
+$default-80: #004281 !default;
+$default-90: #002F6B !default;
+
+$primary-5: #F1F6FE !default;
+$primary-10: #E4EBF8 !default;
+$primary-20: #A7BCE1 !default;
+$primary-30: #799AD2 !default;
+$primary-40: #4F79C3 !default;
+$primary-60: #1C4690 !default;
+$primary-70: #14346C !default;
+$primary-80: #0D2448 !default;
+$primary-90: #091A39 !default;
+$primary-95: #040F24 !default;
+
+$secondary-5: #EEF2F7 !default;
+$secondary-10: #D6E0EB !default;
+$secondary-20: #BCCDDF !default;
+$secondary-30: #97B2D1 !default;
+$secondary-40: #6B96C7 !default;
+$secondary-50: #2F6AAC !default;
+$secondary-60: #165091 !default;
+$secondary-80: #0B2A4E !default;
+$secondary-90: #031F3F !default;
+$secondary-95: #02162C !default;
+
+$sub-5: #F3FEFB !default;
+$sub-10: #E0F6F0 !default;
+$sub-20: #A3D5C6 !default;
+$sub-30: #74C1AC !default;
+$sub-40: #45AC90 !default;
+$sub-60: #14795D !default;
+$sub-70: #0D5B46 !default;
+$sub-80: #093C2E !default;
+$sub-90: #061E17 !default;
+$sub-95: #021A13 !default;
+
+$gray-5: #F4F5F6 !default;
+$gray-10: #E6E8EA !default;
+$gray-20: #CDD1D5 !default;
+$gray-30: #B1B8BE !default;
+$gray-40: #8A949E !default;
+$gray-50: #6D7882 !default;
+$gray-60: #58616A !default;
+$gray-70: #464C53 !default;
+$gray-80: #33363D !default;
+$gray-90: #1E2124 !default;
+$gray-95: #131416 !default;
+
+$accnet-5: #FBEFF0 !default;
+$accnet-10: #F5D6D9 !default;
+$accnet-20: #EBADB2 !default;
+$accnet-30: #E0858C !default;
+$accnet-40: #D65C66 !default;
+$accnet-60: #AB2B36 !default;
+$accnet-70: #7A1F26 !default;
+$accnet-80: #521419 !default;
+$accnet-90: #310C0F !default;
+$accnet-95: #21080A !default;
+
+$point-10: #FCE7CE !default;
+$point-20: #FAC99E !default;
+$point-30: #F2A06B !default;
+$point-40: #E67A46 !default;
+$point-60: #B82B0B !default;
+$point-70: #9A1808 !default;
+$point-80: #7C0905 !default;
+$point-90: #660306 !default;
+
+$success-10: #EAF8CD !default;
+$success-20: #D3F29E !default;
+$success-30: #A9D868 !default;
+$success-40: #7BB23E !default;
+$success-60: #356D0C !default;
+$success-70: #275B08 !default;
+$success-80: #1A4905 !default;
+$success-90: #123C03 !default;
+
+
+$color-gray-c : #cbcbcb !default;
+
+// 색상 맵
+$colors: (
+  "default": $default,
+  "primary": $primary,
+  "secondary": $secondary,
+  "danger": $danger,
+  "warning": $warning,
+  "success": $success,
+  "dark": $black,
+  "information": $information,
+  "ghost": $ghost,
+  "light": $light,
+  //"point": $point,
+  //"ghostHover": $ghostHover,
+  //"white": $white,
+  //"black": $black,
+);
+
+$default-colors: (
+  "10": $default-10,
+  "20": $default-20,
+  "30": $default-30,
+  "40": $default-40,
+  "50": $default,
+  "60": $default-60,
+  "70": $default-70,
+  "80": $default-80,
+  "90": $default-90,
+) !default;
+
+$primary-colors: (
+  "5": $primary-5,
+  "10": $primary-10,
+  "20": $primary-20,
+  "30": $primary-30,
+  "40": $primary-40,
+  "50": $primary,
+  "60": $primary-60,
+  "70": $primary-70,
+  "80": $primary-80,
+  "90": $primary-90,
+  "95": $primary-95,
+) !default;
+
+$secondary-colors: (
+  "5": $secondary-5,
+  "10": $secondary-10,
+  "20": $secondary-20,
+  "30": $secondary-30,
+  "40": $secondary-40,
+  "50": $secondary-50,
+  "60": $secondary-60,
+  "70": $secondary,
+  "80": $secondary-80,
+  "90": $secondary-90,
+  "95": $secondary-95,
+) !default;
+
+$sub-colors: (
+  "5": $sub-5,
+  "10": $sub-10,
+  "20": $sub-20,
+  "30": $sub-30,
+  "40": $sub-40,
+  "50": $sub,
+  "60": $sub-60,
+  "70": $sub-70,
+  "80": $sub-80,
+  "90": $sub-90,
+  "95": $sub-95,
+) !default;
+
+$gray-colors: (
+  "10": $gray-10,
+  "20": $gray-20,
+  "30": $gray-30,
+  "40": $gray-40,
+  "50": $gray,
+  "60": $gray-60,
+  "70": $gray-70,
+  "80": $gray-80,
+  "90": $gray-90,
+) !default;
+
+$accnet-colors: (
+  "5": $accnet-5,
+  "10": $accnet-10,
+  "20": $accnet-20,
+  "30": $accnet-30,
+  "40": $accnet-40,
+  "50": $accnet,
+  "60": $accnet-60,
+  "70": $accnet-70,
+  "80": $accnet-80,
+  "90": $accnet-90,
+  "95": $accnet-95,
+) !default;
+
+$success-colors: (
+  "10": $success-10,
+  "20": $success-20,
+  "30": $success-30,
+  "40": $success-40,
+  "50": $success,
+  "60": $success-60,
+  "70": $success-70,
+  "80": $success-80,
+  "90": $success-90,
+) !default;
+
+$point-colors: (
+  "10": $point-10,
+  "20": $point-20,
+  "30": $point-30,
+  "40": $point-40,
+  "50": $point,
+  "60": $point-60,
+  "70": $point-70,
+  "80": $point-80,
+  "90": $point-90,
+) !default;
+
+// 주요 색상
+$base-main-color1: $default !default;
+$base-main-color2: $primary !default;
+$base-main-color3: #0279CE;
+$base-accordion-background :#F9F9FA;
+$base-accordion-border :#D9DAE1;
+$hover-accordion-background :#F3F7F9;
+$active-accordion-background :#F9F9FA;
+$active-accordion-border :#AFB5BC;
+
+// 보조 색상
+$base-sub-color1: #1992BC;
+$base-sub-color2: #019E75 !default;
+$base-sub-color3: #3D4E64 !default;
+$base-sub-color4: #F3F6FC !default;
+$base-sub-color5: #E35276 !default;
+$base-sub-color6: #FDB913 !default;
+$base-sub-color7: #EBF1FB !default;
+$base-sub-color8: #EBF6F6 !default;
+
+// 보드 버튼 색상
+$board-colors: (
+  "color1": $base-main-color2,
+  "color2": $base-main-color3,
+  "color3": $base-main-color1,
+  "color4": $ghost,
+  "color5": $point,
+  "color6": $light,
+  "color7": $black,
+);
+
+$bbs-subjectColor:$black !default;
+// 테이블 색상
+$base-table-colors: (
+  "color1": $white,
+  "color2": #F8F9FB,
+  "color3": #D9DAE1,
+  "border": #D9DAE1,
+  "notice-bg": #F8F9FB,
+  "notice-subject": map-get($gray-colors, "60"),
+  "base-bg": $white,
+  "base-border": #D9DAE1,
+);
+
+// 레이아웃 색상
+$focus-color: $black;
+$base-font-color: map-get($gray-colors, "60");
+$subvisual-title-color: $white;
+$point-colors: (
+  "1": #00829B,
+  "2": #1CB4F1,
+);
+
+////////////////////////////////////////
+///// KRDS
+$color-light-gray-100: #000000FF;
+$color-light-gray-95: #131416FF;
+$color-light-gray-90: #1E2124FF;
+$color-light-gray-80: #33363DFF;
+$color-light-gray-70: #464C53FF;
+$color-light-gray-60: #58616AFF;
+$color-light-gray-50: #6D7882FF;
+$color-light-gray-40: #8A949EFF;
+$color-light-gray-30: #B1B8BEFF;
+$color-light-gray-20: #CDD1D5FF;
+$color-light-gray-10: #E6E8EAFF;
+$color-light-gray-5: #F4F5F6FF;
+$color-light-gray-0: #FFFFFFFF;
+$color-light-primary-95: #040F24FF;
+$color-light-primary-90: #091A39FF;
+$color-light-primary-80: #0D2448FF;
+$color-light-primary-70: #14346CFF;
+$color-light-primary-60: #1C4690FF;
+$color-light-primary-50: #2257B4FF;
+$color-light-primary-40: #4F79C3FF;
+$color-light-primary-30: #799AD2FF;
+$color-light-primary-20: #A7BCE1FF;
+$color-light-primary-10: #E4EBF8FF;
+$color-light-primary-5: #F1F6FEFF;
+$color-light-secondary-95: #02162CFF;
+$color-light-secondary-90: #061F2CFF;
+$color-light-secondary-80: #0B2A4EFF;
+$color-light-secondary-70: #123F72FF;
+$color-light-secondary-60: #165091FF;
+$color-light-secondary-50: #2F6AACFF;
+$color-light-secondary-40: #749AC4FF;
+$color-light-secondary-30: #97B2D1FF;
+$color-light-secondary-20: #BCCDDFFF;
+$color-light-secondary-10: #D6E0EBFF;
+$color-light-secondary-5: #EEF2F7FF;
+$color-light-sub-95: #021A13FF;
+$color-light-sub-90: #061E17FF;
+$color-light-sub-80: #093C2EFF;
+$color-light-sub-70: #0D5B46FF;
+$color-light-sub-60: #14795DFF;
+$color-light-sub-50: #159774FF;
+$color-light-sub-40: #45AC90FF;
+$color-light-sub-30: #74C1ACFF;
+$color-light-sub-20: #A3D5C6FF;
+$color-light-sub-10: #E0F6F0FF;
+$color-light-sub-5: #F3FEFBFF;
+$color-light-point-95: #21080AFF;
+$color-light-point-90: #310C0FFF;
+$color-light-point-80: #521419FF;
+$color-light-point-70: #7A1F26FF;
+$color-light-point-60: #AB2B36FF;
+$color-light-point-50: #D63D4AFF;
+$color-light-point-40: #D65C66FF;
+$color-light-point-30: #E0858CFF;
+$color-light-point-20: #EBADB2FF;
+$color-light-point-10: #F5D6D9FF;
+$color-light-point-5: #FBEFF0FF;
+$color-light-danger-95: #260903FF;
+$color-light-danger-90: #390D05FF;
+$color-light-danger-80: #5C180AFF;
+$color-light-danger-70: #8A240FFF;
+$color-light-danger-60: #BD2C0FFF;
+$color-light-danger-50: #DE3412FF;
+$color-light-danger-40: #F05F42FF;
+$color-light-danger-30: #F48771FF;
+$color-light-danger-20: #F7AFA1FF;
+$color-light-danger-10: #FCDFD9FF;
+$color-light-danger-5: #FDEFECFF;
+$color-light-warning-95: #241800FF;
+$color-light-warning-90: #2E1F00FF;
+$color-light-warning-80: #422C00FF;
+$color-light-warning-70: #614100FF;
+$color-light-warning-60: #8A5C00FF;
+$color-light-warning-50: #9E6A00FF;
+$color-light-warning-40: #C78500FF;
+$color-light-warning-30: #FFB114FF;
+$color-light-warning-20: #FFC95CFF;
+$color-light-warning-10: #FFE0A3FF;
+$color-light-warning-5: #FFF3DBFF;
+$color-light-success-95: #0E2012FF;
+$color-light-success-90: #122B18FF;
+$color-light-information-95: #021A2CFF;
+$color-light-alpha-black100: #000000FF;
+$color-light-graphic-90: #223A58FF;
+$color-light-graphic-70: #39506CFF;
+$color-light-graphic-50: #61758FFF;
+$color-light-graphic-30: #98ACC5FF;
+$color-light-graphic-10: #E5ECF9FF;
+$color-light-alpha-black75: #000000BF;
+$color-light-alpha-black50: #00000080;
+$color-light-alpha-black25: #00000040;
+$color-light-alpha-black10: #0000001A;
+$color-light-alpha-black0: #00000000;
+$color-light-alpha-white100: #FFFFFFFF;
+$color-light-alpha-white75: #FFFFFFBF;
+$color-light-alpha-white50: #FFFFFF80;
+$color-light-alpha-white25: #FFFFFF40;
+$color-light-alpha-white10: #FFFFFF1A;
+$color-light-alpha-white0: #FFFFFF00;
+$color-light-information-90: #03253FFF;
+$color-light-information-80: #053961FF;
+$color-light-information-70: #085691FF;
+$color-light-information-60: #096AB3FF;
+$color-light-information-50: #0B78CBFF;
+$color-light-information-40: #2098F3FF;
+$color-light-information-30: #5FB5F7FF;
+$color-light-information-20: #9ED2FAFF;
+$color-light-information-10: #D3EBFDFF;
+$color-light-information-5: #E7F4FEFF;
+$color-light-success-80: #1F4727FF;
+$color-light-success-70: #285D33FF;
+$color-light-success-60: #267337FF;
+$color-light-success-50: #228738FF;
+$color-light-success-40: #3FA654FF;
+$color-light-success-30: #7EC88EFF;
+$color-light-success-20: #A9DAB4FF;
+$color-light-success-10: #D8EEDDFF;
+$color-light-success-5: #EAF6ECFF;
+$color-high-contrast-gray-100: #000000FF;
+$color-high-contrast-gray-95: #131416FF;
+$color-high-contrast-gray-90: #1E2124FF;
+$color-high-contrast-gray-80: #33363DFF;
+$color-high-contrast-gray-70: #464C53FF;
+$color-high-contrast-gray-60: #58616AFF;
+$color-high-contrast-gray-50: #6D7882FF;
+$color-high-contrast-gray-40: #8A949EFF;
+$color-high-contrast-gray-30: #B1B8BEFF;
+$color-high-contrast-gray-20: #CDD1D5FF;
+$color-high-contrast-gray-10: #E6E8EAFF;
+$color-high-contrast-gray-5: #F4F5F6FF;
+$color-high-contrast-gray-0: #FFFFFFFF;
+$color-high-contrast-primary-95: #020F27FF;
+$color-high-contrast-primary-90: #03163AFF;
+$color-high-contrast-primary-80: #052561FF;
+$color-high-contrast-primary-70: #083891FF;
+$color-high-contrast-primary-60: #0B50D0FF;
+$color-high-contrast-primary-50: #256EF4FF;
+$color-high-contrast-primary-40: #4C87F6FF;
+$color-high-contrast-primary-30: #86AFF9FF;
+$color-high-contrast-primary-20: #B1CEFBFF;
+$color-high-contrast-primary-10: #D8E5FDFF;
+$color-high-contrast-primary-5: #ECF2FEFF;
+$color-high-contrast-secondary-95: #091F25FF;
+$color-high-contrast-secondary-90: #0E3139FF;
+$color-high-contrast-secondary-80: #113B45FF;
+$color-high-contrast-secondary-70: #17505EFF;
+$color-high-contrast-secondary-60: #1F687AFF;
+$color-high-contrast-secondary-50: #268097FF;
+$color-high-contrast-point-95: #21080AFF;
+$color-high-contrast-secondary-40: #3D9FB8FF;
+$color-high-contrast-secondary-30: #75C0D1FF;
+$color-high-contrast-secondary-20: #ABD8E3FF;
+$color-high-contrast-secondary-10: #D5EBF1FF;
+$color-high-contrast-secondary-5: #EDF6F8FF;
+$color-high-contrast-point-90: #310C0FFF;
+$color-high-contrast-point-80: #521419FF;
+$color-high-contrast-point-70: #7A1F26FF;
+$color-high-contrast-point-60: #AB2B36FF;
+$color-high-contrast-point-50: #D63D4AFF;
+$color-high-contrast-point-40: #D65C66FF;
+$color-high-contrast-point-30: #E0858CFF;
+$color-high-contrast-point-20: #EBADB2FF;
+$color-high-contrast-point-10: #F5D6D9FF;
+$color-high-contrast-point-5: #FBEFF0FF;
+$color-high-contrast-danger-95: #260903FF;
+$color-high-contrast-danger-90: #390D05FF;
+$color-high-contrast-danger-80: #5C180AFF;
+$color-high-contrast-danger-70: #8A240FFF;
+$color-high-contrast-danger-60: #BD2C0FFF;
+$color-high-contrast-danger-50: #DE3412FF;
+$color-high-contrast-danger-40: #F05F42FF;
+$color-high-contrast-danger-30: #F48771FF;
+$color-high-contrast-danger-20: #F7AFA1FF;
+$color-high-contrast-danger-10: #FCDFD9FF;
+$color-high-contrast-danger-5: #FDEFECFF;
+$color-high-contrast-warning-95: #241800FF;
+$color-high-contrast-warning-90: #2E1F00FF;
+$color-high-contrast-warning-80: #422C00FF;
+$color-high-contrast-warning-70: #614100FF;
+$color-high-contrast-warning-60: #8A5C00FF;
+$color-high-contrast-warning-50: #9E6A00FF;
+$color-high-contrast-warning-40: #C78500FF;
+$color-high-contrast-warning-30: #FFB114FF;
+$color-high-contrast-warning-20: #FFC95CFF;
+$color-high-contrast-warning-10: #FFE0A3FF;
+$color-high-contrast-warning-5: #FFF3DBFF;
+$color-high-contrast-success-95: #0E2012FF;
+$color-high-contrast-success-90: #122B18FF;
+$color-high-contrast-information-95: #021A2CFF;
+$color-high-contrast-alpha-black100: #000000FF;
+$color-high-contrast-graphic-90: #223A58FF;
+$color-high-contrast-graphic-70: #39506CFF;
+$color-high-contrast-graphic-50: #61758FFF;
+$color-high-contrast-graphic-30: #98ACC5FF;
+$color-high-contrast-graphic-10: #E5ECF9FF;
+$color-high-contrast-alpha-black75: #000000BF;
+$color-high-contrast-alpha-black50: #00000080;
+$color-high-contrast-alpha-black25: #00000040;
+$color-high-contrast-alpha-black10: #0000001A;
+$color-high-contrast-alpha-black0: #00000000;
+$color-high-contrast-alpha-white100: #FFFFFFFF;
+$color-high-contrast-alpha-white75: #FFFFFFBF;
+$color-high-contrast-alpha-white50: #FFFFFF80;
+$color-high-contrast-alpha-white25: #FFFFFF40;
+$color-high-contrast-alpha-white10: #FFFFFF1A;
+$color-high-contrast-alpha-white0: #FFFFFF00;
+$color-high-contrast-information-90: #03253FFF;
+$color-high-contrast-information-80: #053961FF;
+$color-high-contrast-information-70: #085691FF;
+$color-high-contrast-information-60: #096AB3FF;
+$color-high-contrast-information-50: #0B78CBFF;
+$color-high-contrast-information-40: #2098F3FF;
+$color-high-contrast-information-30: #5FB5F7FF;
+$color-high-contrast-information-20: #9ED2FAFF;
+$color-high-contrast-information-10: #D3EBFDFF;
+$color-high-contrast-information-5: #E7F4FEFF;
+$color-high-contrast-success-80: #1F4727FF;
+$color-high-contrast-success-70: #285D33FF;
+$color-high-contrast-success-60: #267337FF;
+$color-high-contrast-success-50: #228738FF;
+$color-high-contrast-success-40: #3FA654FF;
+$color-high-contrast-success-30: #7EC88EFF;
+$color-high-contrast-success-20: #A9DAB4FF;
+$color-high-contrast-success-10: #D8EEDDFF;
+$color-high-contrast-success-5: #EAF6ECFF;
+
+$color-background-white: $color-light-gray-0;
+$color-background-gray-subtler: $color-light-gray-5;
+$color-background-gray-subtle: $color-light-gray-10;
+$color-background-inverse: $color-light-gray-90;
+$color-background-dim: $color-light-alpha-black75;
+$color-surface-white: $color-light-gray-0;
+$color-surface-white-subtle: $color-light-gray-0;
+$color-surface-white-subtler: $color-light-gray-0;
+$color-surface-white-static: $color-light-gray-0;
+$color-surface-inverse: $color-light-gray-90;
+$color-surface-inverse-static: $color-light-gray-90;
+$color-surface-gray-subtler: $color-light-gray-5;
+$color-surface-gray-subtle: $color-light-gray-10;
+$color-surface-disabled: $color-light-gray-20;
+$color-surface-primary-subtler: $color-light-primary-5;
+$color-surface-secondary-subtler: $color-light-secondary-5;
+$color-surface-point-subtler: $color-light-point-5;
+$color-surface-danger-subtler: $color-light-danger-5;
+$color-surface-warning-subtler: $color-light-warning-5;
+$color-surface-success-subtler: $color-light-success-5;
+$color-surface-information-subtler: $color-light-information-5;
+$color-border-transparency: $color-light-alpha-black0;
+$color-border-inverse: $color-light-gray-0;
+$color-border-disabled: $color-light-gray-30;
+$color-border-gray-light: $color-light-gray-20;
+$color-border-gray: $color-light-gray-30;
+$color-border-gray-dark: $color-light-gray-60;
+$color-border-gray-darker: $color-light-gray-90;
+$color-border-primary-light: $color-light-primary-10;
+$color-border-primary: $color-light-primary-50;
+$color-border-secondary-light: $color-light-secondary-10;
+$color-border-secondary: $color-light-secondary-70;
+$color-border-point-light: $color-light-point-10;
+$color-border-point: $color-light-point-50;
+$color-border-danger-light: $color-light-danger-10;
+$color-border-danger: $color-light-danger-50;
+$color-border-warning-light: $color-light-warning-10;
+$color-border-warning: $color-light-warning-50;
+$color-border-success-light: $color-light-success-10;
+$color-border-success: $color-light-success-50;
+$color-border-information-light: $color-light-information-10;
+$color-border-information: $color-light-information-50;
+$color-divider-gray-light: $color-light-gray-20;
+$color-divider-gray: $color-light-gray-40;
+$color-divider-gray-dark: $color-light-gray-50;
+$color-divider-gray-darker: $color-light-gray-90;
+$color-divider-inverse: $color-light-gray-0;
+$color-divider-primary-light: $color-light-primary-10;
+$color-divider-primary: $color-light-primary-50;
+$color-divider-secondary-light: $color-light-secondary-10;
+$color-divider-secondary: $color-light-secondary-70;
+$color-divider-error: $color-light-danger-50;
+$color-divider-point: $color-light-point-50;
+$color-text-bolder: $color-light-gray-95;
+$color-text-basic: $color-light-gray-90;
+$color-text-subtle: $color-light-gray-70;
+$color-text-disabled: $color-light-gray-40;
+$color-text-disabled-on: $color-light-gray-50;
+$color-text-bolder-inverse: $color-light-gray-0;
+$color-text-basic-inverse: $color-light-gray-0;
+$color-text-subtle-inverse: $color-light-gray-30;
+$color-text-static: $color-light-gray-90;
+$color-text-inverse-static: $color-light-gray-0;
+$color-text-primary: $color-light-primary-60;
+$color-text-secondary: $color-light-secondary-80;
+$color-text-sub: $color-light-sub-60;
+$color-text-point: $color-light-point-60;
+$color-text-danger: $color-light-danger-60;
+$color-text-warning: $color-light-warning-60;
+$color-text-success: $color-light-success-60;
+$color-text-information: $color-light-information-60;
+$color-action-white: $color-light-gray-0;
+$color-action-primary: $color-light-alpha-white0;
+$color-action-primary-hover: $color-light-primary-5;
+$color-action-primary-pressed: $color-light-primary-10;
+$color-action-primary-selected: $color-light-primary-5;
+$color-action-primary-active: $color-light-primary-50;
+$color-action-secondary: $color-light-alpha-white0;
+$color-action-secondary-hover: $color-light-secondary-5;
+$color-action-secondary-pressed: $color-light-secondary-10;
+$color-action-secondary-selected: $color-light-secondary-5;
+$color-action-secondary-on: $color-light-alpha-white0;
+$color-action-secondary-on-hover: $color-light-gray-0;
+$color-action-secondary-on-pressed: $color-light-secondary-10;
+$color-action-secondary-on-selected: $color-light-gray-0;
+$color-action-secondary-active: $color-light-secondary-70;
+$color-element-inverse: $color-light-gray-0;
+$color-element-inverse-static: $color-light-gray-0;
+$color-action-disabled: $color-light-gray-20;
+$color-element-gray-lighter: $color-light-gray-5;
+$color-element-gray-light: $color-light-gray-10;
+$color-element-gray: $color-light-gray-50;
+$color-element-gray-dark: $color-light-gray-60;
+$color-element-disabled-light: $color-light-gray-20;
+$color-element-disabled-dark: $color-light-gray-40;
+$color-element-primary: $color-light-primary-50;
+$color-element-primary-light: $color-light-primary-10;
+$color-element-primary-lighter: $color-light-primary-5;
+$color-element-secondary: $color-light-secondary-70;
+$color-element-secondary-light: $color-light-secondary-10;
+$color-element-secondary-lighter: $color-light-secondary-5;
+$color-element-point: $color-light-point-50;
+$color-element-point-light: $color-light-point-10;
+$color-element-point-lighter: $color-light-point-5;
+$color-element-danger: $color-light-danger-50;
+$color-element-danger-lighter: $color-light-danger-5;
+$color-element-warning: $color-light-warning-30;
+$color-element-warning-lighter: $color-light-warning-5;
+$color-element-success: $color-light-success-50;
+$color-element-success-lighter: $color-light-success-5;
+$color-element-information: $color-light-information-50;
+$color-element-information-lighter: $color-light-information-5;
+$color-element-logo-text: #575756FF;
+$color-icon-gray: $color-light-gray-80;
+$color-icon-gray-light: $color-light-gray-70;
+$color-icon-gray-fill: $color-light-gray-20;
+$color-icon-inverse: $color-light-gray-0;
+$color-icon-disabled: $color-light-gray-40;
+$color-icon-disabled-on: $color-light-gray-50;
+$color-icon-primary: $color-light-primary-50;
+$color-icon-secondary: $color-light-secondary-80;
+$color-icon-point: $color-light-point-50;
+$color-icon-danger: $color-light-danger-50;
+$color-icon-warning: $color-light-warning-50;
+$color-icon-success: $color-light-success-50;
+$color-icon-information: $color-light-information-50;
+$color-icon-inverse-static: $color-light-gray-0;
+$color-icon-gray-static: $color-light-gray-80;
+$color-icon-primary-static: $color-light-primary-50;
+$color-icon-secondary-static: $color-light-secondary-80;
+$color-icon-point-static: $color-light-point-50;
+$color-icon-danger-static: $color-light-danger-50;
+$color-icon-warning-static: $color-light-warning-50;
+$color-icon-success-static: $color-light-success-50;
+$color-icon-information-static: $color-light-information-50;
+$color-link-default: $color-light-primary-50;
+$color-button-primary-fill: $color-light-primary-50;
+$color-button-primary-fill-hover: $color-light-primary-60;
+$color-button-primary-fill-pressed: $color-light-primary-70;
+$color-button-secondary-fill: $color-light-primary-5;
+$color-button-secondary-fill-hover: $color-light-primary-10;
+$color-button-secondary-fill-pressed: $color-light-primary-20;
+$color-button-secondary-border: $color-light-primary-50;
+$color-button-tertiary-fill: $color-light-alpha-white0;
+$color-button-tertiary-fill-hover: $color-light-gray-5;
+$color-button-tertiary-fill-pressed: $color-light-gray-10;
+$color-button-tertiary-border: $color-light-gray-60;
+$color-button-text-fill: $color-light-alpha-white0;
+$color-button-text-fill-hover: $color-light-secondary-5;
+$color-button-text-fill-pressed: $color-light-secondary-10;
+$color-button-text-border: $color-light-alpha-black0;
+$color-button-disabled-fill: $color-light-gray-20;
+$color-button-disabled-border: $color-light-gray-30;
+$color-link-hover: $color-light-primary-60;
+$color-link-pressed: $color-light-primary-70;
+$color-link-visited: #5917B8FF;
+$color-input-surface: $color-light-gray-0;
+$color-graphic-blue-subtler: $color-light-graphic-10;
+$color-graphic-blue-subtle: $color-light-graphic-30;
+$color-graphic-blue: $color-light-graphic-50;
+$color-graphic-blue-dark: $color-light-graphic-70;
+$color-graphic-blue-darker: $color-light-graphic-90;
+$color-graphic-red-subtler: $color-light-point-5;
+$color-graphic-red-subtle: $color-light-point-10;
+$color-graphic-red: $color-high-contrast-point-20;
+$color-graphic-red-dark: $color-high-contrast-point-40;
+$color-graphic-red-darker: $color-high-contrast-point-70;
+$color-graphic-brand: $color-light-primary-50;
+$color-input-border: $color-light-gray-60;
+$color-input-border-active: $color-light-primary-50;
+$color-input-border-error: $color-light-danger-50;
+$color-input-surface-disabled: $color-light-gray-20;
+$color-input-border-disabled: $color-light-gray-30;
+$color-alpha-base100: $color-light-alpha-white100;
+$color-alpha-base75: $color-light-alpha-white75;
+$color-alpha-base50: $color-light-alpha-white50;
+$color-alpha-base25: $color-high-contrast-alpha-white25;
+$color-alpha-base10: $color-high-contrast-alpha-white10;
+$color-alpha-base0: $color-light-alpha-white0;
+$color-alpha-inverse100: $color-light-alpha-black100;
+$color-alpha-inverse75: $color-light-alpha-black75;
+$color-alpha-inverse50: $color-light-alpha-black50;
+$color-alpha-inverse25: $color-light-alpha-black25;
+$color-alpha-inverse10: $color-light-alpha-black10;
+$color-alpha-inverse0: $color-light-alpha-black0;
+$color-alpha-shadow1: #0000000D;
+$color-alpha-shadow2: #00000014;
+$color-alpha-shadow3: #0000001F;

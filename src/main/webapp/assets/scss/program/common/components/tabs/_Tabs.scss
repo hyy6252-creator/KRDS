@@ -1,0 +1,253 @@
+.tab-area {width: 100%;}
+.tab {
+  > ul {
+    display: flex;
+    align-items: center;
+    overflow-x: auto;
+    width: 100%;
+    > li{flex: 1;}
+  }
+  li,
+  .btn-tab {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    position: relative;
+    white-space: nowrap;min-height: 63px;
+  }
+  .btn-tab {
+    width: 100%;
+    color:#666;
+    transition: 0.4s ease-in-out;
+  }
+  li {
+    flex-grow: 0;
+  }
+  &.full {
+    width: 100%;
+    .btn-tab {
+      font-size:19px;
+    }
+  }
+}
+.tab-conts {
+  display: none;
+  margin-top:0;
+  &.active {
+    display: block;}
+}
+
+.tab {
+  &.tab-mutation {
+    position: relative;
+    z-index: 60;
+    .m-tab-btn {
+      display: none;
+    }
+  }
+  &.is-open {
+    .tab {
+      display: flex !important;
+    }
+  }
+}
+.tab.tab-mutation .m-tab-btn {display: none;}
+@media (max-width: 1023px) {
+  .tab.fill.full.tab-mutation .m-tab-btn {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+    color:#fff;
+    width: 100%;
+    height:48px;
+    padding: 0 16px;
+    border-radius:10px;
+    background-color:#003675;
+    cursor: pointer;
+  }
+  .tab-ul.type2 .btn-tab span{font-size:16px;display: block;padding: 6px;text-align:left;}
+  .tab.full.tab-mutation [role=tablist] li.active .btn-tab {
+    color: inherit;
+    background-color: transparent;
+  }
+  .tab {
+    &.tab-mutation {
+      [role=tablist] {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        left: 0;
+        top: 100%;
+        z-index: 10;
+        padding: 16px;
+        border: 1px solid #ddd;
+        border-radius:10px;
+        background-color:#fff;
+        > li,
+        .btn-tab  {
+          flex: 1 1 0;
+          display: inline-flex;
+          align-items: center;
+          flex-direction: row;
+          position: relative;
+          white-space: nowrap;
+          text-align:left;
+          width:100%;
+          height:auto;
+          line-height:1.6;
+          min-height:auto;
+        }
+      }
+    }
+    &.is-open {
+      [role=tablist] {
+        display: flex !important;
+      }
+    }
+  }
+}
+
+
+
+.tab-ul.type2 li.on a span,
+.tab-ul.type2 li.on button span,
+.tab-ul.type2 li.active a span,
+.tab-ul.type2 li.active button span,
+.tab-ul.type2 li a:hover span,
+.tab-ul.type2 li button:hover span,
+.tab-ul.type2 li a:focus span,
+.tab-ul.type2 li button:focus span {}
+.tab-ul.type2 li.on a::after,
+.tab-ul.type2 li.on button::after,
+.tab-ul.type2 li.active a::after,
+.tab-ul.type2 li.active button::after,
+.tab-ul.type2 li a:hover::after,
+.tab-ul.type2 li button:hover::after,
+.tab-ul.type2 li a:focus::after,
+.tab-ul.type2 li button:focus::after {width: 100%;}
+.tab-select.mobile-select { width:100%; position:relative; } 
+.tab-select .tab-select-title { display:none; } 
+.tab-select.mobile-select .tab-select-title {display:flex; align-items:center; justify-content:space-between; position:relative; width: auto; height:45px; border-radius:8px; border: 2px solid #3180EF; padding:11px 30px 11px 13px; transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s; margin: 0 0 0 auto;}
+.tab-select.mobile-select .tab-select-title::after {position: absolute; right: 13px; top: 50%; transform: translateY(-50%); display: block; width: 15px; height: 15px; background-position: center; background-repeat: no-repeat; background-size: 100%; margin: 0; content: ''; background-image: url("data:image/svg+xml,%3Csvg width='14' height='15' viewBox='0 0 14 15' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7.28284 10.2172C7.12663 10.3734 6.87337 10.3734 6.71716 10.2172L1.68284 5.18284C1.43086 4.93086 1.60932 4.5 1.96569 4.5H12.0343C12.3907 4.5 12.5691 4.93086 12.3172 5.18284L7.28284 10.2172Z' fill='%233180EF'/%3E%3C/svg%3E%0A");}
+.tab-select.mobile-select .tab-select-title span {color: #3180EF; font-size: 16px; font-weight: 700; line-height: 150%; letter-spacing: 0.16px;}
+.tab-select.mobile-select .tab-select-title.on,
+.tab-select.mobile-select .tab-select-title:focus,
+.tab-select.mobile-select .tab-select-title:hover {border-color: #3180EF; outline: none;}
+.tab-select.mobile-select .tab-select-title.on::after {transform: translateY(-50%) rotate(180deg);}
+
+.tab-select.mobile-select .tab-ul { display:none; top: 48px; border-radius: 8px; border: 1px solid #d9dae1; background-color: #fff; box-shadow: 2px 2px 8px 0px rgba(0, 0, 0, .05); z-index: 10; width: 100%; margin: 0; padding: 0; height: 140px;}
+.tab-select.mobile-select .tab-ul li {padding: 0 15px; height: auto; flex: 0; min-height: auto;}
+.tab-select.mobile-select .tab-ul li::before {display: none;}
+.tab-select.mobile-select .tab-ul li + li {border-top: 1px solid #d9dae1;}
+.tab-select.mobile-select .tab-ul .tab-btn {position: relative; display: flex; align-items: center; justify-content: flex-start; width: 100%; min-height: 45px; color: #36404a; font-size: 15px; font-weight: 400; line-height: 150%; letter-spacing: -0.32px; transition: all 0.3s; padding: 0; height: auto; border-bottom: none;}
+.tab-select.mobile-select .on+.tab-ul {} 
+.tab-select.mobile-select .tab-ul::-webkit-scrollbar { width:8px; }
+.tab-select.mobile-select .tab-ul::-webkit-scrollbar-track { background-color: rgba(61, 78, 100, 0.2); border-radius: 10px; }
+.tab-select.mobile-select .tab-ul::-webkit-scrollbar-thumb { background-color: #3D4E64; border: 1px solid #FFF; border-radius: 10px; }
+.tab-select.mobile-select .tab-ul li a span,
+.tab-select.mobile-select .tab-ul li button span {padding: 0; font-size: 16px;}
+.tab-select.mobile-select .tab-ul li.on a span,
+.tab-select.mobile-select .tab-ul li.on button span {color: #3180ef;}
+.tab-select.mobile-select .tab-ul li a::after,
+.tab-select.mobile-select .tab-ul li button::after {display: none;}
+
+@media (max-width: 768px) {
+  .tab-select.mobile-select .tab-ul li a span,
+  .tab-select.mobile-select .tab-ul li button span {font-size: 16px;}
+}
+
+@media (max-width: 490px) {
+  .tab-select.mobile-select .tab-select-title {width: 100%;}
+}
+
+.tab-select {
+  // margin-bottom: 50px;
+  &.schedule-tab {
+    margin: 0 0 65px 0;
+    @media (max-width: 640px) {margin: 0 0 20px 0;}
+    .tab-ul {
+      li {
+        width: calc(100% / 8);
+        @media (max-width: 1024px) {width: calc(100% / 6);}
+        @media (max-width: 768px) {width: calc(100% / 4);}
+        .tab-btn {
+          .tit {
+            color: #36404A; font-size: 16px; font-weight: 600; line-height: 110%; letter-spacing: -0.32px;
+          }
+          &:hover,
+          &:focus {
+            &::after {width: 100%;}
+            .tit {
+              color: #1E2D75;
+            }
+          }
+        }
+        &.on {
+          .tab-btn {
+            &::after {width: 100%;}
+            .tit {
+              color: #1E2D75;
+            }
+          }
+        }
+      }
+    }
+    &.mobile-select {
+      .tab-select-title {width: 100%;}
+      .tab-ul {
+        li {
+          .tab-btn {
+            &::after {display: none;}
+          }
+        }
+      }
+    }
+  }
+  &.rd-tab {
+    margin: 0 0 40px 0;
+    @media (max-width: 640px) {margin: 0 0 20px 0;}
+    .tab-ul {
+      li {
+        width: calc(100% / 9);
+        @media (max-width: 1280px) {width: calc(100% / 6);}
+        @media (max-width: 1024px) {width: calc(100% / 4);}
+        .tab-btn {
+          .tit {
+            color: #36404A; font-size: 16px; font-weight: 600; line-height: 110%; letter-spacing: -0.32px;
+          }
+          &:hover,
+          &:focus {
+            &::after {width: 100%;}
+            .tit {
+              color: #1E2D75;
+            }
+          }
+        }
+        &.on {
+          .tab-btn {
+            &::after {width: 100%;}
+            .tit {
+              color: #1E2D75;
+            }
+          }
+        }
+      }
+    }
+    &.mobile-select {
+      .tab-select-title {width: 100%;}
+      .tab-ul {
+        li {
+          .tab-btn {
+            &::after {display: none;}
+          }
+        }
+      }
+    }
+  }
+}
+
+.tab-panel {
+  &:focus {outline: none;}
+}

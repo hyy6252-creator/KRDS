@@ -1,0 +1,48 @@
+
+@use 'variables' as nodata-vars;
+/* 데이터 없을때 */
+.PRGRM_nodata { width:100% !important; max-width: 100%; padding:0 !important; margin:0 !important; -ms-flex: 0 0 100%; flex: 0 0 100%; }
+.PRGRM_nodata * { max-width: 100%; -ms-flex: 0 0 100%; flex: 0 0 100%; }
+.ui-grid.are-images-unloaded .list-wrap .item_wrap .grid__item.PRGRM_nodata.PRGRM_list-nodata { padding: 14px !important; }
+.ui-message { border: none; }
+.ui-message .message-result { display: flex; justify-content: center; align-items: center; min-height:900px;width: 100%; background-color:nodata-vars.$nodata-background-color;border-radius:0;}
+.ui-message .nopage { width: 100%; max-width: 849px; padding: 75px 0; margin: 0 auto; text-align: center; }
+.ui-message .nopage strong { display: block; margin: 0 0 15px; color: nodata-vars.$nodata-color; font-weight:bold; font-size:nodata-vars.$nodata-fontsize-lg;text-align: center; }
+.ui-message .nopage strong em { color: nodata-vars.$nodata-color; font-weight:bold; font-size:nodata-vars.$nodata-fontsize-lg;text-align: center; }
+.ui-message .nopage > span { color:nodata-vars.$nodata-color2;display: block;line-height:120%;font-weight: 600;margin-top:34px;}
+.ui-message .nopage .icon-nonage { display:block; width:nodata-vars.$nodata-width; height:nodata-vars.$nodata-height; margin:0 auto 20px; background-image: url(/images/kor/common/nodata-img.png);background-repeat: no-repeat; background-position: center center;background-size:100%; }
+
+.ui-message .nopage {
+  .hospital-call {
+    position: relative;padding: 4px 0 0 60px;display: inline-block;
+    .call-icon {width: 53px;height: 53px;border-radius: 50%;background-color: #1E2D75;background-image: url("data:image/svg+xml,%3Csvg width='27' height='27' viewBox='0 0 27 27' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6.04719 6C6.49222 6 6.90222 6.24238 7.11818 6.63314L8.61662 9.34392C8.8128 9.69886 8.82199 10.1282 8.64124 10.4913L7.19774 13.3908C7.19774 13.3908 7.61607 15.5508 9.36679 17.3091C11.1175 19.0674 13.261 19.4803 13.261 19.4803L16.1476 18.0308C16.5094 17.8491 16.9372 17.8585 17.2907 18.0559L19.9974 19.5673C20.3861 19.7843 20.6272 20.1959 20.6272 20.6426V23.7635C20.6272 25.3528 19.1573 26.5007 17.6579 25.9925C14.5784 24.949 9.79811 22.9619 6.76827 19.9189C3.73837 16.876 1.75992 12.075 0.720817 8.98216C0.214893 7.47625 1.35784 6 2.94029 6H6.04719Z' fill='white'/%3E%3Cpath d='M25.2772 13.9997C25.494 12.5455 25.4229 11.0568 25.0639 9.62537C24.5898 7.73439 23.6133 5.94356 22.1345 4.46478C20.6557 2.98601 18.8649 2.00954 16.974 1.53539C15.5426 1.17646 14.0538 1.10537 12.5996 1.32213' stroke='white' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M18.9449 13.2001C19.165 11.7235 18.7067 10.1653 17.57 9.02858C16.4332 7.8919 14.875 7.43354 13.3984 7.65366' stroke='white' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");background-repeat: no-repeat;background-position: center;display: inline-block;position: absolute;left: 0;top: 0;}
+    a.call-num,
+    .call-num {font-family: "title_font";color: #1E2D75;display: block;font-weight: 700;line-height: 1;text-decoration: none;}
+    strong.call-num {font-size: 30px;margin-bottom: 3px;text-align: left;}
+    span.call-num {
+      font-size: 16px;text-align: left;
+      em {font-weight: 400;letter-spacing: 0.3px;margin-left: 5px;}
+    }
+  }
+}
+
+.ui-message .nopage > span {padding: 0 20px;}
+
+@media only screen and (max-width:768px) {
+  .ui-message .message-result { min-height:631px; }
+  .ui-message .nopage strong,
+  .ui-message .nopage strong em { font-size:nodata-vars.$nodata-fontsize-md; }
+  .ui-message .nopage span { font-size:nodata-vars.$nodata-fontsize-base; }
+  .ui-message .nopage .icon-nonage { margin-bottom:28px; }
+}
+
+@media only screen and (max-width:490px) {
+  .ui-message .nopage .icon-nonage {width: 100px;height: 100px;}
+  .ui-message .nopage .hospital-call {padding: 4px 0 0 50px;}
+  .ui-message .nopage .hospital-call strong.call-num {font-size: 28px;}
+  .ui-message .nopage .hospital-call .call-icon {width: 43px;height: 43px;background-size: 50%;top:6px;}
+}
+
+@media only screen and (max-width:390px) {
+  .ui-message .nopage .icon-nonage {width: 86px;height: 86px;}
+}

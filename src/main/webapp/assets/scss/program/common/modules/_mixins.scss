@@ -1,0 +1,21 @@
+
+@mixin posY {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+// 높이값이 필요한 타이틀 말줄임
+
+// 이미지가 가로가 100%이고 세로가 높이값이 지정되어 있을때
+@mixin BaisImg {width: 100%;height: 245px;}
+
+// 이미지의 가로값과 세로값이 특정 되어 있는 경우
+@mixin FixImg {width: 230px;height: 230px;}
+
+
+// 이미지 높이값 기준
+@mixin img-height {position: absolute;left: 50%;top: 50%;transform: translate(-50%, -50%);max-width: none;max-height: none;height: 100%;width: auto;}
+// 이미지 넓이값 기준
+@mixin img-width {position: absolute;left: 50%;top: 50%;transform: translate(-50%, -50%);max-width: none;max-height: none;height: auto;width: 100%;}
+
+@mixin Noimg {background-image: url("data:image/svg+xml,%3Csvg width='73' height='25' viewBox='0 0 73 25' fill='none' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Crect width='73' height='25' fill='url(%23pattern0)'/%3E%3Cdefs%3E%3Cpattern id='pattern0' patternContentUnits='objectBoundingBox' width='1' height='1'%3E%3Cuse xlink:href='%23image0_447_11' transform='scale(0.0136986 0.04)'/%3E%3C/pattern%3E%3Cimage id='image0_447_11' width='73' height='25' xlink:href='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEkAAAAZCAYAAAB9/QMrAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDkuMC1jMDAwIDc5LjE3MWMyN2ZhYiwgMjAyMi8wOC8xNi0yMjozNTo0MSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIDI0LjAgKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkFGNkZBOTdEOTg2MTExRURCNDBGQjc3ODRDQ0YwMTNGIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkFGNkZBOTdFOTg2MTExRURCNDBGQjc3ODRDQ0YwMTNGIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QUY2RkE5N0I5ODYxMTFFREI0MEZCNzc4NENDRjAxM0YiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6QUY2RkE5N0M5ODYxMTFFREI0MEZCNzc4NENDRjAxM0YiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz6Z3Hz5AAADPElEQVR42uRZQXIaQQxcSO5eV3HIkdy4ZXkByy03wwsMLwCOORm/gOUFwAsgLwBuuYFfwPIC8AvITFVPRaWSZhaKXFhVqexaj0ajltSjXVcajUZUQGKjHfx+NrrBz1LI1wJrUqMzo3Xy7N3ouMwgWVBejSaooLqwZuOpuAFsreZGP4yuPDbct63YFqnaudEt9gqJPeuL0WdyTs1vj8R2MLrQNq2QdktQMUngIFoVDfA8VuzmsM2V4GYASRJrMzWaecDR7HOci4NwYAXwXUtElThZFwDIbc7lDQHEHrsefMRCgGsPQG7NBH6k6tt57OtI0OTWdnMgrQMBUslYBnpX8JPLOJW10tKSjBkY1m5Z8OxD6E0g9YRDTlF+TaMjgXeGrIp4efdh3wYfUemQQDuC7znsmtgnF6qWgsYBWuF8U8VWA3SCBM74GstJvNQlzukgYxEh1Ge0544B1BYOx31MEcgclwQFqM9suY8IvmOh9UeMt+pCpbo1B08FtynhVwUekshxxQJ3t14i3HoS+U2FtrPyI7DOyl64oRLFd4YL5GT0ogCR3jIC8PI7e26YEHccled8zycCdhHfRwVkKlvslwXO+KQ8X8H/J090Vch8qhBuKgTEg2p5CJvK53+Y+Vo4T15w/Vmo4j5oIOeVtGVBWALrkoWxcH3uyesJB/gNvEZbg9sv7wCK5DsFn/Q8ditSeQkj9Y3Wbpw8E5CdA6IjtEVGsrFg9mMccqNUoAX/9x1AyuEjZRfE3Dc9Iy4H1oCBfMD5j9LEnTGDKOCkGbhBosBQubhy6uWJ7ONZCt/XSJMAtSQv7sFhcqjcLBJAXSGj3YJc8B7I8i0tN7rSJmZg74uC5IDqK8GeEWBT+fseXLDwBNO+45eDE2v9okmS4moHCiSvKN+TErRBDAD2V2bK2Ye+PVG+OwvTOeWLOms/bb/Uc81/BF6SXxiZ21s4qxT86FZqqYI8L9CTZ+2OrLtcQdQPARJvFW2YTATCLg1IC2HQe2V8sA4Mcg8tlpPc23SsvHbUA7NGKSrpzF4j+Ju+NOvsy1RJX2q1mv35B9fdzwLD4DgqmTiQHFCL6N9/Gr4RgrbPf3nmk4eWvwIMAMHb2zDnUtHGAAAAAElFTkSuQmCC'/%3E%3C/defs%3E%3C/svg%3E%0A");}

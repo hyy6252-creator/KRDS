@@ -1,0 +1,10 @@
+
+@use 'variables' as validation-vars;
+
+.bucket-form{
+  .form-group{
+    &.is-invalid,
+    &.error {background-color:validation-vars.$forms-error-bgcolor}
+    &.valid{background-color:validation-vars.$forms-valid-bgcolor}
+  }
+}

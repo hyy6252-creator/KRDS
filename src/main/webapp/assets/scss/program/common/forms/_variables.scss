@@ -1,0 +1,43 @@
+
+@use '../../../common/abstracts' as *;
+
+$check-active-color: $primary !default;
+$forms-check: #DDD !default;
+$forms-check-bg: $white !default;
+$forms-disabled-color: #DDD !default;
+$checkbox-size: 20px !default;
+$checkbox-label-color:$textColor !default;
+$checkbox-ball-border-radius: 4px !default;
+$radio-ball-border-radius: 100% !default;
+$checkbox-ball-background: rgba(221, 221, 221, 0.3) !default;
+
+
+$help-color:$point!default;
+$forms-point-color: $primary !default;
+$pilsu-color: $primary !default;
+$forms-height: 38px !default;
+$forms-radius:  4px !default;
+$forms-bg: $white !default;
+$forms-disabled-bg: #F9F9FA !default;
+$forms-top-border: #36404A;
+$forms-border: #D9DAE1 !default;
+$forms-border2: #ddd !default;
+$forms-color: $textColor !default;
+$forms-fontsize: 15px !default;
+$forms-checkbox-fontsize: 17px !default;
+$forms-placeholder:  15px !default;
+$forms-focus-border: $primary !default;
+$forms-main-color: map-get($primary-colors, "50") !default;
+
+$forms-browse-border: $white !default;
+$forms-browse-bg: $white !default;
+$forms-browse-color: $textColor !default;
+
+$forms-error-bgcolor: #F6EFEC !default;
+$forms-valid-bgcolor: #EEF5F8 !default;
+
+$forms-btn-bg: $white !default;
+$forms-btn-danger: $danger !default;
+$forms-btn-primary: $primary !default;
+$forms-btn-secondary: $secondary !default;
+$forms-btn-success: $success !default;

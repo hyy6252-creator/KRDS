@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+/* JSP 파일 경로 스캔 */
+@source "../main/webapp/**/*.jsp";
+@source "../main/webapp/**/*.html";
+@source "../main/webapp/assets/js/**/*.js";
+
+/* KRDS 색상 시스템 */
+@theme {
+  /* Primary */
+  --color-primary:    #2257B4;
+  --color-primary-5:  #F1F6FE;
+  --color-primary-10: #E4EBF8;
+  --color-primary-20: #A7BCE1;
+  --color-primary-30: #799AD2;
+  --color-primary-40: #4F79C3;
+  --color-primary-50: #2257B4;
+  --color-primary-60: #1C4690;
+  --color-primary-70: #14346C;
+  --color-primary-80: #0D2448;
+  --color-primary-90: #091A39;
+  --color-primary-95: #040F24;
+
+  /* Secondary */
+  --color-secondary:    #123F72;
+  --color-secondary-5:  #EEF2F7;
+  --color-secondary-10: #D6E0EB;
+  --color-secondary-20: #BCCDDF;
+  --color-secondary-30: #97B2D1;
+  --color-secondary-40: #6B96C7;
+  --color-secondary-50: #2F6AAC;
+  --color-secondary-60: #165091;
+  --color-secondary-70: #123F72;
+  --color-secondary-80: #0B2A4E;
+  --color-secondary-90: #031F3F;
+  --color-secondary-95: #02162C;
+
+  /* Sub (Green) */
+  --color-sub:    #159774;
+  --color-sub-5:  #F3FEFB;
+  --color-sub-10: #E0F6F0;
+  --color-sub-20: #A3D5C6;
+  --color-sub-30: #74C1AC;
+  --color-sub-40: #45AC90;
+  --color-sub-50: #159774;
+  --color-sub-60: #14795D;
+  --color-sub-70: #0D5B46;
+  --color-sub-80: #093C2E;
+  --color-sub-90: #061E17;
+  --color-sub-95: #021A13;
+
+  /* Gray */
+  --color-gray-5:  #F4F5F6;
+  --color-gray-10: #E6E8EA;
+  --color-gray-20: #CDD1D5;
+  --color-gray-30: #B1B8BE;
+  --color-gray-40: #8A949E;
+  --color-gray-50: #6D7882;
+  --color-gray-60: #58616A;
+  --color-gray-70: #464C53;
+  --color-gray-80: #33363D;
+  --color-gray-90: #1E2124;
+  --color-gray-95: #131416;
+
+  /* Accent (Red) */
+  --color-accent:    #D63D4A;
+  --color-accent-5:  #FBEFF0;
+  --color-accent-10: #F5D6D9;
+  --color-accent-20: #EBADB2;
+  --color-accent-30: #E0858C;
+  --color-accent-40: #D65C66;
+  --color-accent-50: #D63D4A;
+  --color-accent-60: #AB2B36;
+  --color-accent-70: #7A1F26;
+  --color-accent-80: #521419;
+  --color-accent-90: #310C0F;
+  --color-accent-95: #21080A;
+}

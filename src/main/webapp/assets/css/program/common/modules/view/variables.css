@@ -1,0 +1,43 @@
+:root {
+  --viewimgWidth-LG: 415px;
+  --viewimgHeight-LG: 590px;
+
+  /* type2 이미지 사이즈 설정 */
+  --viewimgWidth-SM: 310px;
+  --viewimgHeight-SM: 310px;
+
+  /* topbox에 이미지 상,좌,우 여백 설정 */
+  --viewimgLeft-gap: 50px;
+  --viewimgRight-gap: 50px;
+  --viewimgTop-gap: 50px;
+
+  /* top-box title 스타일 성정 */
+  --viewTitlesize: 30px;
+  --viewConsize: 16px;
+
+  /* 첨부파일 설정 */
+  --fileitemGap: 5px;
+
+  /* 기본 슬라이드 설정 */
+  --ViewslideHeight: 370px;
+  --ViewslideGap: 20px;
+
+  /* 네비슬라이드 높이값 */
+  --NavslideHeight: 280px;
+  --NavslideGap: 50px;
+
+  /* 네비슬라이드 네비 높이값 */
+  --Navslide-n-Width: 240px;
+  --Navslide-n-Height: 100px;
+
+  /* 네비 사이들 간격 */
+  --Navslide-n-gap: 5px;
+
+  --TitleSize: 20px;
+  --TitleColor: #222;
+  --TitleWeight: 700;
+  --TitleLineheight: 1.3;
+  --TextalignCenter: center;
+  --TextalignLeft: left;
+  --TextalignRight: right;
+}

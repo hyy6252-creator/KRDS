@@ -1,0 +1,22 @@
+@use '../../../../common/abstracts' as *;
+
+$step-background-color: #BEC0CF !default;
+$step-line-color: #D9DAE1 !default;
+$step-color: #666 !default;
+$step-title-color: #1D1D1D !default;
+
+$step-active-background-color: $primary !default;
+$step-active-color: $primary !default;
+
+$step-done-background-color: $secondary !default;
+$step-done-line-color: $secondary !default;
+$step-done-color: $secondary !default;
+
+$pointTitle: $pointTitleColor !default;
+
+$loginInputBg: #F6F7F9 !default;
+$loginInputPlaceholder: #444 !default;
+
+$result-point-color2 : $secondary !default;
+$result-point-color3 : $danger !default;
+$result-point-color4 : $base-sub-color5 !default;

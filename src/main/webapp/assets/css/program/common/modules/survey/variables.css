@@ -1,0 +1,5 @@
+:root {
+  --survey-point-color : var(--primary);
+  --survey-font-color : var(--pointTitleColor);
+  --survey-border-color : var(--pointTitleColor);
+}

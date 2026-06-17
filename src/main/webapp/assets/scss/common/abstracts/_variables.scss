@@ -1,0 +1,134 @@
+@charset "UTF-8";
+@use "color" as *;
+@use "icon" as *;
+
+$SiteCode: attr(data-site);
+$prefix: acego- !default;
+$html-rem-base: 16px;
+
+/* display */
+$table: table !default;
+$table-cell: table-cell !default;
+$block: block !default;
+$inline-block: inline-block !default;
+$flex: flex !default;
+$space-between: space-between !default;
+$center: center !default;
+$flex-end: flex-end !default;
+$wrap: wrap !default;
+$font-family-kor: "gothic", -apple-system, BlinkMacSystemFont, system-ui, "Segoe UI", "Apple SD Gothic Neo", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif !default;
+$font-family-eng: "gothic","Helvetica","Arial", -apple-system, BlinkMacSystemFont, system-ui, "Segoe UI", "Apple SD Gothic Neo", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif !default;
+$font-family-jpa: "gothic","Helvetica","Arial",sans-serif, "Apple SD Gothic Neo", "애플 SD 산돌고딕 Neo" !default;
+$font-family-zhCh: "gothic","Helvetica","Arial",sans-serif, "Apple SD Gothic Neo", "애플 SD 산돌고딕 Neo" !default;
+$font-family-title: "gothic", -apple-system, BlinkMacSystemFont, system-ui, "Segoe UI", "Apple SD Gothic Neo", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif !default;
+$font-family-base: $font-family-kor !default;
+$font-size: (
+  sizes: (
+    display: (
+      "sm": "4rem",
+      "md": "5rem",
+      "lg": "6.6rem",
+    ),
+    heading: (
+      "sm": "3.2rem",
+      "md": "4rem",
+      "lg": "5rem",
+    ),
+    title: (
+      "xsm": "1.5rem",
+      "sm": "1.7rem",
+      "md": "1.9rem",
+      "lg": "2.1rem",
+      "xlg": "2.5rem",
+      "xxlg": "3.2rem",
+    ),
+    body: (
+      "sm": "1.5rem",
+      "md": "1.7rem",
+      "lg": "1.9rem",
+    ),
+    link: (
+      "sm": "1.5rem",
+      "md": "1.7rem",
+      "lg": "1.9rem",
+    ),
+    detail: (
+      "sm": "1.3rem",
+      "md": "1.5rem",
+      "lg": "1.7rem",
+    ),
+    label: (
+        "xsm": "1.3rem",
+        "sm": "1.5rem",
+        "md": "1.7rem",
+        "lg": "1.9rem",
+    ),
+  ),
+) !default;
+$font-weight: (
+  "light": 300,
+  "normal": 400,
+  "medium": 500,
+  "bold": 700,
+  "bolder": 800,
+) !default;
+$font-size-base:          17px !default;
+$font-size-title:         40px !default;
+$headings-font-weight:    800 !default;
+$headings-line-height:    1.2 !default;
+$headings-letter-spacing: -2.5px;
+$font-size-sm: 14px; //20px
+$font-size-md: 20px; //20px
+$font-size-lg: 32px; //20px
+$font-size-xg:52px; // 52px
+$font-weight-light:           300;
+$font-weight-base:           500;
+$font-weight-normal:          700;
+$font-weight-bold:            800;
+
+$line-height-base:         1.4 !default;
+$line-height-lg:         1.5 !default;
+$line-height-sm:         $line-height-lg !default;
+$line-height-computed: 10px !default;
+
+
+/* breakpoint */
+$breakpoint-xs: 420px !default;
+$breakpoint-sm: 540px !default;
+$breakpoint-md: 768px !default;
+$breakpoint-lg: 1024px !default;
+$breakpoint-xl: 1280px !default;
+$breakpoint-xxl: 1400px !default;
+
+/* breakpoint : content */
+$breakpoint-content-xs: 420px !default;
+$breakpoint-content-sm: 540px !default;
+$breakpoint-content-md: 767px !default;
+$breakpoint-content-lg: 1023px !default;
+$breakpoint-content-xl: 1279px !default;
+$breakpoint-content-xxl: 1400px !default;
+
+
+
+$border-radius-xs:        2px !default;
+$border-radius-sm:       3px !default;
+$border-radius-md:        4px !default;
+$border-radius-lg:       6px !default;
+
+// Icon Class Names
+$iconClassName: "listul", "write", "detail", "delete", "down", "copy", "link", "blank", "next", "prev", "check", "refresh", "search", "advanced","print";
+$boardIconClassName: "icon1", "icon2", "icon3", "icon4", "icon5";
+
+
+
+// Easings
+$ease-in-out: ease-in-out !default;;
+$ease-in-out-circ: cubic-bezier(.27,.01,.38,1.06) !default;;
+// z-index
+$zindex-dropdown:           1000 !default;
+$zindex-sticky:             1020 !default;
+$zindex-fixed:              1030 !default;
+
+$transition-base: 0.3s ease-in-out !default;;
+$transition-collapse: 0.3s ease !default;;
+$transition-fade: opacity 0.3s linear !default;;

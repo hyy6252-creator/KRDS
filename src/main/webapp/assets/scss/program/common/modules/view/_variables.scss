@@ -1,0 +1,162 @@
+
+$viewimgWidth-LG : 415px !default;
+$viewimgHeight-LG : 590px !default;
+
+// type2 이미지 사이즈 설정
+$viewimgWidth-SM : 310px !default;
+$viewimgHeight-SM : 310px !default;
+
+// topbox에 이미지 상,좌,우 여백 설정
+$viewimgLeft-gap : 50px !default;
+
+$viewimgRight-gap : 50px !default;
+$viewimgTop-gap : 50px !default;
+
+// top-box title 스타일 성정
+$viewTitlesize : 30px !default;
+$viewConsize : 16px !default;
+
+// 첨부파일 설정
+$fileitemGap : 5px !default;
+
+// 기본 슬라이드 설정
+$ViewslideHeight : 370px !default;
+$ViewslideGap : 20px !default;
+
+// 네비슬라이드 높이값
+$NavslideHeight : 280px !default;
+$NavslideGap : 50px !default;
+
+// 네비슬라이드 네비 높이값
+$Navslide-n-Width : 240px !default;
+$Navslide-n-Height : 100px !default;
+
+// 네비 사이들 간격
+$Navslide-n-gap : 5px !default;
+
+$TitleSize : 20px !default;
+$TitleColor : #222 !default;
+$TitleWeight : 700 !default;
+$TitleLineheight : 1.3 !default;
+$TextalignCenter : center !default;
+$TextalignLeft : left !default;
+$TextalignRight : right !default;
+
+
+$TextalignCenter : center !default;
+$TextalignLeft : left !default;
+$TextalignRight : right !default;
+// 말줄임 처리
+// 1줄일때 @include text-ellipsis(1)
+// 2줄일때 @include text-ellipsis(2)
+@mixin text-ellipsis($lineNum : 1) {
+  overflow: hidden;
+  max-width: 100%;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+
+  @if $lineNum==1 {
+    display: block;
+    white-space: nowrap;
+  }
+  @else {
+    white-space: normal;
+    display: -webkit-box !important;
+    -webkit-line-clamp: $lineNum;
+    -webkit-box-orient: vertical;
+  }
+}
+
+// 높이값이 필요한 타이틀 말줄임
+@mixin Title-text-ellipsis($lineNum : 1) {
+  overflow: hidden;
+  max-width: 100%;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+  height: $TitleSize*$TitleLineheight*$lineNum;
+
+  @if $lineNum==1 {
+    display: block;
+    white-space: nowrap;
+  }
+  @else {
+    white-space: normal;
+    display: -webkit-box !important;
+    -webkit-line-clamp: $lineNum;
+    -webkit-box-orient: vertical;
+  }
+}
+
+// 높이값이 필요한 컨텐츠 말줄임
+@mixin Con-text-ellipsis($lineNum : 1) {
+  overflow: hidden;
+  max-width: 100%;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+  height: $Confontsize*$Conlineheight*$lineNum;
+
+  @if $lineNum==1 {
+    display: block;
+    white-space: nowrap;
+  }
+  @else {
+    white-space: normal;
+    display: -webkit-box !important;
+    -webkit-line-clamp: $lineNum;
+    -webkit-box-orient: vertical;
+  }
+}
+
+// 이미지 높이값 기준
+@mixin img-height {position: absolute;left: 50%;top: 50%;transform: translate(-50%, -50%);max-width: none;max-height: none;height: 100%;width: auto;}
+// 이미지 넓이값 기준
+@mixin img-width {position: absolute;left: 50%;top: 50%;transform: translate(-50%, -50%);max-width: none;max-height: none;height: auto;width: 100%;}
+
+// 확대 아이콘
+@mixin scopeicon {
+  content: '';
+  background-image: url("data:image/svg+xml,%3Csvg width='76' height='99' viewBox='0 0 76 99' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2.22 82.3986L2.54 84.5386L13.06 83.9986C12.94 85.2386 12.74 86.5786 12.38 88.0786L14.98 88.3386C15.84 84.3386 15.84 81.7986 15.84 79.1186V76.9786H2.74V79.0786H13.24V79.1186C13.24 80.0586 13.24 81.0186 13.2 82.0386L2.22 82.3986ZM0.88 89.4386V91.5986H17.52V89.4386H0.88ZM29.3184 82.3986H27.2584C27.6984 80.8986 27.8584 79.2786 27.8584 77.5386H20.6384V79.6386H25.2384C24.9184 83.2386 23.2984 85.8986 19.6184 88.0986L21.1184 89.9586C23.7184 88.4386 25.3984 86.6186 26.4384 84.5186H29.3184V92.9586H31.7784V75.7586H29.3184V82.3986ZM33.1984 75.3386V93.7586H35.6984V75.3386H33.1984ZM43.2369 81.4386H51.1169V84.0186H43.2369V81.4386ZM48.4969 89.4986V86.1186H53.7169V76.4986H51.1169V79.3586H43.2369V76.4986H40.6169V86.1186H45.8569V89.4986H38.8569V91.6386H55.5369V89.4986H48.4969ZM58.8753 77.2586V79.3586H65.0153C64.6353 83.4386 62.5953 86.3186 57.8953 88.5786L59.2753 90.6586C65.8153 87.4986 67.7153 82.8986 67.7153 77.2586H58.8753ZM70.5353 75.3386V93.7586H73.1953V75.3386H70.5353Z' fill='white'/%3E%3Cpath d='M22.6911 23.6591C19.7131 20.6799 19.7131 15.794 22.6911 12.6956M39.6064 29.6175C45.9199 23.3015 45.9199 13.053 39.6064 6.73698C33.293 0.421006 23.0485 0.421006 16.7351 6.73698C10.4216 13.053 10.4216 23.3015 16.7351 29.6175C23.0485 35.9335 33.293 35.9335 39.6064 29.6175ZM39.6064 29.6175L46.3964 36.4099M42.9315 40.4222L50.4281 32.9227L65 47.5004L57.5035 55L42.9315 40.4222Z' stroke='white' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E%0A");
+  width: 76px;
+  height: 99px;
+  display: inline-block;
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  top: 50%;
+  transform: scale(0);
+  // width의 절반값
+  margin-left: -38px;
+
+  // 높이의 절반값
+  margin-top: -50px;
+
+  transition: transform 0.25s ease-out,opacity 0.25s ease-out;
+}
+
+// 이미지 호버시 효과
+@mixin Hoveraction {
+  content: '';
+  position: absolute;
+  left: 50%;
+  display: block;
+  background-color: #000;
+  z-index: 1;
+  opacity: 0.5;
+  top: -40px;
+  height: 32px;
+  width: 32px;
+  transition: transform 0.25s ease-out;
+  border-radius: 50%;
+  margin-left: -16px;
+  transform-origin: 50% 50%;}
+
+// 상세페이지 이미지
+@mixin ViewimgLeft {left: $viewimgLeft-gap;top: $viewimgTop-gap ;z-index: 2;}
+@mixin ViewimgRight {right: $viewimgRight-gap;top: $viewimgTop-gap ;z-index: 2;}
+
+// 미리보가 아이콘
+@mixin viewicon {background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='16' height='16' fill='currentColor'%3E%3Cpath d='M18.031 16.6168L22.3137 20.8995L20.8995 22.3137L16.6168 18.031C15.0769 19.263 13.124 20 11 20C6.032 20 2 15.968 2 11C2 6.032 6.032 2 11 2C15.968 2 20 6.032 20 11C20 13.124 19.263 15.0769 18.031 16.6168ZM16.0247 15.8748C17.2475 14.6146 18 12.8956 18 11C18 7.1325 14.8675 4 11 4C7.1325 4 4 7.1325 4 11C4 14.8675 7.1325 18 11 18C12.8956 18 14.6146 17.2475 15.8748 16.0247L16.0247 15.8748Z'%3E%3C/path%3E%3C/svg%3E");background-repeat: no-repeat;background-position: center;width: 16px;height: 16px;}
+
+// 다운로드 아이콘
+@mixin downicon {background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='16' height='16' fill='currentColor'%3E%3Cpath d='M3 19H21V21H3V19ZM13 13.1716L19.0711 7.1005L20.4853 8.51472L12 17L3.51472 8.51472L4.92893 7.1005L11 13.1716V2H13V13.1716Z'%3E%3C/path%3E%3C/svg%3E");background-repeat: no-repeat;background-position: center;width: 16px;height: 16px;}
+

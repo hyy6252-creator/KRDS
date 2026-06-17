@@ -1,0 +1,34 @@
+
+@use '../../../../common/abstracts' as *;
+
+// 색상 변수
+$table-padding: 15px 10px;
+$table-align: center;
+$table-top-border: #36404A !default;
+$table-border: map-get($base-table-colors, "border") !default;
+$table-border-color: map-get($base-table-colors, "base-border") !default;
+$table-notice-bg: map-get($base-table-colors, "notice-bg") !default;
+$table-line-height: $line-height-computed !default;
+$table-base-bg: map-get($base-table-colors, "base-bg") !default;
+$table-subject-color: $black !default;
+$table-subject-size: 18px !default;
+$table-th-color: #36404A !default;
+$table-thead-background: #F9F9FA !default;
+$table-tbody-background: #fff !default;
+$table-primary-color: #36404A !default;
+$highlight-color: #c5c9d6 !default;
+$border-light: #D9DAE1 !default;
+$table-point-color: $danger !default;
+
+
+// 숨김 처리 믹스인
+@mixin table-hidden {
+  overflow: hidden;
+  position: relative;
+  width: 0;
+  height: 0;
+  margin: 0;
+  padding: 0;
+  line-height: 0;
+  font-size: 0;
+}

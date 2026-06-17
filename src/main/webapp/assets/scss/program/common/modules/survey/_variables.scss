@@ -1,0 +1,5 @@
+@use '../../../../common/abstracts' as *;
+
+$survey-point-color : $primary !default;
+$survey-font-color : $pointTitleColor !default;
+$survey-border-color : $pointTitleColor !default;

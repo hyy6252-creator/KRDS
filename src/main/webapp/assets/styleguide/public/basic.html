@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>스타일가이드_basic</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css">
+  <link rel="stylesheet" href="../../css/tailwind.css">
+  <style>
+    body { font-family: 'Pretendard', -apple-system, sans-serif; }
+    .code-block { font-family: 'Courier New', monospace; }
+  </style>
+</head>
+<body class="bg-gray-5 text-gray-90">
+
+  <!-- 레이아웃 -->
+  <div class="flex min-h-screen">
+
+    <!-- 좌측 사이드바 -->
+    <aside class="fixed left-0 top-0 w-52 h-screen bg-gray-90 text-white overflow-y-auto z-10 flex flex-col">
+      <!-- 페이지 선택 -->
+      <div class="p-4 border-b border-gray-70">
+        <select id="findPage" onchange="location.href=this.value"
+          class="w-full bg-gray-80 text-white text-sm px-3 py-2 rounded border border-gray-60 focus:outline-none">
+          <option value="basic.html" selected>basic_기본</option>
+          <option value="b01.html">b01_컴포넌트</option>
+          <option value="pe.html">pe_프로그램</option>
+        </select>
+      </div>
+      <!-- 섹션 네비 -->
+      <nav class="flex-1 p-4">
+        <p class="text-xs text-gray-40 mb-3 font-semibold tracking-wider uppercase">웹 스타일가이드 (기본형)</p>
+        <ul class="space-y-1 text-sm">
+          <li><a href="#introduction" class="block px-3 py-2 rounded text-gray-20 hover:bg-gray-80 hover:text-white transition-colors">Introduction</a></li>
+          <li><a href="#colors" class="block px-3 py-2 rounded text-gray-20 hover:bg-gray-80 hover:text-white transition-colors">컬러</a></li>
+          <li><a href="#tab" class="block px-3 py-2 rounded text-gray-20 hover:bg-gray-80 hover:text-white transition-colors">탭 스타일</a></li>
+          <li><a href="#topbox" class="block px-3 py-2 rounded text-gray-20 hover:bg-gray-80 hover:text-white transition-colors">박스 스타일</a></li>
+          <li><a href="#text" class="block px-3 py-2 rounded text-gray-20 hover:bg-gray-80 hover:text-white transition-colors">문단 스타일</a></li>
+          <li><a href="#button" class="block px-3 py-2 rounded text-gray-20 hover:bg-gray-80 hover:text-white transition-colors">버튼</a></li>
+          <li><a href="#table" class="block px-3 py-2 rounded text-gray-20 hover:bg-gray-80 hover:text-white transition-colors">테이블</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- 메인 콘텐츠 -->
+    <main class="ml-52 flex-1 p-8 max-w-5xl">
+
+      <!-- Introduction -->
+      <section id="introduction" class="mb-16">
+        <h2 class="text-xl font-bold text-gray-90 border-b-2 border-primary pb-3 mb-6">Introduction</h2>
+        <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-10">
+          <p class="text-gray-60 leading-relaxed">이 문서는 WebSite Design Style Guide에 관한 문서로 홈페이지 개발·구축 시 웹사이트 개발 지침 자료로 활용 되며 정의된 규칙 및 스타일의 변경 시 문서의 버전을 업그레이드 될 예정입니다.</p>
+        </div>
+      </section>
+
+      <!-- Colors -->
+      <section id="colors" class="mb-16">
+        <h2 class="text-xl font-bold text-gray-90 border-b-2 border-primary pb-3 mb-6">Symbol &amp; Color</h2>
+
+        <!-- Primary -->
+        <div class="mb-8">
+          <h3 class="text-base font-semibold text-gray-80 mb-1">프라이머리 색상 (primary color)</h3>
+          <p class="text-sm text-gray-50 mb-3">Primary 색상은 정부의 상징성을 나타내며 인터페이스에서 가장 주목받는 요소로 주요 액션이나 중요한 정보를 강조하는데 사용한다.</p>
+          <div class="flex gap-1 flex-wrap">
+            <div class="flex flex-col items-center gap-1">
+              <div class="w-14 h-14 rounded" style="background:#0B0F1A;"></div>
+              <span class="text-xs text-gray-50">0</span>
+            </div>
+            <div class="flex flex-col items-center gap-1">
+              <div class="w-14 h-14 rounded bg-primary-5"></div>
+              <span class="text-xs text-gray-50">5</span>
+              <span class="text-xs text-gray-40">surface</span>
+            </div>
+            <div class="flex flex-col items-center gap-1">
+              <div class="w-14 h-14 rounded bg-primary-10"></div>
+              <span class="text-xs text-gray-50">10</span>
+            </div>
+            <div class="flex flex-col items-center gap-1">
+              <div class="w-14 h-14 rounded bg-primary-20"></div>
+              <span class="text-xs text-gray-50">20</span>
+            </div>
+            <div class="flex flex-col items-center gap-1">
+              <div class="w-14 h-14 rounded bg-primary-30"></div>
+              <span class="text-xs text-gray-50">30</span>
+            </div>
+            <div class="flex flex-col items-center gap-1">
+              <div class="w-14 h-14 rounded bg-primary-40"></div>
+              <span class="text-xs text-gray-50">40</span>
+            </div>
+            <div class="flex flex-col items-center gap-1">
+              <div class="w-14 h-14 rounded bg-primary-50"></div>
+              <span class="text-xs text-white">50</span>
+              <span class="text-xs text-primary-50">base</span>
+            </div>
+            <div class="flex flex-col items-center gap-1">
+              <div class="w-14 h-14 rounded bg-primary-60"></div>
+              <span class="text-xs text-gray-50">60</span>
+            </div>
+            <div class="flex flex-col items-center gap-1">
+              <div class="w-14 h-14 rounded bg-primary-70"></div>
+              <span class="text-xs text-gray-50">70</span>
+            </div>
+            <div class="flex flex-col items-center gap-1">
+              <div class="w-14 h-14 rounded bg-primary-80"></div>
+              <span class="text-xs text-gray-50">80</span>
+            </div>
+            <div class="flex flex-col items-center gap-1">
+              <div class="w-14 h-14 rounded bg-primary-90"></div>
+              <span class="text-xs text-gray-50">90</span>
+            </div>
+            <div class="flex flex-col items-center gap-1">
+              <div class="w-14 h-14 rounded bg-primary-95"></div>
+              <span class="text-xs text-gray-50">95</span>
+            </div>
+            <div class="flex flex-col items-center gap-1">
+              <div class="w-14 h-14 rounded" style="background:#fff; border:1px solid #e6e8ea;"></div>
+              <span class="text-xs text-gray-50">100</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Secondary -->
+        <div class="mb-8">
+          <h3 class="text-base font-semibold text-gray-80 mb-1">세컨더리 색상 (secondary color)</h3>
+          <p class="text-sm text-gray-50 mb-3">Secondary색상은 primary 색상과 보조를 맞추며, 인터페이스에서 전체적인 보조적인 역할을 한다.</p>
+          <div class="flex gap-1 flex-wrap">
+            <div class="flex flex-col items-center gap-1"><div class="w-14 h-14 rounded" style="background:#040d18;"></div><span class="text-xs text-gray-50">0</span></div>
+            <div class="flex flex-col items-center gap-1"><div class="w-14 h-14 rounded bg-secondary-5"></div><span class="text-xs text-gray-50">5</span></div>
+            <div class="flex flex-col items-center gap-1"><div class="w-14 h-14 rounded bg-secondary-10"></div><span class="text-xs text-gray-50">10</span></div>
+            <div class="flex flex-col items-center gap-1"><div class="w-14 h-14 rounded bg-secondary-20"></div><span class="text-xs text-gray-50">20</span></div>
+            <div class="flex flex-col items-center gap-1"><div class="w-14 h-14 rounded bg-secondary-30"></div><span class="text-xs text-gray-50">30</span></div>
+            <div class="flex flex-col items-center gap-1"><div class="w-14 h-14 rounded bg-secondary-40"></div><span class="text-xs text-gray-50">40</span></div>
+            <div class="flex flex-col items-center gap-1"><div class="w-14 h-14 rounded bg-secondary-50"></div><span class="text-xs text-gray-50">50</span></div>
+            <div class="flex flex-col items-center gap-1"><div class="w-14 h-14 rounded bg-secondary-60"></div><span class="text-xs text-gray-50">60</span></div>
+            <div class="flex flex-col items-center gap-1"><div class="w-14 h-14 rounded bg-secondary-70"></div><span class="text-xs text-gray-50">70</span></div>
+            <div class="flex flex-col items-center gap-1"><div class="w-14 h-14 rounded bg-secondary-80"></div><span class="text-xs text-gray-50">80</span></div>
+            <div class="flex flex-col items-center gap-1"><div class="w-14 h-14 rounded bg-secondary-90"></div><span class="text-xs text-gray-50">90</span></div>
+            <div class="flex flex-col items-center gap-1"><div class="w-14 h-14 rounded bg-secondary-95"></div><span class="text-xs text-gray-50">95</span></div>
+            <div class="flex flex-col items-center gap-1"><div class="w-14 h-14 rounded" style="background:#fff;border:1px solid #e6e8ea;"></div><span class="text-xs text-gray-50">100</span></div>
+          </div>
+        </div>
+
+        <!-- Sub -->
+        <div class="mb-8">
+          <h3 class="text-base font-semibold text-gray-80 mb-1">서브 색상 (sub color)</h3>
+          <div class="flex gap-1 flex-wrap">
+            <div class="flex flex-col items-center gap-1"><div class="w-14 h-14 rounded" style="background:#021a13;"></div><span class="text-xs text-gray-50">0</span></div>
+            <div class="flex flex-col items-center gap-1"><div class="w-14 h-14 rounded bg-sub-5"></div><span class="text-xs text-gray-50">5</span></div>
+            <div class="flex flex-col items-center gap-1"><div class="w-14 h-14 rounded bg-sub-10"></div><span class="text-xs text-gray-50">10</span></div>
+            <div class="flex flex-col items-center gap-1"><div class="w-14 h-14 rounded bg-sub-20"></div><span class="text-xs text-gray-50">20</span></div>
+            <div class="flex flex-col items-center gap-1"><div class="w-14 h-14 rounded bg-sub-30"></div><span class="text-xs text-gray-50">30</span></div>
+            <div class="flex flex-col items-center gap-1"><div class="w-14 h-14 rounded bg-sub-40"></div><span class="text-xs text-gray-50">40</span></div>
+            <div class="flex flex-col items-center gap-1"><div class="w-14 h-14 rounded bg-sub-50"></div><span class="text-xs text-gray-50">50</span></div>
+            <div class="flex flex-col items-center gap-1"><div class="w-14 h-14 rounded bg-sub-60"></div><span class="text-xs text-gray-50">60</span></div>
+            <div class="flex flex-col items-center gap-1"><div class="w-14 h-14 rounded bg-sub-70"></div><span class="text-xs text-gray-50">70</span></div>
+            <div class="flex flex-col items-center gap-1"><div class="w-14 h-14 rounded bg-sub-80"></div><span class="text-xs text-gray-50">80</span></div>
+            <div class="flex flex-col items-center gap-1"><div class="w-14 h-14 rounded bg-sub-90"></div><span class="text-xs text-gray-50">90</span></div>
+            <div class="flex flex-col items-center gap-1"><div class="w-14 h-14 rounded bg-sub-95"></div><span class="text-xs text-gray-50">95</span></div>
+            <div class="flex flex-col items-center gap-1"><div class="w-14 h-14 rounded" style="background:#fff;border:1px solid #e6e8ea;"></div><span class="text-xs text-gray-50">100</span></div>
+          </div>
+        </div>
+
+        <!-- Gray -->
+        <div class="mb-8">
+          <h3 class="text-base font-semibold text-gray-80 mb-1">그레이 색상 (gray color)</h3>
+          <div class="flex gap-1 flex-wrap">
+            <div class="flex flex-col items-center gap-1"><div class="w-14 h-14 rounded bg-gray-95"></div><span class="text-xs text-gray-50">5</span></div>
+            <div class="flex flex-col items-center gap-1"><div class="w-14 h-14 rounded bg-gray-10"></div><span class="text-xs text-gray-50">10</span></div>
+            <div class="flex flex-col items-center gap-1"><div class="w-14 h-14 rounded bg-gray-20"></div><span class="text-xs text-gray-50">20</span></div>
+            <div class="flex flex-col items-center gap-1"><div class="w-14 h-14 rounded bg-gray-30"></div><span class="text-xs text-gray-50">30</span></div>
+            <div class="flex flex-col items-center gap-1"><div class="w-14 h-14 rounded bg-gray-40"></div><span class="text-xs text-gray-50">40</span></div>
+            <div class="flex flex-col items-center gap-1"><div class="w-14 h-14 rounded bg-gray-50"></div><span class="text-xs text-gray-50">50</span></div>
+            <div class="flex flex-col items-center gap-1"><div class="w-14 h-14 rounded bg-gray-60"></div><span class="text-xs text-gray-50">60</span></div>
+            <div class="flex flex-col items-center gap-1"><div class="w-14 h-14 rounded bg-gray-70"></div><span class="text-xs text-gray-50">70</span></div>
+            <div class="flex flex-col items-center gap-1"><div class="w-14 h-14 rounded bg-gray-80"></div><span class="text-xs text-gray-50">80</span></div>
+            <div class="flex flex-col items-center gap-1"><div class="w-14 h-14 rounded bg-gray-90"></div><span class="text-xs text-gray-50">90</span></div>
+            <div class="flex flex-col items-center gap-1"><div class="w-14 h-14 rounded bg-gray-95"></div><span class="text-xs text-gray-50">95</span></div>
+          </div>
+        </div>
+
+        <!-- Accent -->
+        <div class="mb-8">
+          <h3 class="text-base font-semibold text-gray-80 mb-1">어센트 색상 (accent color)</h3>
+          <div class="flex gap-1 flex-wrap">
+            <div class="flex flex-col items-center gap-1"><div class="w-14 h-14 rounded bg-accent-5"></div><span class="text-xs text-gray-50">5</span></div>
+            <div class="flex flex-col items-center gap-1"><div class="w-14 h-14 rounded bg-accent-10"></div><span class="text-xs text-gray-50">10</span></div>
+            <div class="flex flex-col items-center gap-1"><div class="w-14 h-14 rounded bg-accent-20"></div><span class="text-xs text-gray-50">20</span></div>
+            <div class="flex flex-col items-center gap-1"><div class="w-14 h-14 rounded bg-accent-30"></div><span class="text-xs text-gray-50">30</span></div>
+            <div class="flex flex-col items-center gap-1"><div class="w-14 h-14 rounded bg-accent-40"></div><span class="text-xs text-gray-50">40</span></div>
+            <div class="flex flex-col items-center gap-1"><div class="w-14 h-14 rounded bg-accent-50"></div><span class="text-xs text-gray-50">50</span></div>
+            <div class="flex flex-col items-center gap-1"><div class="w-14 h-14 rounded bg-accent-60"></div><span class="text-xs text-gray-50">60</span></div>
+            <div class="flex flex-col items-center gap-1"><div class="w-14 h-14 rounded bg-accent-70"></div><span class="text-xs text-gray-50">70</span></div>
+            <div class="flex flex-col items-center gap-1"><div class="w-14 h-14 rounded bg-accent-80"></div><span class="text-xs text-gray-50">80</span></div>
+            <div class="flex flex-col items-center gap-1"><div class="w-14 h-14 rounded bg-accent-90"></div><span class="text-xs text-gray-50">90</span></div>
+            <div class="flex flex-col items-center gap-1"><div class="w-14 h-14 rounded bg-accent-95"></div><span class="text-xs text-gray-50">95</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tab -->
+      <section id="tab" class="mb-16">
+        <h2 class="text-xl font-bold text-gray-90 border-b-2 border-primary pb-3 mb-6">탭 스타일</h2>
+        <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-10 mb-4">
+          <!-- 탭 예시 -->
+          <div class="flex border-b border-gray-20">
+            <button class="px-5 py-3 text-sm font-semibold text-white bg-primary border-t-2 border-x border-primary -mb-px rounded-t">4차 메뉴</button>
+            <button class="px-5 py-3 text-sm text-gray-50 border-t border-x border-gray-20 -mb-px rounded-t hover:text-primary">4차 메뉴</button>
+            <button class="px-5 py-3 text-sm text-gray-50 border-t border-x border-gray-20 -mb-px rounded-t hover:text-primary">4차 메뉴</button>
+            <button class="px-5 py-3 text-sm text-gray-50 border-t border-x border-gray-20 -mb-px rounded-t hover:text-primary">4차 메뉴</button>
+          </div>
+          <div class="border border-t-0 border-gray-20 p-4 rounded-b text-sm text-gray-60">탭 콘텐츠 영역</div>
+        </div>
+        <details class="bg-gray-90 rounded-xl overflow-hidden">
+          <summary class="px-4 py-2 text-sm text-gray-30 cursor-pointer hover:text-white">코드 보기</summary>
+          <pre class="p-4 text-xs text-green-300 overflow-x-auto"><code>&lt;div class="flex border-b border-gray-20"&gt;
+  &lt;button class="px-5 py-3 text-sm font-semibold text-white bg-primary border-t-2 border-x border-primary -mb-px rounded-t"&gt;4차 메뉴&lt;/button&gt;
+  &lt;button class="px-5 py-3 text-sm text-gray-50 border-t border-x border-gray-20 -mb-px rounded-t hover:text-primary"&gt;4차 메뉴&lt;/button&gt;
+&lt;/div&gt;
+&lt;div class="border border-t-0 border-gray-20 p-4 rounded-b text-sm text-gray-60"&gt;탭 콘텐츠 영역&lt;/div&gt;</code></pre>
+        </details>
+      </section>
+
+      <!-- Topbox -->
+      <section id="topbox" class="mb-16">
+        <h2 class="text-xl font-bold text-gray-90 border-b-2 border-primary pb-3 mb-6">탑박스</h2>
+        <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-10 mb-4">
+          <div class="flex gap-5 p-6 bg-primary-5 border border-[#AED5FF] rounded-2xl">
+            <div class="flex-shrink-0 w-20 h-20 bg-primary-10 rounded-full flex items-center justify-center">
+              <svg class="w-10 h-10 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+            </div>
+            <div class="flex-1">
+              <strong class="block text-base font-bold text-gray-90 mb-2">주요 내용</strong>
+              <p class="text-sm text-gray-60 leading-relaxed mb-3">콘텐츠 페이지 최상단에 위치하며, 콘텐츠의 내용을 간략하게 정리하여 안내합니다. 내용과 알맞는 아이콘을 함께 구성하여 사용자에게 효과적으로 설명합니다.</p>
+              <ul class="list-disc list-inside text-sm text-gray-60 mb-3 space-y-1">
+                <li>텍스트 목록 레벨1</li>
+                <li>텍스트 목록 레벨1</li>
+                <li>텍스트 목록 레벨1</li>
+              </ul>
+              <div class="flex gap-2 mb-3">
+                <a href="#" class="inline-flex items-center gap-1 px-4 py-2 bg-primary text-white text-sm rounded hover:bg-primary-60 transition-colors">바로가기 →</a>
+                <a href="#" class="inline-flex items-center gap-1 px-4 py-2 bg-white text-primary text-sm border border-primary rounded hover:bg-primary-5 transition-colors">다운로드 ↓</a>
+                <a href="#" class="inline-flex items-center gap-1 px-4 py-2 bg-white text-gray-70 text-sm border border-gray-20 rounded hover:bg-gray-5 transition-colors">새창열림 ↗</a>
+              </div>
+              <hr class="border-gray-20 mb-2">
+              <p class="text-xs text-accent-50">콘텐츠의 내용 외 추가적인 사항을 표시할때 사용합니다.</p>
+            </div>
+          </div>
+        </div>
+        <details class="bg-gray-90 rounded-xl overflow-hidden">
+          <summary class="px-4 py-2 text-sm text-gray-30 cursor-pointer hover:text-white">코드 보기</summary>
+          <pre class="p-4 text-xs text-green-300 overflow-x-auto"><code>&lt;div class="flex gap-5 p-6 bg-primary-5 border border-[#AED5FF] rounded-2xl"&gt;
+  &lt;div class="flex-shrink-0 w-20 h-20 bg-primary-10 rounded-full flex items-center justify-center"&gt;
+    &lt;!-- 아이콘 --&gt;
+  &lt;/div&gt;
+  &lt;div class="flex-1"&gt;
+    &lt;strong class="block text-base font-bold text-gray-90 mb-2"&gt;주요 내용&lt;/strong&gt;
+    &lt;p class="text-sm text-gray-60 leading-relaxed mb-3"&gt;내용...&lt;/p&gt;
+    &lt;ul class="list-disc list-inside text-sm text-gray-60 mb-3 space-y-1"&gt;
+      &lt;li&gt;텍스트 목록 레벨1&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;div class="flex gap-2"&gt;
+      &lt;a href="#" class="px-4 py-2 bg-primary text-white text-sm rounded hover:bg-primary-60"&gt;바로가기&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </details>
+      </section>
+
+      <!-- Text -->
+      <section id="text" class="mb-16">
+        <h2 class="text-xl font-bold text-gray-90 border-b-2 border-primary pb-3 mb-6">문단 스타일</h2>
+        <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-10 mb-4 space-y-4">
+          <h2 class="text-[28px] font-bold text-gray-90 border-b border-gray-20 pb-2">페이지내 단락 타이틀(H2)</h2>
+          <h3 class="text-[20px] font-bold text-gray-60 pb-2">단락내 첫번째 항목 타이틀(H3)</h3>
+          <h4 class="text-[18px] font-semibold text-gray-50 pb-2">두번째 항목 타이틀(H4)</h4>
+          <h5 class="text-[17px] font-semibold text-gray-90 pb-2">세번째 항목 타이틀(H5)</h5>
+          <h6 class="text-[15px] font-semibold text-gray-90 pb-2">네번째 항목 타이틀(H6)</h6>
+          <p class="text-sm text-gray-60 leading-relaxed">다음의 목적을 위하여 이용자의 개인정보를 처리합니다. 처리하고 있는 개인정보는 다음의 목적 이외의 용도로는 이용되지 않으며, 이용 목적이 변경되는 경우에는 개인정보 보호법 제18조에 따라 별도의 동의를 받는 등 필요한 조치를 이행할 예정입니다.</p>
+          <ul class="list-disc list-inside text-sm text-gray-60 space-y-1 pl-2">
+            <li>다음의 목적을 위하여 이용자의 개인정보를 처리합니다.
+              <ul class="list-[circle] list-inside pl-4 mt-1 space-y-1">
+                <li>다음의 목적을 위하여 이용자의 개인정보를 처리합니다.</li>
+              </ul>
+            </li>
+            <li>다음의 목적을 위하여 이용자의 개인정보를 처리합니다.</li>
+          </ul>
+          <ol class="list-decimal list-inside text-sm text-gray-60 space-y-1 pl-2">
+            <li>다음의 목적을 위하여 이용자의 개인정보를 처리합니다.</li>
+            <li>다음의 목적을 위하여 이용자의 개인정보를 처리합니다.</li>
+            <li>다음의 목적을 위하여 이용자의 개인정보를 처리합니다.</li>
+          </ol>
+          <p class="text-xs text-accent-50">※ 경고나 안내문구, 참고사항 등이 본문 하단에 들어갈때</p>
+        </div>
+        <details class="bg-gray-90 rounded-xl overflow-hidden">
+          <summary class="px-4 py-2 text-sm text-gray-30 cursor-pointer hover:text-white">코드 보기</summary>
+          <pre class="p-4 text-xs text-green-300 overflow-x-auto"><code>&lt;h2 class="text-[28px] font-bold text-gray-90 border-b border-gray-20 pb-2"&gt;페이지내 단락 타이틀(H2)&lt;/h2&gt;
+&lt;h3 class="text-[20px] font-bold text-gray-60"&gt;단락내 첫번째 항목 타이틀(H3)&lt;/h3&gt;
+&lt;h4 class="text-[18px] font-semibold text-gray-50"&gt;두번째 항목 타이틀(H4)&lt;/h4&gt;
+&lt;p class="text-sm text-gray-60 leading-relaxed"&gt;본문 텍스트&lt;/p&gt;
+&lt;ul class="list-disc list-inside text-sm text-gray-60 space-y-1"&gt;
+  &lt;li&gt;목록 항목&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p class="text-xs text-accent-50"&gt;※ 안내문구&lt;/p&gt;</code></pre>
+        </details>
+      </section>
+
+      <!-- Button -->
+      <section id="button" class="mb-16">
+        <h2 class="text-xl font-bold text-gray-90 border-b-2 border-primary pb-3 mb-6">버튼</h2>
+        <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-10 mb-4 space-y-8">
+
+          <!-- Primary -->
+          <div>
+            <h3 class="text-sm font-semibold text-gray-50 mb-3">Primary</h3>
+            <div class="flex flex-wrap gap-3 items-center">
+              <button class="px-6 py-3.5 bg-primary text-white text-base font-medium rounded-lg hover:bg-primary-60 transition-colors">Large 바로가기 →</button>
+              <button class="px-5 py-2.5 bg-primary text-white text-sm font-medium rounded-md hover:bg-primary-60 transition-colors">Medium 바로가기 →</button>
+              <button class="px-4 py-2 bg-primary text-white text-xs font-medium rounded hover:bg-primary-60 transition-colors">Small 바로가기 →</button>
+              <button class="px-5 py-2.5 bg-primary text-white text-sm font-medium rounded-md opacity-40 cursor-not-allowed" disabled>Disabled</button>
+            </div>
+          </div>
+
+          <!-- Secondary -->
+          <div>
+            <h3 class="text-sm font-semibold text-gray-50 mb-3">Secondary</h3>
+            <div class="flex flex-wrap gap-3 items-center">
+              <button class="px-6 py-3.5 bg-white text-primary text-base font-medium border border-primary rounded-lg hover:bg-primary-5 transition-colors">Large 바로가기 →</button>
+              <button class="px-5 py-2.5 bg-white text-primary text-sm font-medium border border-primary rounded-md hover:bg-primary-5 transition-colors">Medium 바로가기 →</button>
+              <button class="px-4 py-2 bg-white text-primary text-xs font-medium border border-primary rounded hover:bg-primary-5 transition-colors">Small 바로가기 →</button>
+              <button class="px-5 py-2.5 bg-white text-gray-30 text-sm font-medium border border-gray-20 rounded-md cursor-not-allowed" disabled>Disabled</button>
+            </div>
+          </div>
+
+          <!-- Tertiary -->
+          <div>
+            <h3 class="text-sm font-semibold text-gray-50 mb-3">Tertiary</h3>
+            <div class="flex flex-wrap gap-3 items-center">
+              <button class="px-6 py-3.5 bg-white text-gray-90 text-base font-medium border border-gray-20 rounded-lg hover:bg-gray-5 transition-colors">Large 바로가기 →</button>
+              <button class="px-5 py-2.5 bg-white text-gray-90 text-sm font-medium border border-gray-20 rounded-md hover:bg-gray-5 transition-colors">Medium 바로가기 →</button>
+              <button class="px-4 py-2 bg-white text-gray-90 text-xs font-medium border border-gray-20 rounded hover:bg-gray-5 transition-colors">Small 바로가기 →</button>
+              <button class="px-5 py-2.5 bg-white text-gray-30 text-sm font-medium border border-gray-10 rounded-md cursor-not-allowed" disabled>Disabled</button>
+            </div>
+          </div>
+        </div>
+        <details class="bg-gray-90 rounded-xl overflow-hidden">
+          <summary class="px-4 py-2 text-sm text-gray-30 cursor-pointer hover:text-white">코드 보기</summary>
+          <pre class="p-4 text-xs text-green-300 overflow-x-auto"><code>&lt;!-- Primary --&gt;
+&lt;button class="px-6 py-3.5 bg-primary text-white text-base font-medium rounded-lg hover:bg-primary-60"&gt;Large&lt;/button&gt;
+&lt;button class="px-5 py-2.5 bg-primary text-white text-sm font-medium rounded-md hover:bg-primary-60"&gt;Medium&lt;/button&gt;
+&lt;button class="px-4 py-2 bg-primary text-white text-xs font-medium rounded hover:bg-primary-60"&gt;Small&lt;/button&gt;
+
+&lt;!-- Secondary --&gt;
+&lt;button class="px-6 py-3.5 bg-white text-primary text-base font-medium border border-primary rounded-lg hover:bg-primary-5"&gt;Large&lt;/button&gt;
+
+&lt;!-- Tertiary --&gt;
+&lt;button class="px-6 py-3.5 bg-white text-gray-90 text-base font-medium border border-gray-20 rounded-lg hover:bg-gray-5"&gt;Large&lt;/button&gt;</code></pre>
+        </details>
+      </section>
+
+      <!-- Table -->
+      <section id="table" class="mb-16">
+        <h2 class="text-xl font-bold text-gray-90 border-b-2 border-primary pb-3 mb-6">테이블</h2>
+        <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-10 mb-4">
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm border-collapse">
+              <caption class="sr-only">테이블 안내 - 타이틀, 상태값, 버튼A, 버튼B 정보 제공</caption>
+              <thead>
+                <tr class="border-t-2 border-gray-90">
+                  <th scope="col" class="bg-gray-5 text-gray-80 font-semibold px-4 py-3 border-b border-gray-20 text-center w-1/5">타이틀</th>
+                  <th scope="col" class="bg-gray-5 text-gray-80 font-semibold px-4 py-3 border-b border-gray-20 text-center" colspan="2">구분</th>
+                  <th scope="col" class="bg-gray-5 text-gray-80 font-semibold px-4 py-3 border-b border-gray-20 text-center">상태값</th>
+                  <th scope="col" class="bg-gray-5 text-gray-80 font-semibold px-4 py-3 border-b border-gray-20 text-center">버튼A</th>
+                  <th scope="col" class="bg-gray-5 text-gray-80 font-semibold px-4 py-3 border-b border-gray-20 text-center">버튼B</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-b border-gray-10 hover:bg-gray-5 transition-colors">
+                  <th scope="row" class="bg-gray-5 text-gray-70 font-medium px-4 py-3 border-r border-gray-10 text-center">타이틀</th>
+                  <td class="px-4 py-3 text-gray-60 border-r border-gray-10 text-center" colspan="2">내용</td>
+                  <td class="px-4 py-3 text-gray-60 border-r border-gray-10 text-center">-</td>
+                  <td class="px-4 py-3 text-center border-r border-gray-10">
+                    <a href="#" class="inline-flex items-center px-3 py-1 text-xs border border-gray-20 text-gray-70 rounded hover:bg-gray-5 transition-colors">바로가기</a>
+                  </td>
+                  <td class="px-4 py-3 text-center">
+                    <a href="#" class="inline-flex items-center px-3 py-1 text-xs border border-gray-20 text-gray-70 rounded hover:bg-gray-5 transition-colors">→</a>
+                  </td>
+                </tr>
+                <tr class="border-b border-gray-10 hover:bg-gray-5 transition-colors">
+                  <th scope="row" class="bg-gray-5 text-gray-70 font-medium px-4 py-3 border-r border-gray-10 text-center">타이틀</th>
+                  <td class="px-4 py-3 text-gray-60 border-r border-gray-10 text-center">내용</td>
+                  <td class="px-4 py-3 text-gray-60 border-r border-gray-10 text-center">내용</td>
+                  <td class="px-4 py-3 text-gray-60 border-r border-gray-10 text-center">-</td>
+                  <td class="px-4 py-3 text-center border-r border-gray-10">
+                    <a href="#" class="inline-flex items-center px-3 py-1 text-xs border border-gray-20 text-gray-70 rounded hover:bg-gray-5 transition-colors">바로가기</a>
+                  </td>
+                  <td class="px-4 py-3 text-center">
+                    <a href="#" class="inline-flex items-center px-3 py-1 text-xs border border-gray-20 text-gray-70 rounded hover:bg-gray-5 transition-colors">→</a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <details class="bg-gray-90 rounded-xl overflow-hidden">
+          <summary class="px-4 py-2 text-sm text-gray-30 cursor-pointer hover:text-white">코드 보기</summary>
+          <pre class="p-4 text-xs text-green-300 overflow-x-auto"><code>&lt;table class="w-full text-sm border-collapse"&gt;
+  &lt;thead&gt;
+    &lt;tr class="border-t-2 border-gray-90"&gt;
+      &lt;th class="bg-gray-5 text-gray-80 font-semibold px-4 py-3 border-b border-gray-20 text-center"&gt;타이틀&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr class="border-b border-gray-10 hover:bg-gray-5"&gt;
+      &lt;th scope="row" class="bg-gray-5 text-gray-70 font-medium px-4 py-3"&gt;타이틀&lt;/th&gt;
+      &lt;td class="px-4 py-3 text-gray-60 text-center"&gt;내용&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+        </details>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+</body>
+</html>

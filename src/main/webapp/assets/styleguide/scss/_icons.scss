@@ -1,0 +1,56 @@
+//square rectangle
+@mixin square($w, $h: $w) {
+  width: $w;
+  height: $h;
+}
+
+// --------------
+
+//svg img
+@mixin svg-icon($size: var(--svg-icon--size-large), $effect: null) {
+	display: inline-flex;
+	background-color: var(--svg-color-text-basic); // 초기컬러?
+	forced-color-adjust: none;
+	@include square($size);
+	@if ($effect == 'pure') { //mask 효과 없이 디자인된 svg 그대로 사용
+		background-color: transparent !important;
+	}
+}
+
+//svg icon setting
+@mixin icon-set ($name, $effect: null) {
+	-webkit-mask-repeat: no-repeat;
+	-webkit-mask-position: center center;
+	-webkit-mask-size: contain;
+	mask-repeat: no-repeat;
+	mask-position: center center;
+	mask-size: contain;
+	-webkit-mask-image: url(/assets/styleguide/img/icon/#{$name}.svg);
+	mask-image: url(/assets/styleguide/img/icon/#{$name}.svg);
+	// @if ($effect == 'pure') { //mask 효과 없이 디자인된 svg 그대로 사용
+	// 	background-color: transparent !important;
+	// 	background-repeat: no-repeat;
+	// 	background-size: contain;
+	// 	background-image: url(/assets/styleguide/img/icon/#{$name}.svg);
+	// 	-webkit-mask-image: none;
+	// 	mask-image: none;
+	// 	-webkit-mask: none;
+	// 	mask: none;
+	// }
+}
+
+// --------------
+
+.svg-icon {
+    &.ico-blank {
+		@include icon-set(ico-blank);
+	}
+    &.ico-next {
+		@include icon-set(ico-next);
+	}
+    &.ico-download {
+		@include icon-set(ico-download);
+	}
+
+
+}

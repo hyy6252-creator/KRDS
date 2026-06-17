@@ -1,0 +1,64 @@
+@charset "utf-8";
+/* 담당자지정/만족도조사/공공누리 */
+.content-info__charge{clear: both;}
+.content-info__charge,
+.content_info__satisfaction{position:relative;padding:15px 25px;border:1px solid #ececec;background-color:#fff;text-align:left}
+.content-info__charge{background:#fcfcfc}.content_info__satisfaction{margin-top:-1px;margin-bottom:30px}
+.content-info__charge strong{position:relative;margin-right:10px;padding-left:17px;color:#333;font-weight:700}
+.content-info__charge strong:before{display:block;position:absolute;top:0;left:0;width:13px;height:17px;background:url(/pcms/common/images/ir/content-info.png) -29px 0 no-repeat;content:''}
+.content-info__charge span{display:inline-block;margin-right:10px}
+.content-info__charge .last{position:relative;float:right;margin-right:0;padding-left:20px}
+.content-info__charge .last em:before{position:absolute;top:2px;left:0;width:15px;height:15px;background:url(/pcms/common/images/ir/content-info.png) -14px 0 no-repeat;content:''}
+.content_info__satisfaction .research{position:relative;width:100%}.content_info__satisfaction .research:after{display:block;visibility:hidden;clear:both;content:""}
+.content_info__satisfaction .research strong{display:block;position:relative;margin-bottom:5px;padding-left:20px;color:#444;font-size:15px;}
+.content_info__satisfaction .research strong:before{position:absolute;top:4px;left:0;width:14px;height:14px;background:url(/pcms/common/images/ir/content-info.png) no-repeat;content:''}
+.content_info__satisfaction .research div{display:block;position:relative;margin-top:-3px;padding:7px 490px 7px 0}
+.content_info__satisfaction .research div *{vertical-align:middle}
+.content_info__satisfaction .research div label{margin-right:8px;font-size:13px}
+.content_info__satisfaction .research div input[type=radio]:focus+label{color:#e83e26}
+.content_info__satisfaction .research div input[type=radio]{position:relative;top:-1px}
+.content_info__satisfaction .research input[type=text]{position:absolute;top:0;right:80px;width:410px;min-width:auto;height:30px;border:1px solid #ddd}
+.content_info__satisfaction .research input[type=button],
+.content_info__satisfaction .research input[type=submit]{position:absolute;top:0;right:0;width:80px;height:30px;padding:0;border:0;border-radius:0;background:#2f71d2;color:#fff;font-size:13px;text-decoration:none;text-align:center;line-height:1.166}
+.content-info__charge{margin-top:0}
+.content-info{position:relative;margin-top:100px;clear: both;}
+.content-info.add_kogl{padding-right:29%}
+.content-info.add_kogl .content-info__charge strong{display:none}
+.content-info.add_kogl .content-info__charge span{font-size:14px}
+.content-info.add_kogl .content_info__satisfaction .research div{padding-right:80px}
+.content-info.add_kogl .content_info__satisfaction .research input[type=text]{position:relative;top:auto;right:auto;width:100%}
+.content-info.add_kogl .content_info__satisfaction .research input[type=button],
+.content-info.add_kogl .content_info__satisfaction .research input[type=submit]{top:auto;bottom:7px}
+.content-info.add_kogl .content_info__kogl{position:absolute;top:0;right:0;width:28%;min-height:185px;border:1px solid #ececec}
+.content-info.add_kogl .content_info__kogl .content-kogl__title{display:block;position:relative;padding:15px 25px;border:1px solid #ececec;background-color:#fcfcfc;color:#333;font-weight:600;text-align:left;line-height:1.4}
+.content-info.add_kogl .content_info__kogl .inner{padding:20px 25px 0}.content-info.add_kogl .content_info__kogl .mark--area{height:41px;margin:0 auto 15px;background:url(/pcms/common/images/ir/ir-kogl.png) no-repeat;font-size:0}
+.content-info.add_kogl .content_info__kogl .mark--area.mark1{width:111px;background-position:0 -1px}
+.content-info.add_kogl .content_info__kogl .mark--area.mark2{width:136px;background-position:-172px -1px}
+.content-info.add_kogl .content_info__kogl .mark--area.mark3{width:136px;background-position:0 -52px}
+.content-info.add_kogl .content_info__kogl .mark--area.mark4{width:185px;background-position:-172px -52px}
+.content-info.add_kogl .content_info__kogl .mark--text{display:block;font-size:14px;text-align:center;line-height:1.2}
+@media only screen and (max-width:1200px){
+	.content-info__charge,.content_info__satisfaction{padding:15px 12px}
+	.content-info.add_kogl .content_info__kogl .content-kogl__title{padding:15px 12px;text-align:center}
+	.content-info.add_kogl .content-info__charge span{font-size:13px}
+}
+@media only screen and (max-width:1100px){
+	.content_info__satisfaction .research div{padding-right:370px}.content_info__satisfaction .research input[type=text]{width:280px}
+}
+@media only screen and (max-width:767px){
+	.content-info__charge span{display:block;float:none;padding:0;margin-bottom:3px}
+	.content-info__charge .last{float:none;padding-left:0}
+	.content-info__charge .last em:before{display:none}
+	.content_info__satisfaction .research strong{font-size:14px}
+	.content_info__satisfaction .research div{padding:10px}
+	.content_info__satisfaction .research input[type=button],
+	.content_info__satisfaction .research input[type=submit],
+	.content_info__satisfaction .research input[type=text]{position:relative;top:0;right:auto}
+	.content_info__satisfaction .research input[type=text]{width:68%}
+	.content_info__satisfaction .research input[type=button],
+	.content_info__satisfaction .research input[type=submit]{width:30%}
+	.content-info.add_kogl .content_info__satisfaction{margin-bottom:-1px;border-bottom:none}
+	.content-info.add_kogl{padding-right:0}
+	.content-info.add_kogl .content_info__kogl{position:relative;right:auto;width:auto;min-height:auto}
+	.content-info.add_kogl .content_info__kogl .inner{padding-bottom:20px}
+}

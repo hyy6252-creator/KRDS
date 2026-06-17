@@ -1,0 +1,19 @@
+:root {
+  --tooltip-opacity: .9;
+  --zindex-tooltip: 1070;
+
+  --tooltip-max-width: 200px;
+  --tooltip-color: var(--white);
+  --tooltip-bg: rgba(0, 0, 0, 0.5);
+  --tooltip-opacity: 1;
+  --tooltip-padding: 7px 13px;
+  --tooltip-margin: 0;
+  --tooltip-arrow-width: 5px;
+  --tooltip-arrow-height: 5px;
+  --tooltip-arrow-color: var(--tooltip-bg);
+
+  --tooltip-border-radius-xs: var(--border-radius-xs);
+  --tooltip-border-radius-sm: var(--border-radius-sm);
+  --tooltip-border-radius-md: var(--border-radius-md);
+  --tooltip-border-radius-lg: var(--border-radius-lg);
+}

@@ -1,0 +1,17 @@
+{
+  "name": "krds",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "tailwindcss -i ./src/input.css -o ./src/main/webapp/assets/css/tailwind.css",
+    "watch": "tailwindcss -i ./src/input.css -o ./src/main/webapp/assets/css/tailwind.css --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.3.1",
+    "tailwindcss": "^4.3.1"
+  }
+}

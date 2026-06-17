@@ -1,0 +1,19 @@
+:root {
+  --table-padding: 15px 10px;
+  --table-align: center;
+  --table-top-border: #36404A;
+  --table-border: #D9DAE1;
+  --table-border-color: #D9DAE1;
+  --table-notice-bg: #F8F9FB;
+  --table-line-height: var(--line-height-computed);
+  --table-base-bg: var(--white);
+  --table-subject-color: var(--black);
+  --table-subject-size: 18px;
+  --table-th-color: #36404A;
+  --table-thead-background: #F9F9FA;
+  --table-tbody-background: #fff;
+  --table-primary-color: #36404A;
+  --highlight-color: #c5c9d6;
+  --border-light: #D9DAE1;
+  --table-point-color: var(--danger);
+}

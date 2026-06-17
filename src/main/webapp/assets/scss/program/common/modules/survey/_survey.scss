@@ -1,0 +1,147 @@
+@use '../../../../common/abstracts' as *;
+@use 'variables' as survey-vars;
+
+
+.surveyWrap {
+    display: block; margin: 0 0 50px; width: 100%;
+    * {
+        box-sizing:border-box; word-break:keep-all;
+    }
+    .checklist-item {
+        padding: 0 0 30px; border-bottom: 1px dashed #D9DAE1;
+    }
+    .survey-title {
+        display: flex; font-size: 18px; font-weight: 700; line-height: 150%; letter-spacing: -0.32px; color: survey-vars.$survey-font-color; margin: 30px 0 10px;
+        @media (max-width: 490px) {font-size: 16px;}
+        .survey-number {color: survey-vars.$survey-point-color; margin: 0 5px 0 0; white-space: nowrap;}
+    }
+    .label-list{
+        margin-left: 30px;
+        @media (max-width: 768px) {margin-left: 0;}
+    }
+    .label-item {
+        margin: 5px 0 0 30px;
+        @media (max-width: 768px) {margin: 5px 0 0;}
+    }
+    .checkbox-box{
+        &.type4{
+            .label-item {display:inline-block; margin:5px 30px 0 0; }
+        }
+    }
+    .checkbox-inline{white-space: wrap;}
+    .opinion{
+        .checkbox-box {margin: -10px;display: flex;align-items:center;flex-wrap:wrap;
+            @media (max-width: 768px) {margin: -5px;}
+            input[type=radio]:checked+.chk_ball{border: 1px solid #fff;background-color: #fff;}
+        }
+        label {width: 330px;padding: 20px;margin:10px;border-radius: 4px;display: flex;justify-content:center;align-items:center;font-size: 16px;font-weight: 500;line-height: 1;letter-spacing: -0.64px;
+            @media (max-width: 768px) {margin: 5px;}
+            .radio-inner{position: relative;padding-left: 26px;}
+            &.type1 {border:1px solid #3180EF; background:#3180EF; color:#fff;
+                input[type=radio]+.chk_ball::after{background:#3180EF;}
+            }
+            &.type2 {border:1px solid #E35276; background:#E35276; color:#fff;
+                input[type=radio]+.chk_ball::after{background:#E35276;}
+            }
+            input {margin:0 10px 0 0; }
+            .chk_ball {top: 50%;transform: translate(0, -50%);}
+        }
+    }
+    .board__column{
+        &.type02{
+            .item:not(:last-child){border: none;padding-bottom: 0;margin-bottom: 30px;}
+        } 
+    }
+
+    &.questionnaire {
+        .survey-title-box,
+        .label-title-box {
+            display: flex; justify-content: space-between; align-items: flex-end;
+            @media (max-width: 1024px) {flex-direction: column; align-items: normal;}
+        }
+        .survey-title-box {
+            margin: 30px 0 10px;
+            .survey-box-group {
+                & + .survey-box-group {
+                    @media (max-width: 1024px) {margin: 15px 0 0 0;}
+                }
+            }
+            .survey-title {
+                margin: 0;
+            }
+        }
+        .label-title-box {
+            margin: 20px 0 0 0;
+            .label-title {
+                margin: 0;
+            }
+        }
+        .label-title {
+            display: flex; width: 100%; font-size: 16px; font-weight: 700; line-height: 150%; letter-spacing: -0.32px; color: #1D1D1D; margin-top: 20px;
+            .label-number {
+                color: #3180ef; margin: 0 5px 0 0; white-space: nowrap;
+            }
+        }
+        .label-inner-box {
+            margin: 5px 0 0 25px;
+            @media (max-width: 768px) {margin: 5px 0 0 0;}
+        }
+        .text-label {
+            display: inline-flex; align-items: center; font-size: 15px; line-height: 150%; letter-spacing: -0.64px; color: #36404a; white-space: nowrap;
+            .form-control {
+                margin: 0 5px;
+            }
+        }
+        .label-detail {
+            display: inline-block; margin: 2px 20px 2px 0;
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+        .label-list {
+            &.label-flex {
+                .label-item {
+                    display: inline-flex; align-items: center;
+                    .label-inner-box {
+                        margin: 0 0 0 -10px;
+                    }
+                }
+                &.mo-no {
+                    .label-item {
+                        @media (max-width: 490px) {display: flex; flex-direction: column; align-items: flex-start;}
+                        .label-inner-box {
+                            @media (max-width: 490px) {margin: 0; width: 100%;}
+                        }
+                    }
+                }
+            }
+        }
+        .label-item {
+            label {
+                & + .label-inner-box {
+                    @media (max-width: 768px) {margin-left: 25px;}
+                }
+            }
+            &.mo-block {
+                @media (max-width: 768px) {display: block; margin: 0 30px 0 0;}
+                @media (max-width: 490px) {margin: 0;}
+                .label-detail {
+                    @media (max-width: 768px) {display: block;}
+                }
+                .text-label {
+                    @media (max-width: 768px) {display: flex;}
+                }
+                .label-inner-box {
+                    @media (max-width: 768px) {margin-left: 18px;}
+                }
+            }
+        }
+        .checkbox-box {
+            &.type3 {
+                .label-item {
+                    margin-left: 0;
+                }
+            }
+        }
+    }
+}

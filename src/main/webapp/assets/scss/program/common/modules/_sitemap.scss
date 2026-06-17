@@ -1,0 +1,272 @@
+@charset "utf-8";
+
+@use '../../../common/abstracts' as *;
+#contens {
+  .sitemap {
+    position: relative;
+    width: 100%;
+    margin-bottom: 20px;
+
+    &:after {
+      display: block;
+      visibility: hidden;
+      clear: both;
+      content: "";
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    &.type1 {
+      &.col3 dl {
+        width: 33.33%;
+      }
+      &.col4 dl {
+        width: 25%;
+      }
+      &.col5 dl {
+        width: 20%;
+      }
+      &.col6 dl {
+        width: 16.66%;
+      }
+      &.col7 dl {
+        width: 14.28%;
+      }
+
+      dl {
+        display: inline-block;
+        float: left;
+        margin-bottom: 50px;
+        padding: 0 1%;
+
+        dt {
+          margin: 0 0 10px 0;
+          padding: 10px 15px;
+          border-top: 1px solid $black; // $black 변수 사용
+          border-bottom: 1px solid map-get($gray-colors, "50"); // $gray 변수 사용
+          color: $black; // $black 변수 사용
+          font-size: 16px;
+          line-height: 30px;
+        }
+
+        dd {
+          padding: 5px 15px;
+
+          b {
+            display: block;
+            line-height: 0;
+            a {
+              display: block;
+              position: relative;
+              padding-left: 10px;
+              padding-right: 12px;
+              color: map-get($gray-colors, "50"); // $gray 변수 사용
+              font-size: 14px;
+              line-height: 24px;
+
+              &:hover,
+              &:active,
+              &:focus {
+                text-decoration: underline;
+              }
+
+              &:after {
+                display: block;
+                position: absolute;
+                top: 10px;
+                left: 0;
+                width: 4px;
+                height: 4px;
+                background-color: $black; // $black 변수 사용
+                content: " ";
+              }
+
+              &[target="_blank"]:before {
+                content: '';
+                position: absolute;
+                top: 50%;
+                right: 0;
+                width: 10px;
+                height: 10px;
+                transform: translate(0%, -50%);
+                background-image: url("data:image/svg+xml,%3Csvg width='10' height='10' viewBox='0 0 10 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='1.81836' width='8.18182' height='8.18182' rx='1' fill='%23EFF2F4'/%3E%3Crect x='0.5' y='2.31812' width='7.18182' height='7.18182' rx='0.5' fill='white' stroke='%23DCE2E8'/%3E%3C/svg%3E%0A");
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &.type2 {
+      position: relative;
+      overflow: hidden;
+      border-top: 2px solid $light; // $light 변수 사용
+
+      .title_wrap {
+        border-bottom: 0 solid $black; // $black 변수 사용
+      }
+
+      dl {
+        position: relative;
+        padding: 23px 23px 23px 21%;
+        overflow: hidden;
+        border-bottom: 1px solid map-get($base-table-colors, "base-border"); // $base-border 변수 사용
+
+        &:before {
+          display: block;
+          position: absolute;
+          top: 0;
+          left: 18%;
+          width: 1px;
+          height: 100%;
+          content: "";
+          background-color: map-get($base-table-colors, "base-border"); // $base-border 변수 사용
+        }
+
+        &:after {
+          display: block;
+          visibility: hidden;
+          clear: both;
+          content: "";
+        }
+
+        dt {
+          position: absolute;
+          top: 10px;
+          left: 0;
+          padding-left: 15px;
+          color: $black; // $black 변수 사용
+          width: 15%;
+
+          a {
+            color: $black; // $black 변수 사용
+            font-size: 18px;
+            font-weight: bold;
+            line-height: 1.2;
+          }
+        }
+
+        dd {
+          float: left;
+          width: 25%;
+          padding: 0 10px;
+
+          b {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: normal;
+
+            a {
+              display: block;
+              position: relative;
+              padding-left: 9px;
+              padding-right: 12px;
+              color: $black; // $black 변수 사용
+              font-size: 17px;
+              font-weight: normal;
+
+              &:before {
+                display: block;
+                position: absolute;
+                top: 12px;
+                left: 0;
+                width: 4px;
+                height: 4px;
+                content: "";
+                background-color: $light; // $light 변수 사용
+              }
+
+              &[target="_blank"]:after {
+                content: '';
+                position: absolute;
+                top: 50%;
+                right: 0;
+                width: 10px;
+                height: 10px;
+                transform: translate(0%, -50%);
+                background-image: url("data:image/svg+xml,%3Csvg width='10' height='10' viewBox='0 0 10 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='1.81836' width='8.18182' height='8.18182' rx='1' fill='%23EFF2F4'/%3E%3Crect x='0.5' y='2.31812' width='7.18182' height='7.18182' rx='0.5' fill='white' stroke='%23DCE2E8'/%3E%3C/svg%3E%0A");
+              }
+            }
+          }
+
+          ul {
+            margin-left: 8px;
+            li {
+              display: block;
+
+              a {
+                display: block;
+                position: relative;
+                padding-left: 11px;
+                padding-right: 12px;
+                color: map-get($gray-colors, "50"); // $gray 변수 사용
+                font-size: 15px;
+                line-height: 1.45;
+
+                &:after {
+                  display: block;
+                  position: absolute;
+                  top: 9px;
+                  left: 0;
+                  width: 5px;
+                  height: 1px;
+                  content: "";
+                  background-color: map-get($base-table-colors, "base-border"); // $base-border 변수 사용
+                }
+
+                &[target="_blank"]:before {
+                  content: '';
+                  position: absolute;
+                  top: 50%;
+                  right: 0;
+                  width: 10px;
+                  height: 10px;
+                  transform: translate(0%, -50%);
+                  background-image: url("data:image/svg+xml,%3Csvg width='10' height='10' viewBox='0 0 10 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='1.81836' width='8.18182' height='8.18182' rx='1' fill='%23EFF2F4'/%3E%3Crect x='0.5' y='2.31812' width='7.18182' height='7.18182' rx='0.5' fill='white' stroke='%23DCE2E8'/%3E%3C/svg%3E%0A");
+                }
+              }
+            }
+          }
+        }
+      }
+
+      @media only screen and (max-width: 767px) {
+        border: none;
+        dl {
+          padding: 0;
+          border-top: 0;
+          &:before {
+            display: none;
+          }
+          dt {
+            position: relative;
+            top: 0;
+            margin-bottom: 23px;
+            padding: 23px;
+            border-top: 2px solid $light; // $light 변수 사용
+            border-bottom: 1px solid $light; // $light 변수 사용
+            color: $black; // $black 변수 사용
+            font-size: 16px;
+            width: 100%;
+          }
+          dd {
+            padding-bottom: 23px;
+            width: 50%;
+          }
+        }
+      }
+
+      @media only screen and (max-width: 480px) {
+        dd {
+          padding-bottom: 15px;
+          ul {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}

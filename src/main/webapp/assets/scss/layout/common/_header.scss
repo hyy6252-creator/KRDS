@@ -1,0 +1,330 @@
+@charset "UTF-8";
+@use "variables" as *;
+
+////////////////////////////////////////
+////// KRDS 마스트헤드
+#masthead {
+  display: flex; align-items: center; background-color: #F1F5F8; z-index: 100; position: relative; padding: 4px 0;
+  @include mq(1024,min) {height: 32px;}
+
+  .nuri-txt {
+    display: flex; align-items: center; font-size: 15px; gap: 8px; color: $color-text-basic; line-height: 1.2;
+    @include mq(383) {font-size: 13px; gap: 6px;}
+
+    &::before { 
+      flex-shrink: 0; width: 24px; aspect-ratio: 1; background: $ico-flag no-repeat center/contain; content: ''; 
+      @include mq(383) {width: 20px; height: 20px;}
+    }
+  }
+}
+
+////////////////////////////////////////
+////// 헤더
+#top_layout {
+  --header-height: 100px;
+  --header-divider-color: var(--color-divider-gray-light);
+  z-index: 100; position: sticky; top: 0; width: 100%;
+  @include mq(1279) {--header-height: #{vw-clamp(1279,100,320,64)};}
+
+  ///// scroll-down시 header 숨김, sticky 포인터 문제 방지
+  pointer-events: none;
+  > * {pointer-events: auto;}
+
+
+  ///// 레이아웃
+  .header-wrap {
+    background-color: #fff; position: relative; transition: background-color .3s, border-color .3s, transform .4s; width: 100%;
+
+    html.scroll-down & { transform: translateY(calc(-100% - 1px)); }
+
+    > .layout {
+      display: flex; align-items: center; justify-content: space-between; height: 100%; position: static;
+      @include mq(1024,min) {flex-wrap: wrap;}
+    }
+
+    &::after {content: ''; background-color: var(--header-divider-color); width: 100%; position: absolute; left: 0; height: 1px; pointer-events: none; bottom: 0;}
+    .top-wrap {
+      @include mq(1023) {display: none;}
+      &::after {content: ''; width: var(--body-width); position: absolute; left: 50%; transform: translateX(-50%); height: 1px; pointer-events: none; bottom: 0; transition: background-color .3s; background-color: var(--header-divider-color);}
+
+    }
+    @include mq(1023) {
+      .util-wrap > li:not(.util-menu) {display: none;}
+    }
+
+    &[data-header-type="header-1"] {
+      .gnb {
+        @include mq(1279) {display: none;}
+      }
+    }
+
+    &[data-header-type="header-2"] {
+      > .layout {
+        position: static; flex-wrap: wrap;
+        &::before {content: ''; width: var(--body-width); height: 1px; margin-left: calc(var(--layout-margin) * -1); background-color: var(--header-divider-color); flex-shrink: 0; order: 10; transition: background-color .3s;}
+      }
+      .gnb {order: 50;}
+    }
+
+  }
+
+
+  ///// 상단 유틸 (모바일메뉴 상단 유틸과 공통)
+  .top-wrap {
+    width: 100%; font-size: 15px; flex-wrap: wrap; min-height: 32px; padding: 10px 0; display: flex; order: -100; position: relative; justify-content: flex-end; color: var(--color-text-basic);
+
+    .top-list {
+      --list-gap: 31px; // 홀수만
+      display: flex; align-items: center; justify-content: flex-end; flex-wrap: wrap; gap: 6px var(--list-gap);
+      > li {
+        position: relative;
+        & + li::before {
+          left: calc((var(--list-gap) + 1px) / -2);
+          content: ''; width: 1px; height: calc(1em + 1px); background-color: var(--color-divider-gray-light); position: absolute; top: 50%; transform: translateY(-50%); transition: background-color .3s;
+        }
+      }
+    }
+
+    .util-btn {
+      padding: 0 2px; display: flex; border: 1px solid transparent; align-items: center; border-radius: 4px; transition: color .3s, background-color .3s; outline-offset: 0; gap: 2px;
+
+      .ico { width: 16px; }
+      &::after {content: ''; width: 16px; height: 16px; flex-shrink: 0; mask: $ico-arrow-right no-repeat center/contain; background-color: var(--color-icon-gray); transition: background-color .3s; }
+      &[target=_blank]::after {mask-image: $ico-open-new-window;}
+
+      &:hover {background-color: var(--color-action-secondary-hover);}
+    }
+
+    //// 드롭다운 버튼
+    .drop-btn {
+      &::after {content: ''; mask-image: $ico-arrow-down;}
+      &.active::after {transform: rotate(180deg);}
+    }
+  }
+
+
+  ///// 좌측 로고
+  .logo-wrap {
+    display: flex; align-items: center;
+    
+    //// 대표 메인 로고
+    .main-logo {
+      width: 127px; flex-shrink: 0; background: url(/assets/images/common/logo.svg) no-repeat center/100%; transition: background-image .3s;
+      &::before { 
+        content: '';  display: block; 
+        padding-top: calc(54 / 190 * 100%); // calc(너비 / 높이 * 100%)
+      }
+    }
+
+    //// 사업소 로고 (텍스트)
+    .site-logo {
+      font-size: 24px; font-weight: 700; line-height: 1.2; margin-left: 1.25em; position: relative; letter-spacing: -.02em; display: flex; align-items: center; transition: color .3s; overflow-wrap: anywhere;
+      @include mq(1279) {font-size: vw-calc(1279,24,320,17);}
+
+      &::before {
+        content: ''; width: 1px; height: .7em; background: var(--color-divider-gray-light); position: absolute; left: -.625em; top: 50%; transform: translateY(-52%); transition: background-color .3s, opacity .3s;
+      }
+    }
+  }
+  
+
+  //// 드롭다운 메뉴
+  .drop-menu {
+    position: absolute; border-radius: 8px; margin-top: 16px; background-color: #FFF; border: 1px solid $color-border-gray-light; right: 50%; transform: translateX(50%); z-index: 5; padding: 8px; font-size: 17px; box-shadow: 0 0 2px 0 var(--color-alpha-shadow1), 0 4px 0.8rem 0 var(--color-alpha-shadow2); color: var(--color-text-basic); min-width: 130px;
+
+    &::before {content: ''; width: 20px; height: 10px; position: absolute; bottom: 100%; right: 50%; transform: translateX(50%); background: svg-ico($dropdown-list-deco,#FFF,$color-border-gray-light) no-repeat center top;}
+
+    /// 드롭다운 메뉴 버튼 공통
+    a,
+    button {
+      padding: 0 16px; height: 48px; border-radius: 6px; display: flex; align-items: center; transition: background-color .3s; font-size: 17px; text-underline-offset: .2em; width: 100%; gap: 4px;
+      &[target=_blank]::after {width: 16px; height: 16px; flex-shrink: 0; background: $ico-open-new-window no-repeat center/contain; content: '';}
+
+      &:hover,
+      &.active { background-color: var(--color-action-secondary-hover); }
+      &.active { color: var(--color-text-secondary); font-weight: 700; }
+    }
+
+      /// 드롭다운 메뉴 하단
+      .drop-bottom {
+        display: flex; justify-content: center; width: 100%; padding: 8px 0; border-top: 1px solid var(--color-border-gray-light); margin-top: 8px;
+      }
+
+      /// 화면 크기
+      &.screen-size {
+        .screen-size-btn {
+          white-space: nowrap; text-align: left; gap: 8px;
+  
+          &::before {content: "가"; border: 1px solid var(--color-light-gray-30); line-height: 1; flex-shrink: 0; border-radius: 4px; background: #FFF; display: inline-flex; align-items: center; justify-content: center; font-weight: 400; text-align: center;}
+          &.sm::before { width: 21px; height: 21px; font-size: 15px;}
+          &.md::before { width: 23px; height: 23px; font-size: 17px;}
+          &.lg::before { width: 25px; height: 25px; font-size: 19px;}
+          &.xlg::before { width: 27px; height: 27px; font-size: 21px;}
+          &.xxlg::before { width: 29px; height: 29px; font-size: 23px;}
+  
+          &.active::before {border-color: var(--color-text-secondary); color: #FFF; background-color: var(--color-text-secondary);}
+        }
+        .screen-size-reset {
+          justify-content: center; height: 36px; width: auto; gap: 6px;
+          &::before {content: ''; width: 20px; height: 20px; flex-shrink: 0; background: $ico-reset no-repeat center/contain;}
+        }
+      }
+  }
+
+
+  ///// 우측 유틸 (모바일 헤더쪽도 스타일 일부 공유)
+  .util-wrap {
+    display: flex; align-items: center; padding: 4px 0; gap: 8px;
+    @include mq(575) {padding: 0;}
+
+    > li {
+      position: relative;
+
+      &.util-popup {
+        display: none;
+        html.has-multi-popup & {display: block;}
+      }
+
+      &.util-allmenu {
+        &.pc {
+          @include mq(1023) {display: none;}
+        }
+        &.mo {
+          display: none;
+          @include mq(1023) {display: block;}
+        }
+      }
+    }
+
+    //// 우측 유틸 버튼 공통
+    .util-btn {
+      font-size: 17px; padding: 4px 12px; border-radius: 6px; transition: background-color .3s, color .3s; display: flex; align-items: center; justify-content: center; gap: 4px 8px; font-weight: 700; 
+      @include mq(767) {font-size: 15px; padding: 4px 8px;}
+      @include mq(575) {flex-direction: column; min-height: 0; padding: 4px 8px;}
+      .ico { width: 20px; }
+      span ~ .ico {
+        @include mq(575) {display: none;}
+      }
+      &:hover {background-color: var(--color-action-secondary-hover);}
+    }
+    .drop-btn {
+      .ico-arrow-down {transition: transform .3s;}
+      &.active .ico-arrow-down { transform: rotate(180deg);}
+    }
+  }
+
+
+  ///// 통합검색 팝업
+  .header-search {
+    position: absolute; left: 0; width: 100%; top: 100%; background: #FCFDFF; z-index: 5; overflow: hidden; box-shadow: 0 15px 15px 0 rgba(0, 0, 0, 0.15); /* transition: visibility .3s, opacity .3s; */
+    &:not(.is-open) {visibility: hidden; opacity: 0;}
+
+    //// 레이아웃
+    .layout {
+      display: flex; flex-direction: column; align-items: center; max-width: none; padding-top: 60px; padding-bottom: 64px;
+      @include mq(1279) {padding-top: 56px; padding-bottom: 60px;}
+      @include mq(767) {padding-top: 52px; padding-bottom: 44px;}
+      @include mq(575) {padding-bottom: 36px;}
+      @include mq(383) { padding-bottom: 32px;}
+    }
+
+    //// 통합검색 제목
+    .search-tit {
+      display: flex; justify-content: center; margin-bottom: 12px; font-size: 32px;
+      @include mq(1279) {font-size: 29px;}
+      @include mq(767) {font-size: 26px;}
+      @include mq(383) {font-size: vw-calc(383,26,320,23);}
+    }
+
+    //// 통합검색 바
+    .search-bar { 
+      max-width: 800px; position: relative; width: 100%; margin: 0 auto; font-size: 18px;
+      margin-bottom: 24px;
+      @include mq(1279) {font-size: 17px; margin-bottom: 20px;}
+      @include mq(575) {font-size: 16px; margin-bottom: 16px;}
+
+      /// 검색 칸
+      .search-input {
+        padding: 0 60px 0 24px; line-height: 1.5; width: 100%; border-radius: 15px; height: 64px; outline-offset: -2px; border: 1px solid var(--color-border-gray);
+        @include mq(1279) {height: 60px; border-radius: 12px; padding-left: 20px; padding-right: 56px;}
+        @include mq(767) {height: 56px; padding-right: 52px;}
+        @include mq(575) {height: 52px; border-radius: 10px; padding-left: 16px; padding-right: 48px;}
+        @include mq(383) {height: 48px; border-radius: 8px; padding-right: 44px;}
+        &::placeholder {font:inherit; color: rgba(0,0,0,.4); }
+      }
+
+      /// 검색하기 버튼
+      .search-submit { 
+        height: 40px; width: 40px; right: 13px; border-radius: 8px; top: 50%; transform: translateY(-50%); background: $ico-search no-repeat center/32px; position: absolute; transition: background-color .3s;
+        @include mq(1279) {height: 36px; width: 36px; background-size: 28px; right: 12px;}
+        @include mq(767) {right: 11px;}
+        @include mq(575) {height: 32px; width: 32px; background-size: 24px; border-radius: 6px; right: 10px;}
+        &:hover {background-color: var(--color-action-secondary-hover);}
+      }
+    }
+
+    //// 통합검색 닫기
+    .search-close {
+      position: absolute; right: 45px; top: 30px; width: 40px; height: 40px; background: $ico-close no-repeat center/contain; border-radius: 6px; transition: background-color .3s;
+      @include mq(1279) {top: 25px;}
+      @include mq(1023) {right: 25px;}
+      @include mq(767) {top: 20px; width: 32px; height: 32px; right: 16px; border-radius: 4px;}
+      @include mq(575) {top: 16px;}
+      @include mq(383) {width: 28px; height: 28px; right: 12px; border-radius: 3px;}
+
+      &:hover { background-color: var(--color-action-secondary-hover); }
+    }
+  }
+
+}
+
+
+////////////////////////////////////////
+////// 오버레이 헤더 (GNB가 열리지 않은 상태일 때만 요소들 흰색으로 변경)
+////// main.jsp나 layout.jsp의 <body>에 클래스 추가
+body.header-overlay {
+  #top_layout .header-wrap { position: absolute; top: 0; }
+  &:not(.is-gnb-open,.is-header-fixed,.is-gnb-hover) #top_layout {
+    --header-divider-color: rgba(255,255,255,.25);
+    color: #FFF;
+    
+    ///// 레이아웃 (좌측 로고 + 상단 유틸 + 우측 유틸)
+    .header-wrap {
+      background-color: transparent; border-color: var(--color-light-alpha-white25);
+      
+      .top-wrap .util-btn:not(:hover) {
+        color: #FFF;
+        &::after {background-color: #fff;}
+      }
+
+      //// 좌측 로고
+      .logo-wrap {
+
+        //// 대표 로고
+        .main-logo { background-image: url(/assets/images/common/logo-w.svg); }
+
+        //// 사업소 로고 (텍스트)
+        .site-logo {
+          color: #FFF;
+          &::before {background-color: #FFF; opacity: .2;}
+        }
+      }
+
+      //// 우측 유틸
+      .util-wrap {
+        > li {
+
+          //// 우측 유틸 버튼 공통
+          .util-btn {
+            &:hover { background-color: #fff; color: var(--color-text-basic); }
+          }
+        }
+      }
+    }
+
+    ///// GNB
+    .gnb {
+      .depth1-btn:not(:hover) {color: #FFF;}
+    }
+  }
+}

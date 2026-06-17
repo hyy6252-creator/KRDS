@@ -1,0 +1,178 @@
+@use '../../../common/abstracts/icon' as peIcon;
+@use 'variables' as forms-vars;
+
+.checkbox,
+.radio,
+.checkbox-inline,
+.radio-inline {
+  position: relative;
+  cursor: pointer;
+  font-size: forms-vars.$forms-checkbox-fontsize;
+  line-height: 20px;
+  letter-spacing: -0.64px;
+  color: forms-vars.$checkbox-label-color;
+  font-weight: 400;
+  padding: 5px 20px 5px 25px;
+  margin: 0;
+  // white-space: nowrap;
+  &:last-child {padding-right: 0;}
+  @media (max-width: 768px) {font-size: 15px;}
+}
+.checkbox,
+.radio {display: block;}
+.checkbox-inline,
+.radio-inline {display: inline-block;}
+.chk_ball {position: absolute;top:5px;left: 0; display: inline-block; width:forms-vars.$checkbox-size; height:forms-vars.$checkbox-size; border: 1px solid forms-vars.$forms-check;vertical-align: middle; background-color:forms-vars.$forms-check-bg;}
+.radio-box,
+.checkbox-box {
+  font-size: 0;
+  input[type=radio],
+  input[type=checkbox] {position: absolute; left: 0; top:1px;opacity: 0; width: forms-vars.$checkbox-size; height: forms-vars.$checkbox-size; border: none;margin:0;}
+  input[type=radio] {
+    & + .chk_ball {
+      border-radius: forms-vars.$radio-ball-border-radius;
+      &::after {content: ""; position: absolute; width: 9px; height: 9px; background-color: #fff; left: 50%; top: 50%; transform: translate(-50%, -50%); border-radius: 50%; opacity: 0;}
+    }
+    &:checked,
+    &:active,
+    &:focus {
+      & + .chk_ball {
+        border: 1px solid forms-vars.$check-active-color; background-color: forms-vars.$check-active-color;
+        &::after {opacity: 1;}
+      }
+    }
+  }
+  input[type=checkbox] {
+    & + .chk_ball {border-radius: forms-vars.$checkbox-ball-border-radius; background-color:forms-vars.$forms-check-bg;}
+    &:checked,
+    &:active {
+      & + .chk_ball {background-position: center; background-repeat: no-repeat; background-color: forms-vars.$check-active-color; background-size: 12px 8px; background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.02734 3.65425L4.57293 7.19984L10.9739 0.798828' stroke='white' stroke-width='1.5' stroke-linejoin='round'/%3E%3C/svg%3E%0A"); border-color: forms-vars.$check-active-color;}
+    }
+    &:focus {
+      & + .chk_ball {outline: 1px dashed #000;}
+    }
+  }
+  .radio,
+  .checkbox {width: 100%;}
+  .radio-inline,
+  .checkbox-inline {width: auto;}
+  .etc-input {
+    display: inline-flex; align-items: center; padding: 5px 20px 5px 0;
+    @media (max-width: 768px) {display: flex; padding-right: 0;}
+    // @media (max-width: 490px) {flex-direction: column; align-items: flex-start;}
+    &:last-child {
+      padding-right: 0;
+    }
+    .radio,
+    .checkbox,
+    .checkbox-inline,
+    .radio-inline {
+      padding-right: 10px;
+      @media (max-width: 768px) {width: auto;}
+    }
+    .form-control {
+      width: auto; margin-left: 0px;
+      @media (max-width: 490px) {width: 100%;}
+    }
+  }
+  &.alone-box {
+    .radio-inline,
+    .checkbox-inline {
+      width: 20px; height: 20px; padding: 0;
+      .chk_ball {top: 0;}
+    }
+  }
+}
+
+.checkbox-inline[disabled],
+.checkbox[disabled],
+.radio-inline[disabled],
+.radio[disabled],
+fieldset[disabled] .checkbox,
+fieldset[disabled] .checkbox-inline,
+fieldset[disabled] .radio,
+fieldset[disabled] .radio-inline,
+fieldset[disabled] input[type=radio],
+fieldset[disabled] input[type=checkbox],
+input[type=radio][disabled],
+input[type=checkbox][disabled] {
+  cursor: not-allowed;
+  & + .chk_ball {
+    background-color: #f9f9fa;
+  }
+}
+
+.form-group {
+  &.check-type2, &.check-type3{
+    label{position: absolute;margin: 0;padding: 0; top: 0;right: 0;bottom: 0;left: 0;z-index: 5;}
+    input[type=checkbox], input[type=radio] {top: 0; width: 100%;height: 100%;appearance: none;}
+    input[type=radio]+.chk_ball {border-radius: forms-vars.$checkbox-ball-border-radius;}
+    input[type=radio]+.chk_ball::after {display: none;}
+    .chk_ball{top: 0;width: 100%;height: 100%;background-color: transparent;}
+    input[type=radio]:checked+.chk_ball,
+    input[type=radio]:active+.chk_ball,
+    input[type=radio]:focus+.chk_ball,
+    input[type=checkbox]+.chk_ball{background: none; background-color: transparent;}
+  }
+
+  //커스텀 안된 기본
+  &.check-type1{
+    .chk_ball{display: none;}
+    .radio-inline,.checkbox-inline {padding-left: 0;}
+    input[type=radio],
+    input[type=checkbox] {position: relative;margin-right: 5px; opacity: 1;left: auto;top: auto;width: auto;height: auto;}
+  }
+
+  //큰사이즈
+  &.check-type2{
+    .choice-item{position: relative;padding: 20px 10px;
+      &:not(:first-child){ margin-top: 10px;}
+      .radio-inline,.checkbox-inline{font-size: 0;line-height: 0;}
+    }
+    .checkbox-title{display: block;font-weight: bold;font-size: 18px;color: #222222;}
+    .checkbox-subtitle{ margin-top: 8px;font-size: forms-vars.$forms-fontsize;}
+  }
+
+  //버튼 모양
+  &.check-type3{
+    .radio-box,
+    .checkbox-box{display: flex;}
+    .radio,
+    .checkbox {}
+    .radio-inline,
+    .checkbox-inline{position: relative;flex: 1 1 auto;display: flex;align-items: center;justify-content: center;padding: 10px;}
+    .chk_ball,
+    input[type=checkbox]+.chk_ball,
+    input[type=radio]+.chk_ball{border-radius: 0;}
+  }
+
+  //기본 -> 큰사이즈 반응형 변경
+  &.check-type4{
+    .radio-box:after,
+    .checkbox-box:after{display: block;content: '';clear: both;}
+    .choice-item{float: left;}
+    .checkbox-title,
+    .checkbox-subtitle{display: none;}
+    @media (max-width: 420px){
+      label{position: absolute;margin: 0;padding: 0; top: 0;right: 0;bottom: 0;left: 0;z-index: 5;}
+      input[type=checkbox], input[type=radio] {top: 0; width: 100%;height: 100%;appearance: none;}
+      input[type=radio]+.chk_ball {border-radius: forms-vars.$checkbox-ball-border-radius;}
+      input[type=radio]+.chk_ball::after {display: none;}
+      .chk_ball{top: 0;width: 100%;height: 100%;background-color: transparent;}
+      input[type=radio]:checked+.chk_ball,
+      input[type=radio]:active+.chk_ball,
+      input[type=radio]:focus+.chk_ball,
+      input[type=checkbox]+.chk_ball{background-color: transparent;}
+      .choice-item{position: relative;float: none;display: block; padding: 20px 10px;
+        &:not(:first-child){ margin-top: 10px;}
+        .radio-inline,.checkbox-inline{font-size: 0;line-height: 0;}
+      }
+      .checkbox-title{display: block;font-weight: bold;font-size: 18px;color: #222222;}
+      .checkbox-subtitle{display: block; margin-top: 8px;font-size: forms-vars.$forms-fontsize;}
+    }
+  }
+}
+
+.p-bri-labEquip-write{
+  .radio{white-space: wrap;}
+}

@@ -1,0 +1,61 @@
+
+@mixin make-col($size, $columns: 12) {
+  @for $i from 1 through $columns {
+    .col-#{$size}-#{$i} {
+      flex: 0 0 percentage($i / $columns);
+      max-width: percentage($i / $columns);
+      padding:8px;
+    }
+  }
+}
+
+@mixin make-col-auto($size) {
+  .col-#{$size}-auto {
+    flex: 0 0 auto;
+    width: auto;
+    max-width: 100%;
+  }
+}
+
+@mixin make-col-universal($size) {
+  .col-#{$size} {
+    flex: 1 0 0%;
+    max-width: 100%;
+  }
+}
+
+@mixin make-grid($size) {
+  @include make-col-universal($size);
+  @include make-col-auto($size);
+  @include make-col($size);
+}
+
+.col,
+.col-auto {
+  position: relative;
+  padding:8px;
+  float: none;
+  width: 100%;
+}
+
+@include make-grid(sm);
+@include make-grid(md);
+@include make-grid(lg);
+@include make-grid(xl);
+
+// Media queries
+@media (min-width: 576px) {
+  @include make-grid(sm);
+}
+
+@media (min-width: 768px) {
+  @include make-grid(md);
+}
+
+@media (min-width: 992px) {
+  @include make-grid(lg);
+}
+
+@media (min-width: 1200px) {
+  @include make-grid(xl);
+}

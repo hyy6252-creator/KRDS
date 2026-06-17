@@ -1,0 +1,229 @@
+@charset "UTF-8";
+@mixin hidden { z-index: -1; overflow: hidden; position: absolute; width: 1px; height: 1px; border: 0; clip: rect(1px, 1px, 1px, 1px); clip-path: inset(50%);}
+@mixin blind() { @include hidden;}
+@mixin sr-only() { @include hidden;}
+
+@mixin clearfix {
+    &::after { display: block; clear: both; content: ''; }
+}
+
+@mixin text-over($line: 1) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  @if $line == 1 {
+    white-space: nowrap;
+  } @else {
+    display: -webkit-box !important;
+    white-space: normal;
+    -webkit-line-clamp: $line;
+    -webkit-box-orient: vertical; 
+  }
+}
+@mixin placeholder {
+  &::placeholder {@content;}
+}
+@mixin ir{
+  background-position: center;
+  background-repeat: no-repeat;
+}
+@mixin box-shadow($value) {
+  box-shadow: $value;
+}
+// Opacity
+@mixin opacity($opacity) {
+  opacity: $opacity;
+}
+@mixin posXY {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+@mixin mq($a: null, $b: null, $c: null) {
+  
+  $media-query: null;
+
+  /// @example
+  /// @include mq(767)         → @media (max-width: 767px)
+  /// @include mq(768,min)     → @media (min-width: 768px)
+  /// @include mq(768,to,1279) → @media (min-width: 768px) and (max-width: 1279px)
+  /// @include mq(mouse)       → @media (hover: hover) and (pointer: fine)
+  /// @include mq(touch)       → @media (hover: none) and (pointer: coarse)
+  
+  @if $a == null { @content; }
+  
+  @if type-of($a) == 'number' and $b == null {
+      $media-query: "(max-width: #{$a}px)";
+  } @else if $b == min {
+      $media-query: "(min-width: #{$a}px)";
+  } @else if $b == to and $c != null {
+      $min: if($a < $c, $a, $c);
+      $max: if($a > $c, $a, $c);
+      $media-query: "(min-width: #{$min}px) and (max-width: #{$max}px)";
+  } @else if $a == mouse {
+      $media-query: "(hover: hover) and (pointer: fine)";
+  } @else if $a == touch {
+      $media-query: "(hover: none) and (pointer: coarse)";
+  }
+  
+  @if $media-query != null {
+      @media #{$media-query} {
+          @content;
+      }
+  }
+}
+@mixin if-lang($lang: long, $rest...) {
+
+  $short:  ("ko", "ja", "zh-CN", "zh-TW");
+  $x-long: ("de", "fi", "vi", "pl", "ru", "cs", "hu", "el", "uk", "ro");
+
+  $is-keyword: ($lang == short) or ($lang == long) or ($lang == x-long) or ($lang == rtl);
+  $langs: null;
+
+  @if $is-keyword and length($rest) == 0 {
+
+    @if $lang == long {
+      $parts: "";
+      @for $i from 1 through length($short) {
+        $l: nth($short, $i);
+        @if $i > 1 { $parts: $parts + ", "; }
+        $parts: $parts + '[lang="#{$l}"]';
+      }
+      #{"html:where([lang]:not(#{$parts}))"} & {
+        @content;
+      }
+    } @else if $lang == x-long {
+      $langs: $x-long;
+    } @else if $lang == rtl {
+      $langs: ("ar", "he", "fa", "ur");
+    } @else {
+      $langs: $short;
+    }
+
+  } @else {
+    $langs: join(($lang,), $rest, comma);
+  }
+
+  @if $langs {
+    $parts: "";
+    @for $i from 1 through length($langs) {
+      $lang: nth($langs, $i);
+      @if $i > 1 { $parts: $parts + ", "; }
+      $parts: $parts + '[lang="#{$lang}"]';
+    }
+    #{"html:where(#{$parts})"} & {
+      @content;
+    }
+  }
+}
+@mixin inset { position: absolute; width: 100%; height: 100%; left: 0; top: 0; }
+@mixin focus-style {outline: 2px solid rgba(36,107,235,.8); outline-offset: -2px;}
+
+
+
+// @mixin rfs ($size) {
+//   font-size: $size;
+  
+//   $ratio-lg: 0.9;
+//   $ratio-md: 0.8;
+//   $ratio-sm: 0.75;
+
+//   @media (max-width: 1023px) { //$breakpoint-content-lg
+//     font-size: calc(#{$size} * #{$ratio-lg});
+//   }
+
+//   @media (max-width: 767px) { //$breakpoint-content-md
+//     font-size: calc(#{$size} * #{$ratio-md});
+//   }
+
+//   @media (max-width: 420px) { //$breakpoint-content-xs
+//     font-size: calc(#{$size} * #{$ratio-sm});
+//   }
+// }
+
+// @mixin rfs($size) {
+//   font-size: $size;
+
+//   $ratio-lg: 0.9;
+//   $ratio-md: 0.8;
+//   $ratio-sm: 0.75;
+
+//   @media (max-width: 1023px) { //$breakpoint-content-lg
+//     font-size: calc(#{$size} * #{$ratio-lg});
+
+//     @if ($size < 21px) {
+//       font-size: clamp(17px, calc(#{$size} * 0.95), #{$size});
+//     } @else {
+//       font-size: max(17px, calc(#{$size} * #{$ratio-lg}));
+//     }
+//   }
+
+//   @media (max-width: 767px) { //$breakpoint-content-md
+//     font-size: calc(#{$size} * #{$ratio-md});
+
+//     @if ($size < 21px) {
+//       font-size: clamp(15px, calc(#{$size} * 0.88), #{$size});
+//     } @else {
+//       font-size: max(15px, calc(#{$size} * #{$ratio-md}));
+//     }
+//   }
+
+//   @media (max-width: 420px) { //$breakpoint-content-xs
+//     font-size: calc(#{$size} * #{$ratio-sm});
+
+//     @if ($size < 21px) {
+//       font-size: clamp(15px, calc(#{$size} * 0.8), #{$size});
+//     } @else {
+//       font-size: max(15px, calc(#{$size} * #{$ratio-sm}));
+//     }
+//   }
+// }
+
+@mixin rfs($size) {
+  font-size: $size;
+
+  $ratio-lg: 0.9;
+  $ratio-md: 0.8;
+  $ratio-sm: 0.75;
+
+  // 각 구간별 최대 사이즈
+  $limit-lg: 21px * 0.89;
+  $limit-md: 21px * 0.79;
+  $limit-sm: 21px * 0.74;
+
+  // --- 1023px 이하 ---
+  @media (max-width: 1023px) {
+    @if ($size < 21px) {
+      font-size: clamp(15px, calc(#{$size} * 0.95), #{$limit-lg});
+    } @else {
+      font-size: max(15px, calc(#{$size} * #{$ratio-lg}));
+    }
+  }
+
+  // --- 767px 이하 ---
+  @media (max-width: 767px) {
+    @if ($size >= 19px and $size < 21px) {
+      font-size: clamp(15px, calc(#{$size} * 0.88), #{$limit-md});
+    }
+    @else if ($size >= 16px and $size <= 18px) {
+      font-size: clamp(15px, calc(#{$size} * 0.9415), #{$limit-md});
+    }
+    @else {
+      font-size: max(15px, calc(#{$size} * #{$ratio-md}));
+    }
+  }
+
+  // --- 420px 이하 ---
+  @media (max-width: 420px) {
+    @if ($size >= 19px and $size < 21px) {
+      font-size: clamp(15px, calc(#{$size} * 0.8), #{$limit-sm});
+    } 
+    @else if ($size >= 16px and $size <= 18px) {
+      font-size: clamp(15px, calc(#{$size} * 0.88), #{$limit-md});
+    }
+    @else {
+      font-size: max(15px, calc(#{$size} * #{$ratio-sm}));
+    }
+  }
+}

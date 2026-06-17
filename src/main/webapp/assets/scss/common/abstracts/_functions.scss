@@ -1,0 +1,187 @@
+@charset "UTF-8";
+@use 'sass:math';
+@use 'variables' as *;
+$mobile-size : $breakpoint-xs !default;
+// 사용법
+// 클래스명 margin: vw-mo(font-size, 50);
+// vw 변환 function
+@function vw-mo($target) {
+  @if type-of($target) == number {
+    @return (($target * 100) / $mobile-size) * 1vw;
+  } @else if type-of($target) == list {
+    $vw: ();
+    @each $value in $target {
+      @if type-of($value) == number {
+        $vw: append($vw, (($value * 100) / $mobile-size) * 1vw);
+      } @else if type-of($value) == string {
+        $vw: append($vw, $value);
+      }
+    }
+    @return $vw;
+  } @else {
+    @return $target;
+  }
+}
+
+@mixin calc($prop, $val) {
+  #{$prop}: calc(#{$val});
+}
+
+/// @example
+//percent
+/// .template {width: percent(650px, 1000px);}
+@function percent($target, $base) {
+  @return ($target / $base) * 100%;
+}
+
+/// @example
+/// .template {font-size:rem($font-size-base);}
+
+@function rem($px, $base: $font-size-base) {
+  @return (remove-unit(math.div($px, $base))) * 1rem;
+}
+@function remove-unit($value) {
+  @return math.div($value, ($value * 0 + 1));
+}
+
+@function svg-ico($ico-list, $ico-type: null, $colors...) {
+
+    $default-color: #33363D;
+
+    /// @example
+    /// 
+    /// 1. 아이콘 변수 설정 : 컬러값을 #{color-숫자}로 변경
+    /// $ico: url("data:image/svg+xml,%3Csvg width='28' height='28' viewBox='0 0 28 28' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='8' y='8' width='12' height='12' fill='#{color-1}'/%3E%3C/svg%3E%0A");
+    /// 
+    /// 2. CSS 사용법 : 바꿀 순서대로 색상 지정
+    /// .selector {background-image: svg-ico($ico, #FFF);} 
+    /// 
+    /// 3. 목록형 변수 호출 : 3번째 매개변수부터 색상 지정
+    /// .selector {background-image: svg-ico($ico-list, ico, #FFF);}
+    /// 
+    /// 4. 색상 여러개 바꿀 경우 : 순서대로 #{color-1}, #{color-2}, #{color-3}... 변경
+    /// .selector {background-image: svg-ico($ico, #FFF, #FF0000, #444);}
+    /// .selector {background-image: svg-ico($ico-list, ico, #FFF, #FF0000, #444);}
+
+    $svg: null; 
+    $color-list: (); 
+    $result: ""; 
+
+    // 입력값 타입 확인
+    @if type-of($ico-list) == 'map' {  
+
+        // 두 번째 매개변수가 색상인지 문자열인지 확인
+        @if type-of($ico-type) == 'color' {        
+
+            // 두 번째 매개변수가 색상인 경우, 첫 번째 색상으로 처리
+            $color-list: join(($ico-type), $colors); 
+
+            // 맵에서 첫 번째 아이템 가져오기 (기본값)
+            @if length(map-keys($ico-list)) > 0 {
+                $svg: nth(map-values($ico-list), 1); 
+            }
+        } @else {            
+            // 두 번째 매개변수가 색상이 아닌 경우, 아이콘 타입으로 처리
+            $svg: map-get($ico-list, $ico-type); 
+            $color-list: $colors; 
+        }
+    } @else if type-of($ico-list) == 'string' and str-index($ico-list, 'url(') == 1 {        
+        // $ico-list이 문자열인 경우 (단일 SVG URL)
+        $svg: $ico-list; 
+        // 두 번째 매개변수부터 색상으로 처리
+        @if $ico-type != null {
+            $color-list: join(($ico-type), $colors);
+        } @else {
+            $color-list: $colors;
+        }
+    }
+
+    // 색상이 없을 때 기본 색상 적용
+    @if length($color-list) == 0 {
+        $color-list: ($default-color);
+    }
+
+    @if $svg {
+        $svg-string: str-slice("#{$svg}", 5, -2); // url("...") 에서 따옴표 안의 내용만 추출
+        $processed-svg: $svg-string; 
+    
+        @for $i from 1 through length($color-list) {
+            $placeholder: '#{color-#{$i}}'; 
+            $color-value: nth($color-list, $i); 
+        
+            @if type-of($color-value) == 'color' {
+                // ie-hex-str()로 색상을 헥스코드로 변환 (색상 이름도 처리)
+                $hexColor: str-slice(ie-hex-str($color-value), 4);
+                $converted: '%23#{$hexColor}';
+                
+                // 문자열 대체 로직
+                $index: str-index($processed-svg, $placeholder);
+                @while $index {
+                    $processed-svg: str-slice($processed-svg, 1, $index - 1) + 
+                    $converted + 
+                    str-slice($processed-svg, $index + str-length($placeholder));
+                    $index: str-index($processed-svg, $placeholder);
+                }
+            } @else if $color-value != null {        
+                // 색상이 아닌 경우(null 제외) 'none'으로 대체
+                $index: str-index($processed-svg, $placeholder); 
+                @while $index {
+                    $processed-svg: str-slice($processed-svg, 1, $index - 1) + 
+                    'none' + 
+                    str-slice($processed-svg, $index + str-length($placeholder)); 
+                    $index: str-index($processed-svg, $placeholder); 
+                }
+            }
+        }
+    
+        $result: url(#{$processed-svg}); 
+    }
+
+    @return $result; 
+}
+
+@function vw-calc($windowWidth1: null, $fontSize1: null, $windowWidth2: null, $fontSize2: null) {
+    
+  /// @example
+  /// 
+  /// CSS속성: vw-calc( 창넓이A , 값A , 창넓이B , 값B )
+  /// 
+  /// 1. 화면넓이가 줄어들 때 같은 비율로 값을 줄이려면 매개변수 2개 설정
+  /// font-size: vw-calc(767, 30);
+  /// 창넓이 767px에서 30px인 폰트 크기가 화면과 똑같은 비율로 감소
+  /// 
+  /// 2. 화면넓이가 줄어들 때 정확한 값으로 값을 줄이려면 매개변수 4개 설정
+  /// width: vw-calc(1024, 320, 384, 250); 
+  /// 요소의 넓이가 창넓이 1024px에선 320px, 창넓이 384px에선 250px로 일정 비율에 맞춰 감소
+
+
+  // 소수점 자리 설정
+  $decimal: 5;
+
+  // 값을 2개만 넣었을 때: 순수 vw 계산
+  @if $windowWidth2 == null or $fontSize2 == null {
+    $vw-value: ($fontSize1 / $windowWidth1) * 100;
+    
+    $multiplier: 1;
+    @for $i from 1 through $decimal {
+        $multiplier: $multiplier * 10;
+    }
+    $vw-rounded: round($vw-value * $multiplier) / $multiplier;
+    
+    @return #{$vw-rounded}vw;
+  }
+  
+  // 값을 4개 넣었을 때: calc 계산
+  $vw-value: ($fontSize1 - $fontSize2) / ($windowWidth1 - $windowWidth2) * 100;
+  $px-value: $fontSize1 - ($vw-value * $windowWidth1 / 100);
+  
+  $multiplier: 1;
+  @for $i from 1 through $decimal {
+    $multiplier: $multiplier * 10;
+  }
+  
+  $vw-rounded: round($vw-value * $multiplier) / $multiplier;
+  $px-rounded: round($px-value * $multiplier) / $multiplier;
+  
+  @return calc(#{$px-rounded}px + #{$vw-rounded}vw);
+}

@@ -1,0 +1,47 @@
+:root {
+  --status-font-size: var(--font-size-base);
+  --status-font-size-base: 15px;
+  --status-font-size-sm: 14px;
+  --status-font-size-lg: 17px;
+  --status-border-radius: 4px;
+  --status-padding: 5px 10px 4px;
+  --status-padding-sm: 1px 3px;
+  --status-padding-lg: 4px 14px;
+
+  --color-status1: #3180EF;
+  --color-status2: #444;
+  --color-status3: #DB214D;
+  --color-status4: #1E2D75;
+  --color-status5: #FDB913;
+  --color-status6: #019E75;
+
+  --badge1-bg: #fff;
+  --badge2-bg: #fff;
+  --badge3-bg: #fff;
+  --badge4-bg: #fff;
+  --badge5-bg: #fff;
+  --badge6-bg: #fff;
+  --badge7-bg: #fff;
+  --badge8-bg: #fff;
+  --badge9-bg: #fff;
+
+  --badge1-border: #3180EF;
+  --badge2-border: #E35276;
+  --badge3-border: #1E2D75;
+  --badge4-border: #019E75;
+  --badge5-border: #1992BC;
+  --badge6-border: #E66916;
+  --badge7-border: #A400DA;
+  --badge8-border: #3D4E64;
+  --badge9-border: #A1760C;
+
+  --badge1-color: #3180EF;
+  --badge2-color: #E35276;
+  --badge3-color: #1E2D75;
+  --badge4-color: #019E75;
+  --badge5-color: #1992BC;
+  --badge6-color: #E66916;
+  --badge7-color: #A400DA;
+  --badge8-color: #3D4E64;
+  --badge9-color: #A1760C;
+}

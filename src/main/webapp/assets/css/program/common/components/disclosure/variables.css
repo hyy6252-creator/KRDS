@@ -1,0 +1,5 @@
+:root {
+  --disclosure-ease-cubic: cubic-bezier(0, 1, 0, 1);
+  --disclosure-bg: #f6f6f6;
+  --disclosure-border: #D8D8D8;
+}

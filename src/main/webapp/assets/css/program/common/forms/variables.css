@@ -1,0 +1,42 @@
+:root {
+  --check-active-color: var(--primary);
+  --forms-check: #DDD;
+  --forms-check-bg: var(--white);
+  --forms-disabled-color: #DDD;
+  --checkbox-size: 20px;
+  --checkbox-label-color: var(--textColor);
+  --checkbox-ball-border-radius: 4px;
+  --radio-ball-border-radius: 100%;
+  --checkbox-ball-background: rgba(221, 221, 221, 0.3);
+
+
+  --help-color: var(--point);
+  --forms-point-color: var(--primary);
+  --pilsu-color: var(--primary);
+  --forms-height: 38px;
+  --forms-radius: 4px;
+  --forms-bg: var(--white);
+  --forms-disabled-bg: #F9F9FA;
+  --forms-top-border: #36404A;
+  --forms-border: #D9DAE1;
+  --forms-border2: #ddd;
+  --forms-color: var(--textColor);
+  --forms-fontsize: 15px;
+  --forms-checkbox-fontsize: 15px;
+  --forms-placeholder: 15px;
+  --forms-focus-border: var(--primary);
+  --forms-main-color: var(--primary);
+
+  --forms-browse-border: var(--white);
+  --forms-browse-bg: var(--white);
+  --forms-browse-color: var(--textColor);
+
+  --forms-error-bgcolor: #F6EFEC;
+  --forms-valid-bgcolor: #EEF5F8;
+
+  --forms-btn-bg: var(--white);
+  --forms-btn-danger: var(--danger);
+  --forms-btn-primary: var(--primary);
+  --forms-btn-secondary: var(--secondary);
+  --forms-btn-success: var(--success);
+}

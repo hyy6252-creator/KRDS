@@ -1,0 +1,1889 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>스타일가이드_프로그램 (KRDS)</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+  <link rel="stylesheet" href="../../css/tailwind.css">
+  <style>
+    body { font-family: 'Pretendard', sans-serif; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border-width: 0; }
+
+    /* Custom radio */
+    input[type="radio"] { appearance: none; -webkit-appearance: none; width: 20px; height: 20px; border: 2px solid #CDD1D5; border-radius: 50%; cursor: pointer; position: relative; flex-shrink: 0; transition: border-color .15s; }
+    input[type="radio"]:checked { border-color: #2257B4; }
+    input[type="radio"]:checked::after { content: ""; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 10px; height: 10px; border-radius: 50%; background: #2257B4; }
+    input[type="radio"]:disabled { border-color: #CDD1D5; background: #F4F5F6; cursor: not-allowed; }
+    input[type="radio"]:disabled:checked::after { background: #CDD1D5; }
+
+    /* Custom checkbox */
+    input[type="checkbox"] { appearance: none; -webkit-appearance: none; width: 20px; height: 20px; border: 2px solid #CDD1D5; border-radius: 4px; cursor: pointer; position: relative; flex-shrink: 0; transition: border-color .15s, background .15s; }
+    input[type="checkbox"]:checked { border-color: #2257B4; background: #2257B4; }
+    input[type="checkbox"]:checked::after { content: ""; position: absolute; top: 3px; left: 6px; width: 6px; height: 10px; border: 2px solid white; border-top: none; border-left: none; transform: rotate(45deg); }
+    input[type="checkbox"]:disabled { border-color: #CDD1D5; background: #F4F5F6; cursor: not-allowed; }
+    input[type="checkbox"]:disabled:checked { background: #CDD1D5; border-color: #CDD1D5; }
+
+    /* Custom select arrow */
+    select.custom-select { appearance: none; -webkit-appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2358616A' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; padding-right: 36px; }
+    select.custom-select:disabled { background-color: #F4F5F6; color: #8A949E; cursor: not-allowed; }
+
+    /* Calendar cell square ratio */
+    .cal-cell { position: relative; }
+    .cal-cell::after { content: ""; display: block; padding-top: 100%; }
+    .cal-cell-inner { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+
+    /* Sorting radio - pill style */
+    .sort-radio input[type="radio"] { display: none; }
+    .sort-radio label { display: inline-flex; align-items: center; padding: 6px 14px; border: 1px solid #CDD1D5; border-radius: 100px; font-size: 15px; cursor: pointer; color: #58616A; transition: all .15s; }
+    .sort-radio input[type="radio"]:checked + label { border-color: #2257B4; background: #F1F6FE; color: #2257B4; font-weight: 600; }
+  </style>
+</head>
+<body class="bg-[#F4F5F6] text-[#1E2124]">
+<div class="flex min-h-screen">
+
+  <!-- 좌측 사이드바 -->
+  <aside class="fixed left-0 top-0 w-52 h-screen bg-[#1E2124] text-white overflow-y-auto z-10 flex flex-col">
+    <div class="p-4 border-b border-gray-70">
+      <select id="findPage" onchange="location.href=this.value"
+        class="w-full bg-gray-80 text-white text-sm px-3 py-2 rounded border border-gray-60 focus:outline-none">
+        <option value="basic.html">basic_기본</option>
+        <option value="b01.html">b01_컴포넌트</option>
+        <option value="pe.html" selected>pe_프로그램</option>
+      </select>
+    </div>
+    <nav class="flex-1 px-3 py-4">
+      <ul class="space-y-0.5 text-[14px]">
+        <li><a href="#button" class="block px-3 py-2 rounded-lg hover:bg-white/10 text-[#CDD1D5] hover:text-white transition-colors">버튼</a></li>
+        <li><a href="#pagenation" class="block px-3 py-2 rounded-lg hover:bg-white/10 text-[#CDD1D5] hover:text-white transition-colors">페이지네이션</a></li>
+        <li><a href="#modal" class="block px-3 py-2 rounded-lg hover:bg-white/10 text-[#CDD1D5] hover:text-white transition-colors">모달</a></li>
+        <li><a href="#badge" class="block px-3 py-2 rounded-lg hover:bg-white/10 text-[#CDD1D5] hover:text-white transition-colors">배지</a></li>
+        <li><a href="#radio" class="block px-3 py-2 rounded-lg hover:bg-white/10 text-[#CDD1D5] hover:text-white transition-colors">라디오버튼</a></li>
+        <li><a href="#checkbox" class="block px-3 py-2 rounded-lg hover:bg-white/10 text-[#CDD1D5] hover:text-white transition-colors">체크박스</a></li>
+        <li><a href="#select" class="block px-3 py-2 rounded-lg hover:bg-white/10 text-[#CDD1D5] hover:text-white transition-colors">셀렉트</a></li>
+        <li><a href="#tag" class="block px-3 py-2 rounded-lg hover:bg-white/10 text-[#CDD1D5] hover:text-white transition-colors">태그</a></li>
+        <li><a href="#indicator" class="block px-3 py-2 rounded-lg hover:bg-white/10 text-[#CDD1D5] hover:text-white transition-colors">단계표시기</a></li>
+        <li><a href="#input" class="block px-3 py-2 rounded-lg hover:bg-white/10 text-[#CDD1D5] hover:text-white transition-colors">입력</a></li>
+        <li><a href="#table" class="block px-3 py-2 rounded-lg hover:bg-white/10 text-[#CDD1D5] hover:text-white transition-colors">표</a></li>
+        <li><a href="#structured" class="block px-3 py-2 rounded-lg hover:bg-white/10 text-[#CDD1D5] hover:text-white transition-colors">구조화목록</a></li>
+        <li><a href="#calandar" class="block px-3 py-2 rounded-lg hover:bg-white/10 text-[#CDD1D5] hover:text-white transition-colors">달력</a></li>
+        <li><a href="#personal" class="block px-3 py-2 rounded-lg hover:bg-white/10 text-[#CDD1D5] hover:text-white transition-colors">개인정보수집동의</a></li>
+        <li><a href="#form" class="block px-3 py-2 rounded-lg hover:bg-white/10 text-[#CDD1D5] hover:text-white transition-colors">폼 (Type 1)</a></li>
+        <li><a href="#form2" class="block px-3 py-2 rounded-lg hover:bg-white/10 text-[#CDD1D5] hover:text-white transition-colors">폼 (Type 2)</a></li>
+        <li><a href="#search" class="block px-3 py-2 rounded-lg hover:bg-white/10 text-[#CDD1D5] hover:text-white transition-colors">검색</a></li>
+        <li><a href="#inquiry" class="block px-3 py-2 rounded-lg hover:bg-white/10 text-[#CDD1D5] hover:text-white transition-colors">신청조회</a></li>
+        <li><a href="#proglist" class="block px-3 py-2 rounded-lg hover:bg-white/10 text-[#CDD1D5] hover:text-white transition-colors">프로그램 리스트(전체링크)</a></li>
+        <li><a href="#proglist2" class="block px-3 py-2 rounded-lg hover:bg-white/10 text-[#CDD1D5] hover:text-white transition-colors">프로그램 리스트(버튼형)</a></li>
+        <li><a href="#progview" class="block px-3 py-2 rounded-lg hover:bg-white/10 text-[#CDD1D5] hover:text-white transition-colors">프로그램 뷰</a></li>
+        <li><a href="#progview2" class="block px-3 py-2 rounded-lg hover:bg-white/10 text-[#CDD1D5] hover:text-white transition-colors">프로그램 뷰2</a></li>
+        <li><a href="#progview3" class="block px-3 py-2 rounded-lg hover:bg-white/10 text-[#CDD1D5] hover:text-white transition-colors">프로그램 뷰3 세로갤러리</a></li>
+        <li><a href="#document" class="block px-3 py-2 rounded-lg hover:bg-white/10 text-[#CDD1D5] hover:text-white transition-colors">디지털문서</a></li>
+        <li><a href="#btn-wrap" class="block px-3 py-2 rounded-lg hover:bg-white/10 text-[#CDD1D5] hover:text-white transition-colors">버튼 배치</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- 메인 콘텐츠 -->
+  <main class="ml-52 flex-1 p-8">
+
+    <!-- ===== 1. 버튼 ===== -->
+    <section id="button" class="mb-16 scroll-mt-8">
+      <h2 class="text-xl font-bold text-[#1E2124] border-b-2 border-[#2257B4] pb-3 mb-6">버튼</h2>
+
+      <!-- Primary -->
+      <div class="bg-white rounded-xl p-6 shadow-sm border border-[#E6E8EA] mb-4">
+        <h3 class="text-[15px] font-bold text-[#1E2124] mb-3">primary</h3>
+        <p class="text-[13px] text-[#58616A] mb-2">기본</p>
+        <div class="flex flex-wrap gap-2 mb-4">
+          <button type="button" class="inline-flex items-center justify-center gap-1 border rounded-lg transition-all cursor-pointer bg-[#2257B4] text-white border-[#2257B4] hover:bg-[#1C4690] px-[11px] min-h-10 text-[17px]">버튼 : primary</button>
+        </div>
+        <p class="text-[13px] text-[#58616A] mb-2">사이즈</p>
+        <div class="flex flex-wrap items-center gap-2 mb-4">
+          <button type="button" class="inline-flex items-center justify-center gap-1 border rounded-lg transition-all cursor-pointer bg-[#2257B4] text-white border-[#2257B4] hover:bg-[#1C4690] px-[9.5px] min-h-8 text-[15px]">x-small 버튼</button>
+          <button type="button" class="inline-flex items-center justify-center gap-1 border rounded-lg transition-all cursor-pointer bg-[#2257B4] text-white border-[#2257B4] hover:bg-[#1C4690] px-[13px] min-h-9 text-[15px]">small 버튼</button>
+          <button type="button" class="inline-flex items-center justify-center gap-1 border rounded-lg transition-all cursor-pointer bg-[#2257B4] text-white border-[#2257B4] hover:bg-[#1C4690] px-[11px] min-h-10 text-[17px]">medium 버튼</button>
+          <button type="button" class="inline-flex items-center justify-center gap-1 border rounded-lg transition-all cursor-pointer bg-[#2257B4] text-white border-[#2257B4] hover:bg-[#1C4690] px-[18px] py-2 min-h-12 text-[19px]">large 버튼</button>
+          <button type="button" class="inline-flex items-center justify-center gap-1 border rounded-lg transition-all cursor-pointer bg-[#2257B4] text-white border-[#2257B4] hover:bg-[#1C4690] px-[21px] py-[9px] min-h-14 text-[19px]">x-large 버튼</button>
+        </div>
+        <p class="text-[13px] text-[#58616A] mb-2">disabled</p>
+        <div class="flex flex-wrap gap-2">
+          <button type="button" disabled class="inline-flex items-center justify-center gap-1 border rounded-lg transition-all cursor-not-allowed bg-[#CDD1D5] text-[#6D7882] border-[#CDD1D5] px-[11px] min-h-10 text-[17px]">disabled 버튼</button>
+        </div>
+      </div>
+
+      <!-- Secondary -->
+      <div class="bg-white rounded-xl p-6 shadow-sm border border-[#E6E8EA] mb-4">
+        <h3 class="text-[15px] font-bold text-[#1E2124] mb-3">secondary</h3>
+        <div class="flex flex-wrap items-center gap-2 mb-4">
+          <button type="button" class="inline-flex items-center justify-center gap-1 border rounded-lg transition-all cursor-pointer bg-[#F1F6FE] text-[#2257B4] border-[#2257B4] hover:bg-[#E4EBF8] px-[9.5px] min-h-8 text-[15px]">x-small 버튼</button>
+          <button type="button" class="inline-flex items-center justify-center gap-1 border rounded-lg transition-all cursor-pointer bg-[#F1F6FE] text-[#2257B4] border-[#2257B4] hover:bg-[#E4EBF8] px-[13px] min-h-9 text-[15px]">small 버튼</button>
+          <button type="button" class="inline-flex items-center justify-center gap-1 border rounded-lg transition-all cursor-pointer bg-[#F1F6FE] text-[#2257B4] border-[#2257B4] hover:bg-[#E4EBF8] px-[11px] min-h-10 text-[17px]">medium 버튼</button>
+          <button type="button" class="inline-flex items-center justify-center gap-1 border rounded-lg transition-all cursor-pointer bg-[#F1F6FE] text-[#2257B4] border-[#2257B4] hover:bg-[#E4EBF8] px-[18px] py-2 min-h-12 text-[19px]">large 버튼</button>
+          <button type="button" class="inline-flex items-center justify-center gap-1 border rounded-lg transition-all cursor-pointer bg-[#F1F6FE] text-[#2257B4] border-[#2257B4] hover:bg-[#E4EBF8] px-[21px] py-[9px] min-h-14 text-[19px]">x-large 버튼</button>
+        </div>
+      </div>
+
+      <!-- Tertiary -->
+      <div class="bg-white rounded-xl p-6 shadow-sm border border-[#E6E8EA] mb-4">
+        <h3 class="text-[15px] font-bold text-[#1E2124] mb-3">tertiary</h3>
+        <div class="flex flex-wrap items-center gap-2">
+          <button type="button" class="inline-flex items-center justify-center gap-1 border rounded-lg transition-all cursor-pointer bg-white text-[#1E2124] border-[#58616A] hover:bg-[#F4F5F6] px-[9.5px] min-h-8 text-[15px]">x-small 버튼</button>
+          <button type="button" class="inline-flex items-center justify-center gap-1 border rounded-lg transition-all cursor-pointer bg-white text-[#1E2124] border-[#58616A] hover:bg-[#F4F5F6] px-[13px] min-h-9 text-[15px]">small 버튼</button>
+          <button type="button" class="inline-flex items-center justify-center gap-1 border rounded-lg transition-all cursor-pointer bg-white text-[#1E2124] border-[#58616A] hover:bg-[#F4F5F6] px-[11px] min-h-10 text-[17px]">medium 버튼</button>
+          <button type="button" class="inline-flex items-center justify-center gap-1 border rounded-lg transition-all cursor-pointer bg-white text-[#1E2124] border-[#58616A] hover:bg-[#F4F5F6] px-[18px] py-2 min-h-12 text-[19px]">large 버튼</button>
+          <button type="button" class="inline-flex items-center justify-center gap-1 border rounded-lg transition-all cursor-pointer bg-white text-[#1E2124] border-[#58616A] hover:bg-[#F4F5F6] px-[21px] py-[9px] min-h-14 text-[19px]">x-large 버튼</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 2. 페이지네이션 ===== -->
+    <section id="pagenation" class="mb-16 scroll-mt-8">
+      <h2 class="text-xl font-bold text-[#1E2124] border-b-2 border-[#2257B4] pb-3 mb-6">페이지네이션</h2>
+      <div class="bg-white rounded-xl p-6 shadow-sm border border-[#E6E8EA] space-y-4">
+        <!-- 1페이지 active -->
+        <div class="flex items-center gap-1">
+          <span class="inline-flex items-center justify-center w-9 h-9 rounded-lg border border-[#CDD1D5] text-[#8A949E] text-[15px] cursor-not-allowed">이전</span>
+          <div class="flex items-center gap-1">
+            <a href="#" class="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-[#2257B4] text-white text-[15px] font-bold"><span class="sr-only">현재페이지 </span>1</a>
+            <a href="#" class="inline-flex items-center justify-center w-9 h-9 rounded-lg border border-[#CDD1D5] text-[#33363D] text-[15px] hover:bg-[#F4F5F6]">2</a>
+            <a href="#" class="inline-flex items-center justify-center w-9 h-9 rounded-lg border border-[#CDD1D5] text-[#33363D] text-[15px] hover:bg-[#F4F5F6]">3</a>
+            <a href="#" class="inline-flex items-center justify-center w-9 h-9 rounded-lg border border-[#CDD1D5] text-[#33363D] text-[15px] hover:bg-[#F4F5F6]">4</a>
+            <a href="#" class="inline-flex items-center justify-center w-9 h-9 rounded-lg border border-[#CDD1D5] text-[#33363D] text-[15px] hover:bg-[#F4F5F6]">5</a>
+            <span class="inline-flex items-center justify-center w-9 h-9 text-[#8A949E] text-[15px]">...</span>
+            <a href="#" class="inline-flex items-center justify-center w-9 h-9 rounded-lg border border-[#CDD1D5] text-[#33363D] text-[15px] hover:bg-[#F4F5F6]">99</a>
+          </div>
+          <a href="#" class="inline-flex items-center justify-center w-9 h-9 rounded-lg border border-[#CDD1D5] text-[#33363D] text-[15px] hover:bg-[#F4F5F6]">다음</a>
+        </div>
+        <!-- 4페이지 active -->
+        <div class="flex items-center gap-1">
+          <a href="#" class="inline-flex items-center justify-center w-9 h-9 rounded-lg border border-[#CDD1D5] text-[#33363D] text-[15px] hover:bg-[#F4F5F6]">이전</a>
+          <div class="flex items-center gap-1">
+            <a href="#" class="inline-flex items-center justify-center w-9 h-9 rounded-lg border border-[#CDD1D5] text-[#33363D] text-[15px] hover:bg-[#F4F5F6]">1</a>
+            <a href="#" class="inline-flex items-center justify-center w-9 h-9 rounded-lg border border-[#CDD1D5] text-[#33363D] text-[15px] hover:bg-[#F4F5F6]">2</a>
+            <a href="#" class="inline-flex items-center justify-center w-9 h-9 rounded-lg border border-[#CDD1D5] text-[#33363D] text-[15px] hover:bg-[#F4F5F6]">3</a>
+            <a href="#" class="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-[#2257B4] text-white text-[15px] font-bold"><span class="sr-only">현재페이지 </span>4</a>
+            <a href="#" class="inline-flex items-center justify-center w-9 h-9 rounded-lg border border-[#CDD1D5] text-[#33363D] text-[15px] hover:bg-[#F4F5F6]">5</a>
+            <a href="#" class="inline-flex items-center justify-center w-9 h-9 rounded-lg border border-[#CDD1D5] text-[#33363D] text-[15px] hover:bg-[#F4F5F6]">6</a>
+            <span class="inline-flex items-center justify-center w-9 h-9 text-[#8A949E] text-[15px]">...</span>
+            <a href="#" class="inline-flex items-center justify-center w-9 h-9 rounded-lg border border-[#CDD1D5] text-[#33363D] text-[15px] hover:bg-[#F4F5F6]">99</a>
+          </div>
+          <a href="#" class="inline-flex items-center justify-center w-9 h-9 rounded-lg border border-[#CDD1D5] text-[#33363D] text-[15px] hover:bg-[#F4F5F6]">다음</a>
+        </div>
+        <!-- 마지막 페이지 -->
+        <div class="flex items-center gap-1">
+          <a href="#" class="inline-flex items-center justify-center w-9 h-9 rounded-lg border border-[#CDD1D5] text-[#33363D] text-[15px] hover:bg-[#F4F5F6]">이전</a>
+          <div class="flex items-center gap-1">
+            <a href="#" class="inline-flex items-center justify-center w-9 h-9 rounded-lg border border-[#CDD1D5] text-[#33363D] text-[15px] hover:bg-[#F4F5F6]">1</a>
+            <span class="inline-flex items-center justify-center w-9 h-9 text-[#8A949E] text-[15px]">...</span>
+            <a href="#" class="inline-flex items-center justify-center w-9 h-9 rounded-lg border border-[#CDD1D5] text-[#33363D] text-[15px] hover:bg-[#F4F5F6]">95</a>
+            <a href="#" class="inline-flex items-center justify-center w-9 h-9 rounded-lg border border-[#CDD1D5] text-[#33363D] text-[15px] hover:bg-[#F4F5F6]">96</a>
+            <a href="#" class="inline-flex items-center justify-center w-9 h-9 rounded-lg border border-[#CDD1D5] text-[#33363D] text-[15px] hover:bg-[#F4F5F6]">97</a>
+            <a href="#" class="inline-flex items-center justify-center w-9 h-9 rounded-lg border border-[#CDD1D5] text-[#33363D] text-[15px] hover:bg-[#F4F5F6]">98</a>
+            <a href="#" class="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-[#2257B4] text-white text-[15px] font-bold">99</a>
+          </div>
+          <span class="inline-flex items-center justify-center w-9 h-9 rounded-lg border border-[#CDD1D5] text-[#8A949E] text-[15px] cursor-not-allowed">다음</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 3. 모달 ===== -->
+    <section id="modal" class="mb-16 scroll-mt-8">
+      <h2 class="text-xl font-bold text-[#1E2124] border-b-2 border-[#2257B4] pb-3 mb-6">모달</h2>
+      <div class="bg-white rounded-xl p-6 shadow-sm border border-[#E6E8EA]">
+        <p class="text-[15px] text-[#58616A] mb-4">모달은 jqueryModal.js를 불러와야 작동합니다. 아래는 트리거 버튼 예시입니다.</p>
+        <div class="flex gap-3">
+          <a href="#" class="inline-flex items-center justify-center gap-1 border rounded-lg transition-all cursor-pointer bg-[#2257B4] text-white border-[#2257B4] hover:bg-[#1C4690] px-[11px] min-h-10 text-[17px]" data-button="ajaxModal" data-url="/pcms/common/cancelation.html" data-target="cancelation-modal01">모달 열기 1</a>
+          <a href="#" class="inline-flex items-center justify-center gap-1 border rounded-lg transition-all cursor-pointer bg-[#2257B4] text-white border-[#2257B4] hover:bg-[#1C4690] px-[11px] min-h-10 text-[17px]" data-button="ajaxModal" data-url="/pcms/common/cancelation.html" data-target="cancelation-modal02">모달 열기 2</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 4. 배지 ===== -->
+    <section id="badge" class="mb-16 scroll-mt-8">
+      <h2 class="text-xl font-bold text-[#1E2124] border-b-2 border-[#2257B4] pb-3 mb-6">배지</h2>
+      <div class="bg-white rounded-xl p-6 shadow-sm border border-[#E6E8EA]">
+        <h3 class="text-[14px] font-bold text-[#33363D] mb-3">outline 배지</h3>
+        <div class="flex flex-wrap gap-2 mb-4">
+          <span class="inline-flex items-center px-2.5 py-0.5 rounded text-[13px] font-medium border border-[#2257B4] text-[#2257B4]">primary</span>
+          <span class="inline-flex items-center px-2.5 py-0.5 rounded text-[13px] font-medium border border-[#159774] text-[#159774]">sub</span>
+          <span class="inline-flex items-center px-2.5 py-0.5 rounded text-[13px] font-medium border border-[#58616A] text-[#58616A]">gray</span>
+          <span class="inline-flex items-center px-2.5 py-0.5 rounded text-[13px] font-medium border border-[#D63D4A] text-[#D63D4A]">danger</span>
+          <span class="inline-flex items-center px-2.5 py-0.5 rounded text-[13px] font-medium border border-[#CDD1D5] text-[#8A949E]">disabled</span>
+        </div>
+        <div class="flex flex-wrap gap-2 mb-6">
+          <span class="inline-flex items-center px-3 py-1 rounded text-[15px] font-medium border border-[#2257B4] text-[#2257B4]">large primary</span>
+          <span class="inline-flex items-center px-3 py-1 rounded text-[15px] font-medium border border-[#159774] text-[#159774]">large sub</span>
+          <span class="inline-flex items-center px-3 py-1 rounded text-[15px] font-medium border border-[#D63D4A] text-[#D63D4A]">large danger</span>
+        </div>
+        <h3 class="text-[14px] font-bold text-[#33363D] mb-3">bg 배지</h3>
+        <div class="flex flex-wrap gap-2 mb-4">
+          <span class="inline-flex items-center px-2.5 py-0.5 rounded text-[13px] font-medium bg-[#2257B4] text-white">primary</span>
+          <span class="inline-flex items-center px-2.5 py-0.5 rounded text-[13px] font-medium bg-[#159774] text-white">sub</span>
+          <span class="inline-flex items-center px-2.5 py-0.5 rounded text-[13px] font-medium bg-[#58616A] text-white">gray</span>
+          <span class="inline-flex items-center px-2.5 py-0.5 rounded text-[13px] font-medium bg-[#D63D4A] text-white">danger</span>
+          <span class="inline-flex items-center px-2.5 py-0.5 rounded text-[13px] font-medium bg-[#CDD1D5] text-[#6D7882]">disabled</span>
+        </div>
+        <h3 class="text-[14px] font-bold text-[#33363D] mb-3">bg-light 배지</h3>
+        <div class="flex flex-wrap gap-2 mb-4">
+          <span class="inline-flex items-center px-2.5 py-0.5 rounded text-[13px] font-medium bg-[#F1F6FE] text-[#2257B4]">primary</span>
+          <span class="inline-flex items-center px-2.5 py-0.5 rounded text-[13px] font-medium bg-[#EDF7F3] text-[#159774]">sub</span>
+          <span class="inline-flex items-center px-2.5 py-0.5 rounded text-[13px] font-medium bg-[#FEF0F1] text-[#D63D4A]">danger</span>
+          <span class="inline-flex items-center px-2.5 py-0.5 rounded text-[13px] font-medium bg-[#F4F5F6] text-[#8A949E]">disabled</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 5. 라디오버튼 ===== -->
+    <section id="radio" class="mb-16 scroll-mt-8">
+      <h2 class="text-xl font-bold text-[#1E2124] border-b-2 border-[#2257B4] pb-3 mb-6">라디오버튼</h2>
+      <div class="bg-white rounded-xl p-6 shadow-sm border border-[#E6E8EA]">
+        <h3 class="text-[14px] font-bold text-[#33363D] mb-3">기본</h3>
+        <div class="flex flex-wrap gap-4 mb-6">
+          <label class="flex items-center gap-2 cursor-pointer text-[17px] text-[#1E2124]">
+            <input type="radio" name="rdo_demo1" id="rdo_d1" title="기본 선택">
+            기본
+          </label>
+          <label class="flex items-center gap-2 cursor-pointer text-[17px] text-[#1E2124]">
+            <input type="radio" name="rdo_demo1" id="rdo_d2" title="선택됨 선택" checked>
+            선택됨
+          </label>
+          <label class="flex items-center gap-2 cursor-not-allowed text-[17px] text-[#8A949E]">
+            <input type="radio" name="rdo_demo3" id="rdo_d3" title="비활성화 선택" disabled>
+            비활성화
+          </label>
+          <label class="flex items-center gap-2 cursor-not-allowed text-[17px] text-[#8A949E]">
+            <input type="radio" name="rdo_demo3" id="rdo_d4" title="선택된 비활성화 선택" disabled checked>
+            선택된 비활성화
+          </label>
+        </div>
+
+        <h3 class="text-[14px] font-bold text-[#33363D] mb-3">설명</h3>
+        <div class="flex flex-wrap gap-4 mb-6">
+          <div class="flex items-start gap-2">
+            <input type="radio" name="rdo_desc" id="rdo_desc1" title="라디오버튼1 선택" checked class="mt-1">
+            <div>
+              <label for="rdo_desc1" class="block text-[17px] text-[#1E2124] cursor-pointer">라디오버튼1</label>
+              <p class="text-[14px] text-[#58616A] mt-1">부가적인 설명이 들어갑니다.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-2">
+            <input type="radio" name="rdo_desc" id="rdo_desc2" title="라디오버튼2 선택" disabled class="mt-1">
+            <div>
+              <label for="rdo_desc2" class="block text-[17px] text-[#8A949E] cursor-not-allowed">라디오버튼2</label>
+              <p class="text-[14px] text-[#8A949E] mt-1">부가적인 설명이 들어갑니다.</p>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="text-[14px] font-bold text-[#33363D] mb-3">sorting (pill 타입)</h3>
+        <div class="flex flex-wrap gap-2 mb-4">
+          <div class="sort-radio">
+            <input type="radio" name="rdo_sort1" id="rdo_s1" title="분류 레이블1 선택">
+            <label for="rdo_s1">레이블1</label>
+          </div>
+          <div class="sort-radio">
+            <input type="radio" name="rdo_sort1" id="rdo_s2" title="분류 레이블2 선택" checked>
+            <label for="rdo_s2">레이블2</label>
+          </div>
+          <div class="sort-radio">
+            <input type="radio" name="rdo_sort1" id="rdo_s3" title="분류 레이블3 선택">
+            <label for="rdo_s3">레이블3</label>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 6. 체크박스 ===== -->
+    <section id="checkbox" class="mb-16 scroll-mt-8">
+      <h2 class="text-xl font-bold text-[#1E2124] border-b-2 border-[#2257B4] pb-3 mb-6">체크박스</h2>
+      <div class="bg-white rounded-xl p-6 shadow-sm border border-[#E6E8EA]">
+        <h3 class="text-[14px] font-bold text-[#33363D] mb-3">기본</h3>
+        <div class="flex flex-wrap gap-4 mb-6">
+          <label class="flex items-center gap-2 cursor-pointer text-[17px] text-[#1E2124]">
+            <input type="checkbox" name="chk_demo" id="chk_d1" title="기본 선택">
+            기본
+          </label>
+          <label class="flex items-center gap-2 cursor-pointer text-[17px] text-[#1E2124]">
+            <input type="checkbox" name="chk_demo" id="chk_d2" title="선택됨 선택" checked>
+            선택됨
+          </label>
+          <label class="flex items-center gap-2 cursor-not-allowed text-[17px] text-[#8A949E]">
+            <input type="checkbox" name="chk_demo" id="chk_d3" title="비활성화 선택" disabled>
+            비활성화
+          </label>
+          <label class="flex items-center gap-2 cursor-not-allowed text-[17px] text-[#8A949E]">
+            <input type="checkbox" name="chk_demo" id="chk_d4" title="선택된 비활성화 선택" checked disabled>
+            선택된 비활성화
+          </label>
+        </div>
+
+        <h3 class="text-[14px] font-bold text-[#33363D] mb-3">설명</h3>
+        <div class="flex flex-col gap-3 mb-6">
+          <div class="flex items-start gap-2">
+            <input type="checkbox" id="chk_add1" title="설명 체크박스1 선택" checked class="mt-1">
+            <div>
+              <label for="chk_add1" class="block text-[17px] text-[#1E2124] cursor-pointer font-medium">체크박스1</label>
+              <p class="text-[14px] text-[#58616A] mt-1">부가적인 설명이 들어갑니다.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-2">
+            <input type="checkbox" id="chk_add2" title="설명 체크박스2 선택" class="mt-1">
+            <div>
+              <label for="chk_add2" class="block text-[17px] text-[#1E2124] cursor-pointer font-medium">체크박스2</label>
+              <p class="text-[14px] text-[#58616A] mt-1">부가적인 설명이 들어갑니다.</p>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="text-[14px] font-bold text-[#33363D] mb-3">사이즈</h3>
+        <div class="flex flex-wrap gap-4">
+          <label class="flex items-center gap-2 cursor-pointer text-[17px] text-[#1E2124]">
+            <input type="checkbox" id="chk_sz1" title="사이즈 미디움 선택">
+            사이즈 : medium
+          </label>
+          <label class="flex items-center gap-2 cursor-pointer text-[19px] text-[#1E2124]">
+            <input type="checkbox" id="chk_sz2" title="사이즈 라지 선택" style="width:24px;height:24px;">
+            사이즈 : large
+          </label>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 7. 셀렉트 ===== -->
+    <section id="select" class="mb-16 scroll-mt-8">
+      <h2 class="text-xl font-bold text-[#1E2124] border-b-2 border-[#2257B4] pb-3 mb-6">셀렉트</h2>
+      <div class="bg-white rounded-xl p-6 shadow-sm border border-[#E6E8EA]">
+        <h3 class="text-[14px] font-bold text-[#33363D] mb-3">기본형 사이즈</h3>
+        <div class="flex flex-wrap items-end gap-3 mb-6">
+          <select title="사이즈 라지 선택창" class="custom-select border border-[#CDD1D5] rounded-lg text-[#1E2124] text-[19px] px-3 h-12 focus:outline-none focus:border-[#2257B4] bg-white">
+            <option>large 항목1</option>
+            <option>large 항목2</option>
+          </select>
+          <select title="사이즈 미디움 선택창" class="custom-select border border-[#CDD1D5] rounded-lg text-[#1E2124] text-[17px] px-3 h-10 focus:outline-none focus:border-[#2257B4] bg-white">
+            <option>medium 항목1</option>
+            <option>medium 항목2</option>
+          </select>
+          <select title="사이즈 스몰 선택창" class="custom-select border border-[#CDD1D5] rounded-lg text-[#1E2124] text-[15px] px-3 h-9 focus:outline-none focus:border-[#2257B4] bg-white">
+            <option>small 항목1</option>
+            <option>small 항목2</option>
+          </select>
+        </div>
+
+        <h3 class="text-[14px] font-bold text-[#33363D] mb-3">상태 (completed / error / disabled)</h3>
+        <div class="flex flex-wrap gap-3 mb-6">
+          <select title="기본 선택창" class="custom-select border border-[#CDD1D5] rounded-lg text-[17px] px-3 h-10 bg-white focus:outline-none focus:border-[#2257B4]">
+            <option>기본 항목1</option>
+          </select>
+          <select title="완료 선택창" class="custom-select border border-[#159774] rounded-lg text-[17px] px-3 h-10 bg-white focus:outline-none">
+            <option>completed 항목1</option>
+          </select>
+          <select title="오류 선택창" class="custom-select border border-[#D63D4A] rounded-lg text-[17px] px-3 h-10 bg-white focus:outline-none">
+            <option>error 항목1</option>
+          </select>
+          <select title="비활성화 선택창" disabled class="custom-select border border-[#CDD1D5] rounded-lg text-[17px] px-3 h-10">
+            <option>disabled 항목1</option>
+          </select>
+        </div>
+
+        <h3 class="text-[14px] font-bold text-[#33363D] mb-3">정렬형 (sort)</h3>
+        <div class="flex flex-wrap items-end gap-3">
+          <select title="정렬 선택창" class="custom-select border-0 border-b border-[#CDD1D5] rounded-none text-[17px] px-2 h-10 bg-transparent focus:outline-none focus:border-[#2257B4] text-[#33363D]">
+            <option>정렬항목1</option>
+            <option>정렬항목2</option>
+          </select>
+          <select title="정렬 라지 선택창" class="custom-select border-0 border-b border-[#CDD1D5] rounded-none text-[19px] px-2 h-12 bg-transparent focus:outline-none focus:border-[#2257B4] text-[#33363D]">
+            <option>large 정렬</option>
+          </select>
+          <select title="정렬 스몰 선택창" class="custom-select border-0 border-b border-[#CDD1D5] rounded-none text-[15px] px-2 h-9 bg-transparent focus:outline-none focus:border-[#2257B4] text-[#33363D]">
+            <option>small 정렬</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 8. 태그 ===== -->
+    <section id="tag" class="mb-16 scroll-mt-8">
+      <h2 class="text-xl font-bold text-[#1E2124] border-b-2 border-[#2257B4] pb-3 mb-6">태그</h2>
+      <div class="bg-white rounded-xl p-6 shadow-sm border border-[#E6E8EA]">
+        <h3 class="text-[14px] font-bold text-[#33363D] mb-3">기본 (삭제 버튼 포함)</h3>
+        <div class="flex flex-wrap gap-2 mb-2">
+          <span class="inline-flex items-center gap-1 bg-[#EEF2F7] text-[#2257B4] text-[17px] font-medium px-4 h-10 rounded-full">large <button type="button" class="w-4 h-4 rounded-full bg-[#8A949E] text-white text-[11px] leading-none hover:bg-[#58616A] flex items-center justify-center"><span class="sr-only">삭제</span>x</button></span>
+          <span class="inline-flex items-center gap-1 bg-[#EEF2F7] text-[#2257B4] text-[17px] font-medium px-4 h-10 rounded-full">large2 <button type="button" class="w-4 h-4 rounded-full bg-[#8A949E] text-white text-[11px] leading-none hover:bg-[#58616A] flex items-center justify-center"><span class="sr-only">삭제</span>x</button></span>
+        </div>
+        <div class="flex flex-wrap gap-2 mb-2">
+          <span class="inline-flex items-center gap-1 bg-[#EEF2F7] text-[#2257B4] text-[15px] font-medium px-3 h-9 rounded-full">medium <button type="button" class="w-3.5 h-3.5 rounded-full bg-[#8A949E] text-white text-[10px] leading-none hover:bg-[#58616A] flex items-center justify-center"><span class="sr-only">삭제</span>x</button></span>
+          <span class="inline-flex items-center gap-1 bg-[#EEF2F7] text-[#2257B4] text-[15px] font-medium px-3 h-9 rounded-full">medium2 <button type="button" class="w-3.5 h-3.5 rounded-full bg-[#8A949E] text-white text-[10px] leading-none hover:bg-[#58616A] flex items-center justify-center"><span class="sr-only">삭제</span>x</button></span>
+        </div>
+        <div class="flex flex-wrap gap-2 mb-6">
+          <span class="inline-flex items-center gap-1 bg-[#EEF2F7] text-[#2257B4] text-[13px] font-medium px-2.5 h-8 rounded-full">small <button type="button" class="w-3 h-3 rounded-full bg-[#8A949E] text-white text-[9px] leading-none hover:bg-[#58616A] flex items-center justify-center"><span class="sr-only">삭제</span>x</button></span>
+          <span class="inline-flex items-center gap-1 bg-[#EEF2F7] text-[#2257B4] text-[13px] font-medium px-2.5 h-8 rounded-full">small2 <button type="button" class="w-3 h-3 rounded-full bg-[#8A949E] text-white text-[9px] leading-none hover:bg-[#58616A] flex items-center justify-center"><span class="sr-only">삭제</span>x</button></span>
+        </div>
+
+        <h3 class="text-[14px] font-bold text-[#33363D] mb-3">링크형</h3>
+        <div class="flex flex-wrap gap-2 mb-2">
+          <a href="#" class="inline-flex items-center bg-[#EEF2F7] text-[#2257B4] text-[17px] font-medium px-4 h-10 rounded-full hover:bg-[#E4EBF8]">large</a>
+          <a href="#" class="inline-flex items-center bg-[#EEF2F7] text-[#2257B4] text-[17px] font-medium px-4 h-10 rounded-full hover:bg-[#E4EBF8]">large2</a>
+        </div>
+        <div class="flex flex-wrap gap-2 mb-2">
+          <a href="#" class="inline-flex items-center bg-[#EEF2F7] text-[#2257B4] text-[15px] font-medium px-3 h-9 rounded-full hover:bg-[#E4EBF8]">medium</a>
+          <a href="#" class="inline-flex items-center bg-[#EEF2F7] text-[#2257B4] text-[15px] font-medium px-3 h-9 rounded-full hover:bg-[#E4EBF8]">medium2</a>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <a href="#" class="inline-flex items-center bg-[#EEF2F7] text-[#2257B4] text-[13px] font-medium px-2.5 h-8 rounded-full hover:bg-[#E4EBF8]">small</a>
+          <a href="#" class="inline-flex items-center bg-[#EEF2F7] text-[#2257B4] text-[13px] font-medium px-2.5 h-8 rounded-full hover:bg-[#E4EBF8]">small2</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 9. 단계표시기 ===== -->
+    <section id="indicator" class="mb-16 scroll-mt-8">
+      <h2 class="text-xl font-bold text-[#1E2124] border-b-2 border-[#2257B4] pb-3 mb-6">단계표시기</h2>
+      <div class="bg-white rounded-xl p-6 shadow-sm border border-[#E6E8EA]">
+        <h3 class="text-[14px] font-bold text-[#33363D] mb-4">Full</h3>
+        <ol class="flex items-start gap-0 mb-8">
+          <!-- done -->
+          <li class="flex-1 flex flex-col items-center relative">
+            <div class="flex flex-col items-center">
+              <div class="w-9 h-9 rounded-full border-2 border-[#2257B4] bg-white flex items-center justify-center z-10">
+                <svg class="w-5 h-5 text-[#2257B4]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+              </div>
+              <div class="mt-2 text-center">
+                <span class="block text-[12px] text-[#8A949E]">1단계</span>
+                <strong class="block text-[13px] text-[#2257B4] font-medium">단계 제목</strong>
+              </div>
+            </div>
+            <div class="absolute top-[18px] left-1/2 w-full h-0.5 bg-[#2257B4] -z-0"></div>
+          </li>
+          <!-- active -->
+          <li class="flex-1 flex flex-col items-center relative">
+            <div class="flex flex-col items-center">
+              <div class="w-9 h-9 rounded-full bg-[#2257B4] flex items-center justify-center z-10">
+                <span class="text-white text-[15px] font-bold">2</span>
+              </div>
+              <div class="mt-2 text-center">
+                <span class="block text-[12px] text-[#8A949E]">2단계</span>
+                <strong class="block text-[13px] text-[#2257B4] font-bold">단계 제목</strong>
+              </div>
+            </div>
+            <div class="absolute top-[18px] left-1/2 w-full h-0.5 bg-[#CDD1D5] -z-0"></div>
+          </li>
+          <!-- inactive -->
+          <li class="flex-1 flex flex-col items-center relative">
+            <div class="flex flex-col items-center">
+              <div class="w-9 h-9 rounded-full border-2 border-[#CDD1D5] bg-white flex items-center justify-center z-10">
+                <span class="text-[#8A949E] text-[15px]">3</span>
+              </div>
+              <div class="mt-2 text-center">
+                <span class="block text-[12px] text-[#8A949E]">3단계</span>
+                <strong class="block text-[13px] text-[#8A949E] font-normal">단계 제목</strong>
+              </div>
+            </div>
+            <div class="absolute top-[18px] left-1/2 w-full h-0.5 bg-[#CDD1D5] -z-0"></div>
+          </li>
+          <li class="flex-1 flex flex-col items-center relative">
+            <div class="flex flex-col items-center">
+              <div class="w-9 h-9 rounded-full border-2 border-[#CDD1D5] bg-white flex items-center justify-center z-10">
+                <span class="text-[#8A949E] text-[15px]">4</span>
+              </div>
+              <div class="mt-2 text-center">
+                <span class="block text-[12px] text-[#8A949E]">4단계</span>
+                <strong class="block text-[13px] text-[#8A949E] font-normal">단계 제목</strong>
+              </div>
+            </div>
+          </li>
+        </ol>
+
+        <h3 class="text-[14px] font-bold text-[#33363D] mb-4">사용예시 (약관동의)</h3>
+        <div class="bg-[#F4F5F6] rounded-xl p-5">
+          <strong class="block text-[17px] font-bold text-[#1E2124] mb-4">약관동의</strong>
+          <ol class="flex items-start gap-0">
+            <li class="flex-1 flex flex-col items-center relative">
+              <div class="w-9 h-9 rounded-full border-2 border-[#2257B4] bg-white flex items-center justify-center z-10">
+                <svg class="w-5 h-5 text-[#2257B4]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+              </div>
+              <div class="mt-2 text-center"><span class="block text-[11px] text-[#8A949E]">1단계</span><strong class="block text-[12px] text-[#2257B4] font-medium">유의사항 확인</strong></div>
+              <div class="absolute top-[18px] left-1/2 w-full h-0.5 bg-[#2257B4]"></div>
+            </li>
+            <li class="flex-1 flex flex-col items-center relative">
+              <div class="w-9 h-9 rounded-full bg-[#2257B4] flex items-center justify-center z-10">
+                <span class="text-white text-[15px] font-bold">2</span>
+              </div>
+              <div class="mt-2 text-center"><span class="block text-[11px] text-[#8A949E]">2단계</span><strong class="block text-[12px] text-[#2257B4] font-bold">신청인 정보</strong></div>
+              <div class="absolute top-[18px] left-1/2 w-full h-0.5 bg-[#CDD1D5]"></div>
+            </li>
+            <li class="flex-1 flex flex-col items-center relative">
+              <div class="w-9 h-9 rounded-full border-2 border-[#CDD1D5] bg-white flex items-center justify-center z-10">
+                <span class="text-[#8A949E] text-[15px]">3</span>
+              </div>
+              <div class="mt-2 text-center"><span class="block text-[11px] text-[#8A949E]">3단계</span><strong class="block text-[12px] text-[#8A949E] font-normal">이사 전 살던 곳</strong></div>
+              <div class="absolute top-[18px] left-1/2 w-full h-0.5 bg-[#CDD1D5]"></div>
+            </li>
+            <li class="flex-1 flex flex-col items-center">
+              <div class="w-9 h-9 rounded-full border-2 border-[#CDD1D5] bg-white flex items-center justify-center z-10">
+                <span class="text-[#8A949E] text-[15px]">4</span>
+              </div>
+              <div class="mt-2 text-center"><span class="block text-[11px] text-[#8A949E]">4단계</span><strong class="block text-[12px] text-[#8A949E] font-normal">이사 온 곳</strong></div>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 10. 입력 ===== -->
+    <section id="input" class="mb-16 scroll-mt-8">
+      <h2 class="text-xl font-bold text-[#1E2124] border-b-2 border-[#2257B4] pb-3 mb-6">입력</h2>
+      <div class="bg-white rounded-xl p-6 shadow-sm border border-[#E6E8EA]">
+        <div class="max-w-xl space-y-5">
+          <!-- Large -->
+          <div>
+            <p class="text-[13px] font-bold text-[#33363D] mb-1">Large <span class="text-[#D63D4A]">필수</span></p>
+            <div>
+              <label class="block text-[15px] font-medium text-[#1E2124] mb-1" for="inp_lg">레이블</label>
+              <input type="text" id="inp_lg" class="w-full border border-[#CDD1D5] rounded-lg px-4 h-12 text-[19px] text-[#1E2124] placeholder-[#8A949E] focus:outline-none focus:border-[#2257B4] bg-white" placeholder="내용을 입력해 주세요.">
+            </div>
+          </div>
+          <!-- Medium -->
+          <div>
+            <p class="text-[13px] font-bold text-[#33363D] mb-1">Medium</p>
+            <div>
+              <label class="block text-[15px] font-medium text-[#1E2124] mb-1" for="inp_md">레이블</label>
+              <input type="text" id="inp_md" class="w-full border border-[#CDD1D5] rounded-lg px-4 h-10 text-[17px] text-[#1E2124] placeholder-[#8A949E] focus:outline-none focus:border-[#2257B4] bg-white" placeholder="내용을 입력해 주세요.">
+            </div>
+          </div>
+          <!-- Small -->
+          <div>
+            <p class="text-[13px] font-bold text-[#33363D] mb-1">Small</p>
+            <div>
+              <label class="block text-[15px] font-medium text-[#1E2124] mb-1" for="inp_sm">레이블</label>
+              <input type="text" id="inp_sm" class="w-full border border-[#CDD1D5] rounded-lg px-4 h-9 text-[15px] text-[#1E2124] placeholder-[#8A949E] focus:outline-none focus:border-[#2257B4] bg-white" placeholder="내용을 입력해 주세요.">
+            </div>
+          </div>
+          <!-- Completed -->
+          <div>
+            <p class="text-[13px] font-bold text-[#33363D] mb-1">Completed</p>
+            <input type="text" class="w-full border border-[#159774] rounded-lg px-4 h-10 text-[17px] text-[#1E2124] focus:outline-none bg-white" value="입력된 값">
+            <p class="text-[13px] text-[#159774] mt-1">완료 메시지입니다.</p>
+          </div>
+          <!-- Error -->
+          <div>
+            <p class="text-[13px] font-bold text-[#33363D] mb-1">Error</p>
+            <input type="text" class="w-full border border-[#D63D4A] rounded-lg px-4 h-10 text-[17px] text-[#1E2124] focus:outline-none bg-white" placeholder="내용을 입력해 주세요.">
+            <p class="text-[13px] text-[#D63D4A] mt-1">오류 메시지를 입력해 주세요.</p>
+          </div>
+          <!-- Disabled -->
+          <div>
+            <p class="text-[13px] font-bold text-[#33363D] mb-1">Disabled</p>
+            <input type="text" disabled class="w-full border border-[#CDD1D5] rounded-lg px-4 h-10 text-[17px] text-[#8A949E] bg-[#F4F5F6] cursor-not-allowed" placeholder="비활성화 상태">
+          </div>
+          <!-- Date picker -->
+          <div>
+            <p class="text-[13px] font-bold text-[#33363D] mb-2">날짜 피커</p>
+            <div class="flex items-center gap-2">
+              <div class="relative flex-1">
+                <input type="text" id="date_p1" class="w-full border border-[#CDD1D5] rounded-lg pl-4 pr-10 h-10 text-[17px] text-[#1E2124] placeholder-[#8A949E] focus:outline-none focus:border-[#2257B4] bg-white" placeholder="YYYY-MM-DD">
+                <span class="absolute right-3 top-1/2 -translate-y-1/2 text-[#8A949E]">
+                  <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" stroke-width="1.5"/><path d="M16 2v4M8 2v4M3 10h18" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </span>
+              </div>
+              <span class="text-[#58616A]">~</span>
+              <div class="relative flex-1">
+                <input type="text" id="date_p2" class="w-full border border-[#CDD1D5] rounded-lg pl-4 pr-10 h-10 text-[17px] text-[#1E2124] placeholder-[#8A949E] focus:outline-none focus:border-[#2257B4] bg-white" placeholder="YYYY-MM-DD">
+                <span class="absolute right-3 top-1/2 -translate-y-1/2 text-[#8A949E]">
+                  <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" stroke-width="1.5"/><path d="M16 2v4M8 2v4M3 10h18" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </span>
+              </div>
+            </div>
+          </div>
+          <!-- Time picker -->
+          <div>
+            <p class="text-[13px] font-bold text-[#33363D] mb-2">시간 피커</p>
+            <div class="flex items-center gap-2">
+              <div class="relative w-44">
+                <input type="text" class="w-full border border-[#CDD1D5] rounded-lg pl-4 pr-10 h-10 text-[17px] text-[#1E2124] placeholder-[#8A949E] focus:outline-none focus:border-[#2257B4] bg-white" placeholder="HH:MM">
+                <span class="absolute right-3 top-1/2 -translate-y-1/2 text-[#8A949E]">
+                  <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke-width="1.5"/><path d="M12 7v5l3 3" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </span>
+              </div>
+              <span class="text-[#58616A]">~</span>
+              <div class="relative w-44">
+                <input type="text" class="w-full border border-[#CDD1D5] rounded-lg pl-4 pr-10 h-10 text-[17px] text-[#1E2124] placeholder-[#8A949E] focus:outline-none focus:border-[#2257B4] bg-white" placeholder="HH:MM">
+                <span class="absolute right-3 top-1/2 -translate-y-1/2 text-[#8A949E]">
+                  <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke-width="1.5"/><path d="M12 7v5l3 3" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 11. 표 ===== -->
+    <section id="table" class="mb-16 scroll-mt-8">
+      <h2 class="text-xl font-bold text-[#1E2124] border-b-2 border-[#2257B4] pb-3 mb-6">표</h2>
+      <div class="bg-white rounded-xl p-6 shadow-sm border border-[#E6E8EA]">
+        <div class="overflow-x-auto">
+          <table class="w-full border-collapse text-[15px]">
+            <caption class="sr-only">000에 대한 표로 제목1, 제목2에 대한 내용</caption>
+            <thead>
+              <tr class="bg-[#EEF2F7]">
+                <th scope="col" class="border border-[#CDD1D5] px-4 py-3 text-[#1E2124] font-bold text-center w-1/3">제목1</th>
+                <th scope="col" class="border border-[#CDD1D5] px-4 py-3 text-[#1E2124] font-bold text-center">제목2</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row" class="border border-[#CDD1D5] px-4 py-3 text-[#1E2124] font-medium bg-[#F4F5F6] text-center">제목1-1</th>
+                <td class="border border-[#CDD1D5] px-4 py-3 text-[#33363D]">내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다.</td>
+              </tr>
+              <tr>
+                <th scope="row" class="border border-[#CDD1D5] px-4 py-3 text-[#1E2124] font-medium bg-[#F4F5F6] text-center">제목1-2</th>
+                <td class="border border-[#CDD1D5] px-4 py-3 text-[#33363D]">내용이 들어갑니다.</td>
+              </tr>
+              <tr>
+                <th scope="row" class="border border-[#CDD1D5] px-4 py-3 text-[#1E2124] font-medium bg-[#F4F5F6] text-center">제목1-3</th>
+                <td class="border border-[#CDD1D5] px-4 py-3 text-[#33363D]">내용이 들어갑니다.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 12. 구조화목록 ===== -->
+    <section id="structured" class="mb-16 scroll-mt-8">
+      <h2 class="text-xl font-bold text-[#1E2124] border-b-2 border-[#2257B4] pb-3 mb-6">구조화목록</h2>
+      <div class="bg-white rounded-xl p-6 shadow-sm border border-[#E6E8EA]">
+        <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <li class="border border-[#E6E8EA] rounded-xl overflow-hidden bg-white hover:shadow-md transition-shadow">
+            <div class="p-4">
+              <div class="mb-2"><span class="inline-flex items-center px-2.5 py-0.5 rounded text-[13px] font-medium bg-[#F1F6FE] text-[#2257B4]">뱃지</span></div>
+              <div class="flex items-start justify-between gap-3">
+                <div class="flex-1">
+                  <p class="text-[17px] font-bold text-[#1E2124] mb-1 line-clamp-2">타이틀 영역</p>
+                  <p class="text-[14px] text-[#58616A] mb-2 line-clamp-3">간단한 설명이 들어가는 영역입니다. 최대 3줄까지 작성합니다.</p>
+                  <p class="text-[13px] text-[#8A949E]"><strong class="font-medium text-[#58616A]">신청 기간</strong> <span>2023.00.00-2024.00.00</span></p>
+                </div>
+                <div class="flex-shrink-0">
+                  <a href="#" class="inline-flex items-center justify-center px-3 min-h-9 rounded-lg text-[15px] border border-[#2257B4] bg-[#F1F6FE] text-[#2257B4] hover:bg-[#E4EBF8]" title="타이틀 영역">신청하기</a>
+                </div>
+              </div>
+              <div class="flex gap-1 mt-3">
+                <span class="px-2 py-0.5 bg-[#F4F5F6] text-[#58616A] rounded text-[12px]">태그</span>
+                <span class="px-2 py-0.5 bg-[#F4F5F6] text-[#58616A] rounded text-[12px]">태그</span>
+              </div>
+            </div>
+            <div class="border-t border-[#E6E8EA] flex">
+              <button class="flex-1 py-2.5 text-[13px] text-[#58616A] hover:bg-[#F4F5F6] flex items-center justify-center gap-1">공유하기</button>
+              <button class="flex-1 py-2.5 text-[13px] text-[#58616A] hover:bg-[#F4F5F6] flex items-center justify-center gap-1 border-l border-[#E6E8EA]">찜하기</button>
+            </div>
+          </li>
+          <li class="border border-[#E6E8EA] rounded-xl overflow-hidden bg-white hover:shadow-md transition-shadow">
+            <div class="aspect-video bg-[#CDD1D5]"><img src="/assets/styleguide/img/bodo-v.jpg" alt="" class="w-full h-full object-cover"></div>
+            <div class="p-4">
+              <div class="mb-2"><span class="inline-flex items-center px-2.5 py-0.5 rounded text-[13px] font-medium bg-[#EDF7F3] text-[#159774]">뱃지</span></div>
+              <p class="text-[17px] font-bold text-[#1E2124] mb-1">타이틀 영역</p>
+              <p class="text-[14px] text-[#58616A] mb-2 line-clamp-3">간단한 설명이 들어가는 영역입니다. 최대 3줄까지 작성합니다.</p>
+              <p class="text-[13px] text-[#8A949E] mb-3"><strong class="font-medium text-[#58616A]">신청 기간</strong> <span>2023.00.00-2024.00.00</span></p>
+              <a href="#" class="inline-flex items-center justify-center px-3 min-h-9 rounded-lg text-[15px] border border-[#2257B4] bg-[#F1F6FE] text-[#2257B4] hover:bg-[#E4EBF8]" title="타이틀 영역">신청하기</a>
+            </div>
+          </li>
+          <li class="border border-[#E6E8EA] rounded-xl overflow-hidden bg-white hover:shadow-md transition-shadow">
+            <div class="aspect-video bg-[#CDD1D5]"><img src="/assets/styleguide/img/bodo-v.jpg" alt="" class="w-full h-full object-cover"></div>
+            <div class="p-4">
+              <div class="mb-2"><span class="inline-flex items-center px-2.5 py-0.5 rounded text-[13px] font-medium bg-[#159774] text-white">뱃지</span></div>
+              <p class="text-[17px] font-bold text-[#1E2124] mb-1">타이틀 영역</p>
+              <p class="text-[14px] text-[#58616A] mb-2 line-clamp-3">간단한 설명이 들어가는 영역입니다. 최대 3줄까지 작성합니다.</p>
+              <p class="text-[13px] text-[#8A949E] mb-3"><strong class="font-medium text-[#58616A]">신청 기간</strong> <span>2023.00.00-2024.00.00</span></p>
+              <a href="#" class="inline-flex items-center justify-center px-3 min-h-9 rounded-lg text-[15px] border border-[#2257B4] bg-[#F1F6FE] text-[#2257B4] hover:bg-[#E4EBF8]" title="타이틀 영역">신청하기</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===== 13. 달력 ===== -->
+    <section id="calandar" class="mb-16 scroll-mt-8">
+      <h2 class="text-xl font-bold text-[#1E2124] border-b-2 border-[#2257B4] pb-3 mb-6">달력</h2>
+
+      <!-- Type 1: 날짜 + 시간 선택 -->
+      <h3 class="text-[16px] font-bold text-[#33363D] mb-4">날짜 및 회차 선택 Type 1</h3>
+      <div class="bg-white rounded-xl p-6 shadow-sm border border-[#E6E8EA] mb-6">
+        <div class="flex gap-6 flex-wrap">
+          <!-- 달력 -->
+          <div class="flex-1 min-w-[280px]">
+            <div class="flex items-center justify-between mb-4">
+              <button type="button" class="w-8 h-8 rounded-lg border border-[#CDD1D5] flex items-center justify-center hover:bg-[#F4F5F6]">
+                <svg class="w-4 h-4 text-[#58616A]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                <span class="sr-only">이전달</span>
+              </button>
+              <div class="flex gap-2">
+                <select title="연 선택" class="custom-select border border-[#CDD1D5] rounded-lg text-[15px] px-3 h-9 bg-white focus:outline-none focus:border-[#2257B4]">
+                  <option selected>2024년</option>
+                </select>
+                <select title="월 선택" class="custom-select border border-[#CDD1D5] rounded-lg text-[15px] px-3 h-9 bg-white focus:outline-none focus:border-[#2257B4]">
+                  <option selected>12월</option>
+                </select>
+              </div>
+              <button type="button" class="w-8 h-8 rounded-lg border border-[#CDD1D5] flex items-center justify-center hover:bg-[#F4F5F6]">
+                <svg class="w-4 h-4 text-[#58616A]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                <span class="sr-only">다음달</span>
+              </button>
+            </div>
+            <table class="w-full text-center text-[14px]">
+              <thead>
+                <tr>
+                  <th class="py-2 text-[#D63D4A] font-medium">일</th>
+                  <th class="py-2 text-[#58616A] font-medium">월</th>
+                  <th class="py-2 text-[#58616A] font-medium">화</th>
+                  <th class="py-2 text-[#58616A] font-medium">수</th>
+                  <th class="py-2 text-[#58616A] font-medium">목</th>
+                  <th class="py-2 text-[#58616A] font-medium">금</th>
+                  <th class="py-2 text-[#2257B4] font-medium">토</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><button class="w-9 h-9 text-[#CDD1D5] text-[13px]">26</button></td>
+                  <td><button class="w-9 h-9 text-[#CDD1D5] text-[13px]">27</button></td>
+                  <td><button class="w-9 h-9 text-[#CDD1D5] text-[13px]">28</button></td>
+                  <td><button class="w-9 h-9 text-[#CDD1D5] text-[13px]">29</button></td>
+                  <td><button class="w-9 h-9 text-[#CDD1D5] text-[13px]">30</button></td>
+                  <td><button class="w-9 h-9 text-[#8A949E] text-[13px] bg-[#F4F5F6] rounded-lg cursor-not-allowed">1</button></td>
+                  <td><button class="w-9 h-9 text-[#2257B4] text-[14px] hover:bg-[#EEF2F7] rounded-lg">2</button></td>
+                </tr>
+                <tr>
+                  <td><button class="w-9 h-9 text-[#D63D4A] text-[14px] hover:bg-[#FEF0F1] rounded-lg">3</button></td>
+                  <td><button class="w-9 h-9 text-[#1E2124] text-[14px] outline outline-2 outline-[#1E2D75] rounded-lg hover:bg-[#EEF2F7]">4</button></td>
+                  <td><button class="w-9 h-9 text-[#1E2124] text-[14px] hover:bg-[#EEF2F7] rounded-lg">5</button></td>
+                  <td><button class="w-9 h-9 text-[#1E2124] text-[14px] hover:bg-[#EEF2F7] rounded-lg">6</button></td>
+                  <td><button class="w-9 h-9 text-[#1E2124] text-[14px] hover:bg-[#EEF2F7] rounded-lg">7</button></td>
+                  <td><button class="w-9 h-9 text-[#8A949E] text-[13px] bg-[#F4F5F6] rounded-lg cursor-not-allowed">8</button></td>
+                  <td><button class="w-9 h-9 text-[#2257B4] text-[14px] hover:bg-[#EEF2F7] rounded-lg">9</button></td>
+                </tr>
+                <tr>
+                  <td><button class="w-9 h-9 text-[#D63D4A] text-[14px] hover:bg-[#FEF0F1] rounded-lg">10</button></td>
+                  <td><button class="w-9 h-9 text-[#1E2124] text-[14px] hover:bg-[#EEF2F7] rounded-lg">11</button></td>
+                  <td><button class="w-9 h-9 bg-[#3180EF] text-white text-[14px] rounded-lg font-bold">12</button></td>
+                  <td><button class="w-9 h-9 text-[#1E2124] text-[14px] hover:bg-[#EEF2F7] rounded-lg">13</button></td>
+                  <td><button class="w-9 h-9 text-[#1E2124] text-[14px] hover:bg-[#EEF2F7] rounded-lg">14</button></td>
+                  <td><button class="w-9 h-9 text-[#8A949E] text-[13px] bg-[#F4F5F6] rounded-lg cursor-not-allowed">15</button></td>
+                  <td><button class="w-9 h-9 text-[#2257B4] text-[14px] hover:bg-[#EEF2F7] rounded-lg">16</button></td>
+                </tr>
+                <tr>
+                  <td><button class="w-9 h-9 text-[#D63D4A] text-[14px] hover:bg-[#FEF0F1] rounded-lg">17</button></td>
+                  <td><button class="w-9 h-9 text-[#1E2124] text-[14px] hover:bg-[#EEF2F7] rounded-lg">18</button></td>
+                  <td><button class="w-9 h-9 text-[#1E2124] text-[14px] hover:bg-[#EEF2F7] rounded-lg">19</button></td>
+                  <td><button class="w-9 h-9 text-[#1E2124] text-[14px] hover:bg-[#EEF2F7] rounded-lg">20</button></td>
+                  <td><button class="w-9 h-9 text-[#1E2124] text-[14px] hover:bg-[#EEF2F7] rounded-lg">21</button></td>
+                  <td><button class="w-9 h-9 text-[#8A949E] text-[13px] bg-[#F4F5F6] rounded-lg cursor-not-allowed">22</button></td>
+                  <td><button class="w-9 h-9 text-[#2257B4] text-[14px] hover:bg-[#EEF2F7] rounded-lg">23</button></td>
+                </tr>
+                <tr>
+                  <td><button class="w-9 h-9 text-[#D63D4A] text-[14px] hover:bg-[#FEF0F1] rounded-lg">24</button></td>
+                  <td><button class="w-9 h-9 text-[#1E2124] text-[14px] hover:bg-[#EEF2F7] rounded-lg">25</button></td>
+                  <td><button class="w-9 h-9 text-[#1E2124] text-[14px] hover:bg-[#EEF2F7] rounded-lg">26</button></td>
+                  <td><button class="w-9 h-9 text-[#1E2124] text-[14px] hover:bg-[#EEF2F7] rounded-lg">27</button></td>
+                  <td><button class="w-9 h-9 text-[#1E2124] text-[14px] hover:bg-[#EEF2F7] rounded-lg">28</button></td>
+                  <td><button class="w-9 h-9 text-[#8A949E] text-[13px] bg-[#F4F5F6] rounded-lg cursor-not-allowed">29</button></td>
+                  <td><button class="w-9 h-9 text-[#2257B4] text-[14px] hover:bg-[#EEF2F7] rounded-lg">30</button></td>
+                </tr>
+                <tr>
+                  <td><button class="w-9 h-9 text-[#D63D4A] text-[14px] hover:bg-[#FEF0F1] rounded-lg">31</button></td>
+                  <td colspan="6"></td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="flex flex-wrap gap-4 mt-4 text-[13px] text-[#58616A]">
+              <span class="flex items-center gap-1.5"><span class="w-4 h-4 rounded outline outline-2 outline-[#1E2D75]"></span>오늘</span>
+              <span class="flex items-center gap-1.5"><span class="w-4 h-4 rounded bg-[#3180EF]"></span>선택</span>
+              <span class="flex items-center gap-1.5"><span class="w-4 h-4 rounded bg-[#F4F5F6] border border-[#CDD1D5]"></span>예약불가</span>
+              <span class="flex items-center gap-1.5"><span class="w-4 h-4 rounded bg-white border border-[#D63D4A]"></span>휴관일</span>
+            </div>
+          </div>
+
+          <!-- 시간 선택 -->
+          <div class="flex-1 min-w-[240px] border border-[#E6E8EA] rounded-xl p-4">
+            <strong class="block text-[17px] font-bold text-[#1E2124] mb-4"><span class="text-[#2257B4]">2024년 12월 12일</span> 예약현황</strong>
+            <div class="mb-4">
+              <strong class="block text-[15px] font-bold text-[#33363D] mb-2">오전</strong>
+              <div class="grid grid-cols-3 gap-2">
+                <button class="py-2 rounded-lg text-[14px] bg-[#2257B4] text-white font-medium">09:00</button>
+                <button class="py-2 rounded-lg text-[14px] border border-[#CDD1D5] text-[#1E2124] hover:bg-[#EEF2F7]">09:30</button>
+                <button class="py-2 rounded-lg text-[14px] border border-[#CDD1D5] text-[#1E2124] hover:bg-[#EEF2F7]">10:00</button>
+                <button class="py-2 rounded-lg text-[14px] border border-[#CDD1D5] text-[#1E2124] hover:bg-[#EEF2F7]">10:30</button>
+                <button class="py-2 rounded-lg text-[14px] border border-[#CDD1D5] text-[#1E2124] hover:bg-[#EEF2F7]">11:00</button>
+                <button class="py-2 rounded-lg text-[14px] border border-[#CDD1D5] text-[#1E2124] hover:bg-[#EEF2F7]">11:30</button>
+              </div>
+            </div>
+            <div class="mb-4">
+              <strong class="block text-[15px] font-bold text-[#33363D] mb-2">오후</strong>
+              <div class="grid grid-cols-3 gap-2">
+                <button disabled class="py-2 rounded-lg text-[14px] bg-[#F4F5F6] text-[#8A949E] cursor-not-allowed">13:00</button>
+                <button disabled class="py-2 rounded-lg text-[14px] bg-[#F4F5F6] text-[#8A949E] cursor-not-allowed">13:30</button>
+                <button class="py-2 rounded-lg text-[14px] border border-[#CDD1D5] text-[#1E2124] hover:bg-[#EEF2F7]">14:00</button>
+                <button class="py-2 rounded-lg text-[14px] border border-[#CDD1D5] text-[#1E2124] hover:bg-[#EEF2F7]">14:30</button>
+                <button class="py-2 rounded-lg text-[14px] border border-[#CDD1D5] text-[#1E2124] hover:bg-[#EEF2F7]">15:00</button>
+                <button class="py-2 rounded-lg text-[14px] border border-[#CDD1D5] text-[#1E2124] hover:bg-[#EEF2F7]">15:30</button>
+              </div>
+            </div>
+            <div class="border-t border-[#E6E8EA] pt-4">
+              <strong class="block text-[15px] font-bold text-[#1E2124] mb-2">선택한 진료일시</strong>
+              <div class="bg-[#EEF2F7] rounded-lg p-3">
+                <p class="flex items-center gap-2 text-[15px] text-[#1E2124] font-medium mb-1">
+                  <svg class="w-4 h-4 text-[#2257B4]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" stroke-width="1.5"/><path d="M16 2v4M8 2v4M3 10h18" stroke-width="1.5" stroke-linecap="round"/></svg>
+                  2024년 12월 12일
+                </p>
+                <p class="flex items-center gap-2 text-[15px] text-[#1E2124] font-medium">
+                  <svg class="w-4 h-4 text-[#2257B4]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke-width="1.5"/><path d="M12 7v5l3 3" stroke-width="1.5" stroke-linecap="round"/></svg>
+                  오전 09:00
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flex items-center justify-between mt-6 pt-4 border-t border-[#E6E8EA]">
+          <button type="button" class="inline-flex items-center justify-center gap-1 border rounded-lg transition-all cursor-pointer bg-white text-[#1E2124] border-[#58616A] hover:bg-[#F4F5F6] px-[18px] py-2 min-h-12 text-[19px]">취소하기</button>
+          <button type="button" class="inline-flex items-center justify-center gap-1 border rounded-lg transition-all cursor-pointer bg-[#2257B4] text-white border-[#2257B4] hover:bg-[#1C4690] px-[18px] py-2 min-h-12 text-[19px]">신청하기</button>
+        </div>
+      </div>
+
+      <!-- Type 2: 날짜 + 회차버튼 -->
+      <h3 class="text-[16px] font-bold text-[#33363D] mb-4">날짜 및 회차 선택 Type 2</h3>
+      <div class="bg-white rounded-xl p-6 shadow-sm border border-[#E6E8EA] mb-6">
+        <div class="flex gap-6 flex-wrap">
+          <div class="flex-1 min-w-[240px] border border-[#E6E8EA] rounded-xl p-4">
+            <strong class="block text-[17px] font-bold text-[#1E2124] mb-4"><span class="text-[#2257B4]">2024년 12월 12일</span> 예약현황</strong>
+            <div class="grid grid-cols-2 gap-2 mb-4">
+              <button class="flex flex-col items-center py-3 px-2 rounded-lg bg-[#2257B4] text-white text-[13px] font-medium">
+                <span class="text-[11px] mb-1"><span class="inline-flex items-center px-1.5 py-0.5 rounded text-[11px] bg-[#F1F6FE] text-[#2257B4]">예약가능</span></span>
+                <strong>회차명</strong>
+                <span class="text-[12px] opacity-90">(10:00~12:00)</span>
+                <span class="text-[12px] opacity-90">10,000원</span>
+              </button>
+              <button class="flex flex-col items-center py-3 px-2 rounded-lg border border-[#CDD1D5] text-[#1E2124] text-[13px] hover:bg-[#EEF2F7]">
+                <span class="text-[11px] mb-1"><span class="inline-flex items-center px-1.5 py-0.5 rounded text-[11px] bg-[#F1F6FE] text-[#2257B4]">예약가능</span></span>
+                <strong>회차명</strong>
+                <span class="text-[12px] text-[#58616A]">(10:00~12:00)</span>
+                <span class="text-[12px] text-[#58616A]">10,000원</span>
+              </button>
+              <button class="flex flex-col items-center py-3 px-2 rounded-lg border border-[#CDD1D5] text-[#1E2124] text-[13px] hover:bg-[#EEF2F7]">
+                <strong>회차명</strong>
+                <span class="text-[12px] text-[#58616A]">(10:00~12:00)</span>
+              </button>
+              <button disabled class="flex flex-col items-center py-3 px-2 rounded-lg bg-[#F4F5F6] text-[#8A949E] text-[13px] cursor-not-allowed">
+                <strong>회차명</strong>
+                <span class="text-[12px]">(10:00~12:00)</span>
+                <span class="text-[11px] mt-1 text-[#D63D4A]">예약불가</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="flex items-center justify-between mt-6 pt-4 border-t border-[#E6E8EA]">
+          <button type="button" class="inline-flex items-center justify-center px-6 min-h-12 rounded-lg text-[19px] border border-[#58616A] bg-white text-[#1E2124] hover:bg-[#F4F5F6]">취소하기</button>
+          <button type="button" class="inline-flex items-center justify-center px-6 min-h-12 rounded-lg text-[19px] border border-[#2257B4] bg-[#2257B4] text-white hover:bg-[#1C4690]">신청하기</button>
+        </div>
+      </div>
+
+      <!-- Wide Type 1: 전체 달력 + 일정 -->
+      <h3 class="text-[16px] font-bold text-[#33363D] mb-4">와이드 Type 1 (달력 + 일정 링크)</h3>
+      <div class="bg-white rounded-xl p-6 shadow-sm border border-[#E6E8EA] mb-6">
+        <div class="flex items-center justify-between mb-4">
+          <button class="w-8 h-8 rounded-lg border border-[#CDD1D5] flex items-center justify-center hover:bg-[#F4F5F6]">
+            <svg class="w-4 h-4 text-[#58616A]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+          </button>
+          <div class="flex gap-2">
+            <select class="custom-select border border-[#CDD1D5] rounded-lg text-[15px] px-3 h-9 bg-white focus:outline-none"><option selected>2024년</option></select>
+            <select class="custom-select border border-[#CDD1D5] rounded-lg text-[15px] px-3 h-9 bg-white focus:outline-none"><option selected>12월</option></select>
+          </div>
+          <button class="w-8 h-8 rounded-lg border border-[#CDD1D5] flex items-center justify-center hover:bg-[#F4F5F6]">
+            <svg class="w-4 h-4 text-[#58616A]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+        <table class="w-full text-center text-[13px]">
+          <thead>
+            <tr class="border-b border-[#E6E8EA]">
+              <th class="py-3 text-[#D63D4A] font-medium">일</th>
+              <th class="py-3 text-[#58616A] font-medium">월</th>
+              <th class="py-3 text-[#58616A] font-medium">화</th>
+              <th class="py-3 text-[#58616A] font-medium">수</th>
+              <th class="py-3 text-[#58616A] font-medium">목</th>
+              <th class="py-3 text-[#58616A] font-medium">금</th>
+              <th class="py-3 text-[#2257B4] font-medium">토</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-[#E6E8EA]">
+              <td class="align-top p-2 text-[#CDD1D5]">26</td>
+              <td class="align-top p-2 text-[#CDD1D5]">27</td>
+              <td class="align-top p-2 text-[#CDD1D5]">28</td>
+              <td class="align-top p-2 text-[#CDD1D5]">29</td>
+              <td class="align-top p-2 text-[#CDD1D5]">30</td>
+              <td class="align-top p-2 min-h-16"><span class="text-[#8A949E]">1 (금)</span></td>
+              <td class="align-top p-2"><span class="text-[#2257B4]">2 (토)</span></td>
+            </tr>
+            <tr class="border-b border-[#E6E8EA]">
+              <td class="align-top p-2"><span class="text-[#D63D4A]">3 (일)</span></td>
+              <td class="align-top p-2">
+                <span class="block outline outline-2 outline-[#1E2D75] rounded px-1 mb-1">4 (월)</span>
+                <a href="#" class="block text-left text-[11px] px-1.5 py-0.5 rounded mb-0.5 bg-[#2257B4] text-white truncate">프로그램 1</a>
+              </td>
+              <td class="align-top p-2">
+                <span class="block mb-1">5 (화)</span>
+                <a href="#" class="block text-left text-[11px] px-1.5 py-0.5 rounded mb-0.5 bg-[#2257B4] text-white truncate">프로그램 1</a>
+              </td>
+              <td class="align-top p-2">
+                <span class="block mb-1">6 (수)</span>
+                <a href="#" class="block text-left text-[11px] px-1.5 py-0.5 rounded mb-0.5 bg-[#2257B4] text-white truncate">프로그램 1</a>
+              </td>
+              <td class="align-top p-2"><span class="block mb-1">7 (목)</span></td>
+              <td class="align-top p-2"><span class="text-[#8A949E]">8 (금)</span></td>
+              <td class="align-top p-2"><span class="text-[#2257B4]">9 (토)</span></td>
+            </tr>
+            <tr class="border-b border-[#E6E8EA]">
+              <td class="align-top p-2"><span class="text-[#D63D4A]">10 (일)</span></td>
+              <td class="align-top p-2">11 (월)</td>
+              <td class="align-top p-2">12 (화)</td>
+              <td class="align-top p-2">
+                <span class="block mb-1">13 (수)</span>
+                <a href="#" class="block text-left text-[11px] px-1.5 py-0.5 rounded mb-0.5 bg-[#159774] text-white truncate">프로그램 2</a>
+              </td>
+              <td class="align-top p-2">
+                <span class="block mb-1">14 (목)</span>
+                <a href="#" class="block text-left text-[11px] px-1.5 py-0.5 rounded mb-0.5 bg-[#D63D4A] text-white truncate">프로그램 3</a>
+              </td>
+              <td class="align-top p-2"><span class="text-[#8A949E]">15 (금)</span></td>
+              <td class="align-top p-2"><span class="text-[#2257B4]">16 (토)</span></td>
+            </tr>
+            <tr class="border-b border-[#E6E8EA]">
+              <td class="align-top p-2"><span class="text-[#D63D4A]">17 (일)</span></td>
+              <td class="align-top p-2">18 (월)</td>
+              <td class="align-top p-2">19 (화)</td>
+              <td class="align-top p-2">20 (수)</td>
+              <td class="align-top p-2">
+                <span class="block mb-1">21 (목)</span>
+                <a href="#" class="block text-left text-[11px] px-1.5 py-0.5 rounded mb-0.5 bg-[#8A949E] text-white truncate">프로그램 4</a>
+                <a href="#" class="block text-left text-[11px] px-1.5 py-0.5 rounded mb-0.5 bg-[#58616A] text-white truncate">프로그램 5</a>
+              </td>
+              <td class="align-top p-2"><span class="text-[#8A949E]">22 (금)</span></td>
+              <td class="align-top p-2"><span class="text-[#2257B4]">23 (토)</span></td>
+            </tr>
+            <tr>
+              <td class="align-top p-2"><span class="text-[#D63D4A]">31 (일)</span></td>
+              <td class="align-top p-2 text-[#CDD1D5]">1</td>
+              <td class="align-top p-2 text-[#CDD1D5]">2</td>
+              <td class="align-top p-2 text-[#CDD1D5]">3</td>
+              <td class="align-top p-2 text-[#CDD1D5]">4</td>
+              <td class="align-top p-2 text-[#CDD1D5]">5</td>
+              <td class="align-top p-2 text-[#CDD1D5]">6</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="flex flex-wrap gap-4 mt-4 text-[13px] text-[#58616A]">
+          <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-full bg-[#2257B4]"></span>프로그램1</span>
+          <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-full bg-[#159774]"></span>프로그램2</span>
+          <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-full bg-[#D63D4A]"></span>프로그램3</span>
+          <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-full bg-[#8A949E]"></span>프로그램4</span>
+          <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-full bg-[#58616A]"></span>프로그램5</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 14. 개인정보동의 ===== -->
+    <section id="personal" class="mb-16 scroll-mt-8">
+      <h2 class="text-xl font-bold text-[#1E2124] border-b-2 border-[#2257B4] pb-3 mb-6">개인정보수집동의</h2>
+      <div class="bg-white rounded-xl p-6 shadow-sm border border-[#E6E8EA]">
+        <div class="border border-[#E6E8EA] rounded-xl overflow-hidden mb-4">
+          <div class="bg-[#EEF2F7] px-5 py-4 flex items-center justify-between">
+            <div>
+              <p class="text-[13px] text-[#8A949E] mb-0.5">약관 상세내용</p>
+              <strong class="text-[17px] font-bold text-[#1E2124]">[필수] 민감정보 수집이용</strong>
+            </div>
+            <div class="flex gap-1">
+              <button class="w-8 h-8 rounded-lg border border-[#CDD1D5] bg-white flex items-center justify-center hover:bg-[#F4F5F6]" aria-label="이전">
+                <svg class="w-4 h-4 text-[#58616A]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+              </button>
+              <button class="w-8 h-8 rounded-lg border border-[#CDD1D5] bg-white flex items-center justify-center hover:bg-[#F4F5F6]" aria-label="다음">
+                <svg class="w-4 h-4 text-[#58616A]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="px-5 py-4 h-40 overflow-y-auto border-b border-[#E6E8EA]">
+            <h4 class="text-[15px] font-bold text-[#1E2124] mb-2">단락내 첫번째 항목 타이틀</h4>
+            <p class="text-[14px] text-[#33363D] leading-relaxed mb-2">다음의 목적을 위하여 이용자의 개인정보를 처리합니다. 처리하고 있는 개인정보는 다음의 목적 이외의 용도로는 이용되지 않으며, 이용 목적이 변경되는 경우에는 개인정보 보호법 제18조에 따라 별도의 동의를 받는 등 필요한 조치를 이행할 예정입니다.</p>
+            <p class="text-[14px] text-[#33363D] leading-relaxed mb-2">다음의 목적을 위하여 이용자의 개인정보를 처리합니다. 처리하고 있는 개인정보는 다음의 목적 이외의 용도로는 이용되지 않으며, 이용 목적이 변경되는 경우에는 개인정보 보호법 제18조에 따라 별도의 동의를 받는 등 필요한 조치를 이행할 예정입니다.</p>
+          </div>
+          <div class="px-5 py-4 flex gap-6">
+            <label class="flex items-center gap-2 cursor-pointer text-[17px] text-[#1E2124]">
+              <input type="radio" name="privacy_rdo1" id="privacy_rdo1_n"> 동의안함
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer text-[17px] text-[#1E2124]">
+              <input type="radio" name="privacy_rdo1" id="privacy_rdo1_y" checked> 동의함
+            </label>
+          </div>
+        </div>
+
+        <div class="border border-[#E6E8EA] rounded-xl overflow-hidden">
+          <div class="bg-[#EEF2F7] px-5 py-4">
+            <strong class="text-[17px] font-bold text-[#1E2124]">[필수] 개인정보 수집 및 이용 동의</strong>
+          </div>
+          <div class="px-5 py-4 h-40 overflow-y-auto border-b border-[#E6E8EA]">
+            <p class="text-[14px] text-[#33363D] leading-relaxed mb-3">서천군은 평생학습기관 등록 신청 서비스를 제공을 위하여 아래와 같이 개인정보를 수집·이용하고자 합니다. 내용을 자세히 읽으신 후 동의 여부를 결정하여 주세요.</p>
+            <table class="w-full text-[13px] border-collapse mb-3">
+              <thead>
+                <tr class="bg-[#F4F5F6]">
+                  <th class="border border-[#CDD1D5] px-3 py-2 text-center font-bold">항목</th>
+                  <th class="border border-[#CDD1D5] px-3 py-2 text-center font-bold">수집·이용 목적</th>
+                  <th class="border border-[#CDD1D5] px-3 py-2 text-center font-bold">보유·이용기간</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="border border-[#CDD1D5] px-3 py-2 text-center">신청자명, 휴대전화번호</td>
+                  <td class="border border-[#CDD1D5] px-3 py-2 text-center">평생학습기관 등록 신청</td>
+                  <td class="border border-[#CDD1D5] px-3 py-2 text-center font-bold">신청 취소 시까지</td>
+                </tr>
+              </tbody>
+            </table>
+            <p class="text-[13px] text-[#D63D4A]">위의 개인정보 수집·이용에 대한 동의를 거부할 권리가 있습니다.</p>
+          </div>
+          <div class="px-5 py-4 flex gap-6">
+            <label class="flex items-center gap-2 cursor-pointer text-[17px] text-[#1E2124]">
+              <input type="radio" name="privacy_rdo2" id="privacy_rdo2_n"> 동의안함
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer text-[17px] text-[#1E2124]">
+              <input type="radio" name="privacy_rdo2" id="privacy_rdo2_y" checked> 동의함
+            </label>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 15. 폼 Type 1 ===== -->
+    <section id="form" class="mb-16 scroll-mt-8">
+      <h2 class="text-xl font-bold text-[#1E2124] border-b-2 border-[#2257B4] pb-3 mb-6">폼 (Type 1)</h2>
+      <div class="bg-white rounded-xl p-6 shadow-sm border border-[#E6E8EA]">
+        <h3 class="text-[17px] font-bold text-[#1E2124] mb-5">첫번째 입력폼</h3>
+        <div class="mb-5">
+          <label class="block text-[15px] font-bold text-[#1E2124] mb-1.5" for="f1_search">텍스트 입력 / 모달 <span class="text-[#D63D4A]">필수</span></label>
+          <div class="flex items-center gap-2">
+            <input type="text" id="f1_search" class="w-80 border border-[#CDD1D5] rounded-lg px-4 h-10 text-[17px] text-[#1E2124] placeholder-[#8A949E] focus:outline-none focus:border-[#2257B4] bg-white" placeholder="검색 버튼을 눌러주세요">
+            <button type="button" class="inline-flex items-center justify-center px-4 min-h-10 rounded-lg text-[17px] border border-[#2257B4] bg-[#F1F6FE] text-[#2257B4] hover:bg-[#E4EBF8]">검색</button>
+          </div>
+        </div>
+        <div class="mb-5">
+          <label class="block text-[15px] font-bold text-[#1E2124] mb-1.5" for="f1_num">숫자입력 <span class="text-[#D63D4A]">필수</span></label>
+          <div class="flex items-center gap-2">
+            <input type="text" id="f1_num" class="w-20 border border-[#CDD1D5] rounded-lg px-3 h-10 text-[17px] text-center text-[#1E2124] focus:outline-none focus:border-[#2257B4] bg-white">
+            <span class="text-[17px] text-[#33363D]">명</span>
+          </div>
+        </div>
+        <div class="mb-5">
+          <strong class="block text-[15px] font-bold text-[#1E2124] mb-1.5">체크박스</strong>
+          <div class="flex flex-col gap-2">
+            <label class="flex items-center gap-2 cursor-pointer text-[17px] text-[#1E2124]">
+              <input type="checkbox" name="f1_chk" id="f1_chk1"> 체크박스
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer text-[17px] text-[#1E2124]">
+              <input type="checkbox" name="f1_chk" id="f1_chk2"> 체크박스
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer text-[17px] text-[#1E2124]">
+              <input type="checkbox" name="f1_chk" id="f1_chk3"> 기타
+            </label>
+          </div>
+        </div>
+        <div class="mb-5">
+          <label class="block text-[15px] font-bold text-[#1E2124] mb-1.5" for="f1_tel_s">휴대전화번호</label>
+          <div class="flex items-center gap-2">
+            <select id="f1_tel_s" title="휴대전화번호 첫번째 선택" class="custom-select border border-[#CDD1D5] rounded-lg text-[17px] px-3 h-10 w-24 bg-white focus:outline-none focus:border-[#2257B4]">
+              <option>010</option><option>011</option><option>016</option>
+            </select>
+            <span class="text-[#58616A]">-</span>
+            <input type="text" class="w-28 border border-[#CDD1D5] rounded-lg px-3 h-10 text-[17px] focus:outline-none focus:border-[#2257B4] bg-white">
+            <span class="text-[#58616A]">-</span>
+            <input type="text" class="w-28 border border-[#CDD1D5] rounded-lg px-3 h-10 text-[17px] focus:outline-none focus:border-[#2257B4] bg-white">
+          </div>
+        </div>
+        <div class="mb-5">
+          <label class="block text-[15px] font-bold text-[#1E2124] mb-1.5" for="f1_email1">이메일 주소</label>
+          <div class="flex flex-wrap items-center gap-2">
+            <input type="text" id="f1_email1" class="w-44 border border-[#CDD1D5] rounded-lg px-3 h-10 text-[17px] placeholder-[#8A949E] focus:outline-none focus:border-[#2257B4] bg-white" placeholder="아이디">
+            <span class="text-[#58616A]">@</span>
+            <input type="text" class="w-52 border border-[#CDD1D5] rounded-lg px-3 h-10 text-[17px] placeholder-[#8A949E] focus:outline-none focus:border-[#2257B4] bg-white" placeholder="도메인 주소">
+            <select title="도메인 선택" class="custom-select border border-[#CDD1D5] rounded-lg text-[17px] px-3 h-10 w-32 bg-white focus:outline-none focus:border-[#2257B4]">
+              <option>직접입력</option><option>naver.com</option><option>gmail.com</option>
+            </select>
+          </div>
+        </div>
+        <div class="mb-5">
+          <label class="block text-[15px] font-bold text-[#1E2124] mb-1.5" for="f1_zip">주소 1</label>
+          <div class="flex items-center gap-2 mb-2">
+            <input type="text" id="f1_zip" class="w-36 border border-[#CDD1D5] rounded-lg px-3 h-10 text-[17px] bg-white focus:outline-none" placeholder="우편번호" readonly>
+            <button type="button" class="inline-flex items-center justify-center gap-1 px-4 min-h-10 rounded-lg text-[17px] border border-[#2257B4] bg-[#F1F6FE] text-[#2257B4] hover:bg-[#E4EBF8]">검색</button>
+          </div>
+          <input type="text" class="w-full max-w-lg border border-[#CDD1D5] rounded-lg px-3 h-10 text-[17px] bg-white focus:outline-none mb-2" placeholder="상세주소" readonly>
+          <input type="text" class="w-full max-w-lg border border-[#CDD1D5] rounded-lg px-3 h-10 text-[17px] focus:outline-none focus:border-[#2257B4] bg-white" placeholder="입력해주세요.">
+        </div>
+        <div class="mb-5">
+          <label class="block text-[15px] font-bold text-[#1E2124] mb-1.5">셀렉트박스</label>
+          <select title="셀렉트박스 선택" class="custom-select border border-[#CDD1D5] rounded-lg text-[17px] px-3 h-10 w-48 bg-white focus:outline-none focus:border-[#2257B4]">
+            <option>선택</option><option>첫번째</option><option>두번째</option>
+          </select>
+        </div>
+        <div class="mb-5">
+          <strong class="block text-[15px] font-bold text-[#1E2124] mb-3">회차 선택</strong>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+            <div>
+              <input type="radio" name="f1_slot" id="f1_slot1" class="hidden peer">
+              <label for="f1_slot1" class="block border border-[#CDD1D5] rounded-xl p-4 cursor-pointer peer-checked:border-[#2257B4] peer-checked:bg-[#EEF2F7] hover:border-[#2257B4] transition-colors">
+                <div class="flex items-center justify-between mb-2">
+                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[12px] bg-[#F1F6FE] text-[#2257B4]">예약가능</span>
+                  <span class="text-[13px] text-[#58616A]">00명</span>
+                </div>
+                <strong class="block text-[15px] text-[#1E2124] mb-1">타이틀 영역</strong>
+                <span class="text-[13px] text-[#58616A]"><b class="font-medium">시간</b> 10:30 ~ 11:30</span>
+              </label>
+            </div>
+            <div>
+              <input type="radio" name="f1_slot" id="f1_slot2" class="hidden peer">
+              <label for="f1_slot2" class="block border border-[#CDD1D5] rounded-xl p-4 cursor-pointer peer-checked:border-[#2257B4] peer-checked:bg-[#EEF2F7] hover:border-[#2257B4] transition-colors">
+                <div class="flex items-center justify-between mb-2">
+                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[12px] bg-[#F1F6FE] text-[#2257B4]">예약가능</span>
+                  <span class="text-[13px] text-[#58616A]">00명</span>
+                </div>
+                <strong class="block text-[15px] text-[#1E2124] mb-1">타이틀 영역</strong>
+                <span class="text-[13px] text-[#58616A]"><b class="font-medium">시간</b> 10:30 ~ 11:30</span>
+              </label>
+            </div>
+            <div>
+              <input type="radio" name="f1_slot" id="f1_slot3" disabled class="hidden peer">
+              <label for="f1_slot3" class="block border border-[#CDD1D5] rounded-xl p-4 bg-[#F4F5F6] cursor-not-allowed opacity-60">
+                <div class="flex items-center justify-between mb-2">
+                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[12px] bg-[#E6E8EA] text-[#8A949E]">접수마감</span>
+                  <span class="text-[13px] text-[#8A949E]">00명</span>
+                </div>
+                <strong class="block text-[15px] text-[#8A949E] mb-1">타이틀 영역</strong>
+                <span class="text-[13px] text-[#8A949E]"><b class="font-medium">시간</b> 10:30 ~ 11:30</span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 16. 폼 Type 2 ===== -->
+    <section id="form2" class="mb-16 scroll-mt-8">
+      <h2 class="text-xl font-bold text-[#1E2124] border-b-2 border-[#2257B4] pb-3 mb-6">폼 (Type 2)</h2>
+      <div class="bg-white rounded-xl p-6 shadow-sm border border-[#E6E8EA]">
+        <h3 class="text-[17px] font-bold text-[#1E2124] mb-5">두번째 입력폼 (좌/우 2단 배치)</h3>
+        <div class="flex items-start gap-6 mb-5 border-b border-[#F4F5F6] pb-5">
+          <div class="w-44 flex-shrink-0">
+            <label class="block text-[15px] font-bold text-[#1E2124] pt-2.5" for="f2_search">텍스트 입력 / 모달 <span class="text-[#D63D4A]">필수</span></label>
+          </div>
+          <div class="flex-1">
+            <div class="flex items-center gap-2">
+              <input type="text" id="f2_search" class="w-80 border border-[#CDD1D5] rounded-lg px-4 h-10 text-[17px] placeholder-[#8A949E] focus:outline-none focus:border-[#2257B4] bg-white" placeholder="검색 버튼을 눌러주세요">
+              <button type="button" class="inline-flex items-center justify-center px-4 min-h-10 rounded-lg text-[17px] border border-[#2257B4] bg-[#F1F6FE] text-[#2257B4] hover:bg-[#E4EBF8]">검색</button>
+            </div>
+          </div>
+        </div>
+        <div class="flex items-start gap-6 mb-5 border-b border-[#F4F5F6] pb-5">
+          <div class="w-44 flex-shrink-0">
+            <label class="block text-[15px] font-bold text-[#1E2124] pt-2.5" for="f2_num">숫자입력 <span class="text-[#D63D4A]">필수</span></label>
+          </div>
+          <div class="flex items-center gap-2">
+            <input type="text" id="f2_num" class="w-20 border border-[#CDD1D5] rounded-lg px-3 h-10 text-[17px] text-center focus:outline-none focus:border-[#2257B4] bg-white">
+            <span class="text-[17px] text-[#33363D]">명</span>
+          </div>
+        </div>
+        <div class="flex items-start gap-6 mb-5 border-b border-[#F4F5F6] pb-5">
+          <div class="w-44 flex-shrink-0">
+            <span class="block text-[15px] font-bold text-[#1E2124] pt-2.5">검사일자</span>
+          </div>
+          <div class="flex-1">
+            <span class="text-[17px] text-[#33363D] pt-2.5 block">010-1234-1234</span>
+          </div>
+        </div>
+        <div class="flex items-start gap-6 mb-5 border-b border-[#F4F5F6] pb-5">
+          <div class="w-44 flex-shrink-0">
+            <label class="block text-[15px] font-bold text-[#1E2124] pt-2.5" for="f2_email1">이메일 주소</label>
+          </div>
+          <div class="flex flex-wrap items-center gap-2">
+            <input type="text" id="f2_email1" class="w-40 border border-[#CDD1D5] rounded-lg px-3 h-10 text-[17px] placeholder-[#8A949E] focus:outline-none focus:border-[#2257B4] bg-white" placeholder="아이디">
+            <span class="text-[#58616A]">@</span>
+            <input type="text" class="w-48 border border-[#CDD1D5] rounded-lg px-3 h-10 text-[17px] placeholder-[#8A949E] focus:outline-none focus:border-[#2257B4] bg-white" placeholder="도메인 주소">
+            <select title="도메인 선택" class="custom-select border border-[#CDD1D5] rounded-lg text-[17px] px-3 h-10 w-32 bg-white focus:outline-none focus:border-[#2257B4]">
+              <option>직접입력</option><option>naver.com</option><option>gmail.com</option>
+            </select>
+          </div>
+        </div>
+        <div class="flex items-start gap-6 mb-5">
+          <div class="w-44 flex-shrink-0">
+            <label class="block text-[15px] font-bold text-[#1E2124] pt-2.5" for="f2_zip">주소 1</label>
+          </div>
+          <div class="flex-1">
+            <div class="flex items-center gap-2 mb-2">
+              <input type="text" id="f2_zip" class="w-36 border border-[#CDD1D5] rounded-lg px-3 h-10 text-[17px] bg-white focus:outline-none" placeholder="우편번호" readonly>
+              <button type="button" class="inline-flex items-center gap-1 justify-center px-4 min-h-10 rounded-lg text-[17px] border border-[#2257B4] bg-[#F1F6FE] text-[#2257B4] hover:bg-[#E4EBF8]">검색</button>
+            </div>
+            <input type="text" class="w-full max-w-lg border border-[#CDD1D5] rounded-lg px-3 h-10 text-[17px] bg-white focus:outline-none mb-2" placeholder="상세주소" readonly>
+            <input type="text" class="w-full max-w-lg border border-[#CDD1D5] rounded-lg px-3 h-10 text-[17px] focus:outline-none focus:border-[#2257B4] bg-white" placeholder="입력해주세요.">
+            <p class="text-[13px] text-[#8A949E] mt-1">메세지를 입력해 주세요.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 17. 검색 ===== -->
+    <section id="search" class="mb-16 scroll-mt-8">
+      <h2 class="text-xl font-bold text-[#1E2124] border-b-2 border-[#2257B4] pb-3 mb-6">검색</h2>
+      <div class="bg-white rounded-xl p-6 shadow-sm border border-[#E6E8EA]">
+        <h3 class="text-[16px] font-bold text-[#33363D] mb-4">기본검색</h3>
+        <div class="border border-[#E6E8EA] rounded-xl p-5 mb-5">
+          <div class="flex flex-wrap gap-4 mb-4">
+            <div class="flex items-center gap-2">
+              <label for="sch_cat1" class="text-[15px] font-bold text-[#1E2124] flex-shrink-0 w-20">권역분류</label>
+              <select id="sch_cat1" title="권역분류 선택창" class="custom-select border border-[#CDD1D5] rounded-lg text-[17px] px-3 h-10 w-40 bg-white focus:outline-none focus:border-[#2257B4]">
+                <option>전체</option><option>권역분류1</option><option>권역분류2</option>
+              </select>
+            </div>
+            <div class="flex items-center gap-2">
+              <label for="sch_cat2" class="text-[15px] font-bold text-[#1E2124] flex-shrink-0 w-20">권역분류</label>
+              <select id="sch_cat2" title="권역분류 선택창2" class="custom-select border border-[#CDD1D5] rounded-lg text-[17px] px-3 h-10 w-40 bg-white focus:outline-none focus:border-[#2257B4]">
+                <option>전체</option><option>권역분류1</option><option>권역분류2</option>
+              </select>
+            </div>
+          </div>
+          <div class="flex flex-wrap items-center gap-4 mb-4">
+            <div class="flex items-center gap-2">
+              <label for="sch_start" class="text-[15px] font-bold text-[#1E2124] flex-shrink-0 w-20">교육기간</label>
+              <div class="flex items-center gap-2">
+                <div class="relative">
+                  <input type="text" id="sch_start" class="border border-[#CDD1D5] rounded-lg pl-4 pr-9 h-10 text-[17px] w-44 focus:outline-none focus:border-[#2257B4] bg-white" placeholder="YYYY-MM-DD">
+                  <span class="absolute right-3 top-1/2 -translate-y-1/2 text-[#8A949E]"><svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" stroke-width="1.5"/><path d="M16 2v4M8 2v4M3 10h18" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+                </div>
+                <span class="text-[#58616A]">~</span>
+                <div class="relative">
+                  <input type="text" class="border border-[#CDD1D5] rounded-lg pl-4 pr-9 h-10 text-[17px] w-44 focus:outline-none focus:border-[#2257B4] bg-white" placeholder="YYYY-MM-DD">
+                  <span class="absolute right-3 top-1/2 -translate-y-1/2 text-[#8A949E]"><svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" stroke-width="1.5"/><path d="M16 2v4M8 2v4M3 10h18" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-wrap items-end gap-4">
+            <div class="flex items-center gap-2">
+              <label for="sch_keyword" class="text-[15px] font-bold text-[#1E2124] flex-shrink-0 w-20">관광지명</label>
+              <input type="text" id="sch_keyword" class="border border-[#CDD1D5] rounded-lg px-4 h-10 text-[17px] w-60 placeholder-[#8A949E] focus:outline-none focus:border-[#2257B4] bg-white" placeholder="관광지명을 입력해 주세요.">
+            </div>
+            <div class="flex gap-2">
+              <button type="button" class="inline-flex items-center justify-center gap-1 px-4 min-h-10 rounded-lg text-[17px] border border-[#58616A] bg-white text-[#1E2124] hover:bg-[#F4F5F6]">초기화</button>
+              <button type="button" class="inline-flex items-center justify-center gap-1 px-4 min-h-10 rounded-lg text-[17px] bg-[#2257B4] text-white border-[#2257B4] hover:bg-[#1C4690]">검색하기</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between mb-4">
+          <p class="text-[15px] text-[#58616A]">총 게시물 <span class="text-[#2257B4] font-bold">3</span>건</p>
+          <div class="flex items-center gap-2">
+            <select title="정렬기준" class="custom-select border-0 border-b border-[#CDD1D5] text-[17px] px-2 h-9 bg-transparent focus:outline-none text-[#33363D]">
+              <option>관련도순</option><option>최신순</option><option>인기순</option>
+            </select>
+          </div>
+        </div>
+
+        <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+          <li class="border border-[#E6E8EA] rounded-xl p-4 bg-white hover:shadow-md transition-shadow">
+            <div class="mb-2"><span class="inline-flex items-center px-2.5 py-0.5 rounded text-[13px] font-medium bg-[#F1F6FE] text-[#2257B4]">뱃지</span></div>
+            <p class="text-[17px] font-bold text-[#1E2124] mb-1">타이틀 영역</p>
+            <p class="text-[14px] text-[#58616A] mb-2 line-clamp-3">간단한 설명이 들어가는 영역입니다. 최대 3줄까지 작성합니다.</p>
+            <p class="text-[13px] text-[#8A949E] mb-3"><strong class="font-medium text-[#58616A]">신청 기간</strong> 2023.00.00-2024.00.00</p>
+            <a href="#" class="inline-flex items-center justify-center px-3 min-h-9 rounded-lg text-[15px] border border-[#2257B4] bg-[#F1F6FE] text-[#2257B4] hover:bg-[#E4EBF8]">신청하기</a>
+          </li>
+          <li class="border border-[#E6E8EA] rounded-xl p-4 bg-white hover:shadow-md transition-shadow">
+            <div class="mb-2"><span class="inline-flex items-center px-2.5 py-0.5 rounded text-[13px] font-medium bg-[#EDF7F3] text-[#159774]">뱃지</span></div>
+            <p class="text-[17px] font-bold text-[#1E2124] mb-1">타이틀 영역</p>
+            <p class="text-[14px] text-[#58616A] mb-2 line-clamp-3">간단한 설명이 들어가는 영역입니다.</p>
+            <p class="text-[13px] text-[#8A949E] mb-3"><strong class="font-medium text-[#58616A]">신청 기간</strong> 2023.00.00-2024.00.00</p>
+            <a href="#" class="inline-flex items-center justify-center px-3 min-h-9 rounded-lg text-[15px] border border-[#2257B4] bg-[#F1F6FE] text-[#2257B4] hover:bg-[#E4EBF8]">신청하기</a>
+          </li>
+          <li class="border border-[#E6E8EA] rounded-xl p-4 bg-white hover:shadow-md transition-shadow">
+            <div class="mb-2"><span class="inline-flex items-center px-2.5 py-0.5 rounded text-[13px] font-medium bg-[#159774] text-white">뱃지</span></div>
+            <p class="text-[17px] font-bold text-[#1E2124] mb-1">타이틀 영역</p>
+            <p class="text-[14px] text-[#58616A] mb-2 line-clamp-3">간단한 설명이 들어가는 영역입니다.</p>
+            <p class="text-[13px] text-[#8A949E] mb-3"><strong class="font-medium text-[#58616A]">신청 기간</strong> 2023.00.00-2024.00.00</p>
+            <a href="#" class="inline-flex items-center justify-center px-3 min-h-9 rounded-lg text-[15px] border border-[#2257B4] bg-[#F1F6FE] text-[#2257B4] hover:bg-[#E4EBF8]">신청하기</a>
+          </li>
+        </ul>
+
+        <div class="flex items-center justify-center gap-1">
+          <span class="inline-flex items-center justify-center w-9 h-9 rounded-lg border border-[#CDD1D5] text-[#8A949E] text-[15px] cursor-not-allowed">이전</span>
+          <a href="#" class="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-[#2257B4] text-white text-[15px] font-bold">1</a>
+          <a href="#" class="inline-flex items-center justify-center w-9 h-9 rounded-lg border border-[#CDD1D5] text-[#33363D] text-[15px] hover:bg-[#F4F5F6]">2</a>
+          <a href="#" class="inline-flex items-center justify-center w-9 h-9 rounded-lg border border-[#CDD1D5] text-[#33363D] text-[15px] hover:bg-[#F4F5F6]">3</a>
+          <a href="#" class="inline-flex items-center justify-center w-9 h-9 rounded-lg border border-[#CDD1D5] text-[#33363D] text-[15px] hover:bg-[#F4F5F6]">다음</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 18. 신청조회 ===== -->
+    <section id="inquiry" class="mb-16 scroll-mt-8">
+      <h2 class="text-xl font-bold text-[#1E2124] border-b-2 border-[#2257B4] pb-3 mb-6">신청조회</h2>
+      <div class="bg-white rounded-xl p-6 shadow-sm border border-[#E6E8EA]">
+        <div class="bg-[#EEF2F7] rounded-xl p-5 mb-6">
+          <strong class="block text-[17px] font-bold text-[#1E2124] mb-3">시작하기 전에</strong>
+          <strong class="block text-[15px] font-bold text-[#33363D] mb-2">취소 시 환불 규정</strong>
+          <ol class="list-decimal ml-5 text-[14px] text-[#33363D] leading-relaxed space-y-1">
+            <li>이용일 7일 전까지 : 총 요금의 100% (전액반환)</li>
+            <li>이용일 3일 전까지 : 총 요금의 70% (30% 공제 후 반환)</li>
+            <li>이용일 1일 전까지 : 총 요금의 50% (50% 공제 후 반환)</li>
+            <li>이용일 당일 : 총 요금의 20% (80% 공제 후 반환)</li>
+          </ol>
+        </div>
+
+        <div class="border border-[#E6E8EA] rounded-xl p-4 mb-5">
+          <div class="flex flex-wrap gap-4 mb-4">
+            <div class="flex items-center gap-2">
+              <label for="inq_type" class="text-[15px] font-bold w-24 flex-shrink-0">예약유형</label>
+              <select id="inq_type" title="예약유형 선택창" class="custom-select border border-[#CDD1D5] rounded-lg text-[17px] px-3 h-10 w-40 bg-white focus:outline-none focus:border-[#2257B4]">
+                <option>전체</option><option>예약유형1</option><option>예약유형2</option>
+              </select>
+            </div>
+            <div class="flex items-center gap-2">
+              <label for="inq_status" class="text-[15px] font-bold w-24 flex-shrink-0">신청상태</label>
+              <select id="inq_status" title="신청상태 선택창" class="custom-select border border-[#CDD1D5] rounded-lg text-[17px] px-3 h-10 w-40 bg-white focus:outline-none focus:border-[#2257B4]">
+                <option>전체</option><option>신청함</option><option>신청안함</option>
+              </select>
+            </div>
+          </div>
+          <div class="flex flex-wrap items-center gap-4">
+            <div class="flex items-center gap-2">
+              <label for="inq_prog" class="text-[15px] font-bold w-24 flex-shrink-0">프로그램명</label>
+              <input type="text" id="inq_prog" class="border border-[#CDD1D5] rounded-lg px-4 h-10 text-[17px] w-64 placeholder-[#8A949E] focus:outline-none focus:border-[#2257B4] bg-white" placeholder="프로그램명을 입력해 주세요.">
+            </div>
+            <div class="flex gap-2">
+              <button class="inline-flex items-center justify-center gap-1 px-4 min-h-10 rounded-lg text-[17px] border border-[#58616A] bg-white text-[#1E2124] hover:bg-[#F4F5F6]">초기화</button>
+              <button class="inline-flex items-center justify-center gap-1 px-4 min-h-10 rounded-lg text-[17px] bg-[#2257B4] text-white hover:bg-[#1C4690]">검색하기</button>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="text-[17px] font-bold text-[#1E2124] mb-4">홍길동님의 예약내역</h3>
+        <div class="overflow-x-auto">
+          <table class="w-full border-collapse text-[14px] min-w-[900px]">
+            <thead>
+              <tr class="bg-[#EEF2F7]">
+                <th class="border border-[#CDD1D5] px-3 py-3 text-center font-bold">제목</th>
+                <th class="border border-[#CDD1D5] px-3 py-3 text-center font-bold">이용일</th>
+                <th class="border border-[#CDD1D5] px-3 py-3 text-center font-bold">예약유형/인원수</th>
+                <th class="border border-[#CDD1D5] px-3 py-3 text-center font-bold">프로그램/회차</th>
+                <th class="border border-[#CDD1D5] px-3 py-3 text-center font-bold">결제금액</th>
+                <th class="border border-[#CDD1D5] px-3 py-3 text-center font-bold">신청상태</th>
+                <th class="border border-[#CDD1D5] px-3 py-3 text-center font-bold">신청일시</th>
+                <th class="border border-[#CDD1D5] px-3 py-3 text-center font-bold">관리</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th class="border border-[#CDD1D5] px-3 py-2.5 text-center font-medium bg-[#F4F5F6]">내용</th>
+                <td class="border border-[#CDD1D5] px-3 py-2.5 text-center">내용</td>
+                <td class="border border-[#CDD1D5] px-3 py-2.5 text-center">기본프로그램(대인2)</td>
+                <td class="border border-[#CDD1D5] px-3 py-2.5 text-center">스케일링 베이직 (2)</td>
+                <td class="border border-[#CDD1D5] px-3 py-2.5 text-center">
+                  <strong class="block text-[15px]">102,000 원</strong>
+                  <button class="mt-1 inline-flex items-center justify-center px-2 min-h-8 rounded-lg text-[13px] border border-[#2257B4] bg-[#F1F6FE] text-[#2257B4] hover:bg-[#E4EBF8]">결제</button>
+                </td>
+                <td class="border border-[#CDD1D5] px-3 py-2.5 text-center">
+                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[12px] bg-[#FFF0B3] text-[#856404]">결제대기</span>
+                </td>
+                <td class="border border-[#CDD1D5] px-3 py-2.5 text-center"><strong class="block">2999-12-31</strong><span class="text-[#8A949E]">00:00</span></td>
+                <td class="border border-[#CDD1D5] px-3 py-2.5 text-center">
+                  <div class="flex flex-col items-center gap-1">
+                    <button class="inline-flex items-center justify-center px-2 min-h-8 rounded-lg text-[13px] border border-[#2257B4] bg-[#F1F6FE] text-[#2257B4] hover:bg-[#E4EBF8] w-20">예약상세</button>
+                    <button class="inline-flex items-center justify-center px-2 min-h-8 rounded-lg text-[13px] border border-[#CDD1D5] bg-white text-[#33363D] hover:bg-[#F4F5F6] w-20">취소</button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <th class="border border-[#CDD1D5] px-3 py-2.5 text-center font-medium bg-[#F4F5F6]">내용</th>
+                <td class="border border-[#CDD1D5] px-3 py-2.5 text-center">내용</td>
+                <td class="border border-[#CDD1D5] px-3 py-2.5 text-center">기본프로그램(대인2)</td>
+                <td class="border border-[#CDD1D5] px-3 py-2.5 text-center">스케일링 베이직 (2)</td>
+                <td class="border border-[#CDD1D5] px-3 py-2.5 text-center"><strong class="block text-[15px]">102,000 원</strong></td>
+                <td class="border border-[#CDD1D5] px-3 py-2.5 text-center">
+                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[12px] bg-[#EDF7F3] text-[#159774]">신청완료</span>
+                </td>
+                <td class="border border-[#CDD1D5] px-3 py-2.5 text-center"><strong class="block">2999-12-31</strong><span class="text-[#8A949E]">00:00</span></td>
+                <td class="border border-[#CDD1D5] px-3 py-2.5 text-center">
+                  <div class="flex flex-col items-center gap-1">
+                    <button class="inline-flex items-center justify-center px-2 min-h-8 rounded-lg text-[13px] border border-[#2257B4] bg-[#F1F6FE] text-[#2257B4] hover:bg-[#E4EBF8] w-20">예약상세</button>
+                    <button class="inline-flex items-center justify-center px-2 min-h-8 rounded-lg text-[13px] border border-[#CDD1D5] bg-white text-[#33363D] hover:bg-[#F4F5F6] w-20">취소</button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <th class="border border-[#CDD1D5] px-3 py-2.5 text-center font-medium bg-[#F4F5F6]">내용</th>
+                <td class="border border-[#CDD1D5] px-3 py-2.5 text-center">내용</td>
+                <td class="border border-[#CDD1D5] px-3 py-2.5 text-center">기본프로그램(대인2)</td>
+                <td class="border border-[#CDD1D5] px-3 py-2.5 text-center">스케일링 베이직 (2)</td>
+                <td class="border border-[#CDD1D5] px-3 py-2.5 text-center"><strong class="block text-[15px]">0 원</strong></td>
+                <td class="border border-[#CDD1D5] px-3 py-2.5 text-center">
+                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[12px] bg-[#FEF0F1] text-[#D63D4A]">취소</span>
+                </td>
+                <td class="border border-[#CDD1D5] px-3 py-2.5 text-center"><strong class="block">2999-12-31</strong><span class="text-[#8A949E]">00:00</span></td>
+                <td class="border border-[#CDD1D5] px-3 py-2.5 text-center">
+                  <button class="inline-flex items-center justify-center px-2 min-h-8 rounded-lg text-[13px] border border-[#2257B4] bg-[#F1F6FE] text-[#2257B4] hover:bg-[#E4EBF8] w-20">예약상세</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="flex items-center justify-center gap-1 mt-5">
+          <span class="inline-flex items-center justify-center w-9 h-9 rounded-lg border border-[#CDD1D5] text-[#8A949E] text-[15px] cursor-not-allowed">이전</span>
+          <a href="#" class="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-[#2257B4] text-white text-[15px] font-bold">1</a>
+          <a href="#" class="inline-flex items-center justify-center w-9 h-9 rounded-lg border border-[#CDD1D5] text-[#33363D] text-[15px] hover:bg-[#F4F5F6]">2</a>
+          <a href="#" class="inline-flex items-center justify-center w-9 h-9 rounded-lg border border-[#CDD1D5] text-[#33363D] text-[15px] hover:bg-[#F4F5F6]">다음</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 19. 프로그램 리스트 전체링크형 ===== -->
+    <section id="proglist" class="mb-16 scroll-mt-8">
+      <h2 class="text-xl font-bold text-[#1E2124] border-b-2 border-[#2257B4] pb-3 mb-6">프로그램 리스트 (전체 a링크 타입)</h2>
+      <div class="bg-white rounded-xl p-6 shadow-sm border border-[#E6E8EA]">
+        <div class="flex items-center gap-2 mb-5">
+          <div class="relative flex-1 max-w-xl">
+            <input type="text" class="w-full border border-[#CDD1D5] rounded-lg pl-4 pr-12 h-12 text-[17px] placeholder-[#8A949E] focus:outline-none focus:border-[#2257B4] bg-white" placeholder="검색어를 입력해 주세요.">
+            <button type="button" class="absolute right-0 top-0 h-12 w-12 flex items-center justify-center rounded-r-lg bg-[#2257B4] hover:bg-[#1C4690]">
+              <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8" stroke-width="2"/><path d="m21 21-4.35-4.35" stroke-width="2" stroke-linecap="round"/></svg>
+              <span class="sr-only">검색</span>
+            </button>
+          </div>
+          <button type="button" class="inline-flex items-center justify-center px-4 min-h-12 rounded-lg text-[17px] border border-[#CDD1D5] bg-white text-[#33363D] hover:bg-[#F4F5F6]">고급검색</button>
+        </div>
+
+        <div class="flex items-center justify-between mb-4">
+          <p class="text-[15px] text-[#58616A]">총 게시물 <span class="text-[#2257B4] font-bold">6</span>건</p>
+          <select title="정렬기준" class="custom-select border-0 border-b border-[#CDD1D5] text-[17px] px-2 h-9 bg-transparent focus:outline-none text-[#33363D]">
+            <option>관련도순</option><option>최신순</option><option>인기순</option>
+          </select>
+        </div>
+
+        <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+          <li>
+            <a href="#" class="block border border-[#E6E8EA] rounded-xl overflow-hidden bg-white hover:shadow-md transition-shadow group">
+              <div class="aspect-video bg-[#CDD1D5] overflow-hidden">
+                <img src="/assets/styleguide/img/bodo-v.jpg" alt="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+              </div>
+              <div class="p-4">
+                <div class="mb-2"><span class="inline-flex items-center px-2.5 py-0.5 rounded text-[13px] font-medium bg-[#F1F6FE] text-[#2257B4]">뱃지</span></div>
+                <p class="text-[17px] font-bold text-[#1E2124] mb-1 line-clamp-2">타이틀 영역</p>
+                <p class="text-[14px] text-[#58616A] mb-3 line-clamp-3">간단한 설명이 들어가는 영역입니다. 최대 3줄까지 작성합니다.</p>
+                <ul class="space-y-1 text-[13px]">
+                  <li class="flex items-center gap-2"><strong class="text-[#58616A] font-medium min-w-[60px]">신청시간</strong><span class="text-[#8A949E]">2023.00.00-2024.00.00</span></li>
+                  <li class="flex items-center gap-2"><strong class="text-[#58616A] font-medium min-w-[60px]">신청시간</strong><span class="text-[#8A949E]">2023.00.00-2024.00.00</span></li>
+                </ul>
+                <div class="flex gap-1 mt-3">
+                  <span class="px-2 py-0.5 bg-[#F4F5F6] text-[#58616A] rounded text-[12px]">태그</span>
+                  <span class="px-2 py-0.5 bg-[#F4F5F6] text-[#58616A] rounded text-[12px]">태그</span>
+                </div>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="block border border-[#E6E8EA] rounded-xl overflow-hidden bg-white hover:shadow-md transition-shadow group">
+              <div class="aspect-video bg-[#CDD1D5] overflow-hidden">
+                <img src="/assets/styleguide/img/bodo-v.jpg" alt="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+              </div>
+              <div class="p-4">
+                <div class="mb-2"><span class="inline-flex items-center px-2.5 py-0.5 rounded text-[13px] font-medium bg-[#EDF7F3] text-[#159774]">뱃지</span></div>
+                <p class="text-[17px] font-bold text-[#1E2124] mb-1">타이틀 영역</p>
+                <p class="text-[14px] text-[#58616A] mb-3 line-clamp-3">간단한 설명이 들어가는 영역입니다.</p>
+                <ul class="space-y-1 text-[13px]">
+                  <li class="flex items-center gap-2"><strong class="text-[#58616A] font-medium min-w-[60px]">신청시간</strong><span class="text-[#8A949E]">2023.00.00-2024.00.00</span></li>
+                </ul>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="block border border-[#E6E8EA] rounded-xl overflow-hidden bg-white hover:shadow-md transition-shadow group">
+              <div class="aspect-video bg-[#CDD1D5] overflow-hidden">
+                <img src="/assets/styleguide/img/bodo-v.jpg" alt="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+              </div>
+              <div class="p-4">
+                <div class="mb-2"><span class="inline-flex items-center px-2.5 py-0.5 rounded text-[13px] font-medium bg-[#159774] text-white">뱃지</span></div>
+                <p class="text-[17px] font-bold text-[#1E2124] mb-1">타이틀 영역</p>
+                <p class="text-[14px] text-[#58616A] mb-3 line-clamp-3">간단한 설명이 들어가는 영역입니다.</p>
+              </div>
+            </a>
+          </li>
+        </ul>
+
+        <div class="flex items-center justify-center gap-1">
+          <span class="inline-flex items-center justify-center w-9 h-9 rounded-lg border border-[#CDD1D5] text-[#8A949E] text-[15px] cursor-not-allowed">이전</span>
+          <a href="#" class="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-[#2257B4] text-white text-[15px] font-bold">1</a>
+          <a href="#" class="inline-flex items-center justify-center w-9 h-9 rounded-lg border border-[#CDD1D5] text-[#33363D] text-[15px] hover:bg-[#F4F5F6]">2</a>
+          <a href="#" class="inline-flex items-center justify-center w-9 h-9 rounded-lg border border-[#CDD1D5] text-[#33363D] text-[15px] hover:bg-[#F4F5F6]">3</a>
+          <a href="#" class="inline-flex items-center justify-center w-9 h-9 rounded-lg border border-[#CDD1D5] text-[#33363D] text-[15px] hover:bg-[#F4F5F6]">다음</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 20. 프로그램 리스트 부분버튼형 ===== -->
+    <section id="proglist2" class="mb-16 scroll-mt-8">
+      <h2 class="text-xl font-bold text-[#1E2124] border-b-2 border-[#2257B4] pb-3 mb-6">프로그램 리스트 (부분 버튼 타입)</h2>
+      <div class="bg-white rounded-xl p-6 shadow-sm border border-[#E6E8EA]">
+        <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+          <li class="border border-[#E6E8EA] rounded-xl overflow-hidden bg-white hover:shadow-md transition-shadow">
+            <div class="aspect-video bg-[#CDD1D5] overflow-hidden">
+              <img src="/assets/styleguide/img/bodo-v.jpg" alt="" class="w-full h-full object-cover">
+            </div>
+            <div class="p-4">
+              <div class="mb-2"><span class="inline-flex items-center px-2.5 py-0.5 rounded text-[13px] font-medium bg-[#F1F6FE] text-[#2257B4]">뱃지</span></div>
+              <p class="text-[17px] font-bold text-[#1E2124] mb-1">타이틀 영역</p>
+              <p class="text-[14px] text-[#58616A] mb-3 line-clamp-3">간단한 설명이 들어가는 영역입니다. 최대 3줄까지 작성합니다.</p>
+              <ul class="space-y-1 text-[13px] mb-4">
+                <li class="flex items-center gap-2"><strong class="text-[#58616A] font-medium min-w-[60px]">신청시간</strong><span class="text-[#8A949E]">2023.00.00-2024.00.00</span></li>
+                <li class="flex items-center gap-2"><strong class="text-[#58616A] font-medium min-w-[60px]">신청시간</strong><span class="text-[#8A949E]">2023.00.00-2024.00.00</span></li>
+              </ul>
+              <div class="flex gap-2">
+                <a href="#" class="inline-flex items-center justify-center px-3 min-h-9 rounded-lg text-[15px] border border-[#CDD1D5] bg-white text-[#1E2124] hover:bg-[#F4F5F6]" title="타이틀 영역">상세보기</a>
+                <a href="#" class="inline-flex items-center justify-center px-3 min-h-9 rounded-lg text-[15px] border border-[#2257B4] bg-[#F1F6FE] text-[#2257B4] hover:bg-[#E4EBF8]" title="타이틀 영역">신청하기</a>
+              </div>
+            </div>
+            <div class="border-t border-[#E6E8EA] flex">
+              <button class="flex-1 py-2.5 text-[13px] text-[#58616A] hover:bg-[#F4F5F6] flex items-center justify-center gap-1">공유하기</button>
+              <button class="flex-1 py-2.5 text-[13px] text-[#58616A] hover:bg-[#F4F5F6] flex items-center justify-center gap-1 border-l border-[#E6E8EA]">찜하기</button>
+            </div>
+          </li>
+          <li class="border border-[#E6E8EA] rounded-xl overflow-hidden bg-white hover:shadow-md transition-shadow">
+            <div class="aspect-video bg-[#CDD1D5] overflow-hidden">
+              <img src="/assets/styleguide/img/bodo-v.jpg" alt="" class="w-full h-full object-cover">
+            </div>
+            <div class="p-4">
+              <div class="mb-2"><span class="inline-flex items-center px-2.5 py-0.5 rounded text-[13px] font-medium bg-[#EDF7F3] text-[#159774]">뱃지</span></div>
+              <p class="text-[17px] font-bold text-[#1E2124] mb-1">타이틀 영역</p>
+              <p class="text-[14px] text-[#58616A] mb-3 line-clamp-3">간단한 설명이 들어가는 영역입니다.</p>
+              <ul class="space-y-1 text-[13px] mb-4">
+                <li class="flex items-center gap-2"><strong class="text-[#58616A] font-medium min-w-[60px]">신청시간</strong><span class="text-[#8A949E]">2023.00.00-2024.00.00</span></li>
+              </ul>
+              <div class="flex gap-2">
+                <a href="#" class="inline-flex items-center justify-center px-3 min-h-9 rounded-lg text-[15px] border border-[#CDD1D5] bg-white text-[#1E2124] hover:bg-[#F4F5F6]">상세보기</a>
+                <a href="#" class="inline-flex items-center justify-center px-3 min-h-9 rounded-lg text-[15px] border border-[#2257B4] bg-[#F1F6FE] text-[#2257B4] hover:bg-[#E4EBF8]">신청하기</a>
+              </div>
+            </div>
+          </li>
+          <li class="border border-[#E6E8EA] rounded-xl overflow-hidden bg-white">
+            <div class="aspect-video bg-[#CDD1D5] overflow-hidden">
+              <img src="/assets/styleguide/img/bodo-v.jpg" alt="" class="w-full h-full object-cover">
+            </div>
+            <div class="p-4">
+              <div class="mb-2"><span class="inline-flex items-center px-2.5 py-0.5 rounded text-[13px] font-medium bg-[#E6E8EA] text-[#8A949E]">뱃지</span></div>
+              <p class="text-[17px] font-bold text-[#1E2124] mb-1">타이틀 영역</p>
+              <p class="text-[14px] text-[#58616A] mb-3 line-clamp-3">간단한 설명이 들어가는 영역입니다.</p>
+              <div class="flex gap-2">
+                <a href="#" class="inline-flex items-center justify-center px-3 min-h-9 rounded-lg text-[15px] border border-[#CDD1D5] bg-white text-[#1E2124] hover:bg-[#F4F5F6]">상세보기</a>
+                <span class="inline-flex items-center justify-center px-3 min-h-9 rounded-lg text-[15px] bg-[#CDD1D5] text-[#6D7882] border-[#CDD1D5] cursor-not-allowed">신청하기</span>
+              </div>
+            </div>
+          </li>
+        </ul>
+
+        <div class="flex items-center justify-center gap-1">
+          <span class="inline-flex items-center justify-center w-9 h-9 rounded-lg border border-[#CDD1D5] text-[#8A949E] text-[15px] cursor-not-allowed">이전</span>
+          <a href="#" class="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-[#2257B4] text-white text-[15px] font-bold">1</a>
+          <a href="#" class="inline-flex items-center justify-center w-9 h-9 rounded-lg border border-[#CDD1D5] text-[#33363D] text-[15px] hover:bg-[#F4F5F6]">2</a>
+          <a href="#" class="inline-flex items-center justify-center w-9 h-9 rounded-lg border border-[#CDD1D5] text-[#33363D] text-[15px] hover:bg-[#F4F5F6]">다음</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 21. 프로그램 뷰 ===== -->
+    <section id="progview" class="mb-16 scroll-mt-8">
+      <h2 class="text-xl font-bold text-[#1E2124] border-b-2 border-[#2257B4] pb-3 mb-6">프로그램 뷰</h2>
+      <div class="bg-white rounded-xl p-6 shadow-sm border border-[#E6E8EA]">
+        <div class="flex flex-col md:flex-row gap-6 mb-8">
+          <div class="w-full md:w-80 flex-shrink-0">
+            <div class="aspect-square rounded-xl overflow-hidden bg-[#CDD1D5]">
+              <img src="/assets/styleguide/img/bodo-v.jpg" alt="프로그램 이미지" class="w-full h-full object-cover">
+            </div>
+          </div>
+          <div class="flex-1">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="inline-flex items-center px-3 py-1 rounded text-[15px] font-medium bg-[#EDF7F3] text-[#159774]">선착순</span>
+              <span class="inline-flex items-center px-3 py-1 rounded text-[15px] font-medium bg-[#F1F6FE] text-[#2257B4]">접수중</span>
+            </div>
+            <h3 class="text-[22px] font-bold text-[#1E2124] mb-4">타이틀 영역</h3>
+            <ul class="space-y-2.5">
+              <li class="flex items-start gap-3 text-[15px]">
+                <strong class="font-bold text-[#33363D] flex-shrink-0 w-28">신청시간</strong>
+                <span class="text-[#58616A]">2023.00.00-2024.00.00</span>
+              </li>
+              <li class="flex items-start gap-3 text-[15px]">
+                <strong class="font-bold text-[#33363D] flex-shrink-0 w-28">운영정보</strong>
+                <span class="text-[#58616A]">매주 화요일 19:00 ~ 21:00</span>
+              </li>
+              <li class="flex items-start gap-3 text-[15px]">
+                <strong class="font-bold text-[#33363D] flex-shrink-0 w-28">모집인원</strong>
+                <span class="text-[#58616A]">30명</span>
+              </li>
+              <li class="flex items-start gap-3 text-[15px]">
+                <strong class="font-bold text-[#33363D] flex-shrink-0 w-28">운영장소</strong>
+                <span class="text-[#58616A]">주민자치센터 2층</span>
+              </li>
+            </ul>
+            <div class="flex gap-2 mt-6">
+              <button class="p-2 text-[#8A949E] hover:text-[#58616A] flex items-center gap-1 text-[15px]">공유하기</button>
+              <button class="p-2 text-[#8A949E] hover:text-[#D63D4A] flex items-center gap-1 text-[15px]">찜하기</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="border-t border-[#E6E8EA] pt-6">
+          <h4 class="text-[17px] font-bold text-[#1E2124] mb-3">프로그램 설명</h4>
+          <p class="text-[15px] text-[#33363D] leading-relaxed mb-6">이 프로그램은 일상 속에서 발견할 수 있는 교양과 지식을 쉽고 재미있게 전달합니다. 다양한 분야의 전문가들이 함께 참여해 깊이 있는 이야기를 들려드립니다. 우리가 미처 몰랐던 사실과 흥미로운 이야기들이 한 편의 강연처럼 펼쳐집니다. 매주 새로운 주제를 통해 생각의 폭을 넓히고 통찰력을 키워보세요.</p>
+
+          <h4 class="text-[17px] font-bold text-[#1E2124] mb-3">회차 사용시 적용</h4>
+          <div class="overflow-x-auto">
+            <table class="w-full border-collapse text-[14px]">
+              <tbody>
+                <tr>
+                  <td class="border border-[#E6E8EA] px-4 py-3 text-center w-20"><strong class="text-[#2257B4]">1회차</strong></td>
+                  <td class="border border-[#E6E8EA] px-4 py-3 text-[#33363D]">2025년 3월 22일(금) 13:00</td>
+                  <td class="border border-[#E6E8EA] px-4 py-3">
+                    <div class="flex items-center justify-between">
+                      <span class="text-[#33363D]">2025년 3월 22일(금) 13:00</span>
+                      <button class="inline-flex items-center justify-center px-4 min-h-9 rounded-lg text-[15px] border border-[#2257B4] bg-[#F1F6FE] text-[#2257B4] hover:bg-[#E4EBF8]">신청하기</button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="border border-[#E6E8EA] px-4 py-3 text-center w-20"><strong class="text-[#2257B4]">2회차</strong></td>
+                  <td class="border border-[#E6E8EA] px-4 py-3 text-[#33363D]">2025년 3월 29일(금) 13:00</td>
+                  <td class="border border-[#E6E8EA] px-4 py-3">
+                    <div class="flex items-center justify-between">
+                      <span class="text-[#33363D]">2025년 3월 29일(금) 13:00</span>
+                      <span class="inline-flex items-center justify-center px-4 min-h-9 rounded-lg text-[15px] bg-[#CDD1D5] text-[#6D7882] cursor-not-allowed">모집마감</span>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="border border-[#E6E8EA] px-4 py-3 text-center w-20"><strong class="text-[#2257B4]">3회차</strong></td>
+                  <td class="border border-[#E6E8EA] px-4 py-3 text-[#33363D]">2025년 4월 5일(토) 13:00</td>
+                  <td class="border border-[#E6E8EA] px-4 py-3">
+                    <div class="flex items-center justify-between">
+                      <span class="text-[#33363D]">2025년 4월 5일(토) 13:00</span>
+                      <button class="inline-flex items-center justify-center px-4 min-h-9 rounded-lg text-[15px] border border-[#2257B4] bg-[#F1F6FE] text-[#2257B4] hover:bg-[#E4EBF8]">신청하기</button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 22. 프로그램 뷰2 ===== -->
+    <section id="progview2" class="mb-16 scroll-mt-8">
+      <h2 class="text-xl font-bold text-[#1E2124] border-b-2 border-[#2257B4] pb-3 mb-6">프로그램 뷰2</h2>
+      <div class="bg-white rounded-xl p-6 shadow-sm border border-[#E6E8EA]">
+        <div class="mb-8">
+          <div class="relative bg-[#CDD1D5] rounded-xl overflow-hidden aspect-video max-w-2xl">
+            <img src="/assets/styleguide/img/bodo-v.jpg" alt="갤러리 이미지" class="w-full h-full object-cover">
+            <div class="absolute bottom-3 left-0 right-0 flex items-center justify-center gap-3">
+              <button class="w-8 h-8 rounded-full bg-black/40 text-white flex items-center justify-center hover:bg-black/60">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+              </button>
+              <span class="text-white text-[14px] bg-black/40 px-2 py-0.5 rounded">1 / 5</span>
+              <button class="w-8 h-8 rounded-full bg-black/40 text-white flex items-center justify-center hover:bg-black/60">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="flex gap-2 mt-2 max-w-2xl">
+            <button class="w-16 h-16 rounded-lg overflow-hidden border-2 border-[#2257B4] flex-shrink-0">
+              <img src="/assets/styleguide/img/bodo-v.jpg" alt="1" class="w-full h-full object-cover">
+            </button>
+            <button class="w-16 h-16 rounded-lg overflow-hidden border-2 border-[#E6E8EA] flex-shrink-0 opacity-70 hover:opacity-100">
+              <img src="/assets/styleguide/img/bodo-v.jpg" alt="2" class="w-full h-full object-cover">
+            </button>
+            <button class="w-16 h-16 rounded-lg overflow-hidden border-2 border-[#E6E8EA] flex-shrink-0 opacity-70 hover:opacity-100">
+              <img src="/assets/styleguide/img/bodo-v.jpg" alt="3" class="w-full h-full object-cover">
+            </button>
+            <button class="w-16 h-16 rounded-lg overflow-hidden border-2 border-[#E6E8EA] flex-shrink-0 opacity-70 hover:opacity-100">
+              <img src="/assets/styleguide/img/bodo-v.jpg" alt="4" class="w-full h-full object-cover">
+            </button>
+          </div>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full border-collapse text-[14px]">
+            <tbody>
+              <tr>
+                <td class="border border-[#E6E8EA] px-4 py-3 text-center w-20"><strong class="text-[#2257B4]">1회차</strong></td>
+                <td class="border border-[#E6E8EA] px-4 py-3 text-[#33363D]">2025년 3월 22일(금) 13:00</td>
+                <td class="border border-[#E6E8EA] px-4 py-3">
+                  <div class="flex items-center justify-between">
+                    <span class="text-[#33363D]">2025년 3월 22일(금) 13:00</span>
+                    <button class="inline-flex items-center justify-center px-4 min-h-9 rounded-lg text-[15px] border border-[#2257B4] bg-[#F1F6FE] text-[#2257B4] hover:bg-[#E4EBF8]">신청하기</button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="border border-[#E6E8EA] px-4 py-3 text-center w-20"><strong class="text-[#2257B4]">2회차</strong></td>
+                <td class="border border-[#E6E8EA] px-4 py-3 text-[#33363D]">2025년 3월 29일(금) 13:00</td>
+                <td class="border border-[#E6E8EA] px-4 py-3">
+                  <div class="flex items-center justify-between">
+                    <span class="text-[#33363D]">2025년 3월 29일(금) 13:00</span>
+                    <span class="inline-flex items-center justify-center px-4 min-h-9 rounded-lg text-[15px] bg-[#CDD1D5] text-[#6D7882] cursor-not-allowed">모집마감</span>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 23. 프로그램 뷰3 세로갤러리 ===== -->
+    <section id="progview3" class="mb-16 scroll-mt-8">
+      <h2 class="text-xl font-bold text-[#1E2124] border-b-2 border-[#2257B4] pb-3 mb-6">프로그램 뷰3 (세로갤러리)</h2>
+      <div class="bg-white rounded-xl p-6 shadow-sm border border-[#E6E8EA]">
+        <div class="flex gap-3 max-w-2xl">
+          <div class="flex-1 relative bg-[#CDD1D5] rounded-xl overflow-hidden aspect-square">
+            <img src="/assets/styleguide/img/bodo-v.jpg" alt="메인 이미지" class="w-full h-full object-cover">
+            <div class="absolute bottom-3 left-0 right-0 flex items-center justify-center gap-3">
+              <button class="w-8 h-8 rounded-full bg-black/40 text-white flex items-center justify-center hover:bg-black/60">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+              </button>
+              <span class="text-white text-[14px] bg-black/40 px-2 py-0.5 rounded">1 / 5</span>
+              <button class="w-8 h-8 rounded-full bg-black/40 text-white flex items-center justify-center hover:bg-black/60">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="flex flex-col gap-2 w-16">
+            <button class="w-16 h-16 rounded-lg overflow-hidden border-2 border-[#2257B4] flex-shrink-0">
+              <img src="/assets/styleguide/img/bodo-v.jpg" alt="1" class="w-full h-full object-cover">
+            </button>
+            <button class="w-16 h-16 rounded-lg overflow-hidden border-2 border-[#E6E8EA] flex-shrink-0 opacity-70 hover:opacity-100">
+              <img src="/assets/styleguide/img/bodo-v.jpg" alt="2" class="w-full h-full object-cover">
+            </button>
+            <button class="w-16 h-16 rounded-lg overflow-hidden border-2 border-[#E6E8EA] flex-shrink-0 opacity-70 hover:opacity-100">
+              <img src="/assets/styleguide/img/bodo-v.jpg" alt="3" class="w-full h-full object-cover">
+            </button>
+            <button class="w-16 h-16 rounded-lg overflow-hidden border-2 border-[#E6E8EA] flex-shrink-0 opacity-70 hover:opacity-100">
+              <img src="/assets/styleguide/img/bodo-v.jpg" alt="4" class="w-full h-full object-cover">
+            </button>
+            <button class="w-16 h-16 rounded-lg overflow-hidden border-2 border-[#E6E8EA] flex-shrink-0 opacity-70 hover:opacity-100">
+              <img src="/assets/styleguide/img/bodo-v.jpg" alt="5" class="w-full h-full object-cover">
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 24. 디지털문서 ===== -->
+    <section id="document" class="mb-16 scroll-mt-8">
+      <h2 class="text-xl font-bold text-[#1E2124] border-b-2 border-[#2257B4] pb-3 mb-6">디지털문서</h2>
+      <div class="bg-white rounded-xl p-6 shadow-sm border border-[#E6E8EA]">
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          <div class="border border-[#E6E8EA] rounded-xl overflow-hidden bg-white hover:shadow-md transition-shadow">
+            <div class="aspect-[3/4] bg-[#F4F5F6] flex items-center justify-center">
+              <img src="/assets/styleguide/img/document.png" alt="" class="max-h-full w-full object-cover">
+            </div>
+            <div class="p-3">
+              <p class="text-[12px] text-[#8A949E] mb-1">대분류명 &gt; 소분류명</p>
+              <strong class="block text-[15px] font-bold text-[#1E2124] mb-3 line-clamp-2">타이틀이 들어갑니다</strong>
+              <div class="flex gap-1.5">
+                <button class="flex-1 inline-flex items-center justify-center gap-1 px-2 min-h-8 rounded-lg text-[13px] border border-[#CDD1D5] bg-white text-[#1E2124] hover:bg-[#F4F5F6]">다운로드</button>
+                <button class="flex-1 inline-flex items-center justify-center gap-1 px-2 min-h-8 rounded-lg text-[13px] border border-[#2257B4] bg-[#F1F6FE] text-[#2257B4] hover:bg-[#E4EBF8]">바로보기</button>
+              </div>
+            </div>
+          </div>
+          <div class="border border-[#E6E8EA] rounded-xl overflow-hidden bg-white hover:shadow-md transition-shadow">
+            <div class="aspect-[3/4] bg-[#F4F5F6]"><img src="/assets/styleguide/img/document.png" alt="" class="w-full h-full object-cover"></div>
+            <div class="p-3">
+              <p class="text-[12px] text-[#8A949E] mb-1">대분류명 &gt; 소분류명</p>
+              <strong class="block text-[15px] font-bold text-[#1E2124] mb-3 line-clamp-2">타이틀이 들어갑니다</strong>
+              <div class="flex gap-1.5">
+                <button class="flex-1 inline-flex items-center justify-center gap-1 px-2 min-h-8 rounded-lg text-[13px] border border-[#CDD1D5] bg-white text-[#1E2124] hover:bg-[#F4F5F6]">다운로드</button>
+                <button class="flex-1 inline-flex items-center justify-center gap-1 px-2 min-h-8 rounded-lg text-[13px] border border-[#2257B4] bg-[#F1F6FE] text-[#2257B4] hover:bg-[#E4EBF8]">바로보기</button>
+              </div>
+            </div>
+          </div>
+          <div class="border border-[#E6E8EA] rounded-xl overflow-hidden bg-white hover:shadow-md transition-shadow">
+            <div class="aspect-[3/4] bg-[#F4F5F6]"><img src="/assets/styleguide/img/document.png" alt="" class="w-full h-full object-cover"></div>
+            <div class="p-3">
+              <p class="text-[12px] text-[#8A949E] mb-1">대분류명 &gt; 소분류명</p>
+              <strong class="block text-[15px] font-bold text-[#1E2124] mb-3 line-clamp-2">타이틀이 들어갑니다</strong>
+              <div class="flex gap-1.5">
+                <button class="flex-1 inline-flex items-center justify-center gap-1 px-2 min-h-8 rounded-lg text-[13px] border border-[#CDD1D5] bg-white text-[#1E2124] hover:bg-[#F4F5F6]">다운로드</button>
+                <button class="flex-1 inline-flex items-center justify-center gap-1 px-2 min-h-8 rounded-lg text-[13px] border border-[#2257B4] bg-[#F1F6FE] text-[#2257B4] hover:bg-[#E4EBF8]">바로보기</button>
+              </div>
+            </div>
+          </div>
+          <div class="border border-[#E6E8EA] rounded-xl overflow-hidden bg-white hover:shadow-md transition-shadow">
+            <div class="aspect-[3/4] bg-[#F4F5F6]"><img src="/assets/styleguide/img/document.png" alt="" class="w-full h-full object-cover"></div>
+            <div class="p-3">
+              <p class="text-[12px] text-[#8A949E] mb-1">대분류명 &gt; 소분류명</p>
+              <strong class="block text-[15px] font-bold text-[#1E2124] mb-3 line-clamp-2">타이틀이 들어갑니다</strong>
+              <div class="flex gap-1.5">
+                <button class="flex-1 inline-flex items-center justify-center gap-1 px-2 min-h-8 rounded-lg text-[13px] border border-[#CDD1D5] bg-white text-[#1E2124] hover:bg-[#F4F5F6]">다운로드</button>
+                <button class="flex-1 inline-flex items-center justify-center gap-1 px-2 min-h-8 rounded-lg text-[13px] border border-[#2257B4] bg-[#F1F6FE] text-[#2257B4] hover:bg-[#E4EBF8]">바로보기</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 25. 버튼 배치 ===== -->
+    <section id="btn-wrap" class="mb-16 scroll-mt-8">
+      <h2 class="text-xl font-bold text-[#1E2124] border-b-2 border-[#2257B4] pb-3 mb-6">버튼 배치</h2>
+      <div class="bg-white rounded-xl p-6 shadow-sm border border-[#E6E8EA] space-y-6">
+        <div>
+          <p class="text-[13px] text-[#8A949E] mb-2">가운데 정렬</p>
+          <div class="flex items-center justify-center gap-3 border border-dashed border-[#CDD1D5] rounded-xl p-4">
+            <button type="button" class="inline-flex items-center justify-center gap-1 border rounded-lg transition-all cursor-pointer bg-white text-[#1E2124] border-[#58616A] hover:bg-[#F4F5F6] px-[18px] py-2 min-h-12 text-[19px]">취소</button>
+            <button type="button" class="inline-flex items-center justify-center gap-1 border rounded-lg transition-all cursor-pointer bg-[#2257B4] text-white border-[#2257B4] hover:bg-[#1C4690] px-[18px] py-2 min-h-12 text-[19px]">확인</button>
+          </div>
+        </div>
+        <div>
+          <p class="text-[13px] text-[#8A949E] mb-2">오른쪽 정렬</p>
+          <div class="flex items-center justify-end gap-3 border border-dashed border-[#CDD1D5] rounded-xl p-4">
+            <button type="button" class="inline-flex items-center justify-center gap-1 border rounded-lg transition-all cursor-pointer bg-white text-[#1E2124] border-[#58616A] hover:bg-[#F4F5F6] px-[18px] py-2 min-h-12 text-[19px]">취소</button>
+            <button type="button" class="inline-flex items-center justify-center gap-1 border rounded-lg transition-all cursor-pointer bg-[#2257B4] text-white border-[#2257B4] hover:bg-[#1C4690] px-[18px] py-2 min-h-12 text-[19px]">확인</button>
+          </div>
+        </div>
+        <div>
+          <p class="text-[13px] text-[#8A949E] mb-2">왼쪽 정렬</p>
+          <div class="flex items-center justify-start gap-3 border border-dashed border-[#CDD1D5] rounded-xl p-4">
+            <button type="button" class="inline-flex items-center justify-center gap-1 border rounded-lg transition-all cursor-pointer bg-white text-[#1E2124] border-[#58616A] hover:bg-[#F4F5F6] px-[18px] py-2 min-h-12 text-[19px]">취소</button>
+            <button type="button" class="inline-flex items-center justify-center gap-1 border rounded-lg transition-all cursor-pointer bg-[#2257B4] text-white border-[#2257B4] hover:bg-[#1C4690] px-[18px] py-2 min-h-12 text-[19px]">확인</button>
+          </div>
+        </div>
+        <div>
+          <p class="text-[13px] text-[#8A949E] mb-2">양끝 정렬 (between)</p>
+          <div class="flex items-center justify-between gap-3 border border-dashed border-[#CDD1D5] rounded-xl p-4">
+            <button type="button" class="inline-flex items-center justify-center gap-1 border rounded-lg transition-all cursor-pointer bg-white text-[#1E2124] border-[#58616A] hover:bg-[#F4F5F6] px-[18px] py-2 min-h-12 text-[19px]">이전</button>
+            <button type="button" class="inline-flex items-center justify-center gap-1 border rounded-lg transition-all cursor-pointer bg-[#2257B4] text-white border-[#2257B4] hover:bg-[#1C4690] px-[18px] py-2 min-h-12 text-[19px]">다음</button>
+          </div>
+        </div>
+        <div>
+          <p class="text-[13px] text-[#8A949E] mb-2">양끝 정렬 (한쪽 그룹)</p>
+          <div class="flex items-center justify-between gap-3 border border-dashed border-[#CDD1D5] rounded-xl p-4">
+            <button type="button" class="inline-flex items-center justify-center gap-1 border rounded-lg transition-all cursor-pointer bg-white text-[#1E2124] border-[#58616A] hover:bg-[#F4F5F6] px-[18px] py-2 min-h-12 text-[19px]">이전</button>
+            <div class="flex items-center gap-2">
+              <button type="button" class="inline-flex items-center justify-center gap-1 border rounded-lg transition-all cursor-pointer bg-white text-[#1E2124] border-[#58616A] hover:bg-[#F4F5F6] px-[18px] py-2 min-h-12 text-[19px]">취소</button>
+              <button type="button" class="inline-flex items-center justify-center gap-1 border rounded-lg transition-all cursor-pointer bg-[#2257B4] text-white border-[#2257B4] hover:bg-[#1C4690] px-[18px] py-2 min-h-12 text-[19px]">확인</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+</body>
+</html>

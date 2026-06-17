@@ -1,0 +1,11 @@
+:root {
+  --fe-btn-xs: 8px 10px 7px;
+  --fe-btn-sm: 8px 12px;
+  --fe-btn-md: 15px 20px 14px;
+  --fe-btn-lg: 18px 25px 18px 25px;
+  --fe-btn-lg-w: 150px;
+  --fe-border-radius-xs: 2px;
+  --fe-border-radius-sm: 4px;
+  --fe-border-radius-md: 4px;
+  --fe-border-radius-lg: 6px;
+}

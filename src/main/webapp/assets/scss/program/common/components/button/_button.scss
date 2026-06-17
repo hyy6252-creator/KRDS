@@ -1,0 +1,794 @@
+
+@use '../../../../common/abstracts' as *;
+@use 'variables' as button-vars;
+@use 'Icon.scss' as bIcon;
+
+
+.fe-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  width: auto;
+  padding: button-vars.$fe-btn-md;
+  cursor: pointer;
+  border: 1px solid transparent;
+  background-image: none;
+  overflow-wrap: break-word;
+  transition: all 0.3s;
+  font-size: $font-size-base;
+  line-height: 120%;
+  letter-spacing: 0.16px;
+  margin: 0;
+  border-radius: button-vars.$fe-border-radius-md;
+  @media (max-width: 490px) {padding: 8px 12px; font-size: 15px;}
+
+  &.fe-btn-xs {
+    padding: button-vars.$fe-btn-xs;
+    border-radius: button-vars.$fe-border-radius-xs;
+    font-size: 12px;
+  }
+
+  &.fe-btn-sm {
+    padding: button-vars.$fe-btn-sm;
+    border-radius: button-vars.$fe-border-radius-sm;
+    font-size: 16px;
+    @media (max-width: 490px) {padding: 8px 12px; font-size: 15px;}
+  }
+
+  &.fe-btn-lg {
+    padding: button-vars.$fe-btn-lg;
+    font-size: 19px;
+    min-width: button-vars.$fe-btn-lg-w;
+    border-radius: button-vars.$fe-border-radius-lg;
+    @media (max-width: 490px) {padding: 8px 12px; font-size: 15px;}
+  }
+
+  .fa {
+    font-size: 0;
+    width: 16px;
+    height: 16px;
+    background-size: 100%;
+    margin-right: 4px;
+    vertical-align: middle;
+    position: relative;
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    &.fa-l {
+      margin-right: 4px;
+      margin-left: 0;
+    }
+
+    &.fa-r {
+      margin-right: 0;
+      margin-left: 4px;
+    }
+
+    &.fa-n {
+      margin: 0;
+    }
+  }
+
+  @each $BtName in map-keys($colors) {
+    &.fe-btn-#{$BtName},
+    &.fe-btn-#{$BtName}:link,
+    &.fe-btn-#{$BtName}:visited {
+      background-color: map-get($colors, $BtName);
+      border: 1px solid map-get($colors, $BtName);
+      color: $white;
+
+      @each $name in $iconClassName {
+        .fa-#{$name} {
+          background-image: bIcon.btnIcon(#{$name}, $white);
+        }
+      }
+
+      &.hover,
+      &:hover,
+      &:active,
+      &.active {
+        background-color: $white;
+        border: 1px solid map-get($colors, $BtName);
+        color: map-get($colors, $BtName);
+
+        @each $name in $iconClassName {
+          .fa.fa-#{$name} {
+            background-image: bIcon.btnIcon(#{$name}, map-get($colors, $BtName));
+          }
+        }
+      }
+
+      &:focus {
+        outline: 2px dashed #D64210;
+        border: none;
+        background-color: map-get($colors, $BtName);
+        color: $white;
+
+        @each $name in $iconClassName {
+          .fa.fa-#{$name} {
+            background-image: bIcon.btnIcon(#{$name}, $white);
+          }
+        }
+      }
+    }
+  }
+
+  &.fe-btn-default,
+  &.fe-btn-default:link,
+  &.fe-btn-default:visited {
+    background-color: $white;
+    border: 1px solid $default;
+    color: $textColor;
+
+    @each $name in $iconClassName {
+      .fa-#{$name} {
+        background-image: bIcon.btnIcon(#{$name}, $textColor);
+      }
+    }
+
+    &.hover,
+    &:hover,
+    &:focus,
+    &:active,
+    &.active {
+      background-color: $textColor;
+      border: 1px solid $textColor;
+      color: $white;
+
+      @each $name in $iconClassName {
+        .fa.fa-#{$name} {
+          background-image: bIcon.btnIcon(#{$name}, $white);
+        }
+      }
+    }
+  }
+
+  &.fe-btn-dark,
+  &.fe-btn-dark:link,
+  &.fe-btn-dark:visited {
+    background-color: $dark;
+    border: 1px solid $dark;
+    color: $white;
+
+    @each $name in $iconClassName {
+      .fa-#{$name} {
+        background-image: bIcon.btnIcon(#{$name}, $textColor);
+      }
+    }
+
+    &.hover,
+    &:hover,
+    &:focus,
+    &:active,
+    &.active {
+      background-color: $darkHover;
+      border: 1px solid $dark;
+      color: $white;
+
+      @each $name in $iconClassName {
+        .fa.fa-#{$name} {
+          background-image: bIcon.btnIcon(#{$name}, $textColor);
+        }
+      }
+    }
+  }
+
+  &.fe-btn-ghost,
+  &.fe-btn-ghost:link,
+  &.fe-btn-ghost:visited {
+    background-color: $ghost;
+    border: 1px solid $ghost;
+    color: $pointTitleColor;
+
+    @each $name in $iconClassName {
+      .fa-#{$name} {
+        background-image: bIcon.btnIcon(#{$name}, $ghostIcon);
+      }
+    }
+
+    &.hover,
+    &:hover,
+    &:focus,
+    &:active,
+    &.active {
+      background-color: $ghostHover;
+      border: 1px solid $ghostHover;
+      color: $ghost;
+
+      @each $name in $iconClassName {
+        .fa.fa-#{$name} {
+          background-image: bIcon.btnIcon(#{$name}, $ghost);
+        }
+      }
+    }
+
+    &:disabled,
+    &.disabled {}
+  }
+
+  &.fe-btn-naver,
+  &.fe-btn-naver:link,
+  &.fe-btn-naver:visited {
+    border: 1px solid $naver;
+    background-color: $naver;
+    color: $white;
+
+    .fa-naver {
+      margin: 0 8px 0 0; min-width: 22px; width: 22px; height: 22px; background-image: url("data:image/svg+xml,%3Csvg width='22' height='22' viewBox='0 0 22 22' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M13.8491 11.5627L7.91687 3H3V19H8.15088V10.436L14.0831 19H19V3H13.8491V11.5627Z' fill='white'/%3E%3C/svg%3E%0A");
+    }
+
+    @each $name in $iconClassName {
+      .fa-#{$name} {
+        background-image: bIcon.btnIcon(#{$name}, $white);
+      }
+    }
+
+    &.hover,
+    &:hover,
+    &:focus,
+    &:active,
+    &.active {
+      border: 1px solid $naver;
+      background-color: $white;
+      color: $naver;
+
+      .fa-naver {
+        background-image: url("data:image/svg+xml,%3Csvg width='22' height='22' viewBox='0 0 22 22' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M13.8491 11.5627L7.91687 3H3V19H8.15088V10.436L14.0831 19H19V3H13.8491V11.5627Z' fill='%2307A139'/%3E%3C/svg%3E%0A");
+      }
+
+      @each $name in $iconClassName {
+        .fa-#{$name} {
+          background-image: bIcon.btnIcon(#{$name}, $naver);
+        }
+      }
+    }
+  }
+
+  &.fe-btn-kakao,
+  &.fe-btn-kakao:link,
+  &.fe-btn-kakao:visited {
+    border: 1px solid $kakao;
+    background-color: $kakao;
+    color: $kakaoText;
+
+    .fa-kakao {
+      margin: 0 8px 0 0; min-width: 22px; width: 22px; height: 22px; background-image: url("data:image/svg+xml,%3Csvg width='22' height='22' viewBox='0 0 22 22' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M11.0001 1C5.20072 1 0.5 4.7059 0.5 9.27653C0.5 12.1191 2.31815 14.625 5.0868 16.1154L3.92188 20.4577C3.81896 20.8414 4.249 21.1472 4.57922 20.9249L9.6856 17.486C10.1165 17.5284 10.5545 17.5532 11.0001 17.5532C16.7989 17.5532 21.5 13.8474 21.5 9.27653C21.5 4.7059 16.7989 1 11.0001 1' fill='%23040000'/%3E%3C/svg%3E%0A");
+    }
+
+    @each $name in $iconClassName {
+      .fa-#{$name} {
+        background-image: bIcon.btnIcon(#{$name}, $kakaoLogo);
+      }
+    }
+
+    &.hover,
+    &:hover,
+    &:focus,
+    &:active,
+    &.active {
+      border: 1px solid $kakao;
+      background-color: $white;
+      color: $kakaoText;
+
+      .fa-kakao {
+        background-image: url("data:image/svg+xml,%3Csvg width='22' height='22' viewBox='0 0 22 22' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M11.0001 1C5.20072 1 0.5 4.7059 0.5 9.27653C0.5 12.1191 2.31815 14.625 5.0868 16.1154L3.92188 20.4577C3.81896 20.8414 4.249 21.1472 4.57922 20.9249L9.6856 17.486C10.1165 17.5284 10.5545 17.5532 11.0001 17.5532C16.7989 17.5532 21.5 13.8474 21.5 9.27653C21.5 4.7059 16.7989 1 11.0001 1' fill='%23040000'/%3E%3C/svg%3E%0A");
+      }
+
+      @each $name in $iconClassName {
+        .fa-#{$name} {
+          background-image: bIcon.btnIcon(#{$name}, $kakaoLogo);
+        }
+      }
+    }
+  }
+
+  &.fe-btn-google,
+  &.fe-btn-google:link,
+  &.fe-btn-google:visited {
+    border: 1px solid $google;
+    background-color: $google;
+    color: $white;
+
+    .fa-google {
+      margin: 0 8px 0 0; min-width: 22px; width: 22px; height: 22px; background-image: url("data:image/svg+xml,%3Csvg width='22' height='22' viewBox='0 0 22 22' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20.5 11.2273C20.5 10.5182 20.4383 9.83636 20.3237 9.18182H11.1939V13.0545H16.4109C16.1818 14.3 15.4944 15.3545 14.4634 16.0636V18.5818H17.6095C19.4425 16.8364 20.5 14.2727 20.5 11.2273Z' fill='white'/%3E%3Cpath d='M11.1939 21C13.8112 21 16.0056 20.1091 17.6095 18.5818L14.4634 16.0636C13.5997 16.6636 12.4981 17.0273 11.1939 17.0273C8.67347 17.0273 6.532 15.2727 5.76531 12.9091H2.53989V15.4909C4.13497 18.7545 7.40445 21 11.1939 21Z' fill='white'/%3E%3Cpath d='M5.76531 12.9C5.57143 12.3 5.45686 11.6636 5.45686 11C5.45686 10.3364 5.57143 9.7 5.76531 9.1V6.51818H2.53989C1.87894 7.86364 1.5 9.38182 1.5 11C1.5 12.6182 1.87894 14.1364 2.53989 15.4818L5.05148 13.4636L5.76531 12.9Z' fill='white'/%3E%3Cpath d='M11.1939 4.98182C12.6215 4.98182 13.8905 5.49091 14.904 6.47273L17.68 3.60909C15.9968 1.99091 13.8112 1 11.1939 1C7.40445 1 4.13497 3.24546 2.53989 6.51818L5.76531 9.1C6.532 6.73636 8.67347 4.98182 11.1939 4.98182Z' fill='white'/%3E%3C/svg%3E%0A");
+    }
+
+    @each $name in $iconClassName {
+      .fa-#{$name} {
+        background-image: bIcon.btnIcon(#{$name}, $white);
+      }
+    }
+
+    &.hover,
+    &:hover,
+    &:focus,
+    &:active,
+    &.active {
+      border: 1px solid $google;
+      background-color: $white;
+      color: $google;
+
+      .fa-google {
+        background-image: url("data:image/svg+xml,%3Csvg width='22' height='22' viewBox='0 0 22 22' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20.5 11.2273C20.5 10.5182 20.4383 9.83636 20.3237 9.18182H11.1939V13.0545H16.4109C16.1818 14.3 15.4944 15.3545 14.4634 16.0636V18.5818H17.6095C19.4425 16.8364 20.5 14.2727 20.5 11.2273Z' fill='%23EA4335'/%3E%3Cpath d='M11.1939 21C13.8112 21 16.0056 20.1091 17.6095 18.5818L14.4634 16.0636C13.5997 16.6636 12.4981 17.0273 11.1939 17.0273C8.67347 17.0273 6.532 15.2727 5.76531 12.9091H2.53989V15.4909C4.13497 18.7545 7.40445 21 11.1939 21Z' fill='%23EA4335'/%3E%3Cpath d='M5.76531 12.9C5.57143 12.3 5.45686 11.6636 5.45686 11C5.45686 10.3364 5.57143 9.7 5.76531 9.1V6.51818H2.53989C1.87894 7.86364 1.5 9.38182 1.5 11C1.5 12.6182 1.87894 14.1364 2.53989 15.4818L5.05148 13.4636L5.76531 12.9Z' fill='%23EA4335'/%3E%3Cpath d='M11.1939 4.98182C12.6215 4.98182 13.8905 5.49091 14.904 6.47273L17.68 3.60909C15.9968 1.99091 13.8112 1 11.1939 1C7.40445 1 4.13497 3.24546 2.53989 6.51818L5.76531 9.1C6.532 6.73636 8.67347 4.98182 11.1939 4.98182Z' fill='%23EA4335'/%3E%3C/svg%3E%0A");
+      }
+
+      @each $name in $iconClassName {
+        .fa-#{$name} {
+          background-image: bIcon.btnIcon(#{$name}, $google);
+        }
+      }
+    }
+  }
+
+  &.add-button,
+  &.remove-button {
+    padding: 8px 10px 8px 7px;
+    .fa {margin: 0;}
+  }
+
+  &.add-button,
+  &.add-button:link,
+  &.add-button:visited {
+    .fa-plus {
+      min-width: 16px; width: 16px; height: 16px; background-image: url("data:image/svg+xml,%3Csvg width='17' height='16' viewBox='0 0 17 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8.52001 3.33301L8.50781 12.6663' stroke='%233180EF' stroke-linejoin='round'/%3E%3Cpath d='M3.83301 8H13.1663' stroke='%233180EF' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+    }
+
+    &.hover,
+    &:hover,
+    &:focus,
+    &:active,
+    &.active {
+      .fa-plus {
+        background-image: url("data:image/svg+xml,%3Csvg width='17' height='16' viewBox='0 0 17 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8.52001 3.33301L8.50781 12.6663' stroke='white' stroke-linejoin='round'/%3E%3Cpath d='M3.83301 8H13.1663' stroke='white' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+      }
+    }
+  }
+  
+  &.remove-button,
+  &.remove-button:link,
+  &.remove-button:visited {
+    .fa-minus {
+      min-width: 16px; width: 16px; height: 16px; background-image: url("data:image/svg+xml,%3Csvg width='17' height='16' viewBox='0 0 17 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 8H13.3333' stroke='%23DB214D' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+    }
+
+    &.hover,
+    &:hover,
+    &:focus,
+    &:active,
+    &.active {
+      .fa-minus {
+        background-image: url("data:image/svg+xml,%3Csvg width='17' height='16' viewBox='0 0 17 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 8H13.3333' stroke='white' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+      }
+    }
+  }
+
+  &.fe-btn-danger {
+    &:focus {
+      outline: 2px dashed #000;
+    }
+  }
+
+  &.outline {
+    @each $BtName in map-keys($colors) {
+      &.fe-btn-#{$BtName},
+      &.fe-btn-#{$BtName}:link,
+      &.fe-btn-#{$BtName}:visited {
+        background-color: $white;
+        border: 1px solid map-get($colors, $BtName);
+        color: map-get($colors, $BtName);
+
+        @each $name in $iconClassName {
+          .fa.fa-#{$name} {
+            background-image: bIcon.btnIcon(#{$name}, map-get($colors, $BtName));
+          }
+        }
+
+        &.hover,
+        &:hover,
+        &:focus,
+        &:active,
+        &.active {
+          background-color: map-get($colors, $BtName);
+          border: 1px solid map-get($colors, $BtName);
+          color: $white;
+
+          @each $name in $iconClassName {
+            .fa-#{$name} {
+              background-image: bIcon.btnIcon(#{$name}, $white);
+            }
+          }
+        }
+
+        &:disabled,
+        &.disabled {}
+      }
+    }
+
+    &.fe-btn-ghost,
+    &.fe-btn-ghost:link,
+    &.fe-btn-ghost:visited {
+      background-color: $white;
+      border: 1px solid $ghostHover;
+      color: $ghostHover;
+
+      &.hover,
+      &:hover,
+      &:focus,
+      &:active,
+      &.active {
+        background-color: $ghost;
+        border: 1px solid $ghost;
+        color: $ghostHover;
+      }
+  
+      &:disabled,
+      &.disabled {}
+    }
+  }
+}
+
+.fe-btn_box {
+  display: flex; flex-wrap: wrap; width: calc(100% + 6px); margin: 27px -3px -3px;
+  .fe-btn_group {padding: 3px;}
+  &.text-column {
+    flex-direction: column;
+    @media (max-width: 768px) {flex-direction: row;}
+  }
+}
+
+.text-sb {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.text-center {
+  justify-content: center;
+}
+
+.table {
+  tr {
+    td {
+      .fe-btn_box {
+        margin: 0;
+        @media (max-width: 768px) {justify-content: flex-start;}
+        .fe-btn_group {
+          padding: 0;
+          .fe-btn {
+            margin: 0 3px 0 0;
+          }
+          &:last-child {
+            .fe-btn {margin: 0;}
+          }
+        }
+        &.text-column {
+          .fe-btn_group {
+            @media (max-width: 768px) {padding: 3px;}
+            & + .fe-btn_group {
+              margin: 3px 0 0 0;
+              @media (max-width: 768px) {margin: 0;}
+            }
+            .fe-btn {
+              margin: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.table-responsive {
+  .table {
+    tr {
+      td {
+        .fe-btn_box {
+          @media (max-width: 768px) {justify-content: center;}
+        }
+      }
+    }
+  }
+}
+
+.board-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  width: auto;
+  padding: button-vars.$fe-btn-md;
+  cursor: pointer;
+  border: 1px solid transparent;
+  background-image: none;
+  overflow-wrap: break-word;
+  transition: all 0.3s;
+  font-size: $font-size-base;
+  line-height: 100%;
+  letter-spacing: -0.32px;
+  margin: 3px;
+  border-radius: button-vars.$fe-border-radius-lg;
+
+  @media (max-width: 1024px) {
+    height: 50px;
+    padding: 10px 15px;
+    margin: 3px;
+  }
+
+  @media (max-width: 490px) {
+    height: 40px;
+    font-size: 15px;
+    padding: 10px;
+  }
+
+  .board-button__icon {
+    font-size: 0;
+    width: 17px;
+    height: 16px;
+    background-size: 100%;
+    margin-right: 5px;
+    vertical-align: middle;
+    position: relative;
+    display: inline-block;
+
+    &.board-button__icon--right {
+      margin-right: 0;
+      margin-left: 5px;
+    }
+  }
+
+  @each $BtName in map-keys($board-colors) {
+    &.board-button--#{$BtName},
+    &--#{$BtName}:link,
+    &--#{$BtName}:visited {
+      background-color: map-get($board-colors, $BtName);
+      border: 1px solid map-get($board-colors, $BtName);
+      color: $white;
+
+      @each $name in $boardIconClassName {
+        .board-button__#{$name} {
+          background-image: bIcon.btnIcon($name, $white);
+        }
+      }
+
+      &:hover,
+      &:focus {
+        background-color: $white;
+        border: 1px solid map-get($board-colors, $BtName);
+        color: map-get($board-colors, $BtName);
+
+        @each $name in $boardIconClassName {
+          .board-button__#{$name} {
+            background-image: bIcon.btnIcon($name, map-get($board-colors, $BtName));
+          }
+        }
+      }
+    }
+  }
+
+  &.outline {
+    @each $BtName in map-keys($board-colors) {
+      &.board-button--#{$BtName},
+      &--#{$BtName}:link,
+      &--#{$BtName}:visited {
+        background-color: $white;
+        border: 1px solid map-get($board-colors, $BtName);
+        color: map-get($board-colors, $BtName);
+
+        @each $name in $boardIconClassName {
+          .board-button__#{$name} {
+            background-image: bIcon.btnIcon(#{$name}, map-get($board-colors, $BtName));
+          }
+        }
+
+        &:hover,
+        &:focus {
+          background-color: map-get($board-colors, $BtName);
+          border: 1px solid map-get($board-colors, $BtName);
+          color: $white;
+
+          @each $name in $boardIconClassName {
+            .board-button__#{$name} {
+              background-image: bIcon.btnIcon(#{$name}, $white);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.btn-group,
+.btn-group-vertical {
+  position: relative;
+  display: inline-flex;
+  vertical-align: middle;
+
+  > .fe-btn,
+  > .btn {
+    position: relative;
+
+    &:hover,
+    &:focus,
+    &:active,
+    &.active {
+      z-index: 2;
+    }
+  }
+}
+
+.btn-group {
+  .fe-btn + .fe-btn,
+  .btn + .btn,
+  .btn + .btn-group,
+  .fe-btn + .btn-group,
+  .btn-group + .fe-btn,
+  .btn-group + .btn,
+  .btn-group + .btn-group {
+    margin-left: -1px;
+  }
+}
+
+.btn-group > .fe-btn:not(:first-child):not(:last-child):not(.dropdown-toggle),
+.btn-group > .btn:not(:first-child):not(:last-child):not(.dropdown-toggle) {
+  border-radius: 0;
+}
+
+.btn-group > .fe-btn:first-child,
+.btn-group > .btn:first-child {
+  margin-left: 0;
+
+  &:not(:last-child):not(.dropdown-toggle) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+}
+
+.btn-group > .fe-btn:last-child:not(:first-child),
+.btn-group > .btn:last-child:not(:first-child),
+.btn-group > .dropdown-toggle:not(:first-child) {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.btn-group > .btn-group {
+  float: left;
+}
+
+.btn-group > .btn-group:not(:first-child):not(:last-child) > .fe-btn,
+.btn-group > .btn-group:not(:first-child):not(:last-child) > .btn {
+  border-radius: 0;
+}
+
+.btn-group > .btn-group:first-child:not(:last-child) {
+  > .btn:last-child,
+  > .dropdown-toggle {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+}
+
+.btn-group > .btn-group:last-child:not(:first-child) > .btn:first-child {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.btn-group .dropdown-toggle:active,
+.btn-group.open .dropdown-toggle {
+  outline: 0;
+}
+
+.btn-group > .fe-btn + .dropdown-toggle,
+.btn-group > .btn + .dropdown-toggle {
+  padding-right: 8px;
+  padding-left: 8px;
+}
+
+.btn-group.open .dropdown-toggle {
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+
+  &.btn-link {
+    box-shadow: none;
+  }
+}
+
+
+span.fe-btn,
+div.fe-btn {
+  cursor: default;
+
+  @each $BtName in map-keys($colors) {
+    &.fe-btn-#{$BtName},
+    &.fe-btn-#{$BtName}:link,
+    &.fe-btn-#{$BtName}:visited {
+      background-color: map-get($colors, $BtName);
+      border: 1px solid map-get($colors, $BtName);
+      color: $white;
+
+      @each $name in $iconClassName {
+        .fa-#{$name} {
+          background-image: bIcon.btnIcon(#{$name}, $white);
+        }
+      }
+
+      &.hover,
+      &:hover,
+      &:active,
+      &.active {
+        background-color: map-get($colors, $BtName);
+        border: 1px solid map-get($colors, $BtName);
+        color: $white;
+
+        @each $name in $iconClassName {
+          .fa-#{$name} {
+            background-image: bIcon.btnIcon(#{$name}, $white);
+          }
+        }
+      }
+    }
+  }
+
+  &.outline {
+    @each $BtName in map-keys($colors) {
+      &.fe-btn-#{$BtName},
+      &.fe-btn-#{$BtName}:link,
+      &.fe-btn-#{$BtName}:visited {
+        background-color: $white;
+        border: 1px solid map-get($colors, $BtName);
+        color: map-get($colors, $BtName);
+  
+        @each $name in $iconClassName {
+          .fa.fa-#{$name} {
+            background-image: bIcon.btnIcon(#{$name}, map-get($colors, $BtName));
+          }
+        }
+  
+        &.hover,
+        &:hover,
+        &:active,
+        &.active {
+          background-color: $white;
+          border: 1px solid map-get($colors, $BtName);
+          color: map-get($colors, $BtName);
+  
+          @each $name in $iconClassName {
+            .fa.fa-#{$name} {
+              background-image: bIcon.btnIcon(#{$name}, map-get($colors, $BtName));
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.board-view__button-box {
+  .board-button.outline.board-button--color1.board-button--create, 
+  .board-button.outline--color1.board-button--create:link, 
+  .board-button.outline--color1.board-button--create:visited {background-color: #F1F6FE;}
+
+  .board-button.outline.board-button--color1.board-button--create:hover, 
+  .board-button.outline.board-button--color1.board-button--create:focus, 
+  .board-button.board-button--color1.board-button--create:hover, 
+  .board-button.board-button--color1.board-button--create:focus, 
+  .board-button.outline--color1.board-button--create:link:hover, 
+  .board-button.outline--color1.board-button--create:link:focus, 
+  .board-button.outline--color1.board-button--create:visited:hover, 
+  .board-button.outline--color1.board-button--create:visited:focus ,
+  .board-button.board-button--color1.board-button--create:link:hover, 
+  .board-button.board-button--color1.board-button--create:link:focus, 
+  .board-button.board-button--color1.board-button--create:visited:hover, 
+  .board-button.board-button--color1.board-button--create:visited:focus {background-color: #E4EBF8;color: #1C4690;}
+
+  .board-button.board-button--color1.board-button--list.btn-list.outline,
+  .board-button.board-button--color1.board-button--linkcopy.outline {border: 1px solid #58616A;background-color: #fff;color: #1E2124;
+    &:hover,
+    &:focus {background-color: #F4F5F6;}
+  }
+  .board-button.board-button--color1.board-button--list.btn-list.outline {
+    .board-button__icon2 {background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='17' height='16' viewBox='0 0 17 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M14.0827 4H3.41602' stroke='%2333363D' stroke-linejoin='round'/%3E%3Cpath d='M14.0827 8H3.41602' stroke='%2333363D' stroke-linejoin='round'/%3E%3Cpath d='M14.0827 12H3.41602' stroke='%2333363D' stroke-linejoin='round'/%3E%3C/svg%3E%0A");}
+  }
+  .board-button.board-button--color1.board-button--linkcopy.outline {
+    .board-button__icon1 {background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='17' height='16' viewBox='0 0 17 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7.38745 3.4375L2.59989 8.54893C1.4667 9.75876 1.4667 11.7203 2.59989 12.9301C3.73306 14.14 5.57031 14.14 6.70349 12.9301C7.81638 11.742 10.2376 9.24979 11.3505 8.06162' stroke='%2333363D' stroke-width='0.800022' stroke-linejoin='round'/%3E%3Cpath d='M9.38304 13.0371L14.1507 7.88129C15.1895 6.76453 15.1895 4.95388 14.1507 3.83711C13.112 2.72034 11.4278 2.72034 10.3891 3.83711C9.36895 4.93389 6.77038 7.67192 5.75023 8.7687' stroke='%2333363D' stroke-width='0.800022' stroke-linejoin='round'/%3E%3C/svg%3E%0A");}
+  }
+}
+
